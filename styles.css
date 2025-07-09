@@ -56,6 +56,62 @@ header {
     transition: color 0.3s ease;
 }
 
+/* Video Container Styles */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.video-container::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .video-container {
+        max-width: 100%;
+        margin: 0 auto 2rem;
+        border-radius: 8px;
+    }
+    
+    .video-container iframe {
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        border-radius: 6px;
+    }
+    
+    .video-container iframe {
+        border-radius: 6px;
+    }
+}
 .nav-menu a:hover {
     color: #2563eb;
 }
@@ -111,13 +167,6 @@ header {
 
 .cta-button:hover {
     background: #1d4ed8;
-}
-
-.hero-image iframe {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 /* Section Styles */
