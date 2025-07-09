@@ -113,7 +113,7 @@ header {
     background: #1d4ed8;
 }
 
-.hero-image img {
+.hero-image iframe {
     width: 100%;
     height: auto;
     border-radius: 12px;
