@@ -130,13 +130,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GGUF Loader - Enterprise-Grade Local AI Deployment Platform</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,6 +139,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Floating Buttons Container -->
+    <div class="floating-container">
+        <button class="floating-button" data-service="email">Email Automation</button>
+        <button class="floating-button" data-service="document">Docuemnt sumerization</button>
+        <button class="floating-button" data-service="translate">Book Translator</button>
+        <button class="floating-button" data-service="finance">Ai Finance Assistant</button>
+        <button class="floating-button" data-service="tax">AI Tax Calculator</button>
+    </div>
+
+    <!-- Service Banners Container -->
+    <div class="services-showcase">
+        <div class="container">
+            <h2>AI-Powered Services</h2>
+            <div class="services-grid">
+            </div>
+        </div>
+    </div>
+
     <header>
         <nav>
             <div class="nav-container">
@@ -498,5 +509,205 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mouse-following floating buttons with collision avoidance
+        const floatingContainer = document.querySelector('.floating-container');
+        const floatingButtons = document.querySelectorAll('.floating-button');
+        const serviceBanners = document.querySelectorAll('.service-banner');
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let isMouseMoving = false;
+        let moveTimeout;
+
+        // Button positions array to track and prevent overlap
+        const buttonPositions = [];
+
+        // Minimum distance between buttons
+        const MIN_DISTANCE = 80;
+        const MOUSE_FOLLOW_DISTANCE = 100;
+
+        // Initialize button positions
+        floatingButtons.forEach((button, index) => {
+            buttonPositions.push({
+                x: window.innerWidth / 2 + (index - 2) * 100,
+                y: window.innerHeight / 2 + (index - 2) * 60,
+                targetX: window.innerWidth / 2 + (index - 2) * 100,
+                targetY: window.innerHeight / 2 + (index - 2) * 60,
+                index: index
+            });
+        });
+
+        // Track mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isMouseMoving = true;
+            
+            clearTimeout(moveTimeout);
+            moveTimeout = setTimeout(() => {
+                isMouseMoving = false;
+            }, 150);
+        });
+
+        // Calculate distance between two points
+        function getDistance(x1, y1, x2, y2) {
+            return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        }
+
+        // Check if position conflicts with other buttons
+        function checkCollision(newX, newY, currentIndex) {
+            for (let i = 0; i < buttonPositions.length; i++) {
+                if (i === currentIndex) continue;
+                
+                const distance = getDistance(newX, newY, buttonPositions[i].x, buttonPositions[i].y);
+                if (distance < MIN_DISTANCE) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Find safe position near target
+        function findSafePosition(targetX, targetY, currentIndex) {
+            let bestX = targetX;
+            let bestY = targetY;
+            let attempts = 0;
+            const maxAttempts = 20;
+            
+            while (checkCollision(bestX, bestY, currentIndex) && attempts < maxAttempts) {
+                // Try positions in a circle around the target
+                const angle = (attempts * Math.PI * 2) / 8;
+                const radius = MIN_DISTANCE + (attempts * 10);
+                
+                bestX = targetX + Math.cos(angle) * radius;
+                bestY = targetY + Math.sin(angle) * radius;
+                
+                // Keep within screen bounds
+                bestX = Math.max(25, Math.min(window.innerWidth - 25, bestX));
+                bestY = Math.max(25, Math.min(window.innerHeight - 25, bestY));
+                
+                attempts++;
+            }
+            
+            return { x: bestX, y: bestY };
+        }
+
+        // Animate floating buttons to follow mouse with spacing
+        function animateFloatingButtons() {
+            if (isMouseMoving) {
+                floatingButtons.forEach((button, index) => {
+                    const position = buttonPositions[index];
+                    
+                    // Calculate target position near mouse with some offset
+                    const angle = (index * Math.PI * 2) / floatingButtons.length;
+                    const baseRadius = MOUSE_FOLLOW_DISTANCE;
+                    const time = Date.now() * 0.001;
+                    
+                    // Add some organic movement
+                    const offsetX = Math.sin(time + index) * 30;
+                    const offsetY = Math.cos(time + index) * 30;
+                    
+                    const rawTargetX = mouseX + Math.cos(angle) * baseRadius + offsetX;
+                    const rawTargetY = mouseY + Math.sin(angle) * baseRadius + offsetY;
+                    
+                    // Keep within screen bounds
+                    const boundedTargetX = Math.max(25, Math.min(window.innerWidth - 25, rawTargetX));
+                    const boundedTargetY = Math.max(25, Math.min(window.innerHeight - 25, rawTargetY));
+                    
+                    // Find safe position that doesn't overlap
+                    const safePosition = findSafePosition(boundedTargetX, boundedTargetY, index);
+                    
+                    // Smooth interpolation to target position
+                    const smoothing = 0.1;
+                    position.targetX = safePosition.x;
+                    position.targetY = safePosition.y;
+                    
+                    position.x += (position.targetX - position.x) * smoothing;
+                    position.y += (position.targetY - position.y) * smoothing;
+                    
+                    // Apply transform
+                    button.style.transform = `translate(${position.x - 25}px, ${position.y - 25}px)`;
+                });
+            } else {
+                // When mouse stops moving, spread buttons out more naturally
+                floatingButtons.forEach((button, index) => {
+                    const position = buttonPositions[index];
+                    
+                    // Natural spread pattern
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    const angle = (index * Math.PI * 2) / floatingButtons.length;
+                    const radius = 150;
+                    
+                    const naturalX = centerX + Math.cos(angle) * radius;
+                    const naturalY = centerY + Math.sin(angle) * radius;
+                    
+                    // Keep within bounds
+                    const boundedX = Math.max(25, Math.min(window.innerWidth - 25, naturalX));
+                    const boundedY = Math.max(25, Math.min(window.innerHeight - 25, naturalY));
+                    
+                    const safePosition = findSafePosition(boundedX, boundedY, index);
+                    
+                    // Slower interpolation when mouse is not moving
+                    const smoothing = 0.05;
+                    position.targetX = safePosition.x;
+                    position.targetY = safePosition.y;
+                    
+                    position.x += (position.targetX - position.x) * smoothing;
+                    position.y += (position.targetY - position.y) * smoothing;
+                    
+                    button.style.transform = `translate(${position.x - 25}px, ${position.y - 25}px)`;
+                });
+            }
+            
+            requestAnimationFrame(animateFloatingButtons);
+        }
+
+        // Start animation
+        animateFloatingButtons();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Reposition buttons on resize
+            floatingButtons.forEach((button, index) => {
+                const position = buttonPositions[index];
+                position.x = Math.max(25, Math.min(window.innerWidth - 25, position.x));
+                position.y = Math.max(25, Math.min(window.innerHeight - 25, position.y));
+            });
+        });
+
+        // Service banner interactions
+        floatingButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceType = button.dataset.service;
+                const targetBanner = document.querySelector(`[data-service="${serviceType}"].service-banner`);
+                
+                if (targetBanner) {
+                    targetBanner.scrollIntoView({ behavior: 'smooth' });
+                    targetBanner.classList.add('highlighted');
+                    
+                    setTimeout(() => {
+                        targetBanner.classList.remove('highlighted');
+                    }, 3000);
+                }
+            });
+        });
+
+        // Intersection Observer for service banners
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        serviceBanners.forEach(banner => {
+            observer.observe(banner);
+        });
+    </script>
 </body>
 </html>
