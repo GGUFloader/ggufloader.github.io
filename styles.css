@@ -503,7 +503,244 @@ nav {
     margin-bottom: 0.5rem;
     line-height: 1.6;
 }
+/* GGUF Models Download Section */
+.gguf-models-section {
+    padding: 4rem 0;
+    background: #ffffff;
+    border-top: 1px solid #e9ecef;
+}
 
+.gguf-models-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.models-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.model-category {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.model-category:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-left-color: #2980b9;
+}
+
+.model-category h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.model-downloads {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.model-download-link {
+    display: inline-block;
+    background: #ffffff;
+    color: #2c3e50;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.model-download-link:hover {
+    background: #3498db;
+    color: #ffffff;
+    border-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.model-download-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.model-download-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.model-download-link:hover::before {
+    left: 100%;
+}
+
+/* Model Collections Section */
+.model-collections {
+    margin-top: 3rem;
+}
+
+.models-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e9ecef, transparent);
+    margin: 2rem 0;
+}
+
+.model-collections h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.collection-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.collection-link {
+    display: block;
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    color: #ffffff;
+    padding: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.collection-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.8) 0%, rgba(46, 204, 113, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.collection-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.collection-link:hover::before {
+    opacity: 1;
+}
+
+.collection-link span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Design for GGUF Models Section */
+@media (max-width: 768px) {
+    .gguf-models-section {
+        padding: 3rem 0;
+    }
+    
+    .gguf-models-section h2 {
+        font-size: 2rem;
+    }
+    
+    .models-intro {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .models-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .model-category {
+        padding: 1.5rem;
+    }
+    
+    .model-category h3 {
+        font-size: 1.2rem;
+    }
+    
+    .model-download-link {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .collection-links {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .collection-link {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gguf-models-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .model-category {
+        padding: 1rem;
+    }
+    
+    .model-download-link {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .collection-link {
+        padding: 1.2rem;
+        font-size: 0.9rem;
+    }
+}
 /* Recommended Models Section */
 .recommended-models {
     padding: 4rem 0;
