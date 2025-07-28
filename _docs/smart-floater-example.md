@@ -137,7 +137,7 @@ def on_model_loaded(self, model):
     """Handle model loaded event."""
     self.model = model
     print(f"✅ Addon received model: {type(model)}")
-    print(f"   Model methods: {[m for m in dir(model) if not m.startswith('_')][:10]}")
+    print(f"   Model methods: {{% raw %}}{[m for m in dir(model) if not m.startswith('_')][:10]}{{% endraw %}}")
 
 def get_model(self):
     """Get the loaded model."""

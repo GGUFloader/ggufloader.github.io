@@ -341,7 +341,7 @@ class TextSelectionAddon:
     def on_text_selected(self, text):
         """Handle text selection event."""
         # Your custom logic here
-        print(f"Text selected: {text[:50]}...")
+        print(f"Text selected: {{% raw %}}{text[:50]}{{% endraw %}}...")
 ```
 
 ### Model Integration

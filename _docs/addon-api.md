@@ -212,7 +212,7 @@ def update_status(self, message: str, status_type: str = "info"):
         QLabel {{
             padding: 5px;
             border-radius: 3px;
-            background-color: {colors.get(status_type, colors['info'])};
+            background-color: {{% raw %}}{colors.get(status_type, colors['info'])}{{% endraw %}};
             color: white;
         }}
     """)
