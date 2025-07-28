@@ -41,8 +41,12 @@ jobs:
         cp browserconfig.xml deploy/
         cp google23207bd4b3d5b313.html deploy/
         cp preview.png deploy/
-        # Copy any HTML pages
-        cp *.html deploy/ 2>/dev/null || true
+        # Copy any HTML pages (excluding test files)
+        find . -name "*.html" -not -path "./test-*" -not -path "./node_modules/*" -not -path "./_*" -not -path "./docs/*" -exec cp {} deploy/ \;
+        # Fix Jekyll config baseurl issue by creating a clean config
+        echo "# GitHub Pages deployment config" > deploy/_config.yml
+        echo "baseurl: \"\"" >> deploy/_config.yml
+        echo "url: \"https://ggufloader.github.io\"" >> deploy/_config.yml
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
