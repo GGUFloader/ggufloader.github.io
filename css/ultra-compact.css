@@ -930,6 +930,7 @@ img {
         /* Larger hover effect */
     }
 }
+
 /* Mob
 ile Philosophy Section Collapsible Feature */
 @media (max-width: 768px) {
@@ -1008,9 +1009,11 @@ ile Philosophy Section Collapsible Feature */
         border-top: 1px solid #e9ecef;
     }
 
-    /* Hide the original philosophy section on mobile */
+    /* Always show the original philosophy section - OVERRIDE */
     .hero-philosophy:not(.mobile-collapsible) {
-        display: none;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     /* Accessibility improvements */
@@ -1025,6 +1028,7 @@ ile Philosophy Section Collapsible Feature */
             max-height: 0;
             opacity: 0;
         }
+
         to {
             max-height: 500px;
             opacity: 1;
@@ -1036,6 +1040,7 @@ ile Philosophy Section Collapsible Feature */
             max-height: 500px;
             opacity: 1;
         }
+
         to {
             max-height: 0;
             opacity: 0;
@@ -1051,9 +1056,14 @@ ile Philosophy Section Collapsible Feature */
     }
 }
 
-/* Desktop - keep original philosophy section */
-@media (min-width: 769px) {
-    .mobile-philosophy-collapsible {
-        display: none;
-    }
+/* Always hide mobile collapsible version - philosophy should always be visible */
+.mobile-philosophy-collapsible {
+    display: none !important;
+}
+
+/* Ensure philosophy is always visible on all screen sizes */
+.hero-philosophy {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
