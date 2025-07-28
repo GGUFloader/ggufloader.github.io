@@ -1,0 +1,164 @@
+{
+  "timestamp": "2025-07-28T09:10:58.012Z",
+  "summary": {
+    "totalTests": 25,
+    "passedTests": 25,
+    "failedTests": 0,
+    "successRate": "100.0"
+  },
+  "results": {
+    "userJourneyFlows": [
+      {
+        "scenario": "New User Discovery Journey",
+        "description": "User discovers GGUF Loader, learns about features, then follows installation and quick start",
+        "success": true,
+        "steps": [
+          {
+            "from": "index.html",
+            "to": "features",
+            "status": "success",
+            "step": 1
+          },
+          {
+            "from": "index.html",
+            "to": "docs/installation/",
+            "status": "success",
+            "step": 2
+          },
+          {
+            "from": "docs/installation/index.html",
+            "to": "docs/quick-start/",
+            "status": "success",
+            "step": 3
+          }
+        ],
+        "completionRate": 100
+      },
+      {
+        "scenario": "Developer Integration Journey",
+        "description": "Developer interested in building addons follows development documentation",
+        "success": true,
+        "steps": [
+          {
+            "from": "index.html",
+            "to": "features",
+            "status": "success",
+            "step": 1
+          },
+          {
+            "from": "index.html",
+            "to": "docs/addon-development/",
+            "status": "success",
+            "step": 2
+          },
+          {
+            "from": "docs/addon-development/index.html",
+            "to": "docs/addon-api/",
+            "status": "success",
+            "step": 3
+          }
+        ],
+        "completionRate": 100
+      },
+      {
+        "scenario": "Troubleshooting Journey",
+        "description": "User with issues starts at FAQ and follows to detailed documentation",
+        "success": true,
+        "steps": [
+          {
+            "from": "index.html",
+            "to": "faq",
+            "status": "success",
+            "step": 1
+          },
+          {
+            "from": "index.html",
+            "to": "docs/installation/",
+            "status": "success",
+            "step": 2
+          },
+          {
+            "from": "docs/installation/index.html",
+            "to": "docs/package-structure/",
+            "status": "success",
+            "step": 3
+          }
+        ],
+        "completionRate": 100
+      }
+    ],
+    "contentDiscovery": [
+      {
+        "page": "index.html",
+        "feature": "related-content",
+        "status": "found"
+      },
+      {
+        "page": "docs/installation/index.html",
+        "feature": "related-content",
+        "status": "found"
+      },
+      {
+        "page": "docs/quick-start/index.html",
+        "feature": "related-content",
+        "status": "found"
+      },
+      {
+        "page": "docs/addon-development/index.html",
+        "feature": "related-content",
+        "status": "found"
+      },
+      {
+        "page": "homepage",
+        "feature": "content-previews",
+        "status": "found"
+      },
+      {
+        "page": "site-wide",
+        "feature": "search-integration",
+        "status": "found"
+      }
+    ],
+    "mobileUsability": [
+      {
+        "file": "css/mobile-navigation.css",
+        "status": "found",
+        "type": "mobile-file"
+      },
+      {
+        "file": "js/mobile-navigation-enhancer.js",
+        "status": "found",
+        "type": "mobile-file"
+      },
+      {
+        "file": "js/mobile-content-preview.js",
+        "status": "found",
+        "type": "mobile-file"
+      },
+      {
+        "file": "js/mobile-performance-optimizer.js",
+        "status": "found",
+        "type": "mobile-file"
+      },
+      {
+        "file": "styles.css",
+        "status": "optimized",
+        "type": "mobile-css"
+      },
+      {
+        "file": "css/mobile-navigation.css",
+        "status": "optimized",
+        "type": "mobile-css"
+      },
+      {
+        "page": "homepage",
+        "status": "touch-optimized",
+        "type": "touch-elements"
+      }
+    ],
+    "totalTests": 25,
+    "passedTests": 25,
+    "failedTests": 0,
+    "recommendations": []
+  }
+}

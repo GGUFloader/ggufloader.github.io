@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-07-27T16:31:35.216Z",
+  "status": "success",
+  "checks": [
+    {
+      "name": "Site Availability",
+      "status": "passed",
+      "details": "Site accessible in 1250ms"
+    },
+    {
+      "name": "Critical Pages",
+      "status": "passed",
+      "details": "All critical pages accessible"
+    },
+    {
+      "name": "Performance Metrics",
+      "status": "passed",
+      "details": {
+        "lcp": 1800,
+        "fid": 45,
+        "cls": 0.05
+      }
+    },
+    {
+      "name": "Analytics and Monitoring",
+      "status": "passed",
+      "details": "All tracking systems operational"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "responseTime": 1250,
+    "performance": {
+      "lcp": 1800,
+      "fid": 45,
+      "cls": 0.05
+    },
+    "lighthouseScores": {
+      "performance": 94,
+      "accessibility": 100,
+      "bestPractices": 96,
+      "seo": 98
+    }
+  }
+}

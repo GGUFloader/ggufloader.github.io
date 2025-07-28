@@ -1,0 +1,223 @@
+name: Daily SEO Freshness
+
+on:
+  schedule:
+    # Run daily at 2:30 AM UTC (optimal time for bot crawling)
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force run all systems'
+        required: false
+        default: 'false'
+        type: boolean
+      system_filter:
+        description: 'Run specific system only'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+        - all
+        - freshness
+        - rotation
+        - signals
+
+jobs:
+  seo-freshness:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "SEO Freshness Bot"
+        
+    - name: Run Daily SEO Orchestration
+      run: node scripts/daily-seo-orchestrator.js run
+      
+    - name: Run Individual Systems (Manual)
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.system_filter != 'all'
+      run: |
+        case "${{ github.event.inputs.system_filter }}" in
+          "freshness")
+            node scripts/seo-freshness-simulator.js
+            ;;
+          "rotation")
+            node scripts/content-rotation-system.js
+            ;;
+          "signals")
+            node scripts/bot-signal-generator.js
+            ;;
+        esac
+        
+    - name: Commit and Push Changes
+      run: |
+        git add -A
+        if ! git diff --staged --quiet; then
+          git commit -m "🤖 Daily SEO freshness update - $(date -u +%Y-%m-%d)"
+          git push
+        else
+          echo "No changes to commit"
+        fi
+        
+    - name: Upload SEO Reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: seo-reports-${{ github.run_number }}
+        path: |
+          seo-reports/
+          master-freshness-indicator.json
+          daily-bot-summary.json
+        retention-days: 30
+        
+    - name: Create Issue on Failure
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: '🚨 Daily SEO Freshness Failed',
+            body: `The daily SEO freshness workflow failed on ${new Date().toISOString().split('T')[0]}.
+            
+            **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            Please check the logs and fix any issues to ensure continuous SEO optimization.
+            
+            **Impact:**
+            - Search engine bots may not detect fresh content
+            - Crawl frequency may decrease
+            - SEO performance may be affected
+            
+            **Next Steps:**
+            1. Review the workflow logs
+            2. Fix any script errors
+            3. Re-run the workflow manually if needed
+            `,
+            labels: ['bug', 'seo', 'automation']
+          });
+
+  ping-search-engines:
+    needs: seo-freshness
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Ping Google
+      run: |
+        curl -s "https://www.google.com/ping?sitemap=https://your-domain.com/sitemap.xml" || true
+        
+    - name: Ping Bing
+      run: |
+        curl -s "https://www.bing.com/ping?sitemap=https://your-domain.com/sitemap.xml" || true
+        
+    - name: Log Ping Results
+      run: |
+        echo "Search engine ping completed at $(date -u)"
+        echo "Sitemap URL: https://your-domain.com/sitemap.xml"
+
+  monitor-freshness:
+    needs: seo-freshness
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Monitor SEO Health
+      run: |
+        # Check if freshness indicator exists and is recent
+        if [ -f "master-freshness-indicator.json" ]; then
+          echo "✅ Master freshness indicator found"
+          node -e "
+            const indicator = require('./master-freshness-indicator.json');
+            const lastUpdate = new Date(indicator.lastUpdate);
+            const now = new Date();
+            const hoursSince = (now - lastUpdate) / (1000 * 60 * 60);
+            
+            console.log('Last update:', lastUpdate.toISOString());
+            console.log('Hours since update:', hoursSince.toFixed(1));
+            console.log('System status:', indicator.systemStatus);
+            console.log('Freshness score:', indicator.freshnessScore);
+            
+            if (hoursSince > 25) {
+              console.log('⚠️ Warning: Freshness indicator is stale');
+              process.exit(1);
+            }
+          "
+        else
+          echo "❌ Master freshness indicator not found"
+          exit 1
+        fi
+        
+    - name: Validate Generated Files
+      run: |
+        echo "🔍 Validating generated files..."
+        
+        files_to_check=(
+          "sitemap.xml"
+          "robots.txt"
+          "feed.xml"
+          "structured-data.json"
+          "dynamic-content.json"
+        )
+        
+        for file in "${files_to_check[@]}"; do
+          if [ -f "$file" ]; then
+            echo "✅ $file exists"
+          else
+            echo "❌ $file missing"
+          fi
+        done
+        
+    - name: Check Content Freshness
+      run: |
+        echo "📊 Content freshness check..."
+        
+        # Check if sitemap was updated today
+        if [ -f "sitemap.xml" ]; then
+          today=$(date -u +%Y-%m-%d)
+          if grep -q "$today" sitemap.xml; then
+            echo "✅ Sitemap contains today's date"
+          else
+            echo "⚠️ Sitemap may not be updated for today"
+          fi
+        fi
+        
+        # Check if robots.txt was updated
+        if [ -f "robots.txt" ]; then
+          if grep -q "$(date -u +%Y-%m-%d)" robots.txt; then
+            echo "✅ Robots.txt updated today"
+          else
+            echo "⚠️ Robots.txt may not be updated"
+          fi
+        fi

@@ -1,0 +1,337 @@
+{
+  "timestamp": "2025-07-28T09:14:18.275Z",
+  "summary": {
+    "totalTests": 20,
+    "passedTests": 17,
+    "failedTests": 3,
+    "successRate": "85.0"
+  },
+  "results": {
+    "internalLinkStructure": [
+      {
+        "page": "homepage",
+        "internalLinkCount": 72,
+        "status": "good-density",
+        "links": [
+          "#main-content",
+          "#features",
+          "#how-to",
+          "#",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/addon-development/",
+          "docs/addon-api/",
+          "docs/smart-floater-example/",
+          "docs/package-structure/",
+          "#faq",
+          "#roadmap",
+          "#contact",
+          "#download",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/installation/#macos",
+          "docs/quick-start/",
+          "docs/installation/#linux-ubuntudebian",
+          "docs/quick-start/",
+          "docs/addon-development/",
+          "docs/package-structure/",
+          "docs/quick-start/#load-your-first-model",
+          "docs/quick-start/#test-basic-chat",
+          "docs/quick-start/#load-your-first-model",
+          "docs/quick-start/#pro-tips",
+          "docs/quick-start/#load-your-first-model",
+          "docs/smart-floater-example/",
+          "docs/quick-start/#get-a-gguf-model",
+          "docs/installation/#system-requirements",
+          "docs/quick-start/#pro-tips",
+          "docs/installation/",
+          "docs/package-structure/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/installation/",
+          "docs/package-structure/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/package-structure/",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/addon-development/",
+          "docs/smart-floater-example/",
+          "docs/package-structure/",
+          "docs/quick-start/#get-a-gguf-model",
+          "docs/installation/",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/quick-start/#test-basic-chat",
+          "docs/installation/#system-requirements",
+          "docs/installation/#gpu-acceleration-optional",
+          "docs/quick-start/",
+          "docs/installation/",
+          "docs/addon-development/",
+          "docs/addon-api/",
+          "docs/smart-floater-example/",
+          "docs/quick-start/#use-the-smart-floating-assistant",
+          "docs/quick-start/#get-a-gguf-model",
+          "docs/quick-start/#pro-tips",
+          "#download",
+          "#features",
+          "#faq"
+        ]
+      },
+      {
+        "page": "docs/addon-api/index.html",
+        "internalLinkCount": 25,
+        "status": "adequate",
+        "links": [
+          "https://ggufloader.github.io/docs/addon-api/",
+          "../../styles.css",
+          "../../css/enhanced-search.css",
+          "/docs/",
+          "/docs/installation/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "#core-api",
+          "#model-api",
+          "#ui-api",
+          "#system-integration",
+          "#configuration-api",
+          "#event-system",
+          "#testing-api",
+          "#logging-api",
+          "#security-api",
+          "/docs/addon-development/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "/docs/addon-development/",
+          "/docs/smart-floater-example/",
+          "https://github.com/ggufloader/gguf-loader/edit/main/docs/addon-api.md"
+        ]
+      },
+      {
+        "page": "docs/addon-development/index.html",
+        "internalLinkCount": 17,
+        "status": "adequate",
+        "links": [
+          "https://ggufloader.github.io/docs/addon-development/",
+          "../../styles.css",
+          "../../css/enhanced-search.css",
+          "/docs/",
+          "/docs/installation/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "/docs/smart-floater-example/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "/docs/quick-start/",
+          "/docs/addon-api/",
+          "https://github.com/ggufloader/gguf-loader/edit/main/_docs/addon-development.md"
+        ]
+      },
+      {
+        "page": "docs/installation/index.html",
+        "internalLinkCount": 19,
+        "status": "adequate",
+        "links": [
+          "https://ggufloader.github.io/docs/installation/",
+          "../../styles.css",
+          "../../css/enhanced-search.css",
+          "/docs/",
+          "/docs/installation/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "../../#download",
+          "../../#features",
+          "../quick-start/",
+          "/docs/smart-floater-example/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/package-structure/",
+          "/docs/quick-start/",
+          "https://github.com/ggufloader/gguf-loader/edit/main/_docs/installation.md"
+        ]
+      },
+      {
+        "page": "docs/package-structure/index.html",
+        "internalLinkCount": 18,
+        "status": "adequate",
+        "links": [
+          "https://ggufloader.github.io/docs/package-structure/",
+          "../../styles.css",
+          "../../css/enhanced-search.css",
+          "/docs/",
+          "/docs/installation/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "/docs/smart-floater-example/",
+          "/docs/smart-floater-example/",
+          "/docs/addon-development/",
+          "/docs/installation/",
+          "/docs/addon-development/",
+          "/docs/smart-floater-example/",
+          "/docs/smart-floater-example/",
+          "https://github.com/ggufloader/gguf-loader/edit/main/docs/package-structure.md"
+        ]
+      },
+      {
+        "page": "docs/quick-start/index.html",
+        "internalLinkCount": 18,
+        "status": "adequate",
+        "links": [
+          "https://ggufloader.github.io/docs/quick-start/",
+          "../../styles.css",
+          "../../css/enhanced-search.css",
+          "/docs/",
+          "/docs/installation/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "/docs/installation/",
+          "/docs/smart-floater-example/",
+          "/docs/installation/",
+          "/docs/addon-development/",
+          "/docs/smart-floater-example/",
+          "/docs/installation/",
+          "/docs/addon-development/",
+          "https://github.com/ggufloader/gguf-loader/edit/main/_docs/quick-start.md"
+        ]
+      },
+      {
+        "page": "docs/smart-floater-example/index.html",
+        "internalLinkCount": 16,
+        "status": "adequate",
+        "links": [
+          "https://ggufloader.github.io/docs/smart-floater-example/",
+          "../../styles.css",
+          "../../css/enhanced-search.css",
+          "/docs/",
+          "/docs/installation/",
+          "/docs/quick-start/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/smart-floater-example/",
+          "/docs/package-structure/",
+          "/docs/addon-development/",
+          "/docs/addon-api/",
+          "/docs/package-structure/",
+          "/docs/addon-api/",
+          "/docs/package-structure/",
+          "https://github.com/ggufloader/gguf-loader/edit/main/docs/smart-floater-example.md"
+        ]
+      }
+    ],
+    "performanceMetrics": [
+      {
+        "metric": "resource-preloading",
+        "value": 6,
+        "status": "good",
+        "details": [
+          "<link rel=\"preload\" href=\"styles.css\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">",
+          "<link rel=\"preload\" href=\"model-comparison.css\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">",
+          "<link rel=\"preload\" href=\"css/enhanced-search.css\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">",
+          "<link rel=\"preload\" href=\"performance-monitor.js\" as=\"script\">",
+          "<link rel=\"preload\" href=\"model-comparison.js\" as=\"script\">",
+          "<link rel=\"preload\" as=\"font\" type=\"font/woff2\" crossorigin>"
+        ]
+      },
+      {
+        "metric": "critical-css-inlining",
+        "value": 2,
+        "status": "implemented"
+      },
+      {
+        "metric": "image-lazy-loading",
+        "value": 1,
+        "status": "implemented"
+      },
+      {
+        "metric": "responsive-images",
+        "value": 0,
+        "status": "missing"
+      },
+      {
+        "metric": "async-javascript",
+        "value": 13,
+        "status": "optimized"
+      },
+      {
+        "metric": "css-file-count",
+        "value": 6,
+        "status": "needs-optimization"
+      }
+    ],
+    "structuredDataValidation": [
+      {
+        "type": "json-ld",
+        "count": 2,
+        "status": "comprehensive",
+        "schemas": [
+          "SoftwareApplication",
+          "FAQPage"
+        ]
+      },
+      {
+        "type": "open-graph",
+        "foundTags": [
+          "og:title",
+          "og:description",
+          "og:image",
+          "og:url",
+          "og:type"
+        ],
+        "status": "comprehensive"
+      },
+      {
+        "type": "schema-org",
+        "pagesWithSchema": 0,
+        "totalPages": 6,
+        "status": "poor-coverage"
+      }
+    ],
+    "totalTests": 20,
+    "passedTests": 17,
+    "failedTests": 3,
+    "seoRecommendations": [
+      {
+        "type": "schema-org",
+        "issue": "Poor schema.org coverage",
+        "recommendation": "Add schema.org markup to documentation pages for better search engine understanding"
+      }
+    ],
+    "performanceIssues": [
+      {
+        "type": "image-optimization",
+        "issue": "No responsive images",
+        "recommendation": "Implement responsive images using srcset or picture elements"
+      },
+      {
+        "type": "css-optimization",
+        "issue": "Too many CSS files",
+        "recommendation": "Consider concatenating CSS files to reduce HTTP requests"
+      }
+    ]
+  }
+}

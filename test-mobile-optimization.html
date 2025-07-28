@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Optimization Test - GGUF Loader</title>
+    
+    <!-- Base styles -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/content-preview.css">
+    <link rel="stylesheet" href="css/mobile-navigation.css">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .test-card {
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            background: #f8f9fa;
+        }
+        
+        .test-card h3 {
+            margin: 0 0 10px 0;
+            color: #0078d4;
+        }
+        
+        .test-button {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .test-button:hover {
+            background: #106ebe;
+        }
+        
+        .performance-metrics {
+            background: #e3f2fd;
+            border: 1px solid #0078d4;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .lazy-image-container {
+            height: 200px;
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+        
+        .lazy-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 10px;
+            }
+            
+            .test-section {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .test-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="logo">GGUF Loader - Mobile Test</div>
+            
+            <button class="mobile-menu-toggle" 
+                    aria-label="Toggle navigation menu" 
+                    aria-expanded="false" 
+                    aria-controls="nav-menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="#test-navigation" role="menuitem">Navigation Test</a></li>
+                <li role="none"><a href="#test-content" role="menuitem">Content Test</a></li>
+                <li role="none"><a href="#test-performance" role="menuitem">Performance Test</a></li>
+                
+                <li role="none" class="nav-dropdown">
+                    <a href="/docs/" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Documentation
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <ul class="nav-dropdown-menu" role="menu">
+                        <li role="none"><a href="/docs/installation/" role="menuitem">Installation Guide</a></li>
+                        <li role="none"><a href="/docs/quick-start/" role="menuitem">Quick Start</a></li>
+                        <li role="none"><a href="/docs/addon-development/" role="menuitem">Addon Development</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="test-container">
+        <h1>Mobile Optimization Test Suite</h1>
+        <p>This page tests the mobile-optimized cross-page experience features.</p>
+
+        <!-- Navigation Test Section -->
+        <section id="test-navigation" class="test-section">
+            <h2>🚀 Mobile Navigation Test</h2>
+            <p>Test mobile navigation enhancements including touch-friendly interactions, swipe gestures, and navigation shortcuts.</p>
+            
+            <div class="test-grid">
+                <div class="test-card">
+                    <h3>Touch Navigation</h3>
+                    <p>Test touch-friendly navigation menu with proper touch targets and feedback.</p>
+                    <button class="test-button" onclick="testTouchNavigation()">Test Touch Menu</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>Swipe Gestures</h3>
+                    <p>Test swipe left/right for navigation between pages.</p>
+                    <button class="test-button" onclick="testSwipeGestures()">Test Swipe</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>Navigation Shortcuts</h3>
+                    <p>Test floating navigation shortcuts for common pathways.</p>
+                    <button class="test-button" onclick="testNavigationShortcuts()">Show Shortcuts</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Preview Test Section -->
+        <section id="test-content" class="test-section">
+            <h2>📱 Mobile Content Preview Test</h2>
+            <p>Test mobile-optimized content previews with touch interactions and responsive layouts.</p>
+            
+            <div class="test-grid">
+                <div class="test-card">
+                    <h3>Touch Interactions</h3>
+                    <p>Test tap to expand/collapse and swipe gestures on content previews.</p>
+                    <button class="test-button" onclick="createTestPreview('installation')">Create Preview</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>Lazy Loading</h3>
+                    <p>Test lazy loading of content previews and images.</p>
+                    <button class="test-button" onclick="testLazyLoading()">Test Lazy Load</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>Responsive Layout</h3>
+                    <p>Test content preview layouts on different screen sizes.</p>
+                    <button class="test-button" onclick="testResponsiveLayout()">Test Layout</button>
+                </div>
+            </div>
+            
+            <!-- Test content previews will be inserted here -->
+            <div id="test-previews-container"></div>
+        </section>
+
+        <!-- Performance Test Section -->
+        <section id="test-performance" class="test-section">
+            <h2>⚡ Mobile Performance Test</h2>
+            <p>Test performance optimizations including caching, prefetching, and resource optimization.</p>
+            
+            <div class="test-grid">
+                <div class="test-card">
+                    <h3>Resource Caching</h3>
+                    <p>Test caching of resources and content for faster loading.</p>
+                    <button class="test-button" onclick="testResourceCaching()">Test Cache</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>Prefetching</h3>
+                    <p>Test prefetching of likely next pages and resources.</p>
+                    <button class="test-button" onclick="testPrefetching()">Test Prefetch</button>
+                </div>
+                
+                <div class="test-card">
+                    <h3>Performance Metrics</h3>
+                    <p>View current performance metrics and optimization status.</p>
+                    <button class="test-button" onclick="showPerformanceMetrics()">Show Metrics</button>
+                </div>
+            </div>
+            
+            <div id="performance-display" class="performance-metrics" style="display: none;">
+                <h4>Performance Metrics:</h4>
+                <pre id="metrics-content"></pre>
+            </div>
+        </section>
+
+        <!-- Lazy Loading Test Section -->
+        <section class="test-section">
+            <h2>🖼️ Lazy Loading Test</h2>
+            <p>Scroll down to test lazy loading of images and content.</p>
+            
+            <div class="lazy-image-container">
+                <img class="lazy-image" data-src="https://via.placeholder.com/400x200/0078d4/ffffff?text=Lazy+Image+1" alt="Lazy loaded image 1">
+            </div>
+            
+            <div class="lazy-image-container">
+                <img class="lazy-image" data-src="https://via.placeholder.com/400x200/28a745/ffffff?text=Lazy+Image+2" alt="Lazy loaded image 2">
+            </div>
+            
+            <div class="content-preview" data-lazy="true" data-content-id="quick-start">
+                <p>Loading content preview...</p>
+            </div>
+            
+            <div class="lazy-image-container">
+                <img class="lazy-image" data-src="https://via.placeholder.com/400x200/dc3545/ffffff?text=Lazy+Image+3" alt="Lazy loaded image 3">
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/content-preview-system.js"></script>
+    <script src="js/mobile-navigation-enhancer.js"></script>
+    <script src="js/mobile-content-preview.js"></script>
+    <script src="js/mobile-performance-optimizer.js"></script>
+
+    <script>
+        // Test functions
+        function testTouchNavigation() {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            if (toggle) {
+                toggle.click();
+                setTimeout(() => {
+                    alert('Touch navigation test: Menu should open with smooth animation and proper touch targets.');
+                }, 500);
+            }
+        }
+
+        function testSwipeGestures() {
+            alert('Swipe test: Try swiping left or right on the page to test navigation gestures. Swipe indicators should appear.');
+        }
+
+        function testNavigationShortcuts() {
+            if (window.mobileNavEnhancer) {
+                alert('Navigation shortcuts should appear in the bottom-right corner with floating action buttons.');
+            } else {
+                alert('Mobile navigation enhancer not loaded. Make sure you\'re on a mobile device or narrow screen.');
+            }
+        }
+
+        function createTestPreview(docId) {
+            const container = document.getElementById('test-previews-container');
+            const previewDiv = document.createElement('div');
+            previewDiv.id = `test-preview-${docId}`;
+            container.appendChild(previewDiv);
+            
+            if (window.mobileContentPreview) {
+                window.mobileContentPreview.embedMobilePreview(`test-preview-${docId}`, docId);
+            } else if (window.contentPreviewSystem) {
+                window.contentPreviewSystem.embedPreview(`test-preview-${docId}`, docId);
+            } else {
+                previewDiv.innerHTML = '<p>Content preview system not loaded.</p>';
+            }
+        }
+
+        function testLazyLoading() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const lazyContent = document.querySelectorAll('[data-lazy]');
+            
+            alert(`Found ${lazyImages.length} lazy images and ${lazyContent.length} lazy content elements. Scroll down to test loading.`);
+        }
+
+        function testResponsiveLayout() {
+            const width = window.innerWidth;
+            const isMobile = width <= 768;
+            
+            alert(`Current screen width: ${width}px\nMobile mode: ${isMobile ? 'Yes' : 'No'}\nResize window to test responsive behavior.`);
+        }
+
+        function testResourceCaching() {
+            if (window.mobilePerformanceOptimizer) {
+                const report = window.mobilePerformanceOptimizer.getPerformanceReport();
+                alert(`Cache status:\nCached resources: ${report.cacheStats.size}/${report.cacheStats.maxSize}\nPrefetch queue: ${report.prefetchStats.queueSize}`);
+            } else {
+                alert('Mobile performance optimizer not loaded.');
+            }
+        }
+
+        function testPrefetching() {
+            // Simulate hovering over a link to trigger prefetching
+            const links = document.querySelectorAll('a[href]');
+            if (links.length > 0) {
+                const event = new MouseEvent('mouseenter', { bubbles: true });
+                links[0].dispatchEvent(event);
+                alert('Prefetching test: Hovered over first link. Check network tab for prefetch requests.');
+            }
+        }
+
+        function showPerformanceMetrics() {
+            const display = document.getElementById('performance-display');
+            const content = document.getElementById('metrics-content');
+            
+            if (window.mobilePerformanceOptimizer) {
+                const report = window.mobilePerformanceOptimizer.getPerformanceReport();
+                content.textContent = JSON.stringify(report, null, 2);
+                display.style.display = 'block';
+            } else {
+                content.textContent = 'Mobile performance optimizer not available.';
+                display.style.display = 'block';
+            }
+        }
+
+        // Initialize test page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Mobile optimization test page loaded');
+            
+            // Check if mobile optimizations are active
+            setTimeout(() => {
+                const isMobile = window.innerWidth <= 768;
+                const hasNavEnhancer = !!window.mobileNavEnhancer;
+                const hasContentPreview = !!window.mobileContentPreview;
+                const hasPerformanceOptimizer = !!window.mobilePerformanceOptimizer;
+                
+                console.log('Mobile optimization status:', {
+                    isMobile,
+                    hasNavEnhancer,
+                    hasContentPreview,
+                    hasPerformanceOptimizer
+                });
+                
+                if (isMobile) {
+                    const statusDiv = document.createElement('div');
+                    statusDiv.style.cssText = 'position: fixed; top: 10px; left: 10px; background: #28a745; color: white; padding: 10px; border-radius: 5px; z-index: 10000; font-size: 12px;';
+                    statusDiv.innerHTML = `
+                        Mobile Mode Active<br>
+                        Nav: ${hasNavEnhancer ? '✓' : '✗'}<br>
+                        Content: ${hasContentPreview ? '✓' : '✗'}<br>
+                        Performance: ${hasPerformanceOptimizer ? '✓' : '✗'}
+                    `;
+                    document.body.appendChild(statusDiv);
+                    
+                    setTimeout(() => {
+                        statusDiv.remove();
+                    }, 5000);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

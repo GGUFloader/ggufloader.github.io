@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGUF Loader Documentation - Complete Guide and API Reference</title>
+    <meta name="description" content="Complete documentation for GGUF Loader 2.0.0 - installation, quick start, addon development, API reference, and Smart Floating Assistant guide.">
+    <meta name="keywords" content="GGUF Loader, documentation, installation, addon development, API reference, Smart Floating Assistant, AI models">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="GGUF Loader Documentation - Complete Guide and API Reference">
+    <meta property="og:description" content="Complete documentation for GGUF Loader 2.0.0 - installation, quick start, addon development, API reference, and Smart Floating Assistant guide.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="GGUF Loader Documentation">
+    <meta name="twitter:description" content="Complete documentation for GGUF Loader 2.0.0">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Documentation structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "GGUF Loader Documentation Hub",
+        "description": "Complete documentation for GGUF Loader 2.0.0 including installation guide, quick start tutorial, addon development, and API reference",
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io/docs/",
+        "articleSection": "Documentation",
+        "keywords": ["GGUF Loader", "documentation", "installation", "addon development", "API reference", "Smart Floating Assistant"],
+        "about": {
+            "@type": "SoftwareApplication",
+            "name": "GGUF Loader",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": ["Windows", "macOS", "Linux"]
+        },
+        "image": "https://ggufloader.github.io/preview.png"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/enhanced-search.css">
+    <style>
+        /* Unified Navigation Styles */
+        nav[role="navigation"] {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34495e;
+        }
+
+        .logo a {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation menu - initially hidden on mobile */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            .nav-menu a {
+                padding: 0.5rem 0;
+                background: none !important;
+                border-bottom: none;
+            }
+
+            /* Navigation dropdown */
+            .nav-dropdown {
+                position: relative;
+            }
+
+            .nav-dropdown > a {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .dropdown-arrow {
+                font-size: 0.8rem;
+                transition: transform 0.3s ease;
+            }
+
+            .nav-dropdown:hover .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .nav-dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: white;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 0.5rem 0;
+                min-width: 220px;
+                z-index: 1000;
+                list-style: none;
+                margin: 0;
+                border: 1px solid #e9ecef;
+            }
+
+            .nav-dropdown:hover .nav-dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease;
+            }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-dropdown-menu a {
+                padding: 0.75rem 1rem;
+                display: block;
+                color: #2c3e50;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-size: 0.9rem;
+                border-bottom: none !important;
+            }
+
+            .nav-dropdown-menu a:hover {
+                background: #f8f9fa;
+                color: #0078d4;
+                padding-left: 1.25rem;
+            }
+
+            .dropdown-divider {
+                height: 1px;
+                background: #e9ecef;
+                margin: 0.5rem 0;
+            }
+
+            /* Current page indicator */
+            .nav-menu a.current-page {
+                color: #0078d4;
+                font-weight: 600;
+                position: relative;
+            }
+
+            .nav-menu a.current-page::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: #0078d4;
+                border-radius: 1px;
+            }
+        }
+
+        /* Breadcrumb navigation */
+        .breadcrumb-nav {
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            padding: 0.75rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: " / ";
+            margin: 0 0.5rem;
+            color: #adb5bd;
+        }
+
+        .breadcrumb-item a {
+            color: #0078d4;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #106ebe;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.current {
+            color: #495057;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Mobile breadcrumb toggle */
+        .breadcrumb-toggle {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #495057;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .breadcrumb-toggle:hover {
+            background: #e9ecef;
+            border-color: #0078d4;
+        }
+
+        .breadcrumb-toggle:focus {
+            outline: 2px solid #0078d4;
+            outline-offset: 2px;
+        }
+
+        .breadcrumb-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .breadcrumb-current {
+            flex: 1;
+            text-align: left;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .breadcrumb-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .breadcrumb-toggle[aria-expanded="true"] .breadcrumb-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile responsive behavior */
+        @media (max-width: 768px) {
+            .breadcrumb-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 1rem;
+                right: 1rem;
+                background: white;
+                border: 1px solid #e9ecef;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem;
+                z-index: 1000;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .breadcrumb-list.show {
+                display: flex;
+            }
+            
+            .breadcrumb-toggle {
+                display: flex;
+            }
+            
+            .breadcrumb-item {
+                width: 100%;
+                font-size: 1rem;
+            }
+            
+            .breadcrumb-item:not(:last-child)::after {
+                display: none;
+            }
+            
+            .breadcrumb-item a {
+                padding: 0.75rem;
+                width: 100%;
+                border-radius: 6px;
+                min-height: 48px;
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+            }
+            
+            .breadcrumb-item a:hover {
+                background: #e3f2fd;
+                border-color: #0078d4;
+            }
+            
+            .breadcrumb-item.current {
+                padding: 0.75rem;
+                background: #e3f2fd;
+                border: 1px solid #0078d4;
+                border-radius: 6px;
+                color: #0078d4;
+                font-weight: 600;
+                width: 100%;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+            }
+        }
+        
+        .docs-hub {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: " / ";
+            margin: 0 0.5rem;
+            color: #adb5bd;
+        }
+
+        .breadcrumb-item a {
+            color: #0078d4;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #106ebe;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.current {
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3em;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 1.3em;
+            margin: 0 0 30px 0;
+            opacity: 0.9;
+        }
+        
+        .quick-start-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .quick-start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .docs-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .docs-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .docs-section h2 {
+            color: #495057;
+            margin: 0 0 20px 0;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .docs-section .icon {
+            font-size: 1.2em;
+        }
+        
+        .docs-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .docs-links li {
+            margin: 12px 0;
+        }
+        
+        .docs-links a {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            color: #0078d4;
+            text-decoration: none;
+            border-bottom: 1px solid #f8f9fa;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-links a:hover {
+            color: #106ebe;
+            padding-left: 10px;
+            border-bottom-color: #0078d4;
+        }
+        
+        .docs-links .link-icon {
+            margin-right: 10px;
+            opacity: 0.7;
+        }
+        
+        .docs-links .link-desc {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+        
+        .whats-new {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 5px solid #0078d4;
+        }
+        
+        .whats-new h2 {
+            color: #495057;
+            margin: 0 0 20px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .feature-item h3 {
+            color: #0078d4;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .quick-links {
+            background: #e3f2fd;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .quick-links h2 {
+            color: #495057;
+            margin: 0 0 20px 0;
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .quick-link {
+            display: block;
+            padding: 15px;
+            background: white;
+            color: #0078d4;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        
+        .quick-link:hover {
+            background: #0078d4;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .help-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        
+        .help-section h2 {
+            color: #495057;
+            margin: 0 0 20px 0;
+        }
+        
+        .help-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .help-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0078d4;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .help-links a:hover {
+            background: #106ebe;
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 20px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2em;
+            }
+            
+            .docs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .docs-section {
+                padding: 20px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .help-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo" role="img" aria-label="GGUF Loader">
+                    <a href="/" style="color: inherit; text-decoration: none;">GGUF Loader</a>
+                </div>
+                
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" 
+                        aria-label="Toggle navigation menu" 
+                        aria-expanded="false" 
+                        aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="/#features" role="menuitem" aria-label="View features section">Features</a></li>
+                    <li role="none"><a href="/#how-to" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="/#faq" role="menuitem" aria-label="View frequently asked questions">FAQ</a></li>
+                    
+                    <!-- Documentation dropdown -->
+                    <li role="none" class="nav-dropdown">
+                        <a href="/docs/" role="menuitem" aria-label="View documentation" aria-haspopup="true" aria-expanded="false" class="current-page">
+                            Documentation
+                            <span class="dropdown-arrow">▼</span>
+                        </a>
+                        <ul class="nav-dropdown-menu" role="menu" aria-label="Documentation submenu">
+                            <li role="none"><a href="/docs/installation/" role="menuitem" title="Complete installation guide">Installation Guide</a></li>
+                            <li role="none"><a href="/docs/quick-start/" role="menuitem" title="Get started in minutes">Quick Start</a></li>
+                            <li role="none" class="dropdown-divider"></li>
+                            <li role="none"><a href="/docs/addon-development/" role="menuitem" title="Create custom addons">Addon Development</a></li>
+                            <li role="none"><a href="/docs/addon-api/" role="menuitem" title="API reference">API Reference</a></li>
+                            <li role="none"><a href="/docs/smart-floater-example/" role="menuitem" title="Smart Floater example">Smart Floater Example</a></li>
+                            <li role="none" class="dropdown-divider"></li>
+                            <li role="none"><a href="/docs/package-structure/" role="menuitem" title="Technical architecture">Package Structure</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li role="none"><a href="/#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a></li>
+                    <li role="none"><a href="/#contact" role="menuitem" aria-label="View contact information">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced breadcrumb navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb navigation">
+        <div class="nav-container">
+            <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" title="GGUF Loader homepage" itemprop="item">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                
+                <li class="breadcrumb-item current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Documentation</span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            </ol>
+            
+            <!-- Mobile breadcrumb toggle -->
+            <button class="breadcrumb-toggle" aria-label="Toggle breadcrumb navigation" aria-expanded="false" aria-controls="breadcrumb-list">
+                <span class="breadcrumb-icon">📍</span>
+                <span class="breadcrumb-current">Documentation</span>
+                <span class="breadcrumb-arrow">▼</span>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="docs-hub">
+        <section class="hero-section">
+            <h1>GGUF Loader Documentation</h1>
+            <p>Complete guide to GGUF Loader 2.0.0 and its powerful addon system</p>
+            <a href="/docs/quick-start/" class="quick-start-btn" title="Get started with GGUF Loader in minutes">Get Started →</a>
+        </section>
+        
+        <div class="docs-grid">
+            <section class="docs-section">
+                <h2><span class="icon">🚀</span> Getting Started</h2>
+                <ul class="docs-links">
+                    <li>
+                        <a href="/docs/installation/" title="Complete installation guide for all platforms">
+                            <div>
+                                <span class="link-icon">⚙️</span>
+                                <strong>Installation Guide</strong>
+                                <div class="link-desc">How to install and set up GGUF Loader</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/docs/quick-start/" title="Get started with GGUF Loader in minutes">
+                            <div>
+                                <span class="link-icon">⚡</span>
+                                <strong>Quick Start Guide</strong>
+                                <div class="link-desc">Get up and running in minutes</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="docs-section">
+                <h2><span class="icon">🛠️</span> Development</h2>
+                <ul class="docs-links">
+                    <li>
+                        <a href="/docs/addon-development/" title="Create custom GGUF Loader addons">
+                            <div>
+                                <span class="link-icon">🔧</span>
+                                <strong>Addon Development</strong>
+                                <div class="link-desc">Create your own addons</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/docs/addon-api/" title="Complete API reference for addon developers">
+                            <div>
+                                <span class="link-icon">📚</span>
+                                <strong>API Reference</strong>
+                                <div class="link-desc">Complete API documentation</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/docs/smart-floater-example/" title="Learn from the built-in addon example">
+                            <div>
+                                <span class="link-icon">✨</span>
+                                <strong>Smart Floater Example</strong>
+                                <div class="link-desc">Learn from the built-in addon</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="docs-section">
+                <h2><span class="icon">🔬</span> Advanced</h2>
+                <ul class="docs-links">
+                    <li>
+                        <a href="/docs/package-structure/" title="Understanding GGUF Loader's architecture">
+                            <div>
+                                <span class="link-icon">📦</span>
+                                <strong>Package Structure</strong>
+                                <div class="link-desc">Technical architecture details</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        
+        <section class="whats-new">
+            <h2>🎉 What's New in Version 2.0.0</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Smart Floating Assistant</h3>
+                    <p>Global text selection and AI-powered processing across all applications with a non-intrusive floating interface.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Addon System</h3>
+                    <p>Extensible architecture with rich API for creating custom addons and community ecosystem.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Enhanced Performance</h3>
+                    <p>Optimized model loading, improved memory management, and better GPU acceleration support.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Privacy-First</h3>
+                    <p>All AI processing happens locally on your machine with no data sent to external servers.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="quick-links">
+            <h2>🔗 Quick Links</h2>
+            <div class="quick-links-grid">
+                <a href="https://github.com/ggufloader/gguf-loader" target="_blank" rel="noopener" title="Source code and issue tracker">GitHub Repository</a>
+                <a href="https://github.com/ggufloader/gguf-loader/issues" target="_blank" rel="noopener" title="Report bugs and request features">Report Issues</a>
+                <a href="https://github.com/ggufloader/gguf-loader/discussions" target="_blank" rel="noopener" title="Community support forum">Community Discussions</a>
+                <a href="https://pypi.org/project/ggufloader/" target="_blank" rel="noopener" title="PyPI package page">PyPI Package</a>
+            </div>
+        </section>
+        
+        <section class="help-section">
+            <h2>💡 Need Help?</h2>
+            <div class="help-links">
+                <a href="https://github.com/ggufloader/gguf-loader/issues" target="_blank" rel="noopener" title="Report bugs and issues">🐛 Report Bug</a>
+                <a href="https://github.com/ggufloader/gguf-loader/discussions" target="_blank" rel="noopener" title="Ask questions and get help">💬 Get Help</a>
+                <a href="mailto:support@ggufloader.com" title="Contact support team">📧 Contact Support</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Enhanced navigation functionality for docs
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            // Mobile menu toggle
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.style.display = isExpanded ? 'none' : 'block';
+                    
+                    // Animate hamburger lines
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (!isExpanded) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'none';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Enhanced mobile dropdown handling
+            function handleMobileDropdowns() {
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const trigger = dropdown.querySelector('a');
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        
+                        if (trigger && menu) {
+                            // Remove existing event listeners
+                            trigger.removeEventListener('click', trigger.mobileClickHandler);
+                            
+                            // Create new mobile click handler
+                            trigger.mobileClickHandler = function(e) {
+                                e.preventDefault();
+                                const isOpen = menu.classList.contains('show');
+                                
+                                // Close all other dropdowns
+                                dropdowns.forEach(otherDropdown => {
+                                    if (otherDropdown !== dropdown) {
+                                        const otherMenu = otherDropdown.querySelector('.nav-dropdown-menu');
+                                        if (otherMenu) {
+                                            otherMenu.classList.remove('show');
+                                            otherDropdown.classList.remove('expanded');
+                                        }
+                                        const otherTrigger = otherDropdown.querySelector('a');
+                                        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+                                    }
+                                });
+                                
+                                // Toggle current dropdown
+                                menu.classList.toggle('show', !isOpen);
+                                dropdown.classList.toggle('expanded', !isOpen);
+                                trigger.setAttribute('aria-expanded', !isOpen);
+                                
+                                // Smooth scroll to show dropdown content
+                                if (!isOpen) {
+                                    setTimeout(() => {
+                                        menu.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                    }, 100);
+                                }
+                            };
+                            
+                            trigger.addEventListener('click', trigger.mobileClickHandler);
+                            
+                            // Touch event handling for better mobile experience
+                            trigger.addEventListener('touchstart', function() {
+                                this.style.backgroundColor = '#f8f9fa';
+                            });
+                            
+                            trigger.addEventListener('touchend', function() {
+                                setTimeout(() => {
+                                    this.style.backgroundColor = '';
+                                }, 150);
+                            });
+                        }
+                    });
+                } else {
+                    // Desktop behavior - remove mobile handlers
+                    dropdowns.forEach(dropdown => {
+                        const trigger = dropdown.querySelector('a');
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        
+                        if (trigger && menu) {
+                            trigger.removeEventListener('click', trigger.mobileClickHandler);
+                            menu.classList.remove('show');
+                            dropdown.classList.remove('expanded');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                }
+            }
+            
+            // Initialize mobile dropdowns
+            handleMobileDropdowns();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-container')) {
+                    if (navMenu && window.innerWidth <= 768) {
+                        navMenu.style.display = 'none';
+                        if (mobileToggle) {
+                            mobileToggle.setAttribute('aria-expanded', 'false');
+                            const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                            lines[0].style.transform = 'none';
+                            lines[1].style.opacity = '1';
+                            lines[2].style.transform = 'none';
+                        }
+                    }
+                    
+                    // Close all mobile dropdowns
+                    dropdowns.forEach(dropdown => {
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        if (menu) {
+                            menu.classList.remove('show');
+                            dropdown.classList.remove('expanded');
+                        }
+                        const trigger = dropdown.querySelector('a');
+                        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
+            
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // Escape key closes mobile menu and dropdowns
+                if (e.key === 'Escape') {
+                    if (navMenu && window.innerWidth <= 768) {
+                        navMenu.style.display = 'none';
+                        if (mobileToggle) {
+                            mobileToggle.setAttribute('aria-expanded', 'false');
+                            mobileToggle.focus();
+                            const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                            lines[0].style.transform = 'none';
+                            lines[1].style.opacity = '1';
+                            lines[2].style.transform = 'none';
+                        }
+                    }
+                    
+                    // Close all dropdowns
+                    dropdowns.forEach(dropdown => {
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        if (menu) {
+                            menu.classList.remove('show');
+                            dropdown.classList.remove('expanded');
+                        }
+                        const trigger = dropdown.querySelector('a');
+                        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+                
+                // Arrow key navigation in mobile menu
+                if (window.innerWidth <= 768 && navMenu.style.display !== 'none') {
+                    const focusableElements = navMenu.querySelectorAll('a');
+                    const currentIndex = Array.from(focusableElements).indexOf(document.activeElement);
+                    
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIndex = (currentIndex + 1) % focusableElements.length;
+                        focusableElements[nextIndex].focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIndex = currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
+                        focusableElements[prevIndex].focus();
+                    }
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.style.display = '';
+                    if (mobileToggle) {
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                        const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                        lines[0].style.transform = 'none';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'none';
+                    }
+                }
+                
+                // Reinitialize mobile dropdowns on resize
+                handleMobileDropdowns();
+            });
+            
+            // Enhanced breadcrumb navigation functionality
+            const breadcrumbToggle = document.querySelector('.breadcrumb-toggle');
+            const breadcrumbList = document.querySelector('.breadcrumb-list');
+            
+            if (breadcrumbToggle && breadcrumbList) {
+                // Mobile breadcrumb toggle
+                breadcrumbToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    breadcrumbList.classList.toggle('show', !isExpanded);
+                });
+                
+                // Close breadcrumb when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.breadcrumb-nav')) {
+                        breadcrumbToggle.setAttribute('aria-expanded', 'false');
+                        breadcrumbList.classList.remove('show');
+                    }
+                });
+                
+                // Handle window resize for breadcrumbs
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        breadcrumbToggle.setAttribute('aria-expanded', 'false');
+                        breadcrumbList.classList.remove('show');
+                    }
+                });
+                
+                // Keyboard navigation for breadcrumbs
+                breadcrumbToggle.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

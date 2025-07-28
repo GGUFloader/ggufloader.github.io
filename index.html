@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags and basic head content -->
+    <!-- Enhanced Open Graph meta tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GGUF Loader" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title"
+        content="GGUF Loader - The Floating Local AI Assistant That Works Anywhere on Your Screen" />
+    <meta property="og:description"
+        content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant." />
+    <meta property="og:url" content="https://ggufloader.github.io/" />
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"
+        content="GGUF Loader - The Floating Local AI Assistant That Works Anywhere on Your Screen" />
+    <meta property="og:image:type" content="image/png" />
+
+    <!-- Enhanced Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ggufloader" />
+    <meta name="twitter:creator" content="@ggufloader" />
+    <meta name="twitter:title"
+        content="GGUF Loader - The Floating Local AI Assistant That Works Anywhere on Your Screen" />
+    <meta name="twitter:description"
+        content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant." />
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png" />
+    <meta name="twitter:image:alt" content="GGUF Loader - Enterprise-Grade Local AI Platform" />
+
+    <!-- Additional social media optimization -->
+    <meta property="article:author" content="Hussain Nazary" />
+    <meta property="article:published_time" content="2025-01-27T00:00:00Z" />
+    <meta property="article:modified_time" content="2025-01-27T00:00:00Z" />
+    <meta property="article:section" content="Technology" />
+    <meta property="article:tag" content="AI" />
+    <meta property="article:tag" content="Machine Learning" />
+    <meta property="article:tag" content="Local AI" />
+    <meta property="article:tag" content="GGUF" />
+    <meta property="article:tag" content="Privacy" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="GGUF Loader - The Floating Local AI Assistant That Works Anywhere on Your Screen for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python. Click-and-run AI with full privacy and Smart Floating Assistant." />
+    <meta name="keywords"
+        content="GGUF, local AI, offline AI, Mistral, LLaMA, DeepSeek, Windows AI, Mac AI, Linux AI, private AI, enterprise AI, air-gapped AI, GDPR compliant AI, Smart Floating Assistant, addon system" />
+    <meta name="author" content="Hussain Nazary" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Additional SEO meta tags -->
+    <meta name="theme-color" content="#0078d4" />
+    <meta name="msapplication-TileColor" content="#0078d4" />
+    <meta name="application-name" content="GGUF Loader" />
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Language and geo targeting -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+
+    <title>GGUF Loader - The Floating Local AI Assistant That Works Anywhere on Your Screen</title>
+
+    <!-- Critical CSS and styles -->
+    <!-- Critical CSS inlined for performance -->
+    <style>
+        /* Critical Above-the-Fold CSS - Inlined for Performance */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Skip Links for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Container - Mobile-First */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Navigation - Critical Styles */
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation menu - initially hidden on mobile */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f8f9fa;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            background: #f8f9fa;
+            color: #0078d4;
+            padding-left: 2.5rem;
+        }
+
+        .nav-menu a:focus {
+            outline: 2px solid #0078d4;
+            outline-offset: -2px;
+        }
+
+        /* Mobile dropdown styles */
+        .nav-dropdown-menu {
+            display: none;
+            background: #f8f9fa;
+            border-left: 3px solid #0078d4;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-dropdown-menu.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+
+            to {
+                opacity: 1;
+                max-height: 300px;
+            }
+        }
+
+        .nav-dropdown-menu a {
+            padding: 0.75rem 3rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+            border-bottom: 1px solid #e9ecef;
+            min-height: 44px;
+        }
+
+        .nav-dropdown-menu a:hover,
+        .nav-dropdown-menu a:focus {
+            background: #e3f2fd;
+            color: #0078d4;
+            padding-left: 3.5rem;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #e9ecef;
+            margin: 0.5rem 2rem;
+        }
+
+        /* Touch-friendly mobile navigation */
+        @media (max-width: 768px) {
+            .nav-menu {
+                border-radius: 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu a {
+                min-height: 52px;
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a:focus {
+                padding-left: 2rem;
+            }
+
+            .nav-dropdown>a::after {
+                content: '▼';
+                margin-left: auto;
+                font-size: 0.8rem;
+                transition: transform 0.3s ease;
+            }
+
+            .nav-dropdown.expanded>a::after {
+                transform: rotate(180deg);
+            }
+
+            .nav-dropdown-menu a {
+                padding: 0.75rem 2.5rem;
+                min-height: 48px;
+                background: #f8f9fa;
+            }
+
+            .nav-dropdown-menu a:hover,
+            .nav-dropdown-menu a:focus {
+                padding-left: 3rem;
+                background: #e3f2fd;
+            }
+
+            /* Smooth scrolling for mobile menu */
+            .nav-menu {
+                scroll-behavior: smooth;
+            }
+
+            /* Touch feedback */
+            .nav-menu a:active {
+                background: #e9ecef;
+                transform: scale(0.98);
+            }
+
+            .mobile-menu-toggle:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            .nav-menu a {
+                padding: 0.5rem 0;
+                background: none !important;
+                border-bottom: none;
+            }
+
+            /* Navigation dropdown */
+            .nav-dropdown {
+                position: relative;
+            }
+
+            .nav-dropdown>a {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .dropdown-arrow {
+                font-size: 0.8rem;
+                transition: transform 0.3s ease;
+            }
+
+            .nav-dropdown:hover .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .nav-dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: white;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 0.5rem 0;
+                min-width: 220px;
+                z-index: 1000;
+                list-style: none;
+                margin: 0;
+                border: 1px solid #e9ecef;
+            }
+
+            .nav-dropdown:hover .nav-dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease;
+            }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-dropdown-menu a {
+                padding: 0.75rem 1rem;
+                display: block;
+                color: #2c3e50;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-size: 0.9rem;
+                border-bottom: none !important;
+            }
+
+            .nav-dropdown-menu a:hover {
+                background: #f8f9fa;
+                color: #0078d4;
+                padding-left: 1.25rem;
+            }
+
+            .dropdown-divider {
+                height: 1px;
+                background: #e9ecef;
+                margin: 0.5rem 0;
+            }
+
+            /* Current page indicator */
+            .nav-menu a.current-page {
+                color: #0078d4;
+                font-weight: 600;
+                position: relative;
+            }
+
+            .nav-menu a.current-page::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: #0078d4;
+                border-radius: 1px;
+            }
+        }
+
+        /* Hero Section - Critical Above-the-Fold */
+        .hero {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: #495057;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section - Critical Styles */
+        .hero-philosophy {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-attribution {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .philosophy-attribution cite {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .cta-section {
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Progressive enhancement for larger screens */
+        @media (min-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+                min-height: 65vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+                min-height: 70vh;
+            }
+
+            .hero-content {
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.7;
+            }
+
+            .hero-philosophy {
+                margin: 2.5rem auto;
+                padding: 2rem;
+                max-width: 900px;
+            }
+
+            .philosophy-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .philosophy-text {
+                font-size: 1.15rem;
+                line-height: 1.8;
+            }
+
+            .cta-section {
+                margin-top: 2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Image Optimization and Lazy Loading Styles */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Lazy loading states */
+        img.loading {
+            opacity: 0;
+            background: #f8f9fa;
+            min-height: 200px;
+            transition: opacity 0.3s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        /* Image error state */
+        img.image-error {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            min-height: 200px;
+        }
+
+        img.image-error::before {
+            content: '⚠️ Image failed to load';
+        }
+
+        /* Responsive images */
+        .responsive-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .responsive-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Image placeholder while loading */
+        .image-placeholder {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        /* Modern picture element support */
+        picture {
+            display: block;
+            width: 100%;
+        }
+
+        picture img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
+
+    <!-- Model Comparison Tool CSS -->
+    <link rel="preload" href="model-comparison.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="model-comparison.css">
+    </noscript>
+
+    <!-- Enhanced Search CSS -->
+    <link rel="preload" href="css/enhanced-search.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/enhanced-search.css">
+    </noscript>
+
+    <!-- Ultra Compact Layout CSS - 50% Size Reduction -->
+    <link rel="preload" href="css/ultra-compact.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/ultra-compact.css">
+    </noscript>
+
+    <!-- Preload JavaScript for faster loading -->
+    <link rel="preload" href="performance-monitor.js" as="script">
+    <link rel="preload" href="model-comparison.js" as="script">
+
+    <!-- Font optimization with preconnect and font-display: swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Preload critical system fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin>
+
+    <!-- Font loading optimization -->
+    <style>
+        /* Critical font loading with font-display: swap */
+        @font-face {
+            font-family: 'System UI';
+            font-display: swap;
+            src: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Fallback font stack with font-display: swap */
+        body {
+            font-family: 'System UI', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+        }
+    </style>
+
+    <!-- Cache control meta tags -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- PWA meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <link rel="canonical" href="https://ggufloader.github.io">
+
+    <!-- JSON-LD structured data and scripts -->
+    <!-- Enhanced JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GGUF Loader",
+        "description": "The Floating Local AI Assistant That Works Anywhere on Your Screen for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"],
+        "softwareVersion": "2.0.1",
+        "releaseNotes": "Enhanced addon system with Smart Floating Assistant and performance improvements",
+        "downloadUrl": "https://github.com/ggufloader/gguf-loader/releases",
+        "installUrl": "https://pypi.org/project/ggufloader/",
+        "softwareRequirements": "Python 3.8+, 4GB RAM minimum, 8GB RAM recommended",
+        "memoryRequirements": "4GB minimum, 8GB recommended",
+        "storageRequirements": "2GB free space for models",
+        "processorRequirements": "Modern x64 processor",
+        "programmingLanguage": "Python",
+        "runtimePlatform": "Python 3.8+",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader",
+        "license": "https://github.com/ggufloader/gguf-loader/blob/main/LICENSE",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary",
+            "email": "hossainnazary475@gmail.com",
+            "url": "https://www.linkedin.com/in/hussain-nazary-188b4385"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io",
+            "logo": "https://ggufloader.github.io/preview.png"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "131",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "featureList": [
+            "Offline AI model execution",
+            "Smart Floating Assistant",
+            "Multi-model support (Mistral, LLaMA, DeepSeek)",
+            "Cross-platform compatibility",
+            "Addon system for extensibility",
+            "Privacy-first local processing",
+            "Zero configuration setup",
+            "Enterprise-grade security"
+        ],
+        "screenshot": "https://ggufloader.github.io/preview.png",
+        "video": "https://www.youtube.com/watch?v=DuqDRkfGdcI",
+        "supportingData": {
+            "@type": "DataDownload",
+            "name": "GGUF Models",
+            "description": "Compatible AI models in GGUF format",
+            "contentUrl": "https://huggingface.co/models?library=gguf"
+        },
+        "applicationSuite": "GGUF Loader Suite",
+        "countriesSupported": ["US", "CA", "GB", "DE", "FR", "AU", "JP", "IN"],
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io",
+        "image": "https://ggufloader.github.io/preview.png",
+        "url": "https://ggufloader.github.io"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is GGUF?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF (GPT-Generated Unified Format) is an optimized model format created for llama.cpp to enable fast local inference of large language models."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need Python or CLI knowledge to run GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, you don't need Python or command line knowledge. There are user-friendly applications with graphical interfaces that can run GGUF models directly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I run AI models completely offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF models can run entirely offline on your local machine without requiring internet connectivity or external API calls."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which AI models support the GGUF format?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most popular models support GGUF format including Mistral, LLaMA 2/3, DeepSeek, Gemma, and TinyLLaMA. These are available on platforms like Hugging Face."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where can I download GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can download GGUF models from Hugging Face, particularly from users like TheBloke who provide optimized GGUF versions of popular models."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the system requirements for running GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF models can run on standard hardware. Smaller models like TinyLLaMA work on systems with 8GB RAM, while larger models may require 16GB or more."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are GGUF models compatible with Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF models are fully compatible with Windows. There are Windows applications specifically designed to run GGUF models with user-friendly interfaces."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I run Mistral or LLaMA models locally?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Download the GGUF format version from Hugging Face, then use a compatible application to load and run the model. No coding or setup required with the right tools."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I run AI models without expensive hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF format is optimized for efficiency. You can run smaller models on mid-range laptops and PCs without requiring high-end GPUs or specialized hardware."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Philosophy section and navigation -->
+    <!-- Philosophy Section -->
+    <section class="philosophy-showcase" aria-labelledby="philosophy-heading">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="philosophy-header">
+                    <h2 id="philosophy-heading" class="philosophy-main-title">Our Philosophy</h2>
+                    <div class="philosophy-divider"></div>
+                </div>
+
+                <!-- Main Philosophy Card -->
+                <div class="philosophy-main-card">
+                    <div class="philosophy-quote-container">
+                        <blockquote class="philosophy-main-quote">
+                            <div class="quote-mark">"</div>
+                            <p class="philosophy-quote-text">
+                                AI should be accessible, private, and under your control. We believe in democratizing
+                                artificial intelligence
+                                by making powerful models run locally on any machine, without compromising your data
+                                privacy or requiring
+                                complex technical knowledge.
+                            </p>
+                            <div class="quote-mark closing">"</div>
+                        </blockquote>
+                        <footer class="philosophy-attribution">
+                            <cite>— The GGUF Loader Team</cite>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- Sub Philosophy Cards -->
+                <div class="philosophy-sub-cards">
+                    <div class="principle-item">
+                        <div class="principle-icon">🔒</div>
+                        <h3 class="principle-title">Privacy First</h3>
+                        <p class="principle-description">Your data never leaves your machine. True offline AI
+                            processing.</p>
+                    </div>
+
+                    <div class="principle-item">
+                        <div class="principle-icon">🌍</div>
+                        <h3 class="principle-title">Accessible to All</h3>
+                        <p class="principle-description">No complex setup. No Python knowledge required. Just click
+                            and run.</p>
+                    </div>
+
+                    <div class="principle-item">
+                        <div class="principle-icon">⚡</div>
+                        <h3 class="principle-title">Your Control</h3>
+                        <p class="principle-description">Run AI models on your terms, your hardware, your schedule.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</div>
+
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                    aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#features" role="menuitem" aria-label="View features section">Features</a>
+                    </li>
+                    <li role="none"><a href="#how-to" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none" class="nav-dropdown">
+                        <a href="#" role="menuitem" aria-label="View documentation" aria-haspopup="true"
+                            aria-expanded="false">Documentation</a>
+                        <ul class="nav-dropdown-menu" role="menu">
+                            <li role="none"><a href="docs/quick-start/" role="menuitem">Quick Start</a></li>
+                            <li role="none"><a href="docs/installation/" role="menuitem">Installation</a></li>
+                            <li role="none"><a href="docs/addon-development/" role="menuitem">Addon Development</a></li>
+                            <li role="none"><a href="docs/addon-api/" role="menuitem">API Reference</a></li>
+                            <li role="none"><a href="docs/smart-floater-example/" role="menuitem">Smart Floater</a></li>
+                            <li role="none"><a href="docs/package-structure/" role="menuitem">Package Structure</a></li>
+                        </ul>
+                    </li>
+                    <li role="none"><a href="#faq" role="menuitem" aria-label="View frequently asked questions">FAQ</a>
+                    </li>
+                    <li role="none"><a href="#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a>
+                    </li>
+                    <li role="none"><a href="#contact" role="menuitem" aria-label="View contact information">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Hero section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <h1 id="hero-heading">GGUF Loader</h1>
+                <p class="hero-subtitle" role="doc-subtitle">The Floating Local AI Assistant That Works Anywhere on Your
+                    Screen</p>
+                <p class="hero-description">
+                    GGUF Loader is the simplest way to run local AI models like Mistral, LLaMA, and DeepSeek on Windows,
+                    MacOS, Linux — no Python, no internet, just click-and-run. Perfect for secure, private AI
+                    deployments in businesses, research labs, or offline environments.
+                </p>
+                <div class="cta-section">
+                    <a href="#download" class="cta-button" role="button" aria-describedby="hero-description">Download
+                        GGUF Loader</a>
+                </div>
+            </div>
+            <div class="hero-image" role="img" aria-label="GGUF Loader application preview">
+                <!-- Demo video will be handled separately -->
+            </div>
+        </section>
+
+        <!-- Version 2.0.1 Updates Section -->
+        <section class="version-updates" aria-labelledby="updates-heading">
+            <div class="container">
+                <div class="updates-banner">
+                    <div class="updates-header">
+                        <span class="version-badge">NEW</span>
+                        <h2 id="updates-heading">🚀 Version 2.0.1 is Here!</h2>
+                        <p class="updates-subtitle">Latest updates with bug fixes and performance improvements that make
+                            GGUF Loader even more powerful</p>
+                    </div>
+
+                    <div class="updates-grid">
+                        <div class="update-card highlight">
+                            <div class="update-icon">🤖</div>
+                            <h3>Smart Floating Assistant</h3>
+                            <p>Revolutionary floating AI assistant that follows your cursor and provides contextual help
+                                anywhere on your screen. Works across all applications!</p>
+                            <div class="update-features">
+                                <span class="feature-tag">✨ Cursor Following</span>
+                                <span class="feature-tag">🎯 Context Aware</span>
+                                <span class="feature-tag">🔄 Always Available</span>
+                            </div>
+                        </div>
+
+                        <div class="update-card highlight">
+                            <div class="update-icon">🆕</div>
+                            <h3>v2.0.1 Latest Improvements</h3>
+                            <p>Fresh off the press! Critical bug fixes, stability improvements, and enhanced Windows
+                                compatibility for the best GGUF Loader experience yet.</p>
+                            <div class="update-features">
+                                <span class="feature-tag">🐛 Bug Fixes</span>
+                                <span class="feature-tag">🛡️ More Stable</span>
+                                <span class="feature-tag">🪟 Windows Ready</span>
+                            </div>
+                        </div>
+
+                        <div class="update-card">
+                            <div class="update-icon">🔧</div>
+                            <h3>Enhanced Addon System</h3>
+                            <p>Completely redesigned addon architecture with better performance, easier installation,
+                                and more customization options.</p>
+                            <div class="update-features">
+                                <span class="feature-tag">⚡ Faster Loading</span>
+                                <span class="feature-tag">🎨 More Themes</span>
+                                <span class="feature-tag">🔌 Easy Install</span>
+                            </div>
+                        </div>
+
+                        <div class="update-card">
+                            <div class="update-icon">🎨</div>
+                            <h3>Modern UI Overhaul</h3>
+                            <p>Fresh, modern interface with improved accessibility, better mobile support, and smoother
+                                animations throughout the application.</p>
+                            <div class="update-features">
+                                <span class="feature-tag">📱 Mobile Ready</span>
+                                <span class="feature-tag">♿ Accessible</span>
+                                <span class="feature-tag">🎭 Beautiful</span>
+                            </div>
+                        </div>
+
+                        <div class="update-card">
+                            <div class="update-icon">⚡</div>
+                            <h3>Performance Boost</h3>
+                            <p>Up to 40% faster model loading, reduced memory usage, and optimized processing for better
+                                overall performance.</p>
+                            <div class="update-features">
+                                <span class="feature-tag">🚀 40% Faster</span>
+                                <span class="feature-tag">💾 Less Memory</span>
+                                <span class="feature-tag">🔥 Optimized</span>
+                            </div>
+                        </div>
+
+                        <div class="update-card">
+                            <div class="update-icon">🛡️</div>
+                            <h3>Enhanced Security</h3>
+                            <p>Improved security measures, better privacy controls, and enhanced data protection for
+                                enterprise environments.</p>
+                            <div class="update-features">
+                                <span class="feature-tag">🔒 Secure</span>
+                                <span class="feature-tag">🏢 Enterprise</span>
+                                <span class="feature-tag">🛡️ Protected</span>
+                            </div>
+                        </div>
+
+                        <div class="update-card">
+                            <div class="update-icon">🌐</div>
+                            <h3>Cross-Platform Improvements</h3>
+                            <p>Better compatibility across Windows, macOS, and Linux with native integrations and
+                                platform-specific optimizations.</p>
+                            <div class="update-features">
+                                <span class="feature-tag">🪟 Windows</span>
+                                <span class="feature-tag">🍎 macOS</span>
+                                <span class="feature-tag">🐧 Linux</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="updates-cta">
+                        <div class="cta-content">
+                            <h3>Ready to Experience Version 2.0.1?</h3>
+                            <p>Download the latest version and discover all the new features and improvements</p>
+                            <div class="cta-buttons">
+                                <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.0.1/GGUFLoader.2.0.1.exe"
+                                    class="cta-button primary">Download v2.0.1 for Windows</a>
+                                <a href="https://github.com/GGUFloader/gguf-loader/releases/tag/v2.0.1"
+                                    class="cta-button secondary" target="_blank" rel="noopener noreferrer">View Release
+                                    Notes</a>
+                            </div>
+                        </div>
+                        <div class="version-info">
+                            <div class="version-stats">
+                                <div class="stat">
+                                    <span class="stat-number">2.0.1</span>
+                                    <span class="stat-label">Latest Version</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">Jan 2025</span>
+                                    <span class="stat-label">Release Date</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">6+</span>
+                                    <span class="stat-label">Major Features</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Video Section -->
+        <section class="demo-video-section" aria-labelledby="demo-heading">
+            <div class="container">
+                <h2 id="demo-heading">See GGUF Loader in Action</h2>
+                <div class="video-container responsive-embed">
+                    <iframe src="https://www.youtube.com/embed/DuqDRkfGdcI?si=krkVbqY0xktcksEr"
+                        title="GGUF Loader demonstration video showing installation and usage"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy" aria-describedby="video-description">
+                    </iframe>
+                    <p id="video-description" class="sr-only">
+                        Video demonstration showing how to install and use GGUF Loader, including model loading and the
+                        Smart Floating Assistant feature.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section" aria-labelledby="download-heading">
+            <div class="container">
+                <h2 id="download-heading">Get Started with GGUF Loader</h2>
+                <div class="download-content" role="list" aria-label="Installation options for different platforms">
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">🪟</span> Windows Installation</h3>
+                        <p><strong>Recommended:</strong> Download the standalone executable (no dependencies required)
+                        </p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.0.1/GGUFLoader.2.0.1.exe"
+                            class="download-button" role="button"
+                            aria-label="Download GGUF Loader v2.0.1 Windows executable">
+                            Download Windows EXE v2.0.1
+                        </a>
+                        <p class="alternative-method">Alternative: Install via pip</p>
+                        <div class="code-block" role="code">
+                            <code aria-label="pip install command">pip install ggufloader</code>
+                        </div>
+                        <div class="next-steps">
+                            <h4>Next Steps:</h4>
+                            <div class="next-steps-links">
+                                <a href="docs/installation/" class="next-step-btn"
+                                    aria-label="Detailed Windows installation guide">
+                                    📖 Installation Guide
+                                </a>
+                                <a href="docs/quick-start/" class="next-step-btn" aria-label="Get started tutorial">
+                                    🚀 Quick Start
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">🍎</span> macOS Installation</h3>
+                        <p><strong>Install via pip:</strong></p>
+                        <div class="code-block" role="code">
+                            <code aria-label="pip install command for macOS">pip install ggufloader</code>
+                        </div>
+                        <p>Then run:</p>
+                        <div class="code-block" role="code">
+                            <code aria-label="command to run GGUF Loader">ggufloader</code>
+                        </div>
+                        <div class="next-steps">
+                            <h4>Next Steps:</h4>
+                            <div class="next-steps-links">
+                                <a href="docs/installation/#macos" class="next-step-btn"
+                                    aria-label="macOS installation troubleshooting">
+                                    🍎 macOS Guide
+                                </a>
+                                <a href="docs/quick-start/" class="next-step-btn" aria-label="Get started tutorial">
+                                    🚀 Quick Start
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">🐧</span> Linux Installation</h3>
+                        <p><strong>Install via pip:</strong></p>
+                        <div class="code-block" role="code">
+                            <code aria-label="pip install command for Linux">pip install ggufloader</code>
+                        </div>
+                        <p>Then run:</p>
+                        <div class="code-block" role="code">
+                            <code aria-label="command to run GGUF Loader">ggufloader</code>
+                        </div>
+                        <div class="next-steps">
+                            <h4>Next Steps:</h4>
+                            <div class="next-steps-links">
+                                <a href="docs/installation/#linux-ubuntudebian" class="next-step-btn"
+                                    aria-label="Linux installation troubleshooting">
+                                    🐧 Linux Guide
+                                </a>
+                                <a href="docs/quick-start/" class="next-step-btn" aria-label="Get started tutorial">
+                                    🚀 Quick Start
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">📦</span> Source Code & Development</h3>
+                        <p>Access the full source code, contribute, or build from source.</p>
+                        <a href="https://github.com/ggufloader/gguf-loader" class="download-button" role="button"
+                            aria-label="View GGUF Loader source code on GitHub">
+                            View on GitHub
+                        </a>
+                        <div class="next-steps">
+                            <h4>Next Steps:</h4>
+                            <div class="next-steps-links">
+                                <a href="docs/addon-development/" class="next-step-btn"
+                                    aria-label="Learn addon development">
+                                    🛠️ Addon Development
+                                </a>
+                                <a href="docs/package-structure/" class="next-step-btn"
+                                    aria-label="Technical architecture">
+                                    🏗️ Architecture
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- GGUF Models Download Section -->
+        <section class="gguf-models-section" aria-labelledby="models-heading">
+            <div class="container">
+                <h2 id="models-heading"><span aria-hidden="true">🔽</span> Download GGUF Models</h2>
+                <p>Popular GGUF models ready to use with GGUF Loader. Click to start direct download:</p>
+                <div class="download-info">
+                    <p><small><strong>Note:</strong> These are Q4_K_M quantized versions (balanced quality/size). For
+                            other sizes and quantizations, click "View all sizes".</small></p>
+                </div>
+                <div class="models-list">
+                    <article class="model-item">
+                        <h3>Mistral 7B Instruct</h3>
+                        <p>General-purpose conversational AI model</p>
+                        <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+                            download="mistral-7b-instruct-v0.1.Q4_K_M.gguf" class="download-button direct-download"
+                            role="button" aria-label="Download Mistral 7B Instruct GGUF model">
+                            Direct Download (4.1GB)
+                        </a>
+                        <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF" target="_blank"
+                            rel="noopener" class="view-more-link">View all sizes</a>
+                        <div class="model-usage-links">
+                            <a href="docs/quick-start/#load-your-first-model" class="usage-guide-btn"
+                                aria-label="Learn how to load Mistral model">
+                                📚 Loading Guide
+                            </a>
+                            <a href="docs/quick-start/#test-basic-chat" class="usage-guide-btn"
+                                aria-label="Chat tutorial">
+                                💬 Usage Examples
+                            </a>
+                        </div>
+                    </article>
+                    <article class="model-item">
+                        <h3>LLaMA 2 7B Chat</h3>
+                        <p>Meta's conversational AI model</p>
+                        <a href="https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q4_K_M.gguf"
+                            download="llama-2-7b-chat.Q4_K_M.gguf" class="download-button direct-download" role="button"
+                            aria-label="Download LLaMA 2 7B Chat GGUF model">
+                            Direct Download (4.1GB)
+                        </a>
+                        <a href="https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF" target="_blank" rel="noopener"
+                            class="view-more-link">View all sizes</a>
+                        <div class="model-usage-links">
+                            <a href="docs/quick-start/#load-your-first-model" class="usage-guide-btn"
+                                aria-label="Learn how to load LLaMA model">
+                                📚 Loading Guide
+                            </a>
+                            <a href="docs/quick-start/#pro-tips" class="usage-guide-btn"
+                                aria-label="Model optimization tips">
+                                💡 Optimization Tips
+                            </a>
+                        </div>
+                    </article>
+                    <article class="model-item">
+                        <h3>DeepSeek Coder</h3>
+                        <p>Specialized coding assistant model</p>
+                        <a href="https://huggingface.co/TheBloke/deepseek-coder-6.7b-instruct-GGUF/resolve/main/deepseek-coder-6.7b-instruct.Q4_K_M.gguf"
+                            download="deepseek-coder-6.7b-instruct.Q4_K_M.gguf" class="download-button direct-download"
+                            role="button" aria-label="Download DeepSeek Coder GGUF model">
+                            Direct Download (3.8GB)
+                        </a>
+                        <a href="https://huggingface.co/TheBloke/deepseek-coder-6.7b-instruct-GGUF" target="_blank"
+                            rel="noopener" class="view-more-link">View all sizes</a>
+                        <div class="model-usage-links">
+                            <a href="docs/quick-start/#load-your-first-model" class="usage-guide-btn"
+                                aria-label="Learn how to load DeepSeek model">
+                                📚 Loading Guide
+                            </a>
+                            <a href="docs/smart-floater-example/" class="usage-guide-btn"
+                                aria-label="Code assistance with Smart Assistant">
+                                ✨ Code Assistant
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="models-help-section">
+                    <h3>Need Help with Models?</h3>
+                    <div class="models-help-links">
+                        <a href="docs/quick-start/#get-a-gguf-model" class="help-link-btn"
+                            aria-label="Complete model selection guide">
+                            📥 Model Selection Guide
+                        </a>
+                        <a href="docs/installation/#system-requirements" class="help-link-btn"
+                            aria-label="System requirements for different models">
+                            💻 System Requirements
+                        </a>
+                        <a href="docs/quick-start/#pro-tips" class="help-link-btn"
+                            aria-label="Performance optimization tips">
+                            ⚡ Performance Tips
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Comparison Tool Section -->
+        <section id="model-comparison" class="model-comparison-section" aria-labelledby="comparison-heading">
+            <div class="container">
+                <div id="model-comparison-container">
+                    <!-- Model comparison tool will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features section -->
+        <!-- Core Features Section -->
+        <section id="features" class="features" aria-labelledby="features-heading">
+            <div class="container">
+                <h2 id="features-heading">Core Features</h2>
+                <div class="features-grid" role="list" aria-label="GGUF Loader core features">
+                    <article class="feature-card" role="listitem">
+                        <h3>Multi-Model Support</h3>
+                        <p>Supports all major GGUF-format models including Mistral, LLaMA, DeepSeek, Gemma, and
+                            TinyLLaMA.</p>
+                        <div class="feature-links">
+                            <a href="docs/installation/" class="feature-link">Installation Guide</a>
+                            <a href="docs/package-structure/" class="feature-link">Model Structure</a>
+                        </div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Fully Offline Operation</h3>
+                        <p>Zero external APIs or internet access needed. Works on air-gapped or disconnected systems.
+                        </p>
+                        <div class="feature-links">
+                            <a href="docs/quick-start/" class="feature-link">Quick Start Guide</a>
+                            <a href="docs/installation/" class="feature-link">Setup Instructions</a>
+                        </div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>User-Friendly Cross-Platform App</h3>
+                        <p>No command-line skills needed. Drag-and-drop GUI with intuitive model loading for Windows,
+                            MacOS, and Linux.</p>
+                        <div class="feature-links">
+                            <a href="docs/quick-start/" class="feature-link">Getting Started</a>
+                            <a href="docs/installation/" class="feature-link">Platform Setup</a>
+                        </div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Optimized Performance</h3>
+                        <p>Built for speed and memory efficiency — even on mid-range CPUs.</p>
+                        <div class="feature-links">
+                            <a href="docs/installation/" class="feature-link">System Requirements</a>
+                            <a href="docs/package-structure/" class="feature-link">Performance Details</a>
+                        </div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Privacy-Centric</h3>
+                        <p>All AI runs locally. Your data never leaves your machine. Compliant with GDPR.</p>
+                        <div class="feature-links">
+                            <a href="docs/quick-start/" class="feature-link">Privacy Guide</a>
+                            <a href="docs/installation/" class="feature-link">Secure Setup</a>
+                        </div>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Zero Configuration</h3>
+                        <p>Start instantly. No environment setup, Python, or packages to install.</p>
+                        <div class="feature-links">
+                            <a href="docs/quick-start/" class="feature-link">Quick Start</a>
+                            <a href="docs/installation/" class="feature-link">Easy Install</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="use-cases">
+            <div class="container">
+                <h2>Use Cases</h2>
+                <div class="use-cases-grid">
+                    <article class="use-case">
+                        <h3>Business AI Assistants</h3>
+                        <p>Automate email replies, documents, or meeting notes without cloud exposure.</p>
+                    </article>
+                    <article class="use-case">
+                        <h3>Secure Deployment</h3>
+                        <p>Use AI in Private, Sensitive, or Regulated Workspaces</p>
+                    </article>
+                    <article class="use-case">
+                        <h3>Research & Testing</h3>
+                        <p>Run experiments locally with zero latency.</p>
+                    </article>
+                    <article class="use-case">
+                        <h3>Compliance-First Industries</h3>
+                        <p>Ensure privacy and legal adherence with on-device AI.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <h3>1. Download & Install</h3>
+                        <p>No dependencies. Portable version available.</p>
+                    </div>
+                    <div class="step">
+                        <h3>2. Load GGUF Model</h3>
+                        <p>From Hugging Face or local files.</p>
+                    </div>
+                    <div class="step">
+                        <h3>3. Start Using AI</h3>
+                        <p>Begin conversations or tasks with full offline functionality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to" class="how-to-guides">
+            <div class="container">
+                <h2>How To Guides</h2>
+                <div class="guides-grid">
+                    <article class="guide">
+                        <h3>How to Run Mistral 7B Locally</h3>
+                        <ol>
+                            <li>Download Mistral 7B Instruct GGUF model from TheBloke's Hugging Face page.</li>
+                            <li>Open GGUF Loader and drag the model file into the app.</li>
+                            <li>Click "Start" to begin using Mistral locally.</li>
+                        </ol>
+                        <div class="guide-links">
+                            <a href="docs/quick-start/" class="guide-link">Detailed Quick Start Guide</a>
+                            <a href="docs/installation/" class="guide-link">Installation Instructions</a>
+                        </div>
+                    </article>
+                    <article class="guide">
+                        <h3>How to Run DeepSeek Coder</h3>
+                        <ol>
+                            <li>Visit Hugging Face and search for DeepSeek Coder in GGUF format.</li>
+                            <li>Download the model file to your computer.</li>
+                            <li>Open GGUF Loader, select the model, and launch your coding assistant.</li>
+                        </ol>
+                        <div class="guide-links">
+                            <a href="docs/quick-start/" class="guide-link">Complete Setup Guide</a>
+                            <a href="docs/package-structure/" class="guide-link">Model Structure Info</a>
+                        </div>
+                    </article>
+                    <article class="guide">
+                        <h3>How to Run TinyLLaMA on Low-End Devices</h3>
+                        <ol>
+                            <li>Find a TinyLLaMA GGUF model with small context size.</li>
+                            <li>Use GGUF Loader to open the model file.</li>
+                            <li>Interact with the model even on laptops with 8GB RAM.</li>
+                        </ol>
+                        <div class="guide-links">
+                            <a href="docs/installation/" class="guide-link">System Requirements</a>
+                            <a href="docs/quick-start/" class="guide-link">Low-Resource Setup</a>
+                        </div>
+                    </article>
+                    <article class="guide">
+                        <h3>How to Run GGUF Models Without Python</h3>
+                        <p>GGUF Loader does not require Python. Simply download the app, load a model, and start —
+                            no terminal or scripting needed.</p>
+                        <div class="guide-links">
+                            <a href="docs/installation/" class="guide-link">No-Python Installation</a>
+                            <a href="docs/quick-start/" class="guide-link">Simple Setup Guide</a>
+                        </div>
+                    </article>
+                    <article class="guide">
+                        <h3>How to Build a Local AI Assistant</h3>
+                        <ol>
+                            <li>Choose a base model like Mistral or LLaMA 3.</li>
+                            <li>Add a prompt template or use an addon for your task.</li>
+                            <li>Run it offline and modify context to fine-tune replies.</li>
+                        </ol>
+                        <div class="guide-links">
+                            <a href="docs/addon-development/" class="guide-link">Addon Development</a>
+                            <a href="docs/smart-floater-example/" class="guide-link">Assistant Examples</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommended-models">
+            <div class="container">
+                <h2>Recommended Models</h2>
+                <div class="models-grid">
+                    <article class="model">
+                        <h3>Mistral 7B Instruct</h3>
+                        <p>Balanced and fast general assistant.</p>
+                    </article>
+                    <article class="model">
+                        <h3>LLaMA 3 Instruct</h3>
+                        <p>Excellent for comprehension, summarization, and writing.</p>
+                    </article>
+                    <article class="model">
+                        <h3>DeepSeek Coder</h3>
+                        <p>Optimized for software development and documentation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <article class="faq-item">
+                        <h3>What is GGUF?</h3>
+                        <p>GGUF (GPT-Generated Unified Format) is an optimized model format created for llama.cpp to
+                            enable fast local inference of large language models.</p>
+                        <div class="faq-links">
+                            <a href="docs/package-structure/" class="more-info-btn"
+                                aria-label="Technical details about GGUF format">
+                                🔧 Technical Details
+                            </a>
+                            <a href="docs/quick-start/#get-a-gguf-model" class="more-info-btn"
+                                aria-label="How to find and use GGUF models">
+                                📥 Find Models
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Do I need Python or CLI knowledge?</h3>
+                        <p>No, you don't need Python or command line knowledge. GGUF Loader provides a user-friendly
+                            graphical interface.</p>
+                        <div class="faq-links">
+                            <a href="docs/installation/" class="more-info-btn"
+                                aria-label="Simple installation without Python">
+                                📦 Installation Guide
+                            </a>
+                            <a href="docs/quick-start/" class="more-info-btn" aria-label="User-friendly tutorial">
+                                🚀 Quick Start
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Can I run AI models completely offline?</h3>
+                        <p>Yes, GGUF models can run entirely offline on your local machine without requiring internet
+                            connectivity.</p>
+                        <div class="faq-links">
+                            <a href="docs/installation/" class="more-info-btn" aria-label="Offline installation guide">
+                                🔒 Offline Setup
+                            </a>
+                            <a href="docs/quick-start/#test-basic-chat" class="more-info-btn"
+                                aria-label="Start using offline AI">
+                                💬 Start Chatting
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>What are the system requirements?</h3>
+                        <p>GGUF models can run on standard hardware. Smaller models work on systems with 8GB RAM, while
+                            larger models may require 16GB or more.</p>
+                        <div class="faq-links">
+                            <a href="docs/installation/#system-requirements" class="more-info-btn"
+                                aria-label="Detailed system requirements">
+                                💻 System Requirements
+                            </a>
+                            <a href="docs/installation/#gpu-acceleration-optional" class="more-info-btn"
+                                aria-label="GPU acceleration setup">
+                                ⚡ GPU Setup
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>How do I get started?</h3>
+                        <p>Getting started is simple: install GGUF Loader, download a GGUF model, load it in the app,
+                            and start chatting with AI locally.</p>
+                        <div class="faq-links">
+                            <a href="docs/quick-start/" class="more-info-btn"
+                                aria-label="Complete getting started guide">
+                                🎯 Quick Start Guide
+                            </a>
+                            <a href="docs/installation/" class="more-info-btn" aria-label="Installation instructions">
+                                📦 Installation
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Can I create custom addons?</h3>
+                        <p>Yes! GGUF Loader has a powerful addon system that lets you create custom functionality with
+                            Python. Build your own AI tools and integrations.</p>
+                        <div class="faq-links">
+                            <a href="docs/addon-development/" class="more-info-btn"
+                                aria-label="Learn to develop addons">
+                                🛠️ Development Guide
+                            </a>
+                            <a href="docs/addon-api/" class="more-info-btn" aria-label="Complete API reference">
+                                📚 API Reference
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>What is the Smart Floating Assistant?</h3>
+                        <p>The Smart Floating Assistant is a revolutionary feature that lets you process text with AI
+                            across all applications. Select text anywhere and get instant AI assistance.</p>
+                        <div class="faq-links">
+                            <a href="docs/smart-floater-example/" class="more-info-btn"
+                                aria-label="Learn about Smart Floating Assistant">
+                                ✨ Smart Assistant Guide
+                            </a>
+                            <a href="docs/quick-start/#use-the-smart-floating-assistant" class="more-info-btn"
+                                aria-label="Quick start with floating assistant">
+                                🚀 Get Started
+                            </a>
+                        </div>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Where can I find GGUF models?</h3>
+                        <p>You can download GGUF models from Hugging Face (especially TheBloke's optimized models), or
+                            convert your own models to GGUF format.</p>
+                        <div class="faq-links">
+                            <a href="docs/quick-start/#get-a-gguf-model" class="more-info-btn"
+                                aria-label="Model sources and selection guide">
+                                📥 Model Sources
+                            </a>
+                            <a href="docs/quick-start/#pro-tips" class="more-info-btn"
+                                aria-label="Model selection tips">
+                                💡 Selection Tips
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="roadmap">
+            <div class="container">
+                <h2>Roadmap: Building the Future of Local AI</h2>
+                <div class="roadmap-timeline">
+                    <article class="roadmap-item">
+                        <h3>Q1 2025</h3>
+                        <p>Enhanced addon system and Smart Floating Assistant improvements</p>
+                    </article>
+                    <article class="roadmap-item">
+                        <h3>Q2 2025</h3>
+                        <p>Multi-modal support and improved performance optimizations</p>
+                    </article>
+                    <article class="roadmap-item">
+                        <h3>Q3 2025</h3>
+                        <p>Enterprise features and advanced security enhancements</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading">What Users Say</h2>
+                <div class="testimonials-grid">
+                    <article class="testimonial">
+                        <blockquote>
+                            <p>"GGUF Loader transformed how we deploy AI in our enterprise environment. The offline
+                                capability and Smart Floating Assistant have revolutionized our workflow productivity."
+                            </p>
+                        </blockquote>
+                        <footer>
+                            <cite>Alex Morgan, CTO at CloudVision Corp</cite>
+                        </footer>
+                    </article>
+                    <article class="testimonial">
+                        <blockquote>
+                            <p>"Finally, a solution that lets us run powerful AI models without compromising data
+                                privacy. The addon system is incredibly flexible for our custom integrations."</p>
+                        </blockquote>
+                        <footer>
+                            <cite>Jordan Blake, Lead Developer at SecureData Systems</cite>
+                        </footer>
+                    </article>
+                    <article class="testimonial">
+                        <blockquote>
+                            <p>"The ease of setup amazed me. From download to running Mistral 7B locally took less than
+                                5 minutes. Perfect for researchers who need reliable, offline AI."</p>
+                        </blockquote>
+                        <footer>
+                            <cite>Dr. Riley Chen, AI Research Scientist at Northfield Research Institute</cite>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Integration Section -->
+        <section id="contact" class="community-integration">
+            <div class="container">
+                <h2>Join the Community</h2>
+                <div class="community-links">
+                    <a href="https://github.com/ggufloader/gguf-loader" target="_blank" rel="noopener"
+                        class="community-link">
+                        <h3>GitHub Repository</h3>
+                        <p>Contribute to development, report issues, and access source code</p>
+                    </a>
+                    <a href="https://github.com/ggufloader/gguf-loader/discussions" target="_blank" rel="noopener"
+                        class="community-link">
+                        <h3>Community Discussions</h3>
+                        <p>Get help, share ideas, and connect with other users</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GGUF Loader</h3>
+                    <p>The Floating Local AI Assistant That Works Anywhere on Your Screen</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://github.com/ggufloader/gguf-loader">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="https://github.com/ggufloader/gguf-loader/discussions">Discussions</a></li>
+                        <li><a href="https://github.com/ggufloader/gguf-loader/issues">Report Issues</a></li>
+                        <li><a href="CONTRIBUTING.md">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GGUF Loader. Open source project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript includes -->
+    <!-- Performance Monitor Script -->
+    <script src="performance-monitor.js" defer></script>
+
+    <!-- Model Comparison Tool Script -->
+    <script src="model-comparison.js" defer></script>
+
+    <!-- Site Search Script -->
+    <script src="site-search.js" defer></script>
+
+    <!-- Version Updates Enhancement Script -->
+    <script src="js/version-updates.js" defer></script>
+
+    <!-- Related Content System Scripts -->
+    <script src="js/content-relationship-analyzer.js" defer></script>
+    <script src="js/related-content-components.js" defer></script>
+    <script src="js/user-journey-optimizer.js" defer></script>
+    <script src="js/related-content-system.js" defer></script>
+
+    <!-- Mobile Philosophy Toggle Script -->
+    <script src="js/mobile-philosophy-toggle.js" defer></script>
+
+    <!-- Mobile Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.style.display = isExpanded ? 'none' : 'block';
+                });
+            }
+
+            // Image lazy loading and optimization
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        loadImage(img);
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => {
+                img.classList.add('loading');
+                imageObserver.observe(img);
+            });
+
+            function loadImage(img) {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                if (img.dataset.srcset) {
+                    img.srcset = img.dataset.srcset;
+                    img.removeAttribute('data-srcset');
+                }
+                img.classList.add('loaded');
+                img.classList.remove('loading');
+            }
+        });
+    </script>
+
+    <!-- Analytics Configuration -->
+    <script src="analytics-config.js"></script>
+
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="analytics.js" defer></script>
+    <script src="core-web-vitals-monitor.js" defer></script>
+    <script src="user-behavior-tracker.js" defer></script>
+
+    <!-- SEO Internal Linking Script -->
+    <script src="js/seo-internal-linking.js" defer></script>
+
+    <!-- Structured Data Enhancement Script -->
+    <script src="js/structured-data-enhancement.js" defer></script>
+
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="js/internal-link-reporter.js" defer></script>
+
+    <!-- Initialize analytics after all scripts are loaded -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Analytics and monitoring systems initialized');
+        });
+    </script>
+</body>
+
+</html>

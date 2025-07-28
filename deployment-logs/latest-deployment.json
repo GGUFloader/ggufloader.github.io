@@ -1,0 +1,23 @@
+{
+  "deploymentId": 1753633874512,
+  "timestamp": "2025-07-27T16:31:35.218Z",
+  "status": "success",
+  "duration": 20706,
+  "errors": 0,
+  "warnings": 0,
+  "url": "https://ggufloader.github.io",
+  "metrics": {
+    "responseTime": 1250,
+    "performance": {
+      "lcp": 1800,
+      "fid": 45,
+      "cls": 0.05
+    },
+    "lighthouseScores": {
+      "performance": 94,
+      "accessibility": 100,
+      "bestPractices": 96,
+      "seo": 98
+    }
+  }
+}

@@ -1,0 +1,86 @@
+[2025-07-27T16:29:37.926Z] [INFO] 🚀 Starting GGUF Loader website deployment...
+[2025-07-27T16:29:37.929Z] [INFO] 
+🚀 Starting phase: Pre-deployment Tests
+[2025-07-27T16:29:37.930Z] [INFO] Running comprehensive pre-deployment tests...
+[2025-07-27T16:29:37.931Z] [INFO] Running: Complete test suite
+[2025-07-27T16:29:37.931Z] [INFO] Command: npm run test:all
+[2025-07-27T16:29:39.567Z] [ERROR] ❌ Complete test suite failed: Command failed: npm run test:all
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+
+Error: Cannot find module 'jsdom'
+Require stack:
+- C:\Users\MY-PC\Desktop\ggufloader.github.io-main\validate-seo.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (C:\Users\MY-PC\Desktop\ggufloader.github.io-main\validate-seo.js:15:19)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\MY-PC\\Desktop\\ggufloader.github.io-main\\validate-seo.js'
+  ]
+}
+
+Node.js v22.14.0
+
+[2025-07-27T16:29:39.568Z] [ERROR] ❌ Phase failed: Pre-deployment Tests - Command failed: npm run test:all
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+
+Error: Cannot find module 'jsdom'
+Require stack:
+- C:\Users\MY-PC\Desktop\ggufloader.github.io-main\validate-seo.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (C:\Users\MY-PC\Desktop\ggufloader.github.io-main\validate-seo.js:15:19)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\MY-PC\\Desktop\\ggufloader.github.io-main\\validate-seo.js'
+  ]
+}
+
+Node.js v22.14.0
+
+[2025-07-27T16:29:39.568Z] [ERROR] 💥 Deployment failed: Command failed: npm run test:all
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+
+Error: Cannot find module 'jsdom'
+Require stack:
+- C:\Users\MY-PC\Desktop\ggufloader.github.io-main\validate-seo.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (C:\Users\MY-PC\Desktop\ggufloader.github.io-main\validate-seo.js:15:19)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\MY-PC\\Desktop\\ggufloader.github.io-main\\validate-seo.js'
+  ]
+}
+
+Node.js v22.14.0
+
+[2025-07-27T16:29:39.569Z] [INFO] Generating deployment report...
+[2025-07-27T16:29:39.570Z] [INFO] ✅ Deployment report saved to C:\Users\MY-PC\Desktop\ggufloader.github.io-main\deployment-logs\deployment-report-1753633777925.json

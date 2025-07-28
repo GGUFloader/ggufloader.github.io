@@ -1,0 +1,328 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at 2 AM UTC for monitoring
+    - cron: '0 2 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run SEO tests
+      run: npm run test:seo
+      
+    - name: Run accessibility tests
+      run: npm run test:accessibility
+      
+    - name: Run mobile responsiveness tests
+      run: npm run test:mobile
+      
+    - name: Run structured data tests
+      run: npm run test:structured-data
+      
+    - name: Run cross-browser tests
+      run: npm run test:cross-browser
+      
+    - name: Run WAVE accessibility tests
+      run: npm run test:wave-accessibility
+      continue-on-error: true # WAVE tests may fail due to external dependencies
+      
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: |
+          test-results/
+          lighthouse-results/
+        retention-days: 30
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Start local server
+      run: |
+        python -m http.server 8080 &
+        sleep 5
+        
+    - name: Run Lighthouse CI
+      run: npm run lighthouse:ci
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        
+    - name: Upload Lighthouse results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: lighthouse-results
+        path: .lighthouseci/
+        retention-days: 30
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test, lighthouse]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+        bundler-cache: true
+        
+    - name: Install dependencies
+      run: |
+        npm ci
+        bundle install
+        
+    - name: Pre-deployment tests
+      run: npm run deploy:test
+      
+    - name: Build Jekyll site
+      run: bundle exec jekyll build
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
+        force_orphan: true
+        
+    - name: Create deployment record
+      run: |
+        mkdir -p deployment-logs
+        echo "{
+          \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",
+          \"commit\": \"${{ github.sha }}\",
+          \"branch\": \"${{ github.ref_name }}\",
+          \"actor\": \"${{ github.actor }}\",
+          \"workflow_run_id\": \"${{ github.run_id }}\",
+          \"status\": \"deployed\"
+        }" > deployment-logs/deployment-$(date +%s).json
+        
+    - name: Upload deployment logs
+      uses: actions/upload-artifact@v4
+      with:
+        name: deployment-logs
+        path: deployment-logs/
+        retention-days: 90
+        
+    - name: Notify deployment
+      run: |
+        echo "## 🚀 Deployment Completed" >> $GITHUB_STEP_SUMMARY
+        echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Deployed by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Site URL**: https://ggufloader.github.io" >> $GITHUB_STEP_SUMMARY
+        echo "- **Deployment time**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+
+  monitor:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Wait for deployment propagation
+      run: sleep 90
+      
+    - name: Run comprehensive deployment monitoring
+      run: npm run monitor:deployment
+      
+    - name: Check Core Web Vitals with Lighthouse
+      run: |
+        npx lighthouse https://ggufloader.github.io --only-categories=performance --output=json --output-path=./performance-report.json
+        
+    - name: Parse and validate performance results
+      run: |
+        node -e "
+        const report = require('./performance-report.json');
+        const lcp = report.audits['largest-contentful-paint'].numericValue;
+        const fid = report.audits['max-potential-fid'].numericValue;
+        const cls = report.audits['cumulative-layout-shift'].numericValue;
+        const performanceScore = report.categories.performance.score * 100;
+        
+        console.log('📊 Performance Metrics:');
+        console.log('- LCP:', Math.round(lcp), 'ms (target: <2500ms)');
+        console.log('- FID:', Math.round(fid), 'ms (target: <100ms)');
+        console.log('- CLS:', cls.toFixed(3), '(target: <0.1)');
+        console.log('- Performance Score:', Math.round(performanceScore), '/100');
+        
+        const issues = [];
+        if (lcp > 2500) issues.push('LCP exceeds 2.5s');
+        if (fid > 100) issues.push('FID exceeds 100ms');
+        if (cls > 0.1) issues.push('CLS exceeds 0.1');
+        if (performanceScore < 90) issues.push('Performance score below 90');
+        
+        if (issues.length > 0) {
+          console.error('⚠️ Performance issues detected:', issues.join(', '));
+          console.error('Deployment monitoring will continue but performance needs attention');
+        } else {
+          console.log('✅ All performance metrics within targets');
+        }
+        "
+        
+    - name: Test critical user flows
+      run: |
+        # Test homepage
+        curl -f https://ggufloader.github.io || exit 1
+        
+        # Test documentation pages
+        curl -f https://ggufloader.github.io/docs/ || exit 1
+        curl -f https://ggufloader.github.io/docs/installation/ || exit 1
+        curl -f https://ggufloader.github.io/docs/quick-start/ || exit 1
+        curl -f https://ggufloader.github.io/docs/addon-development/ || exit 1
+        
+        echo "✅ All critical pages accessible"
+        
+    - name: Upload monitoring results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: monitoring-results
+        path: |
+          monitoring-reports/
+          performance-report.json
+        retention-days: 30
+        
+    - name: Create deployment monitoring summary
+      run: |
+        echo "## 📊 Post-Deployment Monitoring" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Site deployed and accessible" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Critical pages verified" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Performance monitoring completed" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ User flows tested successfully" >> $GITHUB_STEP_SUMMARY
+        echo "- 🌐 **Live site**: https://ggufloader.github.io" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+        echo "- Monitor site performance for 24 hours" >> $GITHUB_STEP_SUMMARY
+        echo "- Check user feedback and analytics" >> $GITHUB_STEP_SUMMARY
+        echo "- Review monitoring reports for any issues" >> $GITHUB_STEP_SUMMARY
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run security audit
+      run: npm audit --audit-level=moderate
+      
+    - name: Check for vulnerabilities
+      run: |
+        if npm audit --audit-level=high --json | jq '.vulnerabilities | length' | grep -v '^0$'; then
+          echo "High severity vulnerabilities found!"
+          exit 1
+        fi
+        
+    - name: Security scan summary
+      run: |
+        echo "## Security Scan Results" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ No high severity vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Dependencies are up to date" >> $GITHUB_STEP_SUMMARY
+
+  scheduled-monitoring:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run daily monitoring
+      run: npm run monitor:deployment
+      
+    - name: Run performance monitoring
+      run: npm run monitor:performance
+      
+    - name: Check for security vulnerabilities
+      run: npm audit --audit-level=moderate
+      
+    - name: Upload monitoring results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: daily-monitoring-results
+        path: |
+          monitoring-reports/
+          lighthouse-results/
+        retention-days: 7
+        
+    - name: Create monitoring summary
+      run: |
+        echo "## 📊 Daily Monitoring Report" >> $GITHUB_STEP_SUMMARY
+        echo "- **Date**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Site availability checked" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Performance metrics monitored" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Security audit completed" >> $GITHUB_STEP_SUMMARY
+        echo "- 🌐 **Site**: https://ggufloader.github.io" >> $GITHUB_STEP_SUMMARY

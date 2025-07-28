@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Floating Buttons Constraint</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            height: 400px; /* Fixed height for banner area */
+            max-width: 1920px; /* Maximum width constraint */
+            margin: 0 auto; /* Center the banner */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #3498db;
+            position: relative;
+        }
+        
+        .hero-content {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+        
+        .floating-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 500;
+            padding: 0;
+        }
+        
+        .floating-button {
+            position: absolute;
+            min-width: 60px;
+            min-height: 60px;
+            height: 60px;
+            padding: 0 15px;
+            background: #ffffff;
+            border: 2px solid #e9ecef;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            color: #495057;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-button:hover {
+            /* No scaling - keep constant size */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating-button.service-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .floating-button.nav-btn {
+            background: #ffffff;
+            border-color: #3498db;
+        }
+        
+        .floating-button.nav-btn:hover {
+            background: #3498db;
+            color: white;
+            /* No scaling - keep constant size */
+        }
+        
+        .btn-icon {
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+        
+        .btn-text {
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        
+        .content-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+            text-align: center;
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .content-section p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Test Hero Section</h1>
+            <p>Floating buttons should stay within this blue-bordered hero section</p>
+        </div>
+    </section>
+    
+    <aside class="floating-container" role="toolbar" aria-label="Quick access floating buttons">
+        <button class="floating-button service-btn" data-service="email" aria-label="Email Service">
+            <span class="btn-icon">📧</span>
+            <span class="btn-text">Email</span>
+        </button>
+        <button class="floating-button service-btn" data-service="document" aria-label="Document Service">
+            <span class="btn-icon">📄</span>
+            <span class="btn-text">Document</span>
+        </button>
+        <button class="floating-button service-btn" data-service="translate" aria-label="Translate Service">
+            <span class="btn-icon">🌐</span>
+            <span class="btn-text">Translate</span>
+        </button>
+        <a href="#" class="floating-button nav-btn" aria-label="Installation Guide">
+            <span class="btn-icon">⚙️</span>
+            <span class="btn-text">Install</span>
+        </a>
+        <a href="#" class="floating-button nav-btn" aria-label="Quick Start">
+            <span class="btn-icon">🚀</span>
+            <span class="btn-text">Start</span>
+        </a>
+    </aside>
+    
+    <section class="content-section">
+        <h2>Charismatic Cursor-Following Floating Buttons</h2>
+        
+        <div class="instructions">
+            <h3>Test Instructions:</h3>
+            <ul>
+                <li><strong>Hover over the banner area</strong> - Buttons will slowly follow your cursor with charismatic movement</li>
+                <li><strong>Move your mouse around</strong> - Notice how buttons avoid overlapping each other</li>
+                <li><strong>Leave the banner area</strong> - Buttons gracefully return to their original positions</li>
+                <li><strong>Try on mobile</strong> - Touch interactions work smoothly</li>
+                <li><strong>Resize the window</strong> - Buttons stay constrained to 1920×400 banner area</li>
+                <li><strong>Scroll the page</strong> - Buttons stay fixed at the top of the page</li>
+                <li><strong>Notice constant size</strong> - Buttons never change size on hover or interaction</li>
+            </ul>
+        </div>
+        
+        <p>The floating buttons feature:</p>
+        <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>✅ Charismatic slow movement towards cursor</li>
+            <li>✅ Collision avoidance - buttons never overlap</li>
+            <li>✅ Constrained to 1920×400 banner area at top</li>
+            <li>✅ Constant size - no scaling on hover</li>
+            <li>✅ No gravity effect - stays in upper area</li>
+            <li>✅ Fixed position - doesn't scroll with page</li>
+            <li>✅ Smooth return to base positions</li>
+            <li>✅ Responsive design for all screen sizes</li>
+            <li>✅ Accessibility and keyboard navigation</li>
+        </ul>
+    </section>
+    
+    <script src="floating-buttons.js"></script>
+</body>
+</html>

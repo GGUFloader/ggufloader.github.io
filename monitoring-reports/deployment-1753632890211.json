@@ -1,0 +1,130 @@
+{
+  "timestamp": "2025-07-27T16:05:49.732Z",
+  "status": "unknown",
+  "checks": [
+    {
+      "name": "Site Availability",
+      "status": "failed",
+      "details": "Request timeout after 30000ms"
+    },
+    {
+      "name": "Critical Pages",
+      "status": "warning",
+      "details": [
+        {
+          "page": "/",
+          "status": "failed",
+          "error": ""
+        },
+        {
+          "page": "/docs/",
+          "status": "failed",
+          "error": ""
+        },
+        {
+          "page": "/docs/installation/",
+          "status": "failed",
+          "error": "Request timeout after 30000ms"
+        },
+        {
+          "page": "/docs/quick-start/",
+          "status": "failed",
+          "error": "Request timeout after 30000ms"
+        },
+        {
+          "page": "/docs/addon-development/",
+          "status": "failed",
+          "error": "Request timeout after 30000ms"
+        },
+        {
+          "page": "/docs/addon-api/",
+          "status": "failed",
+          "error": "Request timeout after 30000ms"
+        },
+        {
+          "page": "/docs/smart-floater-example/",
+          "status": "failed",
+          "error": "Request timeout after 30000ms"
+        },
+        {
+          "page": "/docs/package-structure/",
+          "status": "failed",
+          "error": "Request timeout after 30000ms"
+        }
+      ]
+    },
+    {
+      "name": "Performance Metrics",
+      "status": "warning",
+      "details": {
+        "lcp": 2888.2056885915763,
+        "fid": 64.01705074937524,
+        "cls": 0.024920042661616643
+      }
+    }
+  ],
+  "errors": [
+    "Site availability check failed: Request timeout after 30000ms",
+    "Page / check failed: ",
+    "Page /docs/ check failed: ",
+    "Page /docs/installation/ check failed: Request timeout after 30000ms",
+    "Page /docs/quick-start/ check failed: Request timeout after 30000ms",
+    "Page /docs/addon-development/ check failed: Request timeout after 30000ms",
+    "Page /docs/addon-api/ check failed: Request timeout after 30000ms",
+    "Page /docs/smart-floater-example/ check failed: Request timeout after 30000ms",
+    "Page /docs/package-structure/ check failed: Request timeout after 30000ms",
+    "Analytics check failed: Request timeout after 30000ms"
+  ],
+  "warnings": [
+    "Performance issues: LCP 2888ms > 2500ms"
+  ],
+  "metrics": {
+    "pageResults": [
+      {
+        "page": "/",
+        "status": "failed",
+        "error": ""
+      },
+      {
+        "page": "/docs/",
+        "status": "failed",
+        "error": ""
+      },
+      {
+        "page": "/docs/installation/",
+        "status": "failed",
+        "error": "Request timeout after 30000ms"
+      },
+      {
+        "page": "/docs/quick-start/",
+        "status": "failed",
+        "error": "Request timeout after 30000ms"
+      },
+      {
+        "page": "/docs/addon-development/",
+        "status": "failed",
+        "error": "Request timeout after 30000ms"
+      },
+      {
+        "page": "/docs/addon-api/",
+        "status": "failed",
+        "error": "Request timeout after 30000ms"
+      },
+      {
+        "page": "/docs/smart-floater-example/",
+        "status": "failed",
+        "error": "Request timeout after 30000ms"
+      },
+      {
+        "page": "/docs/package-structure/",
+        "status": "failed",
+        "error": "Request timeout after 30000ms"
+      }
+    ],
+    "performance": {
+      "lcp": 2888.2056885915763,
+      "fid": 64.01705074937524,
+      "cls": 0.024920042661616643
+    }
+  }
+}
