@@ -21,16 +21,11 @@ class MobilePhilosophyToggle {
     }
 
     setup() {
-        // Only run on mobile devices
-        if (window.innerWidth > 768) {
-            return;
-        }
+        // Make philosophy always visible - no mobile-specific hiding
+        this.ensurePhilosophyVisible();
 
-        this.createMobilePhilosophySection();
-        this.bindEvents();
-        
-        // Handle window resize
-        window.addEventListener('resize', () => this.handleResize());
+        // Handle window resize to maintain visibility
+        window.addEventListener('resize', () => this.ensurePhilosophyVisible());
     }
 
     createMobilePhilosophySection() {
@@ -51,7 +46,7 @@ class MobilePhilosophyToggle {
         // Create mobile collapsible version
         const mobilePhilosophy = document.createElement('div');
         mobilePhilosophy.className = 'hero-philosophy mobile-collapsible mobile-philosophy-collapsible';
-        
+
         // Create toggle button
         const toggleButton = document.createElement('button');
         toggleButton.className = 'philosophy-toggle';
@@ -67,14 +62,14 @@ class MobilePhilosophyToggle {
         contentContainer.className = 'philosophy-content';
         contentContainer.id = 'philosophy-content';
         contentContainer.setAttribute('aria-hidden', 'true');
-        
+
         // Clone the content
         const titleClone = philosophyTitle.cloneNode(true);
         const textClone = philosophyText.cloneNode(true);
-        
+
         contentContainer.appendChild(titleClone);
         contentContainer.appendChild(textClone);
-        
+
         if (philosophyAttribution) {
             const attributionClone = philosophyAttribution.cloneNode(true);
             contentContainer.appendChild(attributionClone);
@@ -99,7 +94,7 @@ class MobilePhilosophyToggle {
 
         // Click event
         this.toggle.addEventListener('click', (e) => this.handleToggle(e));
-        
+
         // Keyboard events
         this.toggle.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -120,7 +115,7 @@ class MobilePhilosophyToggle {
 
     handleToggle(event) {
         event.preventDefault();
-        
+
         if (this.isExpanded) {
             this.collapse();
         } else {
@@ -134,11 +129,11 @@ class MobilePhilosophyToggle {
         }
 
         this.isExpanded = true;
-        
+
         // Update ARIA attributes
         this.toggle.setAttribute('aria-expanded', 'true');
         this.content.setAttribute('aria-hidden', 'false');
-        
+
         // Add classes for styling
         this.toggle.classList.add('expanded');
         this.content.classList.add('expanded');
@@ -160,11 +155,11 @@ class MobilePhilosophyToggle {
         }
 
         this.isExpanded = false;
-        
+
         // Update ARIA attributes
         this.toggle.setAttribute('aria-expanded', 'false');
         this.content.setAttribute('aria-hidden', 'true');
-        
+
         // Add classes for styling
         this.toggle.classList.remove('expanded');
         this.content.classList.remove('expanded');
@@ -180,25 +175,21 @@ class MobilePhilosophyToggle {
         }, 400);
     }
 
-    handleResize() {
-        // Show/hide based on screen size
-        const mobilePhilosophy = document.querySelector('.mobile-philosophy-collapsible');
+    ensurePhilosophyVisible() {
+        // Always keep philosophy visible on all screen sizes
         const originalPhilosophy = document.querySelector('.hero-philosophy:not(.mobile-collapsible)');
-        
-        if (window.innerWidth <= 768) {
-            if (mobilePhilosophy) {
-                mobilePhilosophy.style.display = 'block';
-            }
-            if (originalPhilosophy) {
-                originalPhilosophy.style.display = 'none';
-            }
-        } else {
-            if (mobilePhilosophy) {
-                mobilePhilosophy.style.display = 'none';
-            }
-            if (originalPhilosophy) {
-                originalPhilosophy.style.display = 'block';
-            }
+        const mobilePhilosophy = document.querySelector('.mobile-philosophy-collapsible');
+
+        // Always show the original philosophy section
+        if (originalPhilosophy) {
+            originalPhilosophy.style.display = 'block';
+            originalPhilosophy.style.visibility = 'visible';
+            originalPhilosophy.style.opacity = '1';
+        }
+
+        // Hide any mobile collapsible version since we want it always visible
+        if (mobilePhilosophy) {
+            mobilePhilosophy.style.display = 'none';
         }
     }
 
@@ -209,9 +200,9 @@ class MobilePhilosophyToggle {
         announcement.setAttribute('aria-atomic', 'true');
         announcement.className = 'sr-only';
         announcement.textContent = message;
-        
+
         document.body.appendChild(announcement);
-        
+
         // Remove after announcement
         setTimeout(() => {
             document.body.removeChild(announcement);
