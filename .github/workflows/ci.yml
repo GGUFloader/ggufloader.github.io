@@ -20,13 +20,36 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      
+    - name: Create deployment directory
+      run: |
+        mkdir -p deploy
+        # Copy essential website files
+        cp index.html deploy/
+        cp -r css/ deploy/css/
+        cp -r js/ deploy/js/
+        cp -r data/ deploy/data/
+        cp styles.css deploy/
+        cp styles.min.css deploy/
+        cp manifest.json deploy/
+        cp robots.txt deploy/
+        cp sitemap.xml deploy/
+        cp sitemap.html deploy/
+        cp sw.js deploy/
+        cp .htaccess deploy/
+        cp _headers deploy/
+        cp browserconfig.xml deploy/
+        cp google23207bd4b3d5b313.html deploy/
+        cp preview.png deploy/
+        # Copy any HTML pages
+        cp *.html deploy/ 2>/dev/null || true
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
+        publish_dir: ./deploy
         publish_branch: gh-pages
         force_orphan: true
         
