@@ -1,0 +1,308 @@
+    <!-- Philosophy Section -->
+    <section class="philosophy-showcase" aria-labelledby="philosophy-heading">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="philosophy-header">
+                    <h2 id="philosophy-heading" class="philosophy-main-title">Our Philosophy</h2>
+                    <div class="philosophy-divider"></div>
+                </div>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-quote-container">
+                        <blockquote class="philosophy-main-quote">
+                            <div class="quote-mark">"</div>
+                            <p class="philosophy-quote-text">
+                                AI should be accessible, private, and under your control. We believe in democratizing artificial intelligence 
+                                by making powerful models run locally on any machine, without compromising your data privacy or requiring 
+                                complex technical knowledge.
+                            </p>
+                            <div class="quote-mark closing">"</div>
+                        </blockquote>
+                        <footer class="philosophy-attribution">
+                            <cite>— The GGUF Loader Team</cite>
+                        </footer>
+                    </div>
+                    
+                    <div class="philosophy-principles">
+                        <div class="principle-item">
+                            <div class="principle-icon">🔒</div>
+                            <h3 class="principle-title">Privacy First</h3>
+                            <p class="principle-description">Your data never leaves your machine. True offline AI processing.</p>
+                        </div>
+                        
+                        <div class="principle-item">
+                            <div class="principle-icon">🌍</div>
+                            <h3 class="principle-title">Accessible to All</h3>
+                            <p class="principle-description">No complex setup. No Python knowledge required. Just click and run.</p>
+                        </div>
+                        
+                        <div class="principle-item">
+                            <div class="principle-icon">⚡</div>
+                            <h3 class="principle-title">Your Control</h3>
+                            <p class="principle-description">Run AI models on your terms, your hardware, your schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</div>
+                
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" 
+                        aria-label="Toggle navigation menu" 
+                        aria-expanded="false" 
+                        aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#features" role="menuitem" aria-label="View features section">Features</a></li>
+                    <li role="none"><a href="#how-to" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="#faq" role="menuitem" aria-label="View frequently asked questions">FAQ</a></li>
+                    
+                    <!-- Documentation dropdown -->
+                    <li role="none" class="nav-dropdown">
+                        <a href="/docs/" role="menuitem" aria-label="View documentation" aria-haspopup="true" aria-expanded="false">
+                            Documentation
+                            <span class="dropdown-arrow">▼</span>
+                        </a>
+                        <ul class="nav-dropdown-menu" role="menu" aria-label="Documentation submenu">
+                            <li role="none"><a href="/docs/installation/" role="menuitem" title="Complete installation guide">Installation Guide</a></li>
+                            <li role="none"><a href="/docs/quick-start/" role="menuitem" title="Get started in minutes">Quick Start</a></li>
+                            <li role="none" class="dropdown-divider"></li>
+                            <li role="none"><a href="/docs/addon-development/" role="menuitem" title="Create custom addons">Addon Development</a></li>
+                            <li role="none"><a href="/docs/addon-api/" role="menuitem" title="API reference">API Reference</a></li>
+                            <li role="none"><a href="/docs/smart-floater-example/" role="menuitem" title="Smart Floater example">Smart Floater Example</a></li>
+                            <li role="none" class="dropdown-divider"></li>
+                            <li role="none"><a href="/docs/package-structure/" role="menuitem" title="Technical architecture">Package Structure</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li role="none"><a href="#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a></li>
+                    <li role="none"><a href="#contact" role="menuitem" aria-label="View contact information">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Enhancement -->
+    <link rel="stylesheet" href="/css/mobile-navigation.css">
+    <script src="/js/mobile-navigation-enhancer.js"></script>
+    
+    <!-- Mobile Content Preview System -->
+    <script src="/js/mobile-content-preview.js"></script>
+    
+    <!-- Mobile Performance Optimizer -->
+    <script src="/js/mobile-performance-optimizer.js"></script>
+
+    <script>
+        // Enhanced navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            // Mobile menu toggle
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.style.display = isExpanded ? 'none' : 'block';
+                    
+                    // Animate hamburger lines
+                    const lines = this.querySelectorAll('.hamburger-line');
+                    if (!isExpanded) {
+                        lines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        lines[1].style.opacity = '0';
+                        lines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        lines[0].style.transform = 'none';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Current page indicator
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && (currentPath === href || (href.startsWith('/docs/') && currentPath.startsWith(href)))) {
+                    link.classList.add('current-page');
+                }
+            });
+            
+            // Enhanced mobile dropdown handling
+            function handleMobileDropdowns() {
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const trigger = dropdown.querySelector('a');
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        
+                        if (trigger && menu) {
+                            // Remove existing event listeners
+                            trigger.removeEventListener('click', trigger.mobileClickHandler);
+                            
+                            // Create new mobile click handler
+                            trigger.mobileClickHandler = function(e) {
+                                e.preventDefault();
+                                const isOpen = menu.classList.contains('show');
+                                
+                                // Close all other dropdowns
+                                dropdowns.forEach(otherDropdown => {
+                                    if (otherDropdown !== dropdown) {
+                                        const otherMenu = otherDropdown.querySelector('.nav-dropdown-menu');
+                                        if (otherMenu) {
+                                            otherMenu.classList.remove('show');
+                                            otherDropdown.classList.remove('expanded');
+                                        }
+                                        const otherTrigger = otherDropdown.querySelector('a');
+                                        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+                                    }
+                                });
+                                
+                                // Toggle current dropdown
+                                menu.classList.toggle('show', !isOpen);
+                                dropdown.classList.toggle('expanded', !isOpen);
+                                trigger.setAttribute('aria-expanded', !isOpen);
+                                
+                                // Smooth scroll to show dropdown content
+                                if (!isOpen) {
+                                    setTimeout(() => {
+                                        menu.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                    }, 100);
+                                }
+                            };
+                            
+                            trigger.addEventListener('click', trigger.mobileClickHandler);
+                            
+                            // Touch event handling for better mobile experience
+                            trigger.addEventListener('touchstart', function() {
+                                this.style.backgroundColor = '#f8f9fa';
+                            });
+                            
+                            trigger.addEventListener('touchend', function() {
+                                setTimeout(() => {
+                                    this.style.backgroundColor = '';
+                                }, 150);
+                            });
+                        }
+                    });
+                } else {
+                    // Desktop behavior - remove mobile handlers
+                    dropdowns.forEach(dropdown => {
+                        const trigger = dropdown.querySelector('a');
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        
+                        if (trigger && menu) {
+                            trigger.removeEventListener('click', trigger.mobileClickHandler);
+                            menu.classList.remove('show');
+                            dropdown.classList.remove('expanded');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                }
+            }
+            
+            // Initialize mobile dropdowns
+            handleMobileDropdowns();
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-container')) {
+                    if (navMenu && window.innerWidth <= 768) {
+                        navMenu.style.display = 'none';
+                        if (mobileToggle) {
+                            mobileToggle.setAttribute('aria-expanded', 'false');
+                            const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                            lines[0].style.transform = 'none';
+                            lines[1].style.opacity = '1';
+                            lines[2].style.transform = 'none';
+                        }
+                    }
+                    
+                    // Close all mobile dropdowns
+                    dropdowns.forEach(dropdown => {
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        if (menu) {
+                            menu.classList.remove('show');
+                            dropdown.classList.remove('expanded');
+                        }
+                        const trigger = dropdown.querySelector('a');
+                        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
+            
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // Escape key closes mobile menu and dropdowns
+                if (e.key === 'Escape') {
+                    if (navMenu && window.innerWidth <= 768) {
+                        navMenu.style.display = 'none';
+                        if (mobileToggle) {
+                            mobileToggle.setAttribute('aria-expanded', 'false');
+                            mobileToggle.focus();
+                            const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                            lines[0].style.transform = 'none';
+                            lines[1].style.opacity = '1';
+                            lines[2].style.transform = 'none';
+                        }
+                    }
+                    
+                    // Close all dropdowns
+                    dropdowns.forEach(dropdown => {
+                        const menu = dropdown.querySelector('.nav-dropdown-menu');
+                        if (menu) {
+                            menu.classList.remove('show');
+                            dropdown.classList.remove('expanded');
+                        }
+                        const trigger = dropdown.querySelector('a');
+                        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+                
+                // Arrow key navigation in mobile menu
+                if (window.innerWidth <= 768 && navMenu.style.display !== 'none') {
+                    const focusableElements = navMenu.querySelectorAll('a');
+                    const currentIndex = Array.from(focusableElements).indexOf(document.activeElement);
+                    
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIndex = (currentIndex + 1) % focusableElements.length;
+                        focusableElements[nextIndex].focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIndex = currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
+                        focusableElements[prevIndex].focus();
+                    }
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.style.display = '';
+                    if (mobileToggle) {
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                        const lines = mobileToggle.querySelectorAll('.hamburger-line');
+                        lines[0].style.transform = 'none';
+                        lines[1].style.opacity = '1';
+                        lines[2].style.transform = 'none';
+                    }
+                }
+                
+                // Reinitialize mobile dropdowns on resize
+                handleMobileDropdowns();
+            });
+        });
+    </script>

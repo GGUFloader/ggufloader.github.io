@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags and basic head content -->
+    <!-- INCLUDE: includes/head-meta.html -->
+    
+    <!-- Critical CSS and styles -->
+    <!-- INCLUDE: includes/head-styles.html -->
+    
+    <!-- JSON-LD structured data and scripts -->
+    <!-- INCLUDE: includes/head-scripts-simple.html -->
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Philosophy section and navigation -->
+    <!-- INCLUDE: includes/navigation.html -->
+
+    <main id="main-content" role="main">
+        <!-- Hero section -->
+        <!-- INCLUDE: includes/hero-section.html -->
+
+        <!-- Demo Video Section -->
+        <section class="demo-video-section" aria-labelledby="demo-heading">
+            <div class="container">
+                <h2 id="demo-heading">See GGUF Loader in Action</h2>
+                <div class="video-container responsive-embed">
+                    <iframe src="https://www.youtube.com/embed/DuqDRkfGdcI?si=krkVbqY0xktcksEr"
+                            title="GGUF Loader demonstration video showing installation and usage"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy"
+                            aria-describedby="video-description">
+                    </iframe>
+                    <p id="video-description" class="sr-only">
+                        Video demonstration showing how to install and use GGUF Loader, including model loading and the Smart Floating Assistant feature.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section" aria-labelledby="download-heading">
+            <div class="container">
+                <h2 id="download-heading">Get Started with GGUF Loader</h2>
+                <div class="download-content" role="list" aria-label="Installation options for different platforms">
+                    <article class="download-option" role="listitem">
+                        <h3>Windows</h3>
+                        <p>Download the Windows installer or portable version</p>
+                        <a href="#" class="download-button">Download for Windows</a>
+                    </article>
+                    <article class="download-option" role="listitem">
+                        <h3>macOS</h3>
+                        <p>Download the macOS application bundle</p>
+                        <a href="#" class="download-button">Download for macOS</a>
+                    </article>
+                    <article class="download-option" role="listitem">
+                        <h3>Linux</h3>
+                        <p>Download the Linux AppImage or package</p>
+                        <a href="#" class="download-button">Download for Linux</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- GGUF Models Download Section -->
+        <section class="gguf-models-section" aria-labelledby="models-heading">
+            <div class="container">
+                <h2 id="models-heading"><span aria-hidden="true">🔽</span> Download GGUF Models</h2>
+                <p>Popular GGUF models ready to use with GGUF Loader:</p>
+                <div class="models-list">
+                    <article class="model-item">
+                        <h3>Mistral 7B Instruct</h3>
+                        <p>General-purpose conversational AI model</p>
+                        <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF" target="_blank" rel="noopener">Download from Hugging Face</a>
+                    </article>
+                    <article class="model-item">
+                        <h3>LLaMA 2 7B Chat</h3>
+                        <p>Meta's conversational AI model</p>
+                        <a href="https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF" target="_blank" rel="noopener">Download from Hugging Face</a>
+                    </article>
+                    <article class="model-item">
+                        <h3>DeepSeek Coder</h3>
+                        <p>Specialized coding assistant model</p>
+                        <a href="https://huggingface.co/TheBloke/deepseek-coder-6.7b-instruct-GGUF" target="_blank" rel="noopener">Download from Hugging Face</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Comparison Tool Section -->
+        <section id="model-comparison" class="model-comparison-section" aria-labelledby="comparison-heading">
+            <div class="container">
+                <div id="model-comparison-container">
+                    <!-- Model comparison tool will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features section -->
+        <!-- INCLUDE: includes/features-section.html -->
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <article class="faq-item">
+                        <h3>What is GGUF?</h3>
+                        <p>GGUF (GPT-Generated Unified Format) is an optimized model format created for llama.cpp to enable fast local inference of large language models.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Do I need Python or CLI knowledge?</h3>
+                        <p>No, you don't need Python or command line knowledge. GGUF Loader provides a user-friendly graphical interface.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Can I run AI models completely offline?</h3>
+                        <p>Yes, GGUF models can run entirely offline on your local machine without requiring internet connectivity.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>What are the system requirements?</h3>
+                        <p>GGUF models can run on standard hardware. Smaller models work on systems with 8GB RAM, while larger models may require 16GB or more.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="roadmap">
+            <div class="container">
+                <h2>Roadmap: Building the Future of Local AI</h2>
+                <div class="roadmap-timeline">
+                    <article class="roadmap-item">
+                        <h3>Q1 2025</h3>
+                        <p>Enhanced addon system and Smart Floating Assistant improvements</p>
+                    </article>
+                    <article class="roadmap-item">
+                        <h3>Q2 2025</h3>
+                        <p>Multi-modal support and improved performance optimizations</p>
+                    </article>
+                    <article class="roadmap-item">
+                        <h3>Q3 2025</h3>
+                        <p>Enterprise features and advanced security enhancements</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading">What Users Say</h2>
+                <div class="testimonials-grid">
+                    <article class="testimonial">
+                        <blockquote>
+                            <p>"GGUF Loader transformed how we deploy AI in our enterprise environment. The offline capability and Smart Floating Assistant have revolutionized our workflow productivity."</p>
+                        </blockquote>
+                        <footer>
+                            <cite>Sarah Chen, CTO at TechFlow Solutions</cite>
+                        </footer>
+                    </article>
+                    <article class="testimonial">
+                        <blockquote>
+                            <p>"Finally, a solution that lets us run powerful AI models without compromising data privacy. The addon system is incredibly flexible for our custom integrations."</p>
+                        </blockquote>
+                        <footer>
+                            <cite>Marcus Rodriguez, Lead Developer at FinSecure Analytics</cite>
+                        </footer>
+                    </article>
+                    <article class="testimonial">
+                        <blockquote>
+                            <p>"The ease of setup amazed me. From download to running Mistral 7B locally took less than 5 minutes. Perfect for researchers who need reliable, offline AI."</p>
+                        </blockquote>
+                        <footer>
+                            <cite>Dr. Emily Watson, AI Research Scientist at University of Cambridge</cite>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Integration Section -->
+        <section id="contact" class="community-integration">
+            <div class="container">
+                <h2>Join the Community</h2>
+                <div class="community-links">
+                    <a href="https://github.com/ggufloader/gguf-loader" target="_blank" rel="noopener" class="community-link">
+                        <h3>GitHub Repository</h3>
+                        <p>Contribute to development, report issues, and access source code</p>
+                    </a>
+                    <a href="https://github.com/ggufloader/gguf-loader/discussions" target="_blank" rel="noopener" class="community-link">
+                        <h3>Community Discussions</h3>
+                        <p>Get help, share ideas, and connect with other users</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GGUF Loader</h3>
+                    <p>Enterprise-grade local AI deployment platform</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://github.com/ggufloader/gguf-loader">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="https://github.com/ggufloader/gguf-loader/discussions">Discussions</a></li>
+                        <li><a href="https://github.com/ggufloader/gguf-loader/issues">Report Issues</a></li>
+                        <li><a href="CONTRIBUTING.md">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GGUF Loader. Open source project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript includes -->
+    <!-- INCLUDE: includes/scripts-section.html -->
+</body>
+
+</html>
