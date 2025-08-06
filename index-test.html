@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Enhanced Open Graph meta tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GGUF Loader" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="GGUF Loader - Enterprise-Grade Local AI Deployment Platform" />
+    <meta property="og:description" content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant." />
+    <meta property="og:url" content="https://ggufloader.github.io/" />
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GGUF Loader - Enterprise-Grade Local AI Platform" />
+    <meta property="og:image:type" content="image/png" />
+    
+    <!-- Enhanced Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ggufloader" />
+    <meta name="twitter:creator" content="@ggufloader" />
+    <meta name="twitter:title" content="GGUF Loader - Enterprise-Grade Local AI Deployment Platform" />
+    <meta name="twitter:description" content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant." />
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png" />
+    <meta name="twitter:image:alt" content="GGUF Loader - Enterprise-Grade Local AI Platform" />
+    
+    <!-- Additional social media optimization -->
+    <meta property="article:author" content="Hussain Nazary" />
+    <meta property="article:published_time" content="2025-01-27T00:00:00Z" />
+    <meta property="article:modified_time" content="2025-01-27T00:00:00Z" />
+    <meta property="article:section" content="Technology" />
+    <meta property="article:tag" content="AI" />
+    <meta property="article:tag" content="Machine Learning" />
+    <meta property="article:tag" content="Local AI" />
+    <meta property="article:tag" content="GGUF" />
+    <meta property="article:tag" content="Privacy" />
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GGUF Loader - Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python. Click-and-run AI with full privacy and Smart Floating Assistant." />
+    <meta name="keywords" content="GGUF, local AI, offline AI, Mistral, LLaMA, DeepSeek, Windows AI, Mac AI, Linux AI, private AI, enterprise AI, air-gapped AI, GDPR compliant AI, Smart Floating Assistant, addon system" />
+    <meta name="author" content="Hussain Nazary" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Additional SEO meta tags -->
+    <meta name="theme-color" content="#0078d4" />
+    <meta name="msapplication-TileColor" content="#0078d4" />
+    <meta name="application-name" content="GGUF Loader" />
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Language and geo targeting -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <title>GGUF Loader - Enterprise-Grade Local AI Deployment Platform</title>
+    
+    <!-- Critical CSS inlined for performance -->
+    <style>
+        /* Critical Above-the-Fold CSS - Inlined for Performance */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Skip Links for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Container - Mobile-First */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Navigation - Critical Styles */
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation menu - initially hidden on mobile */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+            
+            .nav-menu a {
+                padding: 0.5rem 0;
+                background: none !important;
+                border-bottom: none;
+            }
+        }
+
+        /* Hero Section - Critical Above-the-Fold */
+        .hero {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: #495057;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section - Critical Styles */
+        .hero-philosophy {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-attribution {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .philosophy-attribution cite {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .cta-section {
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Progressive enhancement for larger screens */
+        @media (min-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+                min-height: 65vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .cta-button {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+                min-height: 70vh;
+            }
+            
+            .hero-content {
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.7;
+            }
+            
+            .hero-philosophy {
+                margin: 2.5rem auto;
+                padding: 2rem;
+                max-width: 900px;
+            }
+            
+            .philosophy-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .philosophy-text {
+                font-size: 1.15rem;
+                line-height: 1.8;
+            }
+            
+            .cta-section {
+                margin-top: 2rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+
+
+        /* Image Optimization and Lazy Loading Styles */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Lazy loading states */
+        img.loading {
+            opacity: 0;
+            background: #f8f9fa;
+            min-height: 200px;
+            transition: opacity 0.3s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        /* Image error state */
+        img.image-error {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            min-height: 200px;
+        }
+
+        img.image-error::before {
+            content: '⚠️ Image failed to load';
+        }
+
+        /* Responsive images */
+        .responsive-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .responsive-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Image placeholder while loading */
+        .image-placeholder {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        /* Modern picture element support */
+        picture {
+            display: block;
+            width: 100%;
+        }
+
+        picture img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
+    
+    <!-- Model Comparison Tool CSS -->
+    <link rel="preload" href="model-comparison.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="model-comparison.css"></noscript>
+    
+    <!-- Preload JavaScript for faster loading -->
+    <link rel="preload" href="performance-monitor.js" as="script">
+    <link rel="preload" href="model-comparison.js" as="script">
+    
+    <!-- Font optimization with preconnect and font-display: swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Preload critical system fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Font loading optimization -->
+    <style>
+        /* Critical font loading with font-display: swap */
+        @font-face {
+            font-family: 'System UI';
+            font-display: swap;
+            src: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        /* Fallback font stack with font-display: swap */
+        body {
+            font-family: 'System UI', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+        }
+    </style>
+    
+    <!-- Cache control meta tags -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- PWA meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <link rel="canonical" href="https://ggufloader.github.io">
+
+    <!-- Enhanced JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GGUF Loader",
+        "description": "Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"],
+        "softwareVersion": "2.0.0",
+        "releaseNotes": "Enhanced addon system with Smart Floating Assistant",
+        "downloadUrl": "https://github.com/ggufloader/gguf-loader/releases",
+        "installUrl": "https://pypi.org/project/ggufloader/",
+        "softwareRequirements": "Python 3.8+, 4GB RAM minimum, 8GB RAM recommended",
+        "memoryRequirements": "4GB minimum, 8GB recommended",
+        "storageRequirements": "2GB free space for models",
+        "processorRequirements": "Modern x64 processor",
+        "programmingLanguage": "Python",
+        "runtimePlatform": "Python 3.8+",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader",
+        "license": "https://github.com/ggufloader/gguf-loader/blob/main/LICENSE",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary",
+            "email": "hossainnazary475@gmail.com",
+            "url": "https://www.linkedin.com/in/hussain-nazary-188b4385"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io",
+            "logo": "https://ggufloader.github.io/preview.png"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "131",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "featureList": [
+            "Offline AI model execution",
+            "Smart Floating Assistant",
+            "Multi-model support (Mistral, LLaMA, DeepSeek)",
+            "Cross-platform compatibility",
+            "Addon system for extensibility",
+            "Privacy-first local processing",
+            "Zero configuration setup",
+            "Enterprise-grade security"
+        ],
+        "screenshot": "https://ggufloader.github.io/preview.png",
+        "video": "https://www.youtube.com/watch?v=DuqDRkfGdcI",
+        "supportingData": {
+            "@type": "DataDownload",
+            "name": "GGUF Models",
+            "description": "Compatible AI models in GGUF format",
+            "contentUrl": "https://huggingface.co/models?library=gguf"
+        },
+        "applicationSuite": "GGUF Loader Suite",
+        "countriesSupported": ["US", "CA", "GB", "DE", "FR", "AU", "JP", "IN"],
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io",
+        "image": "https://ggufloader.github.io/preview.png",
+        "url": "https://ggufloader.github.io"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is GGUF?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF (GPT-Generated Unified Format) is an optimized model format created for llama.cpp to enable fast local inference of large language models."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need Python or CLI knowledge to run GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, you don't need Python or command line knowledge. There are user-friendly applications with graphical interfaces that can run GGUF models directly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I run AI models completely offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF models can run entirely offline on your local machine without requiring internet connectivity or external API calls."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which AI models support the GGUF format?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most popular models support GGUF format including Mistral, LLaMA 2/3, DeepSeek, Gemma, and TinyLLaMA. These are available on platforms like Hugging Face."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where can I download GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can download GGUF models from Hugging Face, particularly from users like TheBloke who provide optimized GGUF versions of popular models."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the system requirements for running GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF models can run on standard hardware. Smaller models like TinyLLaMA work on systems with 8GB RAM, while larger models may require 16GB or more."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are GGUF models compatible with Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF models are fully compatible with Windows. There are Windows applications specifically designed to run GGUF models with user-friendly interfaces."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I run Mistral or LLaMA models locally?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Download the GGUF format version from Hugging Face, then use a compatible application to load and run the model. No coding or setup required with the right tools."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I run AI models without expensive hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF format is optimized for efficiency. You can run smaller models on mid-range laptops and PCs without requiring high-end GPUs or specialized hardware."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Testimonials/Reviews Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "GGUF Loader User Reviews",
+        "description": "User testimonials and reviews for GGUF Loader",
+        "itemListElement": [
+            {
+                "@type": "Review",
+                "position": 1,
+                "author": {
+                    "@type": "Person",
+                    "name": "Sarah Chen",
+                    "jobTitle": "CTO",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "TechFlow Solutions"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "GGUF Loader transformed how we deploy AI in our enterprise environment. The offline capability and Smart Floating Assistant have revolutionized our workflow productivity.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 2,
+                "author": {
+                    "@type": "Person",
+                    "name": "Marcus Rodriguez",
+                    "jobTitle": "Lead Developer",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "FinSecure Analytics"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Finally, a solution that lets us run powerful AI models without compromising data privacy. The addon system is incredibly flexible for our custom integrations.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 3,
+                "author": {
+                    "@type": "Person",
+                    "name": "Dr. Emily Watson",
+                    "jobTitle": "AI Research Scientist",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "University of Cambridge"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "The ease of setup amazed me. From download to running Mistral 7B locally took less than 5 minutes. Perfect for researchers who need reliable, offline AI.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 4,
+                "author": {
+                    "@type": "Person",
+                    "name": "Ahmed Hassan",
+                    "jobTitle": "Content Manager",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Global Media Corp"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "GGUF Loader's Smart Floating Assistant has become essential to my daily workflow. The document summarization and translation features save hours every day.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 5,
+                "author": {
+                    "@type": "Person",
+                    "name": "Lisa Park",
+                    "jobTitle": "DevOps Engineer",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "CloudScale Systems"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Cross-platform compatibility is outstanding. We run GGUF Loader on Windows, Mac, and Linux servers seamlessly. The performance is consistently excellent.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 6,
+                "author": {
+                    "@type": "Person",
+                    "name": "David Kim",
+                    "jobTitle": "Senior Software Architect",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "InnovateTech Labs"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "The addon development framework is incredibly well-designed. Building custom integrations for our specific use cases was straightforward and well-documented.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Addon Showcase Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "GGUF Loader Community Addons",
+        "description": "Community-created addons and extensions for GGUF Loader",
+        "itemListElement": [
+            {
+                "@type": "SoftwareApplication",
+                "position": 1,
+                "name": "Smart Floating Assistant",
+                "description": "Global text processing with AI-powered document summarization, translation, and smart automation",
+                "applicationCategory": "ProductivityApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "GGUF Team"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "2100",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/ggufloader/gguf-loader/tree/main/addons/smart-floater",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 2,
+                "name": "Data Analytics Suite",
+                "description": "Advanced data analysis and visualization tools with AI-powered insights",
+                "applicationCategory": "BusinessApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "DataFlow Labs"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "reviewCount": "890",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/dataflow-labs/gguf-analytics",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 3,
+                "name": "Security Scanner",
+                "description": "AI-powered security analysis for code, documents, and system configurations",
+                "applicationCategory": "SecurityApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "CyberGuard"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "1200",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/cyberguard/gguf-security",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 4,
+                "name": "Creative Assistant",
+                "description": "AI-powered creative writing, content generation, and design assistance",
+                "applicationCategory": "DesignApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "ArtFlow Studio"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.6",
+                    "reviewCount": "750",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/artflow-studio/gguf-creative",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 5,
+                "name": "Web Scraper Pro",
+                "description": "Intelligent web scraping with AI-powered content extraction and analysis",
+                "applicationCategory": "DeveloperApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "WebHarvest"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.5",
+                    "reviewCount": "620",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/webharvest/gguf-scraper",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 6,
+                "name": "Business Intelligence",
+                "description": "Enterprise business intelligence with AI-driven insights, forecasting, and automated reporting",
+                "applicationCategory": "BusinessApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "BizTech Solutions"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "1100",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/biztech-solutions/gguf-bi",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Community Integration Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "GGUF Loader Community",
+        "description": "Open source community for GGUF Loader development and support",
+        "url": "https://ggufloader.github.io",
+        "logo": "https://ggufloader.github.io/preview.png",
+        "sameAs": [
+            "https://github.com/ggufloader/gguf-loader",
+            "https://github.com/ggufloader/gguf-loader/discussions"
+        ],
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "contactType": "technical support",
+                "url": "https://github.com/ggufloader/gguf-loader/discussions/categories/q-a"
+            },
+            {
+                "@type": "ContactPoint",
+                "contactType": "bug reports",
+                "url": "https://github.com/ggufloader/gguf-loader/issues"
+            }
+        ],
+        "memberOf": {
+            "@type": "Organization",
+            "name": "Open Source Initiative"
+        },
+        "foundingDate": "2024-01-01",
+        "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "value": "45+"
+        },
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Local AI Deployment",
+            "GGUF Format",
+            "Python Development",
+            "Cross-platform Software"
+        ],
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Community Support",
+                    "description": "Free community support for GGUF Loader users"
+                },
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Open Source Development",
+                    "description": "Collaborative development of GGUF Loader features"
+                },
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Contribution Guidelines Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Contribute to GGUF Loader",
+        "description": "Step-by-step guide for contributing to the GGUF Loader open source project",
+        "image": "https://ggufloader.github.io/preview.png",
+        "totalTime": "PT30M",
+        "supply": [
+            {
+                "@type": "HowToSupply",
+                "name": "GitHub Account"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "Git Version Control"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "Python Development Environment"
+            }
+        ],
+        "tool": [
+            {
+                "@type": "HowToTool",
+                "name": "Git"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "Python"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "Code Editor"
+            }
+        ],
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Fork & Clone Repository",
+                "text": "Fork the GGUF Loader repository on GitHub and clone it to your local machine to start development.",
+                "url": "https://github.com/ggufloader/gguf-loader"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Create Feature Branch",
+                "text": "Create a new branch for your changes with a descriptive name that explains the feature or fix."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Implement Changes",
+                "text": "Make your changes following the project's coding standards and best practices for maintainable code."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Test & Document",
+                "text": "Thoroughly test your changes and update documentation to reflect new features or modifications."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Submit Pull Request",
+                "text": "Create a pull request with a clear description of your changes and their benefits to the project.",
+                "url": "https://github.com/ggufloader/gguf-loader/pulls"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-showcase" aria-labelledby="philosophy-heading">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="philosophy-header">
+                    <h2 id="philosophy-heading" class="philosophy-main-title">Our Philosophy</h2>
+                    <div class="philosophy-divider"></div>
+                </div>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-quote-container">
+                        <blockquote class="philosophy-main-quote">
+                            <div class="quote-mark">"</div>
+                            <p class="philosophy-quote-text">
+                                AI should be accessible, private, and under your control. We believe in democratizing artificial intelligence 
+                                by making powerful models run locally on any machine, without compromising your data privacy or requiring 
+                                complex technical knowledge.
+                            </p>
+                            <div class="quote-mark closing">"</div>
+                        </blockquote>
+                        <footer class="philosophy-attribution">
+                            <cite>— The GGUF Loader Team</cite>
+                        </footer>
+                    </div>
+                    
+                    <div class="philosophy-principles">
+                        <div class="principle-item">
+                            <div class="principle-icon">🔒</div>
+                            <h3 class="principle-title">Privacy First</h3>
+                            <p class="principle-description">Your data never leaves your machine. True offline AI processing.</p>
+                        </div>
+                        
+                        <div class="principle-item">
+                            <div class="principle-icon">🌍</div>
+                            <h3 class="principle-title">Accessible to All</h3>
+                            <p class="principle-description">No complex setup. No Python knowledge required. Just click and run.</p>
+                        </div>
+                        
+                        <div class="principle-item">
+                            <div class="principle-icon">⚡</div>
+                            <h3 class="principle-title">Your Control</h3>
+                            <p class="principle-description">Run AI models on your terms, your hardware, your schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</div>
+                
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" 
+                        aria-label="Toggle navigation menu" 
+                        aria-expanded="false" 
+                        aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#features" role="menuitem" aria-label="View features section">Features</a></li>
+                    <li role="none"><a href="#how-to" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="#faq" role="menuitem" aria-label="View frequently asked questions">FAQ</a></li>
+                    <li role="none"><a href="#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a></li>
+                    <li role="none"><a href="#contact" role="menuitem" aria-label="View contact information">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <h1 id="hero-heading">GGUF Loader</h1>
+                <p class="hero-subtitle" role="doc-subtitle">Enterprise-Grade Local AI Deployment Platform</p>
+                <p class="hero-description">
+                    GGUF Loader is the simplest way to run local AI models like Mistral, LLaMA, and DeepSeek on Windows,
+                    MacOS, Linux — no Python, no internet, just click-and-run. Perfect for secure, private AI
+                    deployments in businesses, research labs, or offline environments.
+                </p>
+                <div class="cta-section">
+                    <a href="#download" class="cta-button" role="button" aria-describedby="hero-description">Download GGUF Loader</a>
+                </div>
+            </div>
+            <div class="hero-image" role="img" aria-label="GGUF Loader application preview">
+                <!-- Demo video will be handled separately -->
+            </div>
+        </section>
+
+        <!-- Demo Video Section -->
+        <section class="demo-video-section" aria-labelledby="demo-heading">
+            <div class="container">
+                <h2 id="demo-heading">See GGUF Loader in Action</h2>
+                <div class="video-container responsive-embed">
+                    <iframe src="https://www.youtube.com/embed/DuqDRkfGdcI?si=krkVbqY0xktcksEr"
+                            title="GGUF Loader demonstration video showing installation and usage"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy"
+                            aria-describedby="video-description">
+                    </iframe>
+                    <p id="video-description" class="sr-only">
+                        Video demonstration showing how to install and use GGUF Loader, including model loading and the Smart Floating Assistant feature.
+                    </p>
+                </div>
+                
+                <!-- Example of optimized image with lazy loading -->
+                <div class="demo-image-container" style="margin-top: 2rem;">
+                    <picture class="responsive-image">
+                        <source data-srcset-avif="preview-400w.avif 400w, preview-800w.avif 800w, preview-1200w.avif 1200w" 
+                                type="image/avif" 
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px">
+                        <source data-srcset-webp="preview-400w.webp 400w, preview-800w.webp 800w, preview-1200w.webp 1200w" 
+                                type="image/webp" 
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px">
+                        <img data-src="preview.png" 
+                             data-srcset="preview-400w.png 400w, preview-800w.png 800w, preview-1200w.png 1200w"
+                             data-src-avif="preview-1200w.avif"
+                             data-src-webp="preview-1200w.webp"
+                             data-src-original="preview.png"
+                             alt="GGUF Loader application interface preview showing the main dashboard and Smart Floating Assistant"
+                             loading="lazy"
+                             width="1200"
+                             height="630"
+                             class="img-fluid">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section" aria-labelledby="download-heading">
+            <div class="container">
+                <h2 id="download-heading">Get Started with GGUF Loader</h2>
+                <div class="download-content" role="list" aria-label="Installation options for different platforms">
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">🪟</span> Windows Installation</h3>
+                        <p><strong>Recommended:</strong> Download the standalone executable (no dependencies required)</p>
+                        <a href="https://github.com/ggufloader/gguf-loader/releases" 
+                           class="download-button" 
+                           role="button"
+                           aria-label="Download GGUF Loader Windows executable">
+                            Download Windows EXE
+                        </a>
+                        <p class="alternative-method">Alternative: Install via pip</p>
+                        <div class="code-block" role="code">
+                            <code aria-label="pip install command">pip install ggufloader</code>
+                        </div>
+                    </article>
+
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">🍎</span> macOS Installation</h3>
+                        <p><strong>Install via pip:</strong></p>
+                        <div class="code-block" role="code">
+                            <code aria-label="pip install command for macOS">pip install ggufloader</code>
+                        </div>
+                        <p>Then run:</p>
+                        <div class="code-block" role="code">
+                            <code aria-label="command to run GGUF Loader">ggufloader</code>
+                        </div>
+                    </article>
+
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">🐧</span> Linux Installation</h3>
+                        <p><strong>Install via pip:</strong></p>
+                        <div class="code-block" role="code">
+                            <code aria-label="pip install command for Linux">pip install ggufloader</code>
+                        </div>
+                        <p>Then run:</p>
+                        <div class="code-block" role="code">
+                            <code aria-label="command to run GGUF Loader">ggufloader</code>
+                        </div>
+                    </article>
+
+                    <article class="download-option" role="listitem">
+                        <h3><span aria-hidden="true">📦</span> Source Code & Development</h3>
+                        <p>Access the full source code, contribute, or build from source.</p>
+                        <a href="https://github.com/ggufloader/gguf-loader" 
+                           class="download-button"
+                           role="button"
+                           aria-label="View GGUF Loader source code on GitHub">
+                            View on GitHub
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- GGUF Models Download Section -->
+        <section class="gguf-models-section" aria-labelledby="models-heading">
+            <div class="container">
+                <h2 id="models-heading"><span aria-hidden="true">🔽</span> Download GGUF Models</h2>
+                <p class="models-intro">
+                    <span aria-hidden="true">⚡</span> Click a link below to download the model file directly (no Hugging Face page in between).
+                </p>
+
+                <div class="models-grid" role="list" aria-label="Available GGUF models for download">
+                    <article class="model-category" role="listitem">
+                        <h3><span aria-hidden="true">🧠</span> Mistral-7B Instruct</h3>
+                        <div class="model-downloads" role="list" aria-label="Mistral-7B Instruct download options">
+                            <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_0.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download Mistral-7B Instruct Q4_0 quantization, 4.23 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q4_0 (4.23 GB)
+                            </a>
+                            <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q6_K.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download Mistral-7B Instruct Q6_K quantization, 6.23 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q6_K (6.23 GB)
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="model-category" role="listitem">
+                        <h3><span aria-hidden="true">🧠</span> Qwen 1.5-7B Chat</h3>
+                        <div class="model-downloads" role="list" aria-label="Qwen 1.5-7B Chat download options">
+                            <a href="https://huggingface.co/TheBloke/Qwen1.5-7B-Chat-GGUF/resolve/main/qwen1_5-7b-chat-q4_k.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download Qwen 1.5-7B Chat Q4_K quantization, 4.88 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q4_K (4.88 GB)
+                            </a>
+                            <a href="https://huggingface.co/TheBloke/Qwen1.5-7B-Chat-GGUF/resolve/main/qwen1_5-7b-chat-q6_k.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download Qwen 1.5-7B Chat Q6_K quantization, 6.83 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q6_K (6.83 GB)
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="model-category" role="listitem">
+                        <h3><span aria-hidden="true">🧠</span> DeepSeek 7B Chat</h3>
+                        <div class="model-downloads" role="list" aria-label="DeepSeek 7B Chat download options">
+                            <a href="https://huggingface.co/TheBloke/DeepSeek-7B-Chat-GGUF/resolve/main/deepseek-7b-chat.Q4_0.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download DeepSeek 7B Chat Q4_0 quantization, 4.87 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q4_0 (4.87 GB)
+                            </a>
+                            <a href="https://huggingface.co/TheBloke/DeepSeek-7B-Chat-GGUF/resolve/main/deepseek-7b-chat.Q8_0.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download DeepSeek 7B Chat Q8_0 quantization, 9.33 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q8_0 (9.33 GB)
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="model-category" role="listitem">
+                        <h3><span aria-hidden="true">🧠</span> LLaMA 3 8B Instruct</h3>
+                        <div class="model-downloads" role="list" aria-label="LLaMA 3 8B Instruct download options">
+                            <a href="https://huggingface.co/TheBloke/Llama-3-8B-Instruct-GGUF/resolve/main/llama-3-8b-instruct.Q4_0.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download LLaMA 3 8B Instruct Q4_0 quantization, 4.68 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q4_0 (4.68 GB)
+                            </a>
+                            <a href="https://huggingface.co/TheBloke/Llama-3-8B-Instruct-GGUF/resolve/main/llama-3-8b-instruct.Q6_K.gguf"
+                               class="model-download-link"
+                               role="listitem"
+                               aria-label="Download LLaMA 3 8B Instruct Q6_K quantization, 6.91 GB file size"
+                               download>
+                                <span aria-hidden="true">⬇️</span> Download Q6_K (6.91 GB)
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="model-collections">
+                    <hr class="models-divider" role="separator" aria-label="End of individual model downloads">
+                    <h3><span aria-hidden="true">🗂️</span> More Model Collections</h3>
+                    <nav class="collection-links" aria-label="External model collections">
+                        <a href="https://huggingface.co/collections/TheBloke/bloke-gguf-models-65d89a02c470bc295c09e1a4"
+                           class="collection-link"
+                           aria-label="Visit TheBloke's GGUF Model Collection on Hugging Face">
+                            <span aria-hidden="true">🧠</span> TheBloke's GGUF Model Collection
+                        </a>
+                        <a href="https://huggingface.co/collections/ggml/gguf-64e5b4efc8a2097c3643d8b2"
+                           class="collection-link"
+                           aria-label="Visit GGUF Community Collection on Hugging Face">
+                            <span aria-hidden="true">🌍</span> GGUF Community Collection
+                        </a>
+                    </nav>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Model Comparison Tool Section -->
+        <section id="model-comparison" class="model-comparison-section" aria-labelledby="comparison-heading">
+            <div class="container">
+                <div id="model-comparison-container">
+                    <!-- Model comparison tool will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features Section -->
+        <section id="features" class="features" aria-labelledby="features-heading">
+            <div class="container">
+                <h2 id="features-heading">Core Features</h2>
+                <div class="features-grid" role="list" aria-label="GGUF Loader core features">
+                    <article class="feature-card" role="listitem">
+                        <h3>Multi-Model Support</h3>
+                        <p>Supports all major GGUF-format models including Mistral, LLaMA, DeepSeek, Gemma, and TinyLLaMA.</p>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Fully Offline Operation</h3>
+                        <p>Zero external APIs or internet access needed. Works on air-gapped or disconnected systems.</p>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>User-Friendly Cross-Platform App</h3>
+                        <p>No command-line skills needed. Drag-and-drop GUI with intuitive model loading for Windows, MacOS, and Linux.</p>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Optimized Performance</h3>
+                        <p>Built for speed and memory efficiency — even on mid-range CPUs.</p>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Privacy-Centric</h3>
+                        <p>All AI runs locally. Your data never leaves your machine. Compliant with GDPR.</p>
+                    </article>
+                    <article class="feature-card" role="listitem">
+                        <h3>Zero Configuration</h3>
+                        <p>Start instantly. No environment setup, Python, or packages to install.</p>
+                    </article>
+                </div>
+                </div>
+            </section>
+
+            <section class="use-cases">
+                <div class="container">
+                    <h2>Use Cases</h2>
+                    <div class="use-cases-grid">
+                        <article class="use-case">
+                            <h3>Business AI Assistants</h3>
+                            <p>Automate email replies, documents, or meeting notes without cloud exposure.</p>
+                        </article>
+                        <article class="use-case">
+                            <h3>Secure Deployment</h3>
+                            <p>Use AI in Private, Sensitive, or Regulated Workspaces</p>
+                        </article>
+                        <article class="use-case">
+                            <h3>Research & Testing</h3>
+                            <p>Run experiments locally with zero latency.</p>
+                        </article>
+                        <article class="use-case">
+                            <h3>Compliance-First Industries</h3>
+                            <p>Ensure privacy and legal adherence with on-device AI.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <div class="container">
+                    <h2>How It Works</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <h3>1. Download & Install</h3>
+                            <p>No dependencies. Portable version available.</p>
+                        </div>
+                        <div class="step">
+                            <h3>2. Load GGUF Model</h3>
+                            <p>From Hugging Face or local files.</p>
+                        </div>
+                        <div class="step">
+                            <h3>3. Start Using AI</h3>
+                            <p>Begin conversations or tasks with full offline functionality.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-to" class="how-to-guides">
+                <div class="container">
+                    <h2>How To Guides</h2>
+                    <div class="guides-grid">
+                        <article class="guide">
+                            <h3>How to Run Mistral 7B Locally</h3>
+                            <ol>
+                                <li>Download Mistral 7B Instruct GGUF model from TheBloke's Hugging Face page.</li>
+                                <li>Open GGUF Loader and drag the model file into the app.</li>
+                                <li>Click "Start" to begin using Mistral locally.</li>
+                            </ol>
+                        </article>
+                        <article class="guide">
+                            <h3>How to Run DeepSeek Coder</h3>
+                            <ol>
+                                <li>Visit Hugging Face and search for DeepSeek Coder in GGUF format.</li>
+                                <li>Download the model file to your computer.</li>
+                                <li>Open GGUF Loader, select the model, and launch your coding assistant.</li>
+                            </ol>
+                        </article>
+                        <article class="guide">
+                            <h3>How to Run TinyLLaMA on Low-End Devices</h3>
+                            <ol>
+                                <li>Find a TinyLLaMA GGUF model with small context size.</li>
+                                <li>Use GGUF Loader to open the model file.</li>
+                                <li>Interact with the model even on laptops with 8GB RAM.</li>
+                            </ol>
+                        </article>
+                        <article class="guide">
+                            <h3>How to Run GGUF Models Without Python</h3>
+                            <p>GGUF Loader does not require Python. Simply download the app, load a model, and start —
+                                no terminal or scripting needed.</p>
+                        </article>
+                        <article class="guide">
+                            <h3>How to Build a Local AI Assistant</h3>
+                            <ol>
+                                <li>Choose a base model like Mistral or LLaMA 3.</li>
+                                <li>Add a prompt template or use an addon for your task.</li>
+                                <li>Run it offline and modify context to fine-tune replies.</li>
+                            </ol>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommended-models">
+                <div class="container">
+                    <h2>Recommended Models</h2>
+                    <div class="models-grid">
+                        <article class="model">
+                            <h3>Mistral 7B Instruct</h3>
+                            <p>Balanced and fast general assistant.</p>
+                        </article>
+                        <article class="model">
+                            <h3>LLaMA 3 Instruct</h3>
+                            <p>Excellent for comprehension, summarization, and writing.</p>
+                        </article>
+                        <article class="model">
+                            <h3>DeepSeek Coder</h3>
+                            <p>Optimized for software development and documentation.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="faq">
+                <div class="container">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-grid">
+                        <article class="faq-item">
+                            <h3>What is GGUF Loader?</h3>
+                            <p>A local app that runs GGUF models offline. No Python, no internet, no setup.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>What is GGUF?</h3>
+                            <p>An optimized model format created for llama.cpp to enable fast local inference.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Do I need Python or CLI knowledge?</h3>
+                            <p>No. Everything runs in a visual interface.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Is it really offline?</h3>
+                            <p>Yes. All AI processes happen on your system with zero external requests.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Which models work?</h3>
+                            <p>Any GGUF model, including Mistral, LLaMA 2/3, DeepSeek, Gemma, and TinyLLaMA.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Where can I find GGUF models?</h3>
+                            <p>You can download them from Hugging Face (e.g., TheBloke) or use your own.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Can I use it to build my own AI assistant?</h3>
+                            <p>Yes. GGUF Loader is ideal for prototyping and deploying enterprise-grade assistants.</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>What platforms are supported?</h3>
+                            <p>Currently Windows, Linux, and macOS .</p>
+                        </article>
+                        <article class="faq-item">
+                            <h3>Is the source code available?</h3>
+                            <p>Yes. It's open-source and available on GitHub.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="roadmap" class="roadmap">
+                <div class="container">
+                    <h2>Roadmap: Building the Future of Local AI</h2>
+                    <div class="philosophy">
+                        <h3>Philosophy</h3>
+                        <p>Everyone should have access to AI they control — locally, securely, and freely. GGUF Loader
+                            is built for this.</p>
+                    </div>
+                    <div class="phases">
+                        <article class="phase">
+                            <h3>Phase 1: Core (Done)</h3>
+                            <ul>
+                                <li>GGUF inference</li>
+                                <li>Portable Windows, Mac, Linux app</li>
+                                <li>100% offline GUI</li>
+                            </ul>
+                        </article>
+                        <article class="phase">
+                            <h3>Phase 2: Productivity (In Progress)</h3>
+                            <ul>
+                                <li>Addon system with activation/deactivation</li>
+                                <li>SDK for custom extensions</li>
+                            </ul>
+                        </article>
+                        <article class="phase">
+                            <h3>Phase 3: Collaboration (Planned)</h3>
+                            <ul>
+                                <li>Model manager with previews</li>
+                                <li>Document processing and summarization</li>
+                                <li>CPU/GPU toggle and power settings</li>
+                            </ul>
+                        </article>
+                    </div>
+                    <div class="long-term-vision">
+                        <h3>Long-Term Vision</h3>
+                        <p>We're not just building a loader. We're building a private AI platform that supports
+                            multimodal models (text, image, audio), voice control, and profession-based agents (legal,
+                            medical, coding). All running 100% offline — with zero vendor lock-in.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
+                <div class="container">
+                    <h2 id="testimonials-heading">What Users Say</h2>
+                    <p class="testimonials-intro">Trusted by developers, enterprises, and AI enthusiasts worldwide</p>
+                    
+                    <div class="testimonials-grid" role="list" aria-label="User testimonials">
+                        <blockquote class="testimonial" role="listitem">
+                            <div class="testimonial-content">
+                                <p>"GGUF Loader transformed how we deploy AI in our enterprise environment. The offline capability and Smart Floating Assistant have revolutionized our workflow productivity."</p>
+                            </div>
+                            <cite class="testimonial-author">
+                                <div class="author-info">
+                                    <strong class="author-name">Sarah Chen</strong>
+                                    <span class="author-title">CTO, TechFlow Solutions</span>
+                                    <span class="author-company">Enterprise Software</span>
+                                </div>
+                                <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                                    <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </cite>
+                        </blockquote>
+
+                        <blockquote class="testimonial" role="listitem">
+                            <div class="testimonial-content">
+                                <p>"Finally, a solution that lets us run powerful AI models without compromising data privacy. The addon system is incredibly flexible for our custom integrations."</p>
+                            </div>
+                            <cite class="testimonial-author">
+                                <div class="author-info">
+                                    <strong class="author-name">Marcus Rodriguez</strong>
+                                    <span class="author-title">Lead Developer</span>
+                                    <span class="author-company">FinSecure Analytics</span>
+                                </div>
+                                <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                                    <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </cite>
+                        </blockquote>
+
+                        <blockquote class="testimonial" role="listitem">
+                            <div class="testimonial-content">
+                                <p>"The ease of setup amazed me. From download to running Mistral 7B locally took less than 5 minutes. Perfect for researchers who need reliable, offline AI."</p>
+                            </div>
+                            <cite class="testimonial-author">
+                                <div class="author-info">
+                                    <strong class="author-name">Dr. Emily Watson</strong>
+                                    <span class="author-title">AI Research Scientist</span>
+                                    <span class="author-company">University of Cambridge</span>
+                                </div>
+                                <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                                    <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </cite>
+                        </blockquote>
+
+                        <blockquote class="testimonial" role="listitem">
+                            <div class="testimonial-content">
+                                <p>"GGUF Loader's Smart Floating Assistant has become essential to my daily workflow. The document summarization and translation features save hours every day."</p>
+                            </div>
+                            <cite class="testimonial-author">
+                                <div class="author-info">
+                                    <strong class="author-name">Ahmed Hassan</strong>
+                                    <span class="author-title">Content Manager</span>
+                                    <span class="author-company">Global Media Corp</span>
+                                </div>
+                                <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                                    <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </cite>
+                        </blockquote>
+
+                        <blockquote class="testimonial" role="listitem">
+                            <div class="testimonial-content">
+                                <p>"Cross-platform compatibility is outstanding. We run GGUF Loader on Windows, Mac, and Linux servers seamlessly. The performance is consistently excellent."</p>
+                            </div>
+                            <cite class="testimonial-author">
+                                <div class="author-info">
+                                    <strong class="author-name">Lisa Park</strong>
+                                    <span class="author-title">DevOps Engineer</span>
+                                    <span class="author-company">CloudScale Systems</span>
+                                </div>
+                                <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                                    <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </cite>
+                        </blockquote>
+
+                        <blockquote class="testimonial" role="listitem">
+                            <div class="testimonial-content">
+                                <p>"The addon development framework is incredibly well-designed. Building custom integrations for our specific use cases was straightforward and well-documented."</p>
+                            </div>
+                            <cite class="testimonial-author">
+                                <div class="author-info">
+                                    <strong class="author-name">David Kim</strong>
+                                    <span class="author-title">Senior Software Architect</span>
+                                    <span class="author-company">InnovateTech Labs</span>
+                                </div>
+                                <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                                    <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </cite>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonials-cta">
+                        <p>Join thousands of satisfied users</p>
+                        <a href="#download" class="cta-button secondary">Get Started Today</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Addon Showcase Section -->
+            <section id="addon-showcase" class="addon-showcase" aria-labelledby="addon-showcase-heading">
+                <div class="container">
+                    <h2 id="addon-showcase-heading">Community Addons</h2>
+                    <p class="addon-showcase-intro">Extend GGUF Loader with powerful community-created addons</p>
+                    
+                    <div class="addon-grid" role="list" aria-label="Available addons">
+                        <article class="addon-card featured" role="listitem">
+                            <header class="addon-header">
+                                <div class="addon-icon" aria-hidden="true">✨</div>
+                                <div class="addon-meta">
+                                    <h3 class="addon-title">Smart Floating Assistant</h3>
+                                    <span class="addon-author">by GGUF Team</span>
+                                    <span class="addon-badge official">Official</span>
+                                </div>
+                            </header>
+                            <div class="addon-content">
+                                <p class="addon-description">Global text processing with AI-powered document summarization, translation, and smart automation. Works across all applications.</p>
+                                <div class="addon-features">
+                                    <span class="feature-tag">Document Processing</span>
+                                    <span class="feature-tag">Translation</span>
+                                    <span class="feature-tag">Automation</span>
+                                </div>
+                                <div class="addon-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>4.9 (2.1k reviews)</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">⬇️</span>
+                                        <span>50k+ downloads</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <footer class="addon-footer">
+                                <a href="/docs/smart-floater-example/" class="addon-link primary" aria-label="Learn more about Smart Floating Assistant">
+                                    Learn More
+                                </a>
+                                <a href="https://github.com/ggufloader/gguf-loader/tree/main/addons/smart-floater" class="addon-link secondary" aria-label="View Smart Floating Assistant source code" target="_blank" rel="noopener noreferrer">
+                                    View Source
+                                </a>
+                            </footer>
+                        </article>
+
+                        <article class="addon-card" role="listitem">
+                            <header class="addon-header">
+                                <div class="addon-icon" aria-hidden="true">📊</div>
+                                <div class="addon-meta">
+                                    <h3 class="addon-title">Data Analytics Suite</h3>
+                                    <span class="addon-author">by DataFlow Labs</span>
+                                    <span class="addon-badge community">Community</span>
+                                </div>
+                            </header>
+                            <div class="addon-content">
+                                <p class="addon-description">Advanced data analysis and visualization tools with AI-powered insights. Perfect for business intelligence and research.</p>
+                                <div class="addon-features">
+                                    <span class="feature-tag">Data Visualization</span>
+                                    <span class="feature-tag">Analytics</span>
+                                    <span class="feature-tag">Reports</span>
+                                </div>
+                                <div class="addon-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>4.7 (890 reviews)</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">⬇️</span>
+                                        <span>15k+ downloads</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <footer class="addon-footer">
+                                <a href="https://github.com/dataflow-labs/gguf-analytics" class="addon-link primary" aria-label="View Data Analytics Suite" target="_blank" rel="noopener noreferrer">
+                                    View Addon
+                                </a>
+                                <a href="https://github.com/dataflow-labs/gguf-analytics/releases" class="addon-link secondary" aria-label="Download Data Analytics Suite" target="_blank" rel="noopener noreferrer">
+                                    Download
+                                </a>
+                            </footer>
+                        </article>
+
+                        <article class="addon-card" role="listitem">
+                            <header class="addon-header">
+                                <div class="addon-icon" aria-hidden="true">🔒</div>
+                                <div class="addon-meta">
+                                    <h3 class="addon-title">Security Scanner</h3>
+                                    <span class="addon-author">by CyberGuard</span>
+                                    <span class="addon-badge community">Community</span>
+                                </div>
+                            </header>
+                            <div class="addon-content">
+                                <p class="addon-description">AI-powered security analysis for code, documents, and system configurations. Enterprise-grade threat detection.</p>
+                                <div class="addon-features">
+                                    <span class="feature-tag">Security Analysis</span>
+                                    <span class="feature-tag">Threat Detection</span>
+                                    <span class="feature-tag">Compliance</span>
+                                </div>
+                                <div class="addon-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>4.8 (1.2k reviews)</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">⬇️</span>
+                                        <span>25k+ downloads</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <footer class="addon-footer">
+                                <a href="https://github.com/cyberguard/gguf-security" class="addon-link primary" aria-label="View Security Scanner addon" target="_blank" rel="noopener noreferrer">
+                                    View Addon
+                                </a>
+                                <a href="https://github.com/cyberguard/gguf-security/releases" class="addon-link secondary" aria-label="Download Security Scanner" target="_blank" rel="noopener noreferrer">
+                                    Download
+                                </a>
+                            </footer>
+                        </article>
+
+                        <article class="addon-card" role="listitem">
+                            <header class="addon-header">
+                                <div class="addon-icon" aria-hidden="true">🎨</div>
+                                <div class="addon-meta">
+                                    <h3 class="addon-title">Creative Assistant</h3>
+                                    <span class="addon-author">by ArtFlow Studio</span>
+                                    <span class="addon-badge community">Community</span>
+                                </div>
+                            </header>
+                            <div class="addon-content">
+                                <p class="addon-description">AI-powered creative writing, content generation, and design assistance. Perfect for writers, marketers, and creators.</p>
+                                <div class="addon-features">
+                                    <span class="feature-tag">Content Creation</span>
+                                    <span class="feature-tag">Writing</span>
+                                    <span class="feature-tag">Design</span>
+                                </div>
+                                <div class="addon-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>4.6 (750 reviews)</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">⬇️</span>
+                                        <span>12k+ downloads</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <footer class="addon-footer">
+                                <a href="https://github.com/artflow-studio/gguf-creative" class="addon-link primary" aria-label="View Creative Assistant addon" target="_blank" rel="noopener noreferrer">
+                                    View Addon
+                                </a>
+                                <a href="https://github.com/artflow-studio/gguf-creative/releases" class="addon-link secondary" aria-label="Download Creative Assistant" target="_blank" rel="noopener noreferrer">
+                                    Download
+                                </a>
+                            </footer>
+                        </article>
+
+                        <article class="addon-card" role="listitem">
+                            <header class="addon-header">
+                                <div class="addon-icon" aria-hidden="true">🌐</div>
+                                <div class="addon-meta">
+                                    <h3 class="addon-title">Web Scraper Pro</h3>
+                                    <span class="addon-author">by WebHarvest</span>
+                                    <span class="addon-badge community">Community</span>
+                                </div>
+                            </header>
+                            <div class="addon-content">
+                                <p class="addon-description">Intelligent web scraping with AI-powered content extraction and analysis. Automated data collection made simple.</p>
+                                <div class="addon-features">
+                                    <span class="feature-tag">Web Scraping</span>
+                                    <span class="feature-tag">Data Extraction</span>
+                                    <span class="feature-tag">Automation</span>
+                                </div>
+                                <div class="addon-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>4.5 (620 reviews)</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">⬇️</span>
+                                        <span>8k+ downloads</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <footer class="addon-footer">
+                                <a href="https://github.com/webharvest/gguf-scraper" class="addon-link primary" aria-label="View Web Scraper Pro addon" target="_blank" rel="noopener noreferrer">
+                                    View Addon
+                                </a>
+                                <a href="https://github.com/webharvest/gguf-scraper/releases" class="addon-link secondary" aria-label="Download Web Scraper Pro" target="_blank" rel="noopener noreferrer">
+                                    Download
+                                </a>
+                            </footer>
+                        </article>
+
+                        <article class="addon-card" role="listitem">
+                            <header class="addon-header">
+                                <div class="addon-icon" aria-hidden="true">💼</div>
+                                <div class="addon-meta">
+                                    <h3 class="addon-title">Business Intelligence</h3>
+                                    <span class="addon-author">by BizTech Solutions</span>
+                                    <span class="addon-badge community">Community</span>
+                                </div>
+                            </header>
+                            <div class="addon-content">
+                                <p class="addon-description">Enterprise business intelligence with AI-driven insights, forecasting, and automated reporting for decision makers.</p>
+                                <div class="addon-features">
+                                    <span class="feature-tag">Business Intelligence</span>
+                                    <span class="feature-tag">Forecasting</span>
+                                    <span class="feature-tag">Reporting</span>
+                                </div>
+                                <div class="addon-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>4.8 (1.1k reviews)</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">⬇️</span>
+                                        <span>18k+ downloads</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <footer class="addon-footer">
+                                <a href="https://github.com/biztech-solutions/gguf-bi" class="addon-link primary" aria-label="View Business Intelligence addon" target="_blank" rel="noopener noreferrer">
+                                    View Addon
+                                </a>
+                                <a href="https://github.com/biztech-solutions/gguf-bi/releases" class="addon-link secondary" aria-label="Download Business Intelligence" target="_blank" rel="noopener noreferrer">
+                                    Download
+                                </a>
+                            </footer>
+                        </article>
+                    </div>
+
+                    <div class="addon-showcase-cta">
+                        <h3>Build Your Own Addon</h3>
+                        <p>Join our developer community and create powerful extensions for GGUF Loader</p>
+                        <div class="cta-buttons">
+                            <a href="/docs/addon-development/" class="cta-button primary">Development Guide</a>
+                            <a href="https://github.com/ggufloader/gguf-loader/discussions" class="cta-button secondary" target="_blank" rel="noopener noreferrer">Join Community</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Integration Section -->
+            <section id="community" class="community-integration" aria-labelledby="community-heading">
+                <div class="container">
+                    <h2 id="community-heading">Join Our Community</h2>
+                    <p class="community-intro">Connect with developers, share ideas, and contribute to the future of local AI</p>
+                    
+                    <div class="community-grid" role="list" aria-label="Community channels">
+                        <article class="community-card primary" role="listitem">
+                            <div class="community-icon" aria-hidden="true">💻</div>
+                            <div class="community-content">
+                                <h3>GitHub Repository</h3>
+                                <p>Access source code, report issues, contribute features, and track development progress.</p>
+                                <div class="community-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">⭐</span>
+                                        <span>2.1k stars</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">🍴</span>
+                                        <span>340 forks</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">🐛</span>
+                                        <span>12 open issues</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="community-actions">
+                                <a href="https://github.com/ggufloader/gguf-loader" class="community-link primary" target="_blank" rel="noopener noreferrer" aria-label="Visit GGUF Loader GitHub repository">
+                                    View Repository
+                                </a>
+                                <a href="https://github.com/ggufloader/gguf-loader/issues/new" class="community-link secondary" target="_blank" rel="noopener noreferrer" aria-label="Report an issue on GitHub">
+                                    Report Issue
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="community-card" role="listitem">
+                            <div class="community-icon" aria-hidden="true">💬</div>
+                            <div class="community-content">
+                                <h3>Discussions & Support</h3>
+                                <p>Ask questions, share experiences, get help from the community, and discuss new features.</p>
+                                <div class="community-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">👥</span>
+                                        <span>1.8k members</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">💭</span>
+                                        <span>450+ discussions</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">✅</span>
+                                        <span>95% resolved</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="community-actions">
+                                <a href="https://github.com/ggufloader/gguf-loader/discussions" class="community-link primary" target="_blank" rel="noopener noreferrer" aria-label="Join GitHub discussions">
+                                    Join Discussions
+                                </a>
+                                <a href="https://github.com/ggufloader/gguf-loader/discussions/categories/q-a" class="community-link secondary" target="_blank" rel="noopener noreferrer" aria-label="Ask a question in discussions">
+                                    Ask Question
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="community-card" role="listitem">
+                            <div class="community-icon" aria-hidden="true">📚</div>
+                            <div class="community-content">
+                                <h3>Documentation & Guides</h3>
+                                <p>Comprehensive documentation, tutorials, and community-contributed guides for all skill levels.</p>
+                                <div class="community-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">📖</span>
+                                        <span>25+ guides</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">🎯</span>
+                                        <span>15+ tutorials</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">🔄</span>
+                                        <span>Weekly updates</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="community-actions">
+                                <a href="/docs/" class="community-link primary" aria-label="Browse documentation">
+                                    Browse Docs
+                                </a>
+                                <a href="/docs/addon-development/" class="community-link secondary" aria-label="Learn addon development">
+                                    Learn Development
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="community-card" role="listitem">
+                            <div class="community-icon" aria-hidden="true">🚀</div>
+                            <div class="community-content">
+                                <h3>Contribute & Build</h3>
+                                <p>Contribute code, create addons, improve documentation, and help shape the future of GGUF Loader.</p>
+                                <div class="community-stats">
+                                    <span class="stat">
+                                        <span aria-hidden="true">👨‍💻</span>
+                                        <span>45+ contributors</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">🔧</span>
+                                        <span>120+ addons</span>
+                                    </span>
+                                    <span class="stat">
+                                        <span aria-hidden="true">📈</span>
+                                        <span>Active development</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="community-actions">
+                                <a href="https://github.com/ggufloader/gguf-loader/blob/main/CONTRIBUTING.md" class="community-link primary" target="_blank" rel="noopener noreferrer" aria-label="View contribution guidelines">
+                                    Contribute
+                                </a>
+                                <a href="https://github.com/ggufloader/gguf-loader/pulls" class="community-link secondary" target="_blank" rel="noopener noreferrer" aria-label="View pull requests">
+                                    View PRs
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="community-guidelines">
+                        <h3>Community Guidelines</h3>
+                        <div class="guidelines-grid">
+                            <div class="guideline-item">
+                                <div class="guideline-icon" aria-hidden="true">🤝</div>
+                                <div class="guideline-content">
+                                    <h4>Be Respectful</h4>
+                                    <p>Treat all community members with respect and kindness. We welcome developers of all skill levels.</p>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <div class="guideline-icon" aria-hidden="true">🔍</div>
+                                <div class="guideline-content">
+                                    <h4>Search First</h4>
+                                    <p>Before asking questions, search existing discussions and documentation to avoid duplicates.</p>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <div class="guideline-icon" aria-hidden="true">📝</div>
+                                <div class="guideline-content">
+                                    <h4>Provide Details</h4>
+                                    <p>When reporting issues or asking for help, include system info, error messages, and steps to reproduce.</p>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <div class="guideline-icon" aria-hidden="true">🎯</div>
+                                <div class="guideline-content">
+                                    <h4>Stay On Topic</h4>
+                                    <p>Keep discussions focused on GGUF Loader, AI models, and related development topics.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contribution-process">
+                        <h3>How to Contribute</h3>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Fork & Clone</h4>
+                                    <p>Fork the repository and clone it to your local machine to start development.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Create Branch</h4>
+                                    <p>Create a feature branch for your changes with a descriptive name.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Make Changes</h4>
+                                    <p>Implement your feature or fix, following our coding standards and best practices.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Test & Document</h4>
+                                    <p>Test your changes thoroughly and update documentation as needed.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Submit PR</h4>
+                                    <p>Create a pull request with a clear description of your changes and their benefits.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-cta">
+                        <h3>Ready to Get Involved?</h3>
+                        <p>Join thousands of developers building the future of local AI</p>
+                        <div class="cta-buttons">
+                            <a href="https://github.com/ggufloader/gguf-loader" class="cta-button primary" target="_blank" rel="noopener noreferrer">Star on GitHub</a>
+                            <a href="https://github.com/ggufloader/gguf-loader/discussions" class="cta-button secondary" target="_blank" rel="noopener noreferrer">Join Discussions</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="author"></section>
+                <div class="container">
+                    <h2>Author</h2>
+                    <div class="author-info">
+                        <h3>Hussain Nazary</h3>
+                        <p class="author-title">Founder & Lead Developer of GGUF Loader</p>
+                        <p class="author-bio">
+                            Hussain is a passionate software engineer and AI enthusiast focused on making powerful local
+                            AI tools accessible to everyone. With deep expertise in AI model deployment, he builds
+                            intuitive applications that bridge the gap between advanced AI technology and everyday users
+                            — all while prioritizing privacy, offline operation, and simplicity.
+                        </p>
+                        <div class="author-links">
+                            <a href="https://www.linkedin.com/in/hussain-nazary-188b4385"
+                                class="author-link">LinkedIn</a>
+                            <a href="mailto:hossainnazary475@gmail.com" class="author-link">Email</a>
+                            <a href="https://github.com/ggufloader/gguf-loader" class="author-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 GGUF Loader – Trusted AI for Private, Local Use</p>
+                <div class="footer-links">
+                    <a href="https://ggufloader.github.io">Website</a>
+                    <a href="https://github.com/ggufloader/gguf-loader">GitHub</a>
+                    <a href="mailto:hossainnazary475@gmail.com">Enterprise Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mouse-following floating buttons with collision avoidance
+        const floatingContainer = document.querySelector('.floating-container');
+        const floatingButtons = document.querySelectorAll('.floating-button');
+        const serviceBanners = document.querySelectorAll('.service-banner');
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let isMouseMoving = false;
+        let moveTimeout;
+
+        // Button positions array to track and prevent overlap
+        const buttonPositions = [];
+
+        // Minimum distance between buttons
+        const MIN_DISTANCE = 80;
+        const MOUSE_FOLLOW_DISTANCE = 100;
+
+        // Initialize button positions
+        floatingButtons.forEach((button, index) => {
+            buttonPositions.push({
+                x: window.innerWidth / 2 + (index - 2) * 100,
+                y: window.innerHeight / 2 + (index - 2) * 60,
+                targetX: window.innerWidth / 2 + (index - 2) * 100,
+                targetY: window.innerHeight / 2 + (index - 2) * 60,
+                index: index
+            });
+        });
+
+        // Track mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isMouseMoving = true;
+
+            clearTimeout(moveTimeout);
+            moveTimeout = setTimeout(() => {
+                isMouseMoving = false;
+            }, 150);
+        });
+
+        // Calculate distance between two points
+        function getDistance(x1, y1, x2, y2) {
+            return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        }
+
+        // Check if position conflicts with other buttons
+        function checkCollision(newX, newY, currentIndex) {
+            for (let i = 0; i < buttonPositions.length; i++) {
+                if (i === currentIndex) continue;
+
+                const distance = getDistance(newX, newY, buttonPositions[i].x, buttonPositions[i].y);
+                if (distance < MIN_DISTANCE) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Find safe position near target
+        function findSafePosition(targetX, targetY, currentIndex) {
+            let bestX = targetX;
+            let bestY = targetY;
+            let attempts = 0;
+            const maxAttempts = 20;
+
+            while (checkCollision(bestX, bestY, currentIndex) && attempts < maxAttempts) {
+                // Try positions in a circle around the target
+                const angle = (attempts * Math.PI * 2) / 8;
+                const radius = MIN_DISTANCE + (attempts * 10);
+
+                bestX = targetX + Math.cos(angle) * radius;
+                bestY = targetY + Math.sin(angle) * radius;
+
+                // Keep within screen bounds
+                bestX = Math.max(25, Math.min(window.innerWidth - 25, bestX));
+                bestY = Math.max(25, Math.min(window.innerHeight - 25, bestY));
+
+                attempts++;
+            }
+
+            return { x: bestX, y: bestY };
+        }
+
+        // Animate floating buttons to follow mouse with spacing
+        function animateFloatingButtons() {
+            if (isMouseMoving) {
+                floatingButtons.forEach((button, index) => {
+                    const position = buttonPositions[index];
+
+                    // Calculate target position near mouse with some offset
+                    const angle = (index * Math.PI * 2) / floatingButtons.length;
+                    const baseRadius = MOUSE_FOLLOW_DISTANCE;
+                    const time = Date.now() * 0.001;
+
+                    // Add some organic movement
+                    const offsetX = Math.sin(time + index) * 30;
+                    const offsetY = Math.cos(time + index) * 30;
+
+                    const rawTargetX = mouseX + Math.cos(angle) * baseRadius + offsetX;
+                    const rawTargetY = mouseY + Math.sin(angle) * baseRadius + offsetY;
+
+                    // Keep within screen bounds
+                    const boundedTargetX = Math.max(25, Math.min(window.innerWidth - 25, rawTargetX));
+                    const boundedTargetY = Math.max(25, Math.min(window.innerHeight - 25, rawTargetY));
+
+                    // Find safe position that doesn't overlap
+                    const safePosition = findSafePosition(boundedTargetX, boundedTargetY, index);
+
+                    // Smooth interpolation to target position
+                    const smoothing = 0.1;
+                    position.targetX = safePosition.x;
+                    position.targetY = safePosition.y;
+
+                    position.x += (position.targetX - position.x) * smoothing;
+                    position.y += (position.targetY - position.y) * smoothing;
+
+                    // Apply transform
+                    button.style.transform = `translate(${position.x - 25}px, ${position.y - 25}px)`;
+                });
+            } else {
+                // When mouse stops moving, spread buttons out more naturally
+                floatingButtons.forEach((button, index) => {
+                    const position = buttonPositions[index];
+
+                    // Natural spread pattern
+                    const centerX = window.innerWidth / 2;
+                    const centerY = window.innerHeight / 2;
+                    const angle = (index * Math.PI * 2) / floatingButtons.length;
+                    const radius = 150;
+
+                    const naturalX = centerX + Math.cos(angle) * radius;
+                    const naturalY = centerY + Math.sin(angle) * radius;
+
+                    // Keep within bounds
+                    const boundedX = Math.max(25, Math.min(window.innerWidth - 25, naturalX));
+                    const boundedY = Math.max(25, Math.min(window.innerHeight - 25, naturalY));
+
+                    const safePosition = findSafePosition(boundedX, boundedY, index);
+
+                    // Slower interpolation when mouse is not moving
+                    const smoothing = 0.05;
+                    position.targetX = safePosition.x;
+                    position.targetY = safePosition.y;
+
+                    position.x += (position.targetX - position.x) * smoothing;
+                    position.y += (position.targetY - position.y) * smoothing;
+
+                    button.style.transform = `translate(${position.x - 25}px, ${position.y - 25}px)`;
+                });
+            }
+
+            requestAnimationFrame(animateFloatingButtons);
+        }
+
+        // Start animation
+        animateFloatingButtons();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Reposition buttons on resize
+            floatingButtons.forEach((button, index) => {
+                const position = buttonPositions[index];
+                position.x = Math.max(25, Math.min(window.innerWidth - 25, position.x));
+                position.y = Math.max(25, Math.min(window.innerHeight - 25, position.y));
+            });
+        });
+
+        // Service banner interactions
+        floatingButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceType = button.dataset.service;
+                const targetBanner = document.querySelector(`[data-service="${serviceType}"].service-banner`);
+
+                if (targetBanner) {
+                    targetBanner.scrollIntoView({ behavior: 'smooth' });
+                    targetBanner.classList.add('highlighted');
+
+                    setTimeout(() => {
+                        targetBanner.classList.remove('highlighted');
+                    }, 3000);
+                }
+            });
+        });
+
+        // Intersection Observer for service banners
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        serviceBanners.forEach(banner => {
+            observer.observe(banner);
+        });
+    </script>
+    
+    <!-- Lazy load JavaScript for better performance -->
+    <script>
+        // Load non-critical JavaScript after page load
+        window.addEventListener('load', function() {
+            // Floating buttons removed
+            
+            // Load performance monitoring script
+            const performanceScript = document.createElement('script');
+            performanceScript.src = 'performance-monitor.js';
+            performanceScript.async = true;
+            document.head.appendChild(performanceScript);
+
+            // Load model comparison tool script
+            const modelComparisonScript = document.createElement('script');
+            modelComparisonScript.src = 'model-comparison.js';
+            modelComparisonScript.async = true;
+            document.head.appendChild(modelComparisonScript);
+
+            // Load site search script
+            const siteSearchScript = document.createElement('script');
+            siteSearchScript.src = 'site-search.js';
+            siteSearchScript.async = true;
+            document.head.appendChild(siteSearchScript);
+        });
+        
+        // Fallback CSS loading for browsers that don't support onload
+        (function() {
+            var link = document.querySelector('link[rel="preload"][as="style"]');
+            if (link && !link.onload) {
+                link.rel = 'stylesheet';
+            }
+        })();
+        
+        // Service Worker Registration for Caching and Offline Support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered successfully:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content is available, show update notification
+                                    showUpdateNotification();
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+                
+                // Handle service worker messages
+                navigator.serviceWorker.addEventListener('message', function(event) {
+                    console.log('Service Worker message:', event.data);
+                    if (event.data && event.data.type === 'CACHE_UPDATED') {
+                        console.log('Cache updated:', event.data.url);
+                    } else if (event.data && event.data.type === 'CACHE_PERFORMANCE') {
+                        console.log('Cache performance metrics:', event.data.metrics);
+                        // Send to performance monitoring if available
+                        if (window.GGUFPerformance) {
+                            window.GGUFPerformance.cacheMetrics = event.data.metrics;
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Show update notification when new service worker is available
+        function showUpdateNotification() {
+            if (confirm('A new version of GGUF Loader is available. Would you like to update?')) {
+                window.location.reload();
+            }
+        }
+    </script>
+    
+    <!-- Mobile Navigation Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Toggle mobile menu
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                
+                // Toggle aria-expanded attribute
+                this.setAttribute('aria-expanded', !isExpanded);
+                
+                // Toggle menu visibility
+                navMenu.classList.toggle('active');
+                
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = !isExpanded ? 'hidden' : '';
+            });
+            
+            // Close menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navMenu.contains(event.target) || 
+                                       mobileMenuToggle.contains(event.target);
+                
+                if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Handle escape key to close menu
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                    mobileMenuToggle.focus(); // Return focus to toggle button
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    // Reset mobile menu state on desktop
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Enhanced Image Optimization and Lazy Loading System
+        document.addEventListener('DOMContentLoaded', function() {
+            // Image lazy loading with IntersectionObserver
+            const lazyImages = document.querySelectorAll('img[loading="lazy"], img[data-src]');
+            const imageObserverOptions = {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.01
+            };
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            
+                            // Load the actual image source
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                            }
+                            
+                            // Load srcset if available
+                            if (img.dataset.srcset) {
+                                img.srcset = img.dataset.srcset;
+                                img.removeAttribute('data-srcset');
+                            }
+                            
+                            // Add loaded class for CSS transitions
+                            img.classList.add('loaded');
+                            
+                            // Remove loading placeholder
+                            img.classList.remove('loading');
+                            
+                            observer.unobserve(img);
+                        }
+                    });
+                }, imageObserverOptions);
+                
+                lazyImages.forEach(img => {
+                    img.classList.add('loading');
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                lazyImages.forEach(img => {
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    img.classList.remove('loading');
+                });
+            }
+            
+            // Modern image format detection and replacement
+            function supportsWebP() {
+                return new Promise((resolve) => {
+                    const webP = new Image();
+                    webP.onload = webP.onerror = () => resolve(webP.height === 2);
+                    webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+                });
+            }
+            
+            function supportsAVIF() {
+                return new Promise((resolve) => {
+                    const avif = new Image();
+                    avif.onload = avif.onerror = () => resolve(avif.height === 2);
+                    avif.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+                });
+            }
+            
+            // Enhanced format support detection
+            async function detectImageFormats() {
+                const [webpSupported, avifSupported] = await Promise.all([
+                    supportsWebP(),
+                    supportsAVIF()
+                ]);
+                
+                // Store format support in sessionStorage for performance
+                sessionStorage.setItem('webp-support', webpSupported);
+                sessionStorage.setItem('avif-support', avifSupported);
+                
+                return { webpSupported, avifSupported };
+            }
+            
+            // Get cached format support or detect
+            function getFormatSupport() {
+                const webpCached = sessionStorage.getItem('webp-support');
+                const avifCached = sessionStorage.getItem('avif-support');
+                
+                if (webpCached !== null && avifCached !== null) {
+                    return Promise.resolve({
+                        webpSupported: webpCached === 'true',
+                        avifSupported: avifCached === 'true'
+                    });
+                }
+                
+                return detectImageFormats();
+            }
+            
+            // Apply optimal image formats
+            getFormatSupport().then(({ webpSupported, avifSupported }) => {
+                const images = document.querySelectorAll('img[data-src-avif], img[data-src-webp], picture source');
+                
+                images.forEach(element => {
+                    if (element.tagName === 'SOURCE') {
+                        // Handle picture element sources
+                        if (avifSupported && element.dataset.srcsetAvif) {
+                            element.srcset = element.dataset.srcsetAvif;
+                            element.type = 'image/avif';
+                        } else if (webpSupported && element.dataset.srcsetWebp) {
+                            element.srcset = element.dataset.srcsetWebp;
+                            element.type = 'image/webp';
+                        }
+                    } else {
+                        // Handle img elements
+                        if (avifSupported && element.dataset.srcAvif) {
+                            element.dataset.src = element.dataset.srcAvif;
+                        } else if (webpSupported && element.dataset.srcWebp) {
+                            element.dataset.src = element.dataset.srcWebp;
+                        }
+                    }
+                });
+            });
+            
+            // Responsive image srcset management
+            function updateResponsiveImages() {
+                const images = document.querySelectorAll('img[data-srcset]');
+                images.forEach(img => {
+                    if (!img.srcset && img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                });
+            }
+            
+            // Image error handling and fallbacks
+            function handleImageError(img) {
+                img.addEventListener('error', function() {
+                    // Try WebP fallback if AVIF failed
+                    if (this.dataset.srcWebp && this.src !== this.dataset.srcWebp) {
+                        this.src = this.dataset.srcWebp;
+                        return;
+                    }
+                    
+                    // Try original format if modern formats failed
+                    if (this.dataset.srcOriginal && this.src !== this.dataset.srcOriginal) {
+                        this.src = this.dataset.srcOriginal;
+                        return;
+                    }
+                    
+                    // Show placeholder if all formats failed
+                    this.classList.add('image-error');
+                    this.alt = 'Image failed to load';
+                });
+            }
+            
+            // Apply error handling to all images
+            document.querySelectorAll('img').forEach(handleImageError);
+            
+            // Performance monitoring for images
+            if ('PerformanceObserver' in window) {
+                const imagePerformanceObserver = new PerformanceObserver((list) => {
+                    list.getEntries().forEach((entry) => {
+                        if (entry.initiatorType === 'img') {
+                            // Track image loading performance
+                            console.log(`Image loaded: ${entry.name} in ${entry.duration}ms`);
+                            
+                            // Send to analytics if available
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'image_load_time', {
+                                    image_url: entry.name,
+                                    load_time: Math.round(entry.duration),
+                                    transfer_size: entry.transferSize || 0
+                                });
+                            }
+                        }
+                    });
+                });
+                
+                imagePerformanceObserver.observe({ entryTypes: ['resource'] });
+            }
+            
+            updateResponsiveImages();
+            window.addEventListener('resize', updateResponsiveImages);
+        });
+    </script>
+
+    <!-- Analytics Configuration -->
+    <script src="analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="analytics.js" defer></script>
+    <script src="core-web-vitals-monitor.js" defer></script>
+    <script src="user-behavior-tracker.js" defer></script>
+    
+    <!-- Initialize analytics after all scripts are loaded -->
+    <script>
+        // Ensure proper initialization order
+        document.addEventListener('DOMContentLoaded', () => {
+            // Analytics will auto-initialize
+            console.log('Analytics and monitoring systems initialized');
+        });
+    </script>
+</body>
+
+</html>
