@@ -1,0 +1,675 @@
+/* Mobile-Specific Fixes and Improvements */
+
+/* Prevent horizontal scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Better mobile typography */
+@media (max-width: 767px) {
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: 1.25rem !important;
+        line-height: 1.3;
+    }
+    
+    h4 {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Improve readability */
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Fix container overflow on mobile */
+@media (max-width: 767px) {
+    .container,
+    .hero-content,
+    .section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Reduce padding on mobile */
+    .section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Fix hero section on mobile */
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Fix philosophy section on mobile */
+@media (max-width: 767px) {
+    .philosophy-showcase {
+        padding: 1.5rem 0;
+    }
+    
+    .philosophy-main-title {
+        font-size: 1.75rem;
+    }
+    
+    .philosophy-main-quote {
+        padding: 1.5rem 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    .philosophy-quote-text {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .quote-mark {
+        font-size: 2.5rem;
+    }
+    
+    .philosophy-sub-cards {
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .principle-item {
+        padding: 1.25rem;
+    }
+}
+
+/* Fix video container on mobile */
+@media (max-width: 767px) {
+    .video-container {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .demo-video-section {
+        padding: 2rem 0;
+    }
+    
+    .demo-video-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Fix download section on mobile */
+@media (max-width: 767px) {
+    .download-section {
+        padding: 2rem 0;
+    }
+    
+    .download-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .download-option {
+        padding: 1.5rem;
+    }
+    
+    .download-button {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+    }
+}
+
+/* Fix how-to-use guide on mobile */
+@media (max-width: 767px) {
+    .guide-steps {
+        flex-direction: column;
+    }
+    
+    .step {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/* Fix feature cards on mobile */
+@media (max-width: 767px) {
+    .features {
+        padding: 2rem 0;
+    }
+    
+    .features h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.15rem;
+    }
+}
+
+/* Fix buttons on mobile */
+@media (max-width: 767px) {
+    .cta-button,
+    .download-btn,
+    .learn-more-btn,
+    .detailed-instructions-btn {
+        min-height: 48px;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* Stack button groups vertically */
+    .next-steps-links,
+    .model-usage-links,
+    .models-help-links,
+    .feature-links,
+    .guide-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .next-step-btn,
+    .usage-guide-btn,
+    .help-link-btn,
+    .learn-more-btn,
+    .detailed-instructions-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Fix code blocks on mobile */
+@media (max-width: 767px) {
+    .code-block {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .code-block code {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+}
+
+/* Fix tables on mobile */
+@media (max-width: 767px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+}
+
+/* Improve touch targets */
+@media (max-width: 767px) {
+    a, button, input, select, textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Navigation links */
+    .nav-menu a {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Fix model comparison tool on mobile */
+@media (max-width: 767px) {
+    .model-comparison-tool {
+        padding: 1rem 0.5rem;
+    }
+    
+    .tool-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .tool-header p {
+        font-size: 0.95rem;
+    }
+    
+    .model-card {
+        padding: 1.25rem;
+    }
+    
+    .model-name {
+        font-size: 1.1rem;
+    }
+}
+
+/* Fix footer on mobile */
+@media (max-width: 767px) {
+    footer {
+        padding: 2rem 0;
+    }
+    
+    footer .container {
+        text-align: center;
+    }
+}
+
+/* Improve form inputs on mobile */
+@media (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="search"],
+    select,
+    textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 0.75rem;
+    }
+}
+
+/* Fix details/summary elements on mobile */
+@media (max-width: 767px) {
+    details {
+        margin: 1rem 0;
+    }
+    
+    summary {
+        padding: 0.875rem;
+        font-size: 1rem;
+    }
+    
+    .details-content {
+        padding: 1rem;
+    }
+}
+
+/* Improve spacing on mobile */
+@media (max-width: 767px) {
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .section h2 {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Reduce gaps in grids */
+    .features-grid,
+    .guides-grid,
+    .use-cases-grid,
+    .steps,
+    .download-content,
+    .models-grid {
+        gap: 1.25rem;
+    }
+}
+
+/* Fix images on mobile */
+@media (max-width: 767px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .responsive-image {
+        margin: 1rem 0;
+    }
+}
+
+/* Improve accessibility on mobile */
+@media (max-width: 767px) {
+    /* Larger focus indicators */
+    a:focus,
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 3px solid #0078d4;
+        outline-offset: 2px;
+    }
+}
+
+/* Fix sticky navigation on mobile */
+@media (max-width: 767px) {
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .nav-container {
+        padding: 0.875rem 1rem;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+}
+
+/* Prevent text overflow */
+@media (max-width: 767px) {
+    * {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* But not for code */
+    code, pre {
+        word-wrap: normal;
+        overflow-wrap: normal;
+    }
+}
+
+/* Fix modal/overlay on mobile */
+@media (max-width: 767px) {
+    .search-modal-content {
+        width: 95%;
+        max-height: 90vh;
+        margin: 1rem;
+    }
+}
+
+/* Improve list spacing on mobile */
+@media (max-width: 767px) {
+    ul, ol {
+        padding-left: 1.5rem;
+    }
+    
+    li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Fix very small screens (< 375px) */
+@media (max-width: 374px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .cta-button,
+    .download-button {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Landscape orientation fixes */
+@media (max-width: 767px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 1.5rem 0;
+    }
+    
+    .section {
+        padding: 1.5rem 0;
+    }
+}
+
+
+/* Additional Edge Case Fixes */
+
+/* Fix for Safari iOS address bar */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: calc(100vh - 60px);
+    }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Smooth scrolling for mobile */
+@media (max-width: 767px) {
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Fix for sticky elements on iOS */
+@supports (-webkit-overflow-scrolling: touch) {
+    nav {
+        position: -webkit-sticky;
+        position: sticky;
+    }
+}
+
+/* Prevent pull-to-refresh on Chrome mobile */
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* Fix for Android Chrome address bar */
+@media (max-width: 767px) {
+    .hero {
+        min-height: 100svh; /* Small viewport height */
+    }
+}
+
+/* Better tap highlight color */
+* {
+    -webkit-tap-highlight-color: rgba(52, 152, 219, 0.2);
+    tap-highlight-color: rgba(52, 152, 219, 0.2);
+}
+
+/* Remove tap highlight on specific elements */
+a, button {
+    -webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
+}
+
+/* Fix for iOS button styling */
+button,
+input[type="button"],
+input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+}
+
+/* Fix for iOS input styling */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Prevent zoom on double tap */
+@media (max-width: 767px) {
+    * {
+        touch-action: manipulation;
+    }
+}
+
+/* Fix for notch on iPhone X and newer */
+@supports (padding: max(0px)) {
+    .nav-container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+}
+
+/* Fix for Samsung Internet browser */
+@media (max-width: 767px) {
+    select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 12px;
+        padding-right: 2.5rem;
+    }
+}
+
+/* Fix for Firefox mobile */
+@-moz-document url-prefix() {
+    @media (max-width: 767px) {
+        button, input, select, textarea {
+            font-size: 16px;
+        }
+    }
+}
+
+/* Improve scrolling performance */
+@media (max-width: 767px) {
+    .nav-menu,
+    .section,
+    .feature-card,
+    .model-card {
+        will-change: transform;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+}
+
+/* Fix for landscape keyboard on mobile */
+@media (max-width: 767px) and (max-height: 500px) {
+    .hero {
+        min-height: auto;
+        padding: 1rem 0;
+    }
+    
+    nav {
+        position: relative;
+    }
+}
+
+/* Accessibility: Increase contrast on mobile */
+@media (max-width: 767px) and (prefers-contrast: more) {
+    body {
+        color: #000;
+    }
+    
+    .nav-menu a {
+        color: #000;
+    }
+    
+    .cta-button {
+        background: #000;
+        color: #fff;
+    }
+}
+
+
+
+/* Fix for very wide phones (> 500px but < 768px) */
+@media (min-width: 500px) and (max-width: 767px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+    
+    h2 {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* Fix for foldable phones */
+@media (min-width: 600px) and (max-width: 767px) {
+    .features-grid,
+    .download-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Print styles for mobile */
+@media print {
+    nav,
+    .mobile-menu-toggle,
+    .cta-button,
+    .download-button {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* Fix for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Emergency overflow fix */
+@media (max-width: 767px) {
+    * {
+        max-width: 100%;
+    }
+    
+    img, video, iframe {
+        max-width: 100%;
+        height: auto;
+    }
+}

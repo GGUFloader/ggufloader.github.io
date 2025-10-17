@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Test</title>
+    <script type="text/javascript" src="emailjs.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button {
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #1a252f; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .config-display {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>📧 EmailJS Configuration Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Configuration</h2>
+        <div class="config-display">
+            <strong>Public Key:</strong> <span id="displayPublicKey"></span><br>
+            <strong>Service ID:</strong> <span id="displayServiceId"></span><br>
+            <strong>Template ID:</strong> <span id="displayTemplateId"></span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>System Checks</h2>
+        <div id="systemChecks"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Actions</h2>
+        <button onclick="testEmailJSLibrary()">1. Test EmailJS Library</button>
+        <button onclick="testInitialization()">2. Test Initialization</button>
+        <button onclick="testEmailSend()">3. Send Test Email</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        // ============================================
+        // Configuration (same as hire-me.html)
+        // ============================================
+        const EMAILJS_CONFIG = {
+            publicKey: "Aif7atVmhmC4vCzO2",
+            serviceId: "service_7evq2pa",
+            templateId: "template_u8bup9s"
+        };
+
+        // Display configuration
+        document.getElementById('displayPublicKey').textContent = EMAILJS_CONFIG.publicKey;
+        document.getElementById('displayServiceId').textContent = EMAILJS_CONFIG.serviceId;
+        document.getElementById('displayTemplateId').textContent = EMAILJS_CONFIG.templateId;
+
+        // ============================================
+        // Helper Functions
+        // ============================================
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+            console.log(`[${type.toUpperCase()}]`, message);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        // ============================================
+        // System Checks (Run on Load)
+        // ============================================
+        function runSystemChecks() {
+            const checks = document.getElementById('systemChecks');
+            let html = '<ul>';
+
+            // Check 1: EmailJS Library
+            if (typeof emailjs !== 'undefined') {
+                html += '<li>✅ EmailJS library loaded</li>';
+            } else {
+                html += '<li>❌ EmailJS library NOT loaded</li>';
+            }
+
+            // Check 2: Configuration
+            if (EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.serviceId && EMAILJS_CONFIG.templateId) {
+                html += '<li>✅ Configuration values present</li>';
+            } else {
+                html += '<li>❌ Configuration incomplete</li>';
+            }
+
+            // Check 3: Internet Connection
+            if (navigator.onLine) {
+                html += '<li>✅ Internet connection detected</li>';
+            } else {
+                html += '<li>❌ No internet connection</li>';
+            }
+
+            html += '</ul>';
+            checks.innerHTML = html;
+        }
+
+        // ============================================
+        // Test Functions
+        // ============================================
+        function testEmailJSLibrary() {
+            clearResults();
+            addResult('Testing EmailJS library...', 'info');
+
+            if (typeof emailjs === 'undefined') {
+                addResult('❌ EmailJS library is NOT loaded!', 'error');
+                addResult('The CDN script may be blocked or failed to load.', 'error');
+                return false;
+            }
+
+            addResult('✅ EmailJS library is loaded', 'success');
+            addResult('EmailJS object: ' + JSON.stringify(Object.keys(emailjs)), 'info');
+            return true;
+        }
+
+        function testInitialization() {
+            clearResults();
+            addResult('Testing EmailJS initialization...', 'info');
+
+            if (!testEmailJSLibrary()) {
+                return;
+            }
+
+            try {
+                emailjs.init(EMAILJS_CONFIG.publicKey);
+                addResult('✅ EmailJS initialized successfully!', 'success');
+                addResult('Public Key: ' + EMAILJS_CONFIG.publicKey, 'info');
+            } catch (error) {
+                addResult('❌ Initialization failed: ' + error.message, 'error');
+                addResult('Error details: ' + JSON.stringify(error), 'error');
+            }
+        }
+
+        function testEmailSend() {
+            clearResults();
+            addResult('Testing email send...', 'info');
+
+            if (typeof emailjs === 'undefined') {
+                addResult('❌ EmailJS library not loaded. Run Test 1 first.', 'error');
+                return;
+            }
+
+            // Initialize first
+            try {
+                emailjs.init(EMAILJS_CONFIG.publicKey);
+                addResult('✅ EmailJS initialized', 'success');
+            } catch (error) {
+                addResult('❌ Initialization failed: ' + error.message, 'error');
+                return;
+            }
+
+            // Prepare test data
+            const testData = {
+                from_name: 'Test User',
+                from_email: 'test@example.com',
+                subject: 'Test Email from EmailJS Test Page',
+                service_interested: 'Testing',
+                message: 'This is a test message sent at ' + new Date().toLocaleString(),
+                reply_to: 'test@example.com'
+            };
+
+            addResult('Sending test email with data: <pre>' + JSON.stringify(testData, null, 2) + '</pre>', 'info');
+
+            // Send email
+            emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, testData)
+                .then(function(response) {
+                    addResult('✅ Email sent successfully!', 'success');
+                    addResult('Response status: ' + response.status, 'success');
+                    addResult('Response text: ' + response.text, 'success');
+                    addResult('Check your email inbox!', 'info');
+                })
+                .catch(function(error) {
+                    addResult('❌ Email send failed!', 'error');
+                    addResult('Error status: ' + (error.status || 'unknown'), 'error');
+                    addResult('Error text: ' + (error.text || error.message || 'unknown'), 'error');
+                    
+                    // Provide specific guidance based on error
+                    if (error.status === 401) {
+                        addResult('💡 Error 401: Check your Public Key', 'error');
+                    } else if (error.status === 404) {
+                        addResult('💡 Error 404: Check your Service ID and Template ID', 'error');
+                    } else if (error.status === 429) {
+                        addResult('💡 Error 429: Rate limit exceeded. Wait a few minutes.', 'error');
+                    }
+                    
+                    addResult('Full error: <pre>' + JSON.stringify(error, Object.getOwnPropertyNames(error), 2) + '</pre>', 'error');
+                });
+        }
+
+        // ============================================
+        // Run system checks on load
+        // ============================================
+        window.addEventListener('load', function() {
+            runSystemChecks();
+            addResult('Page loaded. Click the buttons above to run tests.', 'info');
+        });
+    </script>
+</body>
+</html>
