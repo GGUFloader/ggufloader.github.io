@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Create deployment directory
+      run: |
+        mkdir -p deploy
+        # Copy essential website files
+        cp index.html deploy/
+        cp -r css/ deploy/css/
+        cp -r js/ deploy/js/
+        cp -r data/ deploy/data/
+        cp styles.css deploy/
+        cp styles.min.css deploy/
+        cp manifest.json deploy/
+        cp robots.txt deploy/
+        cp sitemap.xml deploy/
+        cp sitemap.html deploy/
+        cp sw.js deploy/
+        cp .htaccess deploy/
+        cp _headers deploy/
+        cp browserconfig.xml deploy/
+        cp google23207bd4b3d5b313.html deploy/
+        cp preview.png deploy/
+        # Copy any HTML pages (excluding test files)
+        find . -name "*.html" -not -path "./test-*" -not -path "./node_modules/*" -not -path "./_*" -not -path "./docs/*" -exec cp {} deploy/ \;
+        # Fix Jekyll config baseurl issue by creating a clean config
+        echo "# GitHub Pages deployment config" > deploy/_config.yml
+        echo "baseurl: \"\"" >> deploy/_config.yml
+        echo "url: \"https://ggufloader.github.io\"" >> deploy/_config.yml
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./deploy
+        publish_branch: gh-pages
+        force_orphan: true
+        
+    - name: Notify deployment
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "## 🚀 Deployment Completed" >> $GITHUB_STEP_SUMMARY
+        echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Deployed by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Site URL**: https://ggufloader.github.io" >> $GITHUB_STEP_SUMMARY
+        echo "- **Deployment time**: $(date -u)" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Guide - GGUF Loader Documentation</title>
+    <meta name="description" content="Complete guide to installing GGUF Loader 2.0.0 on Windows, macOS, and Linux systems. Step-by-step instructions with troubleshooting tips.">
+    <meta name="keywords" content="GGUF Loader, installation, setup, Windows, macOS, Linux, Python, pip install">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/installation/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Installation Guide - GGUF Loader Documentation">
+    <meta property="og:description" content="Complete guide to installing GGUF Loader 2.0.0 on Windows, macOS, and Linux systems. Step-by-step instructions with troubleshooting tips.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/installation/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="Installation Guide - GGUF Loader Documentation">
+    <meta name="twitter:description" content="Complete guide to installing GGUF Loader 2.0.0 on Windows, macOS, and Linux systems.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Installation Guide",
+                "item": "https://ggufloader.github.io/docs/installation/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- TechArticle structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "GGUF Loader Installation Guide",
+        "description": "Complete guide to installing GGUF Loader 2.0.0 on Windows, macOS, and Linux systems with step-by-step instructions and troubleshooting tips",
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io/docs/installation/",
+        "articleSection": "Installation",
+        "keywords": ["GGUF Loader", "installation", "setup", "Windows", "macOS", "Linux", "Python", "pip"],
+        "about": {
+            "@type": "SoftwareApplication",
+            "name": "GGUF Loader",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": ["Windows", "macOS", "Linux"]
+        },
+        "image": "https://ggufloader.github.io/preview.png"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../css/enhanced-search.css">
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .docs-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-sidebar h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1.1em;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .docs-sidebar li {
+            margin: 5px 0;
+        }
+        
+        .docs-sidebar a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-sidebar a:hover,
+        .docs-sidebar a.active {
+            color: #0078d4;
+            background: #e3f2fd;
+            padding-left: 10px;
+        }
+        
+        .docs-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .docs-header {
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .docs-header h1 {
+            margin: 0 0 10px 0;
+            color: #212529;
+            font-size: 2.5em;
+        }
+        
+        .docs-description {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: " / ";
+            margin: 0 0.5rem;
+            color: #adb5bd;
+        }
+
+        .breadcrumb-item a {
+            color: #0078d4;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #106ebe;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.current {
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .docs-body h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .docs-body h3 {
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        
+        .docs-body pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .docs-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .docs-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .docs-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .docs-navigation {
+            margin: 3rem 0 2rem 0;
+            padding: 2rem 0;
+            border-top: 2px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .nav-prev, .nav-next {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #495057;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            justify-content: center;
+        }
+
+        .nav-prev:hover, .nav-next:hover {
+            background: #e3f2fd;
+            border-color: #0078d4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 212, 0.1);
+        }
+
+        .nav-prev {
+            text-align: left;
+        }
+
+        .nav-next {
+            text-align: right;
+        }
+
+        .nav-direction {
+            font-size: 0.9rem;
+            color: #0078d4;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #212529;
+            line-height: 1.3;
+        }
+
+        /* Single navigation item */
+        .nav-links:has(.nav-next:only-child) {
+            grid-template-columns: auto 1fr;
+        }
+        
+        .docs-meta {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .docs-meta a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .related-articles {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .related-articles h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin: 10px 0;
+        }
+        
+        .related-articles a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .docs-content {
+                padding: 20px;
+            }
+            
+            .docs-header h1 {
+                font-size: 2em;
+            }
+            
+            .breadcrumb-list {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            
+            .breadcrumb-item {
+                font-size: 0.8rem;
+            }
+            
+            .nav-links {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .nav-prev, .nav-next {
+                padding: 1rem;
+                min-height: 60px;
+                text-align: center;
+            }
+            
+            .nav-direction {
+                font-size: 0.8rem;
+            }
+            
+            .nav-title {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Homepage links styling */
+        .homepage-links {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .homepage-links p {
+            margin: 0 0 0.5rem 0;
+            color: #1976d2;
+            font-weight: 600;
+        }
+        
+        .homepage-links ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        
+        .homepage-links li {
+            margin: 0.3rem 0;
+        }
+        
+        .homepage-links a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .homepage-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced breadcrumb navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb navigation">
+        <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="/" title="GGUF Loader homepage">Home</a></li>
+            <li class="breadcrumb-item"><a href="/docs/" title="Documentation hub">Documentation</a></li>
+            <li class="breadcrumb-item current" aria-current="page">Installation Guide</li>
+        </ol>
+    </nav>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav aria-label="Documentation navigation">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="/docs/installation/" class="active">Installation Guide</a></li>
+                    <li><a href="/docs/quick-start/">Quick Start</a></li>
+                </ul>
+                
+                <h3>Development</h3>
+                <ul>
+                    <li><a href="/docs/addon-development/">Addon Development</a></li>
+                    <li><a href="/docs/addon-api/">API Reference</a></li>
+                    <li><a href="/docs/smart-floater-example/">Smart Floater Example</a></li>
+                </ul>
+                
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="/docs/package-structure/">Package Structure</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="docs-content">
+            <header class="docs-header">
+                <h1>Installation Guide</h1>
+                <p class="docs-description">Complete guide to installing GGUF Loader 2.0.0 on your system</p>
+            </header>
+            
+            <div class="docs-body">
+                <h2 id="quick-installation">🚀 Quick Installation</h2>
+                
+                <h3 id="using-pip">Using pip (Recommended)</h3>
+                <pre><code>pip install ggufloader</code></pre>
+                
+                <p>That's it! You can now run GGUF Loader with:</p>
+                <pre><code>ggufloader</code></pre>
+                
+                <div class="homepage-links">
+                    <p><strong>Next Steps:</strong></p>
+                    <ul>
+                        <li><a href="../../#download">Download GGUF Models</a> from the homepage</li>
+                        <li><a href="../../#features">Explore Core Features</a> to see what you can do</li>
+                        <li><a href="../quick-start/">Follow the Quick Start Guide</a> for your first model</li>
+                    </ul>
+                </div>
+                
+                <h2 id="system-requirements">📋 System Requirements</h2>
+                
+                <h3 id="minimum-requirements">Minimum Requirements</h3>
+                <ul>
+                    <li><strong>Python</strong>: 3.8 or higher</li>
+                    <li><strong>RAM</strong>: 4GB (8GB+ recommended for larger models)</li>
+                    <li><strong>Storage</strong>: 2GB free space for models</li>
+                    <li><strong>OS</strong>: Windows 10/11, macOS 10.14+, or Linux</li>
+                </ul>
+                
+                <h3 id="recommended-requirements">Recommended Requirements</h3>
+                <ul>
+                    <li><strong>Python</strong>: 3.10 or higher</li>
+                    <li><strong>RAM</strong>: 16GB or more</li>
+                    <li><strong>GPU</strong>: NVIDIA GPU with CUDA support (optional but recommended)</li>
+                    <li><strong>Storage</strong>: 10GB+ free space for multiple models</li>
+                </ul>
+                
+                <h2 id="detailed-installation">🔧 Detailed Installation</h2>
+                
+                <h3 id="step-1-install-python">Step 1: Install Python</h3>
+                
+                <p>If you don't have Python installed:</p>
+                
+                <h4 id="windows">Windows</h4>
+                <ol>
+                    <li>Download Python from <a href="https://www.python.org/downloads/" title="Download Python for Windows">python.org</a></li>
+                    <li>Run the installer and check "Add Python to PATH"</li>
+                    <li>Verify installation: <code>python --version</code></li>
+                </ol>
+                
+                <h4 id="macos">macOS</h4>
+                <pre><code># Using Homebrew (recommended)
+brew install python
+
+# Or download from python.org</code></pre>
+                
+                <h4 id="linux">Linux (Ubuntu/Debian)</h4>
+                <pre><code>sudo apt update
+sudo apt install python3 python3-pip</code></pre>
+                
+                <h3 id="step-2-virtual-environment">Step 2: Create Virtual Environment (Recommended)</h3>
+                
+                <pre><code># Create virtual environment
+python -m venv ggufloader-env
+
+# Activate it
+# Windows:
+ggufloader-env\Scripts\activate
+# macOS/Linux:
+source ggufloader-env/bin/activate</code></pre>
+                
+                <h3 id="step-3-install-gguf-loader">Step 3: Install GGUF Loader</h3>
+                
+                <pre><code>pip install ggufloader</code></pre>
+                
+                <h3 id="step-4-verify-installation">Step 4: Verify Installation</h3>
+                
+                <pre><code>ggufloader --version</code></pre>
+                
+                <h2 id="first-run">🎮 First Run</h2>
+                
+                <h3 id="launch-gguf-loader">Launch GGUF Loader</h3>
+                
+                <pre><code>ggufloader</code></pre>
+                
+                <p>This will open the GGUF Loader application with the <a href="/docs/smart-floater-example/" title="Learn about the Smart Floating Assistant addon">Smart Floating Assistant addon</a> already loaded.</p>
+                
+                <h3 id="load-first-model">Load Your First Model</h3>
+                
+                <ol>
+                    <li><strong>Download a GGUF model</strong> (e.g., from Hugging Face)</li>
+                    <li><strong>Click "Select GGUF Model"</strong> in the application</li>
+                    <li><strong>Choose your model file</strong></li>
+                    <li><strong>Wait for loading</strong> (may take a few minutes)</li>
+                    <li><strong>Start chatting!</strong></li>
+                </ol>
+                
+                <h2 id="gpu-acceleration">🔧 GPU Acceleration (Optional)</h2>
+                
+                <p>For better performance with larger models, you can enable GPU acceleration:</p>
+                
+                <h3 id="nvidia-gpu">NVIDIA GPU (CUDA)</h3>
+                
+                <pre><code># Uninstall CPU version
+pip uninstall llama-cpp-python
+
+# Install GPU version
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121</code></pre>
+                
+                <h3 id="apple-silicon">Apple Silicon (Metal)</h3>
+                
+                <pre><code># Uninstall CPU version
+pip uninstall llama-cpp-python
+
+# Install Metal version
+CMAKE_ARGS="-DLLAMA_METAL=on" pip install llama-cpp-python</code></pre>
+                
+                <h2 id="troubleshooting">🐛 Troubleshooting Installation</h2>
+                
+                <h3 id="common-issues">Common Issues</h3>
+                
+                <h4 id="pip-not-found">Issue: "pip not found"</h4>
+                <pre><code># Windows
+python -m pip install ggufloader
+
+# macOS/Linux
+python3 -m pip install ggufloader</code></pre>
+                
+                <h4 id="permission-denied">Issue: "Permission denied"</h4>
+                <pre><code># Use --user flag
+pip install --user ggufloader
+
+# Or use virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+# or
+venv\Scripts\activate     # Windows
+pip install ggufloader</code></pre>
+                
+                <h4 id="package-not-found">Issue: "Package not found"</h4>
+                <pre><code># Update pip first
+pip install --upgrade pip
+
+# Then install
+pip install ggufloader</code></pre>
+                
+                <h2 id="updating">🔄 Updating GGUF Loader</h2>
+                
+                <h3 id="update-to-latest">Update to Latest Version</h3>
+                
+                <pre><code>pip install --upgrade ggufloader</code></pre>
+                
+                <h3 id="check-version">Check Current Version</h3>
+                
+                <pre><code>ggufloader --version</code></pre>
+                
+                <h2 id="uninstallation">🗑️ Uninstallation</h2>
+                
+                <h3 id="remove-gguf-loader">Remove GGUF Loader</h3>
+                
+                <pre><code>pip uninstall ggufloader</code></pre>
+                
+                <section class="related-articles" aria-labelledby="related-heading">
+                    <h3 id="related-heading">Related Documentation</h3>
+                    <ul>
+                        <li><a href="/docs/quick-start/" title="Get started with GGUF Loader in minutes">Quick Start Guide</a> - Get up and running quickly</li>
+                        <li><a href="/docs/addon-development/" title="Create custom GGUF Loader addons">Addon Development Guide</a> - Build custom extensions</li>
+                        <li><a href="/docs/package-structure/" title="Understanding GGUF Loader's package structure">Package Structure</a> - Technical documentation</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <!-- Enhanced Previous/Next Navigation -->
+            <nav class="docs-navigation" aria-label="Page navigation">
+                <div class="nav-links">
+                    <a href="/docs/quick-start/" class="nav-next" title="Get started with GGUF Loader in minutes">
+                        <span class="nav-direction">Next →</span>
+                        <span class="nav-title">Quick Start Guide</span>
+                    </a>
+                </div>
+            </nav>
+
+            <footer class="docs-footer">
+                <div class="docs-meta">
+                    <p>Last updated: January 27, 2025</p>
+                    <p><a href="https://github.com/ggufloader/gguf-loader/edit/main/_docs/installation.md" title="Edit this page on GitHub">Edit this page on GitHub</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Analytics Configuration -->
+    <script src="../../analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="../../analytics.js" defer></script>
+    <script src="../../core-web-vitals-monitor.js" defer></script>
+    <script src="../../user-behavior-tracker.js" defer></script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

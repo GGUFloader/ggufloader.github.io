@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addon API Reference - GGUF Loader Documentation</title>
+    <meta name="description" content="Complete API reference for developing GGUF Loader addons. Comprehensive documentation of core APIs, model integration, UI components, and system integration.">
+    <meta name="keywords" content="GGUF Loader, API reference, addon development, Python API, model integration, UI components">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/addon-api/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Addon API Reference - GGUF Loader Documentation">
+    <meta property="og:description" content="Complete API reference for developing GGUF Loader addons. Comprehensive documentation of core APIs, model integration, UI components, and system integration.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/addon-api/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="Addon API Reference - GGUF Loader Documentation">
+    <meta name="twitter:description" content="Complete API reference for developing GGUF Loader addons.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Addon API Reference",
+                "item": "https://ggufloader.github.io/docs/addon-api/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- APIReference structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "APIReference",
+        "name": "GGUF Loader Addon API Reference",
+        "description": "Complete API reference for developing GGUF Loader addons including core APIs, model integration, UI components, and system integration",
+        "programmingLanguage": "Python",
+        "targetProduct": {
+            "@type": "SoftwareApplication",
+            "name": "GGUF Loader",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": ["Windows", "macOS", "Linux"]
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io/docs/addon-api/",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader",
+        "image": "https://ggufloader.github.io/preview.png"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../css/enhanced-search.css">
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .docs-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-sidebar h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1.1em;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .docs-sidebar li {
+            margin: 5px 0;
+        }
+        
+        .docs-sidebar a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-sidebar a:hover,
+        .docs-sidebar a.active {
+            color: #0078d4;
+            background: #e3f2fd;
+            padding-left: 10px;
+        }
+        
+        .docs-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .docs-header {
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .docs-header h1 {
+            margin: 0 0 10px 0;
+            color: #212529;
+            font-size: 2.5em;
+        }
+        
+        .docs-description {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .docs-body h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .docs-body h3 {
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        
+        .docs-body pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .docs-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .docs-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .api-section {
+            background: #e8f4fd;
+            border-left: 4px solid #0078d4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .api-section h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+        
+        .method-signature {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .parameter-table th,
+        .parameter-table td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .parameter-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .parameter-table code {
+            background: #e9ecef;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .example-box h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .warning-box strong {
+            color: #856404;
+        }
+        
+        .docs-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .docs-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .nav-prev, .nav-next {
+            color: #0078d4;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #0078d4;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-prev:hover, .nav-next:hover {
+            background: #0078d4;
+            color: white;
+        }
+        
+        .docs-meta {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .docs-meta a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .related-articles {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .related-articles h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin: 10px 0;
+        }
+        
+        .related-articles a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin: 5px 0;
+        }
+        
+        .toc a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .docs-content {
+                padding: 20px;
+            }
+            
+            .docs-header h1 {
+                font-size: 2em;
+            }
+            
+            .docs-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .api-section, .example-box, .warning-box {
+                margin: 15px 0;
+                padding: 15px;
+            }
+            
+            .parameter-table {
+                font-size: 0.9em;
+            }
+            
+            .method-signature {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="breadcrumb">
+        <a href="/">GGUF Loader</a> / <a href="/docs/">Documentation</a> / <span>Addon API Reference</span>
+    </nav>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav aria-label="Documentation navigation">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="/docs/installation/">Installation Guide</a></li>
+                    <li><a href="/docs/quick-start/">Quick Start</a></li>
+                </ul>
+                
+                <h3>Development</h3>
+                <ul>
+                    <li><a href="/docs/addon-development/">Addon Development</a></li>
+                    <li><a href="/docs/addon-api/" class="active">API Reference</a></li>
+                    <li><a href="/docs/smart-floater-example/">Smart Floater Example</a></li>
+                </ul>
+                
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="/docs/package-structure/">Package Structure</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="docs-content">
+            <header class="docs-header">
+                <h1>Addon API Reference</h1>
+                <p class="docs-description">Complete API reference for developing GGUF Loader addons</p>
+            </header>
+            
+            <div class="docs-body">
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#core-api">Core API</a></li>
+                        <li><a href="#model-api">Model API</a></li>
+                        <li><a href="#ui-api">UI API</a></li>
+                        <li><a href="#system-integration">System Integration API</a></li>
+                        <li><a href="#configuration-api">Configuration API</a></li>
+                        <li><a href="#event-system">Event System API</a></li>
+                        <li><a href="#testing-api">Testing API</a></li>
+                        <li><a href="#logging-api">Logging API</a></li>
+                        <li><a href="#security-api">Security API</a></li>
+                    </ul>
+                </div>
+                
+                <div class="api-section" id="core-api">
+                    <h2>🏗️ Core API</h2>
+                    
+                    <h3>Addon Registration</h3>
+                    <p>Every addon must implement a <code>register()</code> function:</p>
+                    
+                    <div class="method-signature">
+def register(parent=None):
+    """
+    Register function called by GGUF Loader when loading the addon.
+    
+    Args:
+        parent: The main GGUF Loader application instance
+        
+    Returns:
+        QWidget: The addon's UI widget, or None for background addons
+    """
+    pass
+                    </div>
+                    
+                    <h3>Main Application Interface</h3>
+                    <p>The <code>parent</code> parameter provides access to the main GGUF Loader application:</p>
+                    
+                    <div class="method-signature">
+class GGUFLoaderApp:
+    """Main GGUF Loader application interface."""
+    
+    # Properties
+    model: Optional[Any]              # Currently loaded GGUF model
+    ai_chat: AIChat                   # AI chat interface
+    addon_manager: AddonManager       # Addon management system
+    
+    # Methods
+    def get_model_backend(self) -> Optional[Any]:
+        """Get the current model backend for addons."""
+        
+    def is_model_loaded(self) -> bool:
+        """Check if a model is currently loaded."""
+        
+    # Signals
+    model_loaded = Signal(object)     # Emitted when model is loaded
+    model_unloaded = Signal()         # Emitted when model is unloaded
+                    </div>
+                </div>
+                
+                <div class="api-section" id="model-api">
+                    <h2>🤖 Model API</h2>
+                    
+                    <h3>Accessing the Model</h3>
+                    
+                    <div class="method-signature">
+def get_model(self, gguf_app):
+    """Get the currently loaded GGUF model."""
+    try:
+        # Method 1: Direct access
+        if hasattr(gguf_app, 'model') and gguf_app.model:
+            return gguf_app.model
+            
+        # Method 2: Through AI chat
+        if hasattr(gguf_app, 'ai_chat') and hasattr(gguf_app.ai_chat, 'model'):
+            return gguf_app.ai_chat.model
+            
+        # Method 3: Backend method
+        if hasattr(gguf_app, 'get_model_backend'):
+            return gguf_app.get_model_backend()
+            
+        return None
+    except Exception as e:
+        logging.error(f"Error getting model: {e}")
+        return None
+                    </div>
+                    
+                    <h3>Model Interface</h3>
+                    
+                    <div class="method-signature">
+class LlamaModel:
+    """GGUF Model interface (llama-cpp-python)."""
+    
+    def __call__(self, 
+                 prompt: str,
+                 max_tokens: int = 256,
+                 temperature: float = 0.7,
+                 top_p: float = 0.9,
+                 top_k: int = 40,
+                 repeat_penalty: float = 1.1,
+                 stop: List[str] = None,
+                 stream: bool = False) -> Union[str, Dict, Iterator]:
+        """Generate text from the model."""
+        pass
+    
+    def tokenize(self, text: str) -> List[int]:
+        """Tokenize text."""
+        pass
+        
+    def detokenize(self, tokens: List[int]) -> str:
+        """Detokenize tokens to text."""
+        pass
+                    </div>
+                    
+                    <h3>Text Generation</h3>
+                    
+                    <div class="example-box">
+                        <h4>Example: Text Generation</h4>
+                        <pre><code>def generate_text(self, model, prompt: str, **kwargs) -> str:
+    """Generate text using the model."""
+    try:
+        response = model(
+            prompt,
+            max_tokens=kwargs.get('max_tokens', 200),
+            temperature=kwargs.get('temperature', 0.7),
+            top_p=kwargs.get('top_p', 0.9),
+            repeat_penalty=kwargs.get('repeat_penalty', 1.1),
+            stop=kwargs.get('stop', ["</s>", "\n\n"]),
+            stream=False
+        )
+        
+        return self.extract_response_text(response)
+        
+    except Exception as e:
+        logging.error(f"Text generation failed: {e}")
+        return f"Error: {str(e)}"
+
+def extract_response_text(self, response) -> str:
+    """Extract text from model response."""
+    if isinstance(response, dict) and 'choices' in response:
+        return response['choices'][0].get('text', '').strip()
+    elif isinstance(response, str):
+        return response.strip()
+    else:
+        return str(response).strip()</code></pre>
+                    </div>
+                </div>
+                
+                <div class="api-section" id="ui-api">
+                    <h2>🎨 UI API</h2>
+                    
+                    <h3>Widget Creation</h3>
+                    
+                    <div class="method-signature">
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
+from PySide6.QtCore import QTimer, Signal
+
+class AddonWidget(QWidget):
+    """Base addon widget class."""
+    
+    # Signals
+    text_processed = Signal(str)
+    error_occurred = Signal(str)
+    
+    def __init__(self, addon_instance):
+        super().__init__()
+        self.addon = addon_instance
+        self.setup_ui()
+    
+    def setup_ui(self):
+        """Setup the widget UI."""
+        layout = QVBoxLayout(self)
+        
+        # Title
+        title = QLabel("My Addon")
+        title.setStyleSheet("font-size: 16px; font-weight: bold;")
+        layout.addWidget(title)
+        
+        # Content
+        self.setup_content(layout)
+    
+    def setup_content(self, layout):
+        """Override this method to add custom content."""
+        pass
+                    </div>
+                    
+                    <h3>Common UI Components</h3>
+                    
+                    <table class="parameter-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Description</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>create_status_indicator()</code></td>
+                                <td>Status indicator widget</td>
+                                <td>Show addon status</td>
+                            </tr>
+                            <tr>
+                                <td><code>create_progress_indicator()</code></td>
+                                <td>Progress bar widget</td>
+                                <td>Show processing progress</td>
+                            </tr>
+                            <tr>
+                                <td><code>FloatingWidget</code></td>
+                                <td>Floating UI components</td>
+                                <td>Smart Assistant-style UI</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="example-box">
+                        <h4>Example: Status Indicator</h4>
+                        <pre><code># Status indicator
+def create_status_indicator(self):
+    """Create a status indicator widget."""
+    self.status_label = QLabel("Ready")
+    self.status_label.setStyleSheet("""
+        QLabel {
+            padding: 5px;
+            border-radius: 3px;
+            background-color: #4CAF50;
+            color: white;
+        }
+    """)
+    return self.status_label
+
+def update_status(self, message: str, status_type: str = "info"):
+    """Update status indicator."""
+    colors = {
+        "info": "#2196F3",
+        "success": "#4CAF50", 
+        "warning": "#FF9800",
+        "error": "#F44336"
+    }
+    
+    self.status_label.setText(message)
+    self.status_label.setStyleSheet(f"""
+        QLabel {{
+            padding: 5px;
+            border-radius: 3px;
+            background-color: {colors.get(status_type, colors['info'])};
+            color: white;
+        }}
+    """)</code></pre>
+                    </div>
+                </div>
+                
+                <div class="api-section" id="system-integration">
+                    <h2>🔧 System Integration API</h2>
+                    
+                    <h3>Text Selection Detection</h3>
+                    
+                    <div class="method-signature">
+import pyautogui
+import pyperclip
+from PySide6.QtCore import QTimer
+
+class TextSelectionMonitor:
+    """Monitor for global text selection."""
+    
+    def __init__(self, callback):
+        self.callback = callback
+        self.last_clipboard = ""
+        self.selected_text = ""
+        
+        # Timer for checking selection
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.check_selection)
+        self.timer.start(300)  # Check every 300ms
+    
+    def check_selection(self):
+        """Check for text selection."""
+        try:
+            # Save current clipboard
+            original_clipboard = pyperclip.paste()
+            
+            # Copy selection
+            pyautogui.hotkey('ctrl', 'c')
+            
+            # Process after small delay
+            QTimer.singleShot(50, lambda: self.process_selection(original_clipboard))
+            
+        except Exception as e:
+            logging.debug(f"Selection check failed: {e}")
+                    </div>
+                    
+                    <h3>Clipboard Integration</h3>
+                    
+                    <div class="example-box">
+                        <h4>Example: Clipboard Manager</h4>
+                        <pre><code>import pyperclip
+
+class ClipboardManager:
+    """Manage clipboard operations."""
+    
+    @staticmethod
+    def get_text() -> str:
+        """Get text from clipboard."""
+        try:
+            return pyperclip.paste()
+        except Exception as e:
+            logging.error(f"Failed to get clipboard text: {e}")
+            return ""
+    
+    @staticmethod
+    def set_text(text: str) -> bool:
+        """Set text to clipboard."""
+        try:
+            pyperclip.copy(text)
+            return True
+        except Exception as e:
+            logging.error(f"Failed to set clipboard text: {e}")
+            return False</code></pre>
+                    </div>
+                </div>
+                
+                <div class="api-section" id="configuration-api">
+                    <h2>📁 Configuration API</h2>
+                    
+                    <h3>Addon Configuration</h3>
+                    
+                    <div class="method-signature">
+import json
+import os
+from pathlib import Path
+
+class AddonConfig:
+    """Manage addon configuration."""
+    
+    def __init__(self, addon_name: str):
+        self.addon_name = addon_name
+        self.config_dir = Path.home() / ".ggufloader" / "addons" / addon_name
+        self.config_file = self.config_dir / "config.json"
+        self.config = {}
+        self.load_config()
+    
+    def load_config(self):
+        """Load configuration from file."""
+        try:
+            if self.config_file.exists():
+                with open(self.config_file, 'r') as f:
+                    self.config = json.load(f)
+        except Exception as e:
+            logging.error(f"Failed to load config: {e}")
+            self.config = {}
+    
+    def save_config(self):
+        """Save configuration to file."""
+        try:
+            self.config_dir.mkdir(parents=True, exist_ok=True)
+            with open(self.config_file, 'w') as f:
+                json.dump(self.config, f, indent=2)
+        except Exception as e:
+            logging.error(f"Failed to save config: {e}")
+                    </div>
+                </div>
+                
+                <div class="api-section" id="event-system">
+                    <h2>🔄 Event System API</h2>
+                    
+                    <h3>Addon Events</h3>
+                    
+                    <div class="method-signature">
+from PySide6.QtCore import QObject, Signal
+
+class AddonEventSystem(QObject):
+    """Event system for addon communication."""
+    
+    # Core events
+    addon_loaded = Signal(str)           # addon_name
+    addon_unloaded = Signal(str)         # addon_name
+    model_changed = Signal(object)       # model
+    text_selected = Signal(str)          # selected_text
+    text_processed = Signal(str, str)    # original_text, processed_text
+    
+    def __init__(self):
+        super().__init__()
+        self.event_handlers = {}
+    
+    def emit_event(self, event_name: str, *args, **kwargs):
+        """Emit a custom event."""
+        if hasattr(self, event_name):
+            signal = getattr(self, event_name)
+            signal.emit(*args, **kwargs)
+                    </div>
+                </div>
+                
+                <div class="api-section" id="testing-api">
+                    <h2>🧪 Testing API</h2>
+                    
+                    <h3>Addon Testing Utilities</h3>
+                    
+                    <div class="method-signature">
+import unittest
+from unittest.mock import Mock, MagicMock
+
+class AddonTestCase(unittest.TestCase):
+    """Base test case for addon testing."""
+    
+    def setUp(self):
+        """Set up test environment."""
+        self.mock_gguf_app = Mock()
+        self.mock_model = Mock()
+        self.mock_gguf_app.model = self.mock_model
+        
+    def create_mock_model_response(self, text: str):
+        """Create a mock model response."""
+        return {
+            'choices': [{'text': text}]
+        }
+    
+    def assert_model_called_with(self, expected_prompt: str):
+        """Assert model was called with expected prompt."""
+        self.mock_model.assert_called()
+        call_args = self.mock_model.call_args
+        self.assertIn(expected_prompt, call_args[0][0])
+                    </div>
+                    
+                    <div class="example-box">
+                        <h4>Example: Addon Test</h4>
+                        <pre><code>class TestMyAddon(AddonTestCase):
+    def test_text_processing(self):
+        from addons.my_addon.main import MyAddon
+        
+        addon = MyAddon(self.mock_gguf_app)
+        self.mock_model.return_value = self.create_mock_model_response("Processed text")
+        
+        result = addon.process_text("input text")
+        
+        self.assertEqual(result, "Processed text")
+        self.assert_model_called_with("input text")</code></pre>
+                    </div>
+                </div>
+                
+                <div class="api-section" id="logging-api">
+                    <h2>📊 Logging API</h2>
+                    
+                    <h3>Addon Logging</h3>
+                    
+                    <div class="method-signature">
+import logging
+from pathlib import Path
+
+class AddonLogger:
+    """Logging utilities for addons."""
+    
+    @staticmethod
+    def setup_logger(addon_name: str, level=logging.INFO):
+        """Setup logger for addon."""
+        logger = logging.getLogger(f"addon.{addon_name}")
+        logger.setLevel(level)
+        
+        # Create file handler
+        log_dir = Path.home() / ".ggufloader" / "logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        
+        file_handler = logging.FileHandler(log_dir / f"{addon_name}.log")
+        file_handler.setLevel(level)
+        
+        # Create formatter
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+        file_handler.setFormatter(formatter)
+        
+        # Add handler to logger
+        logger.addHandler(file_handler)
+        
+        return logger
+                    </div>
+                </div>
+                
+                <div class="api-section" id="security-api">
+                    <h2>🔒 Security API</h2>
+                    
+                    <h3>Safe Execution</h3>
+                    
+                    <div class="method-signature">
+import subprocess
+import tempfile
+import os
+
+class SafeExecution:
+    """Utilities for safe code execution."""
+    
+    @staticmethod
+    def run_command_safely(command: list, timeout: int = 30) -> tuple:
+        """Run command safely with timeout."""
+        try:
+            result = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                check=False
+            )
+            return result.returncode, result.stdout, result.stderr
+        except subprocess.TimeoutExpired:
+            return -1, "", "Command timed out"
+        except Exception as e:
+            return -1, "", str(e)
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Important Security Notes:</strong>
+                    <ul>
+                        <li>Always validate user input before processing</li>
+                        <li>Use safe execution methods for external commands</li>
+                        <li>Implement proper error handling and logging</li>
+                        <li>Follow the principle of least privilege</li>
+                    </ul>
+                </div>
+                
+                <section class="related-articles" aria-labelledby="related-heading">
+                    <h3 id="related-heading">Related Documentation</h3>
+                    <ul>
+                        <li><a href="/docs/addon-development/" title="Step-by-step addon development guide">Addon Development Guide</a> - Step-by-step development guide</li>
+                        <li><a href="/docs/smart-floater-example/" title="Complete addon example with source code">Smart Floater Example</a> - Complete addon example</li>
+                        <li><a href="/docs/package-structure/" title="Understanding GGUF Loader's package structure">Package Structure</a> - Technical documentation</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <footer class="docs-footer">
+                <div class="docs-navigation">
+                    <a href="/docs/addon-development/" class="nav-prev">← Previous: Addon Development</a>
+                    <a href="/docs/smart-floater-example/" class="nav-next">Next: Smart Floater Example →</a>
+                </div>
+                
+                <div class="docs-meta">
+                    <p>Last updated: January 27, 2025</p>
+                    <p><a href="https://github.com/ggufloader/gguf-loader/edit/main/docs/addon-api.md">Edit this page on GitHub</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Analytics Configuration -->
+    <script src="../../analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="../../analytics.js" defer></script>
+    <script src="../../core-web-vitals-monitor.js" defer></script>
+    <script src="../../user-behavior-tracker.js" defer></script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+{
+  "timestamp": "2025-07-28T08:39:08.857Z",
+  "summary": {
+    "totalTests": 76,
+    "passedTests": 108,
+    "failedTests": 37,
+    "successRate": "142.1"
+  },
+  "results": {
+    "homepageToDocLinks": [
+      {
+        "section": "how-to",
+        "target": "docs/installation/",
+        "status": "found"
+      },
+      {
+        "section": "how-to",
+        "target": "docs/quick-start/",
+        "status": "found"
+      },
+      {
+        "section": "faq",
+        "target": "docs/installation/",
+        "status": "found"
+      },
+      {
+        "section": "faq",
+        "target": "docs/package-structure/",
+        "status": "found"
+      },
+      {
+        "section": "download",
+        "target": "docs/installation/",
+        "status": "found"
+      },
+      {
+        "section": "download",
+        "target": "docs/quick-start/",
+        "status": "found"
+      }
+    ],
+    "docToHomepageLinks": [
+      {
+        "page": "docs/addon-api/index.html",
+        "homepageLink": "found",
+        "contextualLinks": 0
+      },
+      {
+        "page": "docs/addon-development/index.html",
+        "homepageLink": "found",
+        "contextualLinks": 0
+      },
+      {
+        "page": "docs/installation/index.html",
+        "homepageLink": "found",
+        "contextualLinks": 2
+      },
+      {
+        "page": "docs/package-structure/index.html",
+        "homepageLink": "found",
+        "contextualLinks": 0
+      },
+      {
+        "page": "docs/quick-start/index.html",
+        "homepageLink": "found",
+        "contextualLinks": 0
+      },
+      {
+        "page": "docs/smart-floater-example/index.html",
+        "homepageLink": "found",
+        "contextualLinks": 0
+      }
+    ],
+    "breadcrumbValidation": [
+      {
+        "page": "docs/addon-api/index.html",
+        "breadcrumbFound": true,
+        "hasHomepageLink": true,
+        "linkCount": 1
+      },
+      {
+        "page": "docs/addon-development/index.html",
+        "breadcrumbFound": true,
+        "hasHomepageLink": true,
+        "linkCount": 1
+      },
+      {
+        "page": "docs/installation/index.html",
+        "breadcrumbFound": true,
+        "hasHomepageLink": true,
+        "linkCount": 1
+      },
+      {
+        "page": "docs/package-structure/index.html",
+        "breadcrumbFound": true,
+        "hasHomepageLink": true,
+        "linkCount": 1
+      },
+      {
+        "page": "docs/quick-start/index.html",
+        "breadcrumbFound": true,
+        "hasHomepageLink": true,
+        "linkCount": 1
+      },
+      {
+        "page": "docs/smart-floater-example/index.html",
+        "breadcrumbFound": true,
+        "hasHomepageLink": true,
+        "linkCount": 1
+      }
+    ],
+    "brokenLinks": [
+      {
+        "href": "docs/quick-start/#get-a-gguf-model",
+        "context": "faq section",
+        "targetPath": "docs/quick-start/#get-a-gguf-model"
+      },
+      {
+        "href": "docs/quick-start/#test-basic-chat",
+        "context": "faq section",
+        "targetPath": "docs/quick-start/#test-basic-chat"
+      },
+      {
+        "href": "docs/installation/#system-requirements",
+        "context": "faq section",
+        "targetPath": "docs/installation/#system-requirements"
+      },
+      {
+        "href": "docs/installation/#gpu-acceleration-optional",
+        "context": "faq section",
+        "targetPath": "docs/installation/#gpu-acceleration-optional"
+      },
+      {
+        "href": "docs/quick-start/#use-the-smart-floating-assistant",
+        "context": "faq section",
+        "targetPath": "docs/quick-start/#use-the-smart-floating-assistant"
+      },
+      {
+        "href": "docs/quick-start/#get-a-gguf-model",
+        "context": "faq section",
+        "targetPath": "docs/quick-start/#get-a-gguf-model"
+      },
+      {
+        "href": "docs/quick-start/#pro-tips",
+        "context": "faq section",
+        "targetPath": "docs/quick-start/#pro-tips"
+      },
+      {
+        "href": "docs/installation/#macos",
+        "context": "download section",
+        "targetPath": "docs/installation/#macos"
+      },
+      {
+        "href": "docs/installation/#linux-ubuntudebian",
+        "context": "download section",
+        "targetPath": "docs/installation/#linux-ubuntudebian"
+      },
+      {
+        "href": "docs/quick-start/#load-your-first-model",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#load-your-first-model"
+      },
+      {
+        "href": "docs/quick-start/#test-basic-chat",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#test-basic-chat"
+      },
+      {
+        "href": "docs/quick-start/#load-your-first-model",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#load-your-first-model"
+      },
+      {
+        "href": "docs/quick-start/#pro-tips",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#pro-tips"
+      },
+      {
+        "href": "docs/quick-start/#load-your-first-model",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#load-your-first-model"
+      },
+      {
+        "href": "docs/quick-start/#get-a-gguf-model",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#get-a-gguf-model"
+      },
+      {
+        "href": "docs/installation/#system-requirements",
+        "context": "download section",
+        "targetPath": "docs/installation/#system-requirements"
+      },
+      {
+        "href": "docs/quick-start/#pro-tips",
+        "context": "download section",
+        "targetPath": "docs/quick-start/#pro-tips"
+      }
+    ],
+    "missingLinks": [
+      {
+        "section": "features",
+        "target": "docs/addon-api/",
+        "type": "homepage-to-doc"
+      },
+      {
+        "section": "features",
+        "target": "docs/addon-development/",
+        "type": "homepage-to-doc"
+      },
+      {
+        "section": "features",
+        "target": "docs/smart-floater-example/",
+        "type": "homepage-to-doc"
+      }
+    ],
+    "totalTests": 76,
+    "passedTests": 108,
+    "failedTests": 37
+  }
+}

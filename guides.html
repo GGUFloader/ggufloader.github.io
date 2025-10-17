@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides - GGUF Loader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GGUF Loader</a>
+            <ul>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="#addon-development">Addon Development</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="hire-me.html">Hire Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>How-To Guides</h1>
+        <section id="how-to" class="how-to-guides">
+            <div class="guides-grid">
+                <article class="guide">
+                    <h3>How to Run Mistral 7B Locally</h3>
+                    <ol>
+                        <li>Download Mistral 7B Instruct GGUF model from TheBloke's Hugging Face page.</li>
+                        <li>Open GGUF Loader and drag the model file into the app.</li>
+                        <li>Click "Start" to begin using Mistral locally.</li>
+                    </ol>
+                    <div class="guide-links">
+                        <a href="docs/quick-start/" class="guide-link">Detailed Quick Start Guide</a>
+                        <a href="docs/installation/" class="guide-link">Installation Instructions</a>
+                    </div>
+                </article>
+                <article class="guide">
+                    <h3>How to Run DeepSeek Coder</h3>
+                    <ol>
+                        <li>Visit Hugging Face and search for DeepSeek Coder in GGUF format.</li>
+                        <li>Download the model file to your computer.</li>
+                        <li>Open GGUF Loader, select the model, and launch your coding assistant.</li>
+                    </ol>
+                    <div class="guide-links">
+                        <a href="docs/quick-start/" class="guide-link">Complete Setup Guide</a>
+                        <a href="docs/package-structure/" class="guide-link">Model Structure Info</a>
+                    </div>
+                </article>
+                <article class="guide">
+                    <h3>How to Run TinyLLaMA on Low-End Devices</h3>
+                    <ol>
+                        <li>Find a TinyLLaMA GGUF model with small context size.</li>
+                        <li>Use GGUF Loader to open the model file.</li>
+                        <li>Interact with the model even on laptops with 8GB RAM.</li>
+                    </ol>
+                    <div class="guide-links">
+                        <a href="docs/installation/" class="guide-link">System Requirements</a>
+                        <a href="docs/quick-start/" class="guide-link">Low-Resource Setup</a>
+                    </div>
+                </article>
+                <article class="guide">
+                    <h3>How to Run GGUF Models Without Python</h3>
+                    <p>GGUF Loader does not require Python. Simply download the app, load a model, and start —
+                        no terminal or scripting needed.</p>
+                    <div class="guide-links">
+                        <a href="docs/installation/" class="guide-link">No-Python Installation</a>
+                        <a href="docs/quick-start/" class="guide-link">Simple Setup Guide</a>
+                    </div>
+                </article>
+                <article class="guide">
+                    <h3>How to Build a Local AI Assistant</h3>
+                    <ol>
+                        <li>Choose a base model like Mistral or LLaMA 3.</li>
+                        <li>Add a prompt template or use an addon for your task.</li>
+                        <li>Run it offline and modify context to fine-tune replies.</li>
+                    </ol>
+                    <div class="guide-links">
+                        <a href="docs/addon-development/" class="guide-link">Addon Development</a>
+                        <a href="docs/smart-floater-example/" class="guide-link">Assistant Examples</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="addon-development" class="addon-development">
+            <h2>How to Create Addons for GGUF Loader</h2>
+            
+            <article class="guide">
+                <h3>Introduction to Addon Development</h3>
+                <p>This guide will teach you how to create custom addons for GGUF Loader 2.0.0. Addons extend the functionality of GGUF Loader and can provide new features, UI components, and integrations.</p>
+
+                <h4>Addon Architecture</h4>
+                <h5>What is an Addon?</h5>
+                <p>An addon is a Python package that extends GGUF Loader's functionality. Addons can:</p>
+                <ul>
+                    <li>Add new UI components and windows</li>
+                    <li>Process text and interact with AI models</li>
+                    <li>Integrate with external services</li>
+                    <li>Provide new workflows and automation</li>
+                    <li>Extend the main application's capabilities</li>
+                </ul>
+
+                <h5>Addon Structure</h5>
+                <p>Every addon must follow this basic structure:</p>
+                <pre><code>addons/
+└── your_addon_name/
+    ├── __init__.py          # Addon entry point
+    ├── main.py              # Main addon logic
+    ├── ui.py                # UI components (optional)
+    ├── config.py            # Configuration (optional)
+    └── README.md            # Addon documentation</code></pre>
+
+                <h4>Creating Your First Addon</h4>
+                <h5>Step 1: Create the Addon Directory</h5>
+                <pre><code>mkdir -p addons/my_awesome_addon
+cd addons/my_awesome_addon</code></pre>
+
+                <h5>Step 2: Create the Entry Point (__init__.py)</h5>
+                <pre><code>"""
+My Awesome Addon - A sample addon for GGUF Loader
+
+This addon demonstrates the basic structure and capabilities
+of the GGUF Loader addon system.
+"""
+
+__version__ = "1.0.0"
+__author__ = "Your Name"
+__description__ = "A sample addon that demonstrates basic functionality"
+
+# Import the register function
+from .main import register
+
+# Export the register function
+__all__ = ["register"]</code></pre>
+
+                <h5>Step 3: Create the Main Logic (main.py)</h5>
+                <p>The main logic file contains the core functionality of your addon. Here's a basic example:</p>
+                <pre><code>"""
+Main logic for My Awesome Addon
+"""
+
+import logging
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QTextEdit
+from PySide6.QtCore import QTimer
+
+class MyAwesomeAddon:
+    """Main addon class that handles the addon functionality."""
+    
+    def __init__(self, gguf_app):
+        """Initialize the addon with reference to the main GGUF app."""
+        self.gguf_app = gguf_app
+        self.logger = logging.getLogger(__name__)
+        self.is_running = False
+        
+        # Initialize your addon components here
+        self.setup_addon()
+    
+    def setup_addon(self):
+        """Setup the addon components."""
+        self.logger.info("Setting up My Awesome Addon")
+        # Add your initialization logic here
+    
+    def get_model(self):
+        """Get the currently loaded GGUF model."""
+        try:
+            if hasattr(self.gguf_app, 'model') and self.gguf_app.model:
+                return self.gguf_app.model
+            elif hasattr(self.gguf_app, 'ai_chat') and hasattr(self.gguf_app.ai_chat, 'model'):
+                return self.gguf_app.ai_chat.model
+            return None
+        except Exception as e:
+            self.logger.error(f"Error getting model: {e}")
+            return None
+    
+    def process_text_with_ai(self, text, prompt_template="Process this text: {text}"):
+        """Process text using the loaded AI model."""
+        model = self.get_model()
+        if not model:
+            return "Error: No AI model loaded"
+        
+        try:
+            prompt = prompt_template.format(text=text)
+            response = model(
+                prompt,
+                max_tokens=200,
+                temperature=0.7,
+                stop=["</s>", "\n\n"]
+            )
+            
+            # Extract text from response
+            if isinstance(response, dict) and 'choices' in response:
+                return response['choices'][0].get('text', '').strip()
+            elif isinstance(response, str):
+                return response.strip()
+            else:
+                return str(response).strip()
+                
+        except Exception as e:
+            self.logger.error(f"Error processing text: {e}")
+            return f"Error: {str(e)}"
+    
+    def start(self):
+        """Start the addon."""
+        self.is_running = True
+        self.logger.info("My Awesome Addon started")
+    
+    def stop(self):
+        """Stop the addon."""
+        self.is_running = False
+        self.logger.info("My Awesome Addon stopped")
+
+
+class MyAwesomeAddonWidget(QWidget):
+    """UI widget for the addon."""
+    
+    def __init__(self, addon_instance):
+        super().__init__()
+        self.addon = addon_instance
+        self.setup_ui()
+    
+    def setup_ui(self):
+        """Setup the addon UI."""
+        self.setWindowTitle("My Awesome Addon")
+        self.setMinimumSize(400, 300)
+        
+        layout = QVBoxLayout(self)
+        
+        # Title
+        title = QLabel("🚀 My Awesome Addon")
+        title.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
+        layout.addWidget(title)
+        
+        # Description
+        description = QLabel("This is a sample addon that demonstrates basic functionality.")
+        description.setWordWrap(True)
+        layout.addWidget(description)
+        
+        # Input area
+        layout.addWidget(QLabel("Enter text to process:"))
+        self.input_text = QTextEdit()
+        self.input_text.setMaximumHeight(100)
+        self.input_text.setPlaceholderText("Type some text here...")
+        layout.addWidget(self.input_text)
+        
+        # Process button
+        self.process_btn = QPushButton("🤖 Process with AI")
+        self.process_btn.clicked.connect(self.process_text)
+        layout.addWidget(self.process_btn)
+        
+        # Output area
+        layout.addWidget(QLabel("AI Response:"))
+        self.output_text = QTextEdit()
+        self.output_text.setReadOnly(True)
+        layout.addWidget(self.output_text)
+        
+        # Status
+        self.status_label = QLabel("Ready")
+        self.status_label.setStyleSheet("color: green;")
+        layout.addWidget(self.status_label)
+    
+    def process_text(self):
+        """Process the input text with AI."""
+        input_text = self.input_text.toPlainText().strip()
+        if not input_text:
+            self.output_text.setText("Please enter some text to process.")
+            return
+
+        self.status_label.setText("Processing...")
+        self.status_label.setStyleSheet("color: orange;")
+        self.process_btn.setEnabled(False)
+        
+        # Process with AI (using QTimer to avoid blocking UI)
+        QTimer.singleShot(100, lambda: self._do_processing(input_text))
+    
+    def _do_processing(self, text):
+        """Actually process the text."""
+        try:
+            result = self.addon.process_text_with_ai(
+                text, 
+                "Please provide a helpful and insightful response to: {text}"
+            )
+            self.output_text.setText(result)
+            self.status_label.setText("Complete!")
+            self.status_label.setStyleSheet("color: green;")
+        except Exception as e:
+            self.output_text.setText(f"Error: {str(e)}")
+            self.status_label.setText("Error occurred")
+            self.status_label.setStyleSheet("color: red;")
+        finally:
+            self.process_btn.setEnabled(True)
+
+def register(parent=None):
+    """
+    Register function called by GGUF Loader when loading the addon.
+    
+    Args:
+        parent: The main GGUF Loader application instance
+        
+    Returns:
+        QWidget: The addon's UI widget, or None for background addons
+    """
+    try:
+        # Create the addon instance
+        addon = MyAwesomeAddon(parent)
+        addon.start()
+        
+        # Store addon reference in parent for lifecycle management
+        if not hasattr(parent, '_addons'):
+            parent._addons = {}
+        parent._addons['my_awesome_addon'] = addon
+        
+        # Create and return the UI widget
+        widget = MyAwesomeAddonWidget(addon)
+        return widget
+        
+    except Exception as e:
+        logging.error(f"Failed to register My Awesome Addon: {e}")
+        return None</code></pre>
+
+                <h5>Step 4: Test Your Addon</h5>
+                <ol>
+                    <li><strong>Place your addon</strong> in the <code>addons/</code> directory</li>
+                    <li><strong>Launch GGUF Loader</strong>: <code>ggufloader</code></li>
+                    <li><strong>Load a GGUF model</strong> in the main application</li>
+                    <li><strong>Click your addon</strong> in the addon sidebar</li>
+                    <li><strong>Test the functionality</strong></li>
+                </ol>
+
+                <h4>Advanced Addon Features</h4>
+                <h5>Background Addons</h5>
+                <p>Some addons don't need a UI and run in the background:</p>
+                <pre><code>def register(parent=None):
+    """Register a background addon."""
+    try:
+        addon = MyBackgroundAddon(parent)
+        addon.start()
+        
+        # Store reference but return None (no UI)
+        parent._my_background_addon = addon
+        return None
+        
+    except Exception as e:
+        logging.error(f"Failed to register background addon: {e}")
+        return None</code></pre>
+
+                <h5>Model Integration</h5>
+                <p>Access and use the loaded GGUF model:</p>
+                <pre><code>def use_model_for_processing(self, text):
+    """Use the GGUF model for text processing."""
+    model = self.get_model()
+    if not model:
+        return "No model loaded"
+    
+    try:
+        # Different processing modes
+        response = model(
+            f"Analyze this text: {text}",
+            max_tokens=300,
+            temperature=0.7,
+            top_p=0.9,
+            repeat_penalty=1.1,
+            stop=["</s>", "Human:", "User:"]
+        )
+        
+        return self.extract_response_text(response)
+        
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+def extract_response_text(self, response):
+    """Extract text from model response."""
+    if isinstance(response, dict) and 'choices' in response:
+        return response['choices'][0].get('text', '').strip()
+    elif isinstance(response, str):
+        return response.strip()
+    else:
+        return str(response).strip()</code></pre>
+
+                <h4>Best Practices</h4>
+                <h5>1. Error Handling</h5>
+                <p>Always wrap your code in try-catch blocks:</p>
+                <pre><code>def safe_operation(self):
+    try:
+        # Your code here
+        pass
+    except Exception as e:
+        self.logger.error(f"Operation failed: {e}")
+        return None</code></pre>
+
+                <h5>2. Resource Cleanup</h5>
+                <p>Implement proper cleanup:</p>
+                <pre><code>def stop(self):
+    """Clean up addon resources."""
+    if hasattr(self, 'timer'):
+        self.timer.stop()
+    
+    if hasattr(self, 'ui_components'):
+        for component in self.ui_components:
+            component.close()
+    
+    self.logger.info("Addon stopped and cleaned up")</code></pre>
+
+                <h5>3. Configuration</h5>
+                <p>Support user configuration:</p>
+                <pre><code>import json
+import os
+
+class AddonConfig:
+    def __init__(self, addon_name):
+        self.config_file = f"config/{addon_name}_config.json"
+        self.default_config = {
+            "enabled": True,
+            "hotkey": "Ctrl+Shift+A",
+            "auto_process": False
+        }
+        self.config = self.load_config()
+    
+    def load_config(self):
+        try:
+            if os.path.exists(self.config_file):
+                with open(self.config_file, 'r') as f:
+                    return {**self.default_config, **json.load(f)}
+        except:
+            pass
+        return self.default_config.copy()
+    
+    def save_config(self):
+        os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
+        with open(self.config_file, 'w') as f:
+            json.dump(self.config, f, indent=2)</code></pre>
+
+                <h5>4. Logging</h5>
+                <p>Use proper logging:</p>
+                <pre><code>import logging
+
+class MyAddon:
+    def __init__(self, gguf_app):
+        self.logger = logging.getLogger(f"addon.{self.__class__.__name__}")
+        self.logger.setLevel(logging.INFO)
+        
+        # Log addon initialization
+        self.logger.info("Addon initialized")
+    
+    def process_data(self, data):
+        self.logger.debug(f"Processing data: {len(data)} items")
+        try:
+            # Process data
+            result = self.do_processing(data)
+            self.logger.info("Data processed successfully")
+            return result
+        except Exception as e:
+            self.logger.error(f"Processing failed: {e}")
+            raise</code></pre>
+
+                <h4>Distributing Your Addon</h4>
+                <h5>1. Create Documentation</h5>
+                <p>Create a <code>README.md</code> for your addon:</p>
+                <pre><code># My Awesome Addon
+
+A powerful addon for GGUF Loader that provides [functionality].
+
+## Features
+
+- Feature 1
+- Feature 2
+- Feature 3
+
+## Installation
+
+1. Copy the addon to `addons/my_awesome_addon/`
+2. Restart GGUF Loader
+3. Click on the addon in the sidebar
+
+## Configuration
+
+[Configuration instructions]
+
+## Usage
+
+[Usage instructions]</code></pre>
+
+                <h5>2. Version Your Addon</h5>
+                <p>Use semantic versioning in <code>__init__.py</code>:</p>
+                <pre><code>__version__ = "1.0.0"  # Major.Minor.Patch</code></pre>
+
+                <h5>3. Share with Community</h5>
+                <ul>
+                    <li>Create a GitHub repository</li>
+                    <li>Add installation instructions</li>
+                    <li>Include screenshots and examples</li>
+                    <li>Submit to the community addon registry</li>
+                </ul>
+
+                <h4>Additional Resources</h4>
+                <ul>
+                    <li><a href="https://github.com/gguf-loader/gguf-loader/discussions" target="_blank">Community Discussions</a> - Get help from the community</li>
+                    <li><a href="mailto:support@ggufloader.com">Email Support</a> - For specific questions about addon development</li>
+                </ul>
+
+                <p><strong>Happy addon development!</strong></p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GGUF Loader. All rights reserved.</p>
+    </footer>
+</body>
+</html>

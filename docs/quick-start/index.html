@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - GGUF Loader Documentation</title>
+    <meta name="description" content="Get up and running with GGUF Loader 2.0.0 in just a few minutes. Step-by-step guide to installation, model loading, and using the Smart Floating Assistant.">
+    <meta name="keywords" content="GGUF Loader, quick start, tutorial, guide, Smart Floating Assistant, AI models">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/quick-start/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Quick Start Guide - GGUF Loader Documentation">
+    <meta property="og:description" content="Get up and running with GGUF Loader 2.0.0 in just a few minutes. Step-by-step guide to installation, model loading, and using the Smart Floating Assistant.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/quick-start/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="Quick Start Guide - GGUF Loader Documentation">
+    <meta name="twitter:description" content="Get up and running with GGUF Loader 2.0.0 in just a few minutes.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Quick Start Guide",
+                "item": "https://ggufloader.github.io/docs/quick-start/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- HowTo structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "GGUF Loader Quick Start Guide",
+        "description": "Get up and running with GGUF Loader 2.0.0 in just a few minutes with step-by-step instructions",
+        "image": "https://ggufloader.github.io/preview.png",
+        "totalTime": "PT5M",
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "0"
+        },
+        "supply": [
+            {
+                "@type": "HowToSupply",
+                "name": "Python 3.8 or higher"
+            },
+            {
+                "@type": "HowToSupply", 
+                "name": "4GB RAM minimum"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "GGUF model file"
+            }
+        ],
+        "tool": [
+            {
+                "@type": "HowToTool",
+                "name": "GGUF Loader"
+            }
+        ],
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Install GGUF Loader",
+                "text": "Install GGUF Loader using pip: pip install ggufloader",
+                "url": "https://ggufloader.github.io/docs/quick-start/#installation"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Launch Application",
+                "text": "Launch GGUF Loader from command line: ggufloader",
+                "url": "https://ggufloader.github.io/docs/quick-start/#launch"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Load GGUF Model",
+                "text": "Click 'Select GGUF Model' and choose your downloaded model file",
+                "url": "https://ggufloader.github.io/docs/quick-start/#load-model"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Test Smart Floating Assistant",
+                "text": "Select text anywhere on your screen and click the ✨ button that appears",
+                "url": "https://ggufloader.github.io/docs/quick-start/#smart-assistant"
+            }
+        ],
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../css/enhanced-search.css">
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .docs-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-sidebar h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1.1em;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .docs-sidebar li {
+            margin: 5px 0;
+        }
+        
+        .docs-sidebar a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-sidebar a:hover,
+        .docs-sidebar a.active {
+            color: #0078d4;
+            background: #e3f2fd;
+            padding-left: 10px;
+        }
+        
+        .docs-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .docs-header {
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .docs-header h1 {
+            margin: 0 0 10px 0;
+            color: #212529;
+            font-size: 2.5em;
+        }
+        
+        .docs-description {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+        }
+
+        .breadcrumb-item:not(:last-child)::after {
+            content: " / ";
+            margin: 0 0.5rem;
+            color: #adb5bd;
+        }
+
+        .breadcrumb-item a {
+            color: #0078d4;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #106ebe;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.current {
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .docs-body h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .docs-body h3 {
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        
+        .docs-body pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .docs-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .docs-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .step-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0078d4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .step-box h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .example-box h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+        }
+        
+        .docs-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .docs-navigation {
+            margin: 3rem 0 2rem 0;
+            padding: 2rem 0;
+            border-top: 2px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .nav-prev, .nav-next {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #495057;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            justify-content: center;
+        }
+
+        .nav-prev:hover, .nav-next:hover {
+            background: #e3f2fd;
+            border-color: #0078d4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 212, 0.1);
+        }
+
+        .nav-prev {
+            text-align: left;
+        }
+
+        .nav-next {
+            text-align: right;
+        }
+
+        .nav-direction {
+            font-size: 0.9rem;
+            color: #0078d4;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #212529;
+            line-height: 1.3;
+        }
+        
+        .docs-meta {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .docs-meta a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .related-articles {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .related-articles h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin: 10px 0;
+        }
+        
+        .related-articles a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .docs-content {
+                padding: 20px;
+            }
+            
+            .docs-header h1 {
+                font-size: 2em;
+            }
+            
+            .breadcrumb-list {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            
+            .breadcrumb-item {
+                font-size: 0.8rem;
+            }
+            
+            .nav-links {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .nav-prev, .nav-next {
+                padding: 1rem;
+                min-height: 60px;
+                text-align: center;
+            }
+            
+            .nav-direction {
+                font-size: 0.8rem;
+            }
+            
+            .nav-title {
+                font-size: 1rem;
+            }
+            
+            .step-box, .example-box, .tip-box {
+                margin: 15px 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced breadcrumb navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb navigation">
+        <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="/" title="GGUF Loader homepage">Home</a></li>
+            <li class="breadcrumb-item"><a href="/docs/" title="Documentation hub">Documentation</a></li>
+            <li class="breadcrumb-item current" aria-current="page">Quick Start Guide</li>
+        </ol>
+    </nav>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav aria-label="Documentation navigation">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="/docs/installation/">Installation Guide</a></li>
+                    <li><a href="/docs/quick-start/" class="active">Quick Start</a></li>
+                </ul>
+                
+                <h3>Development</h3>
+                <ul>
+                    <li><a href="/docs/addon-development/">Addon Development</a></li>
+                    <li><a href="/docs/addon-api/">API Reference</a></li>
+                    <li><a href="/docs/smart-floater-example/">Smart Floater Example</a></li>
+                </ul>
+                
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="/docs/package-structure/">Package Structure</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="docs-content">
+            <header class="docs-header">
+                <h1>Quick Start Guide</h1>
+                <p class="docs-description">Get up and running with GGUF Loader 2.0.0 in just a few minutes!</p>
+            </header>
+            
+            <div class="docs-body">
+                <div class="step-box" id="installation">
+                    <h2>🚀 Step 1: Installation</h2>
+                    <pre><code>pip install ggufloader</code></pre>
+                    <p>Need detailed installation instructions? Check out our <a href="/docs/installation/" title="Complete GGUF Loader installation guide">Installation Guide</a> for platform-specific instructions and troubleshooting.</p>
+                </div>
+                
+                <div class="step-box" id="launch">
+                    <h2>🎯 Step 2: Launch GGUF Loader</h2>
+                    <pre><code>ggufloader</code></pre>
+                    <p>This opens GGUF Loader with the <a href="/docs/smart-floater-example/" title="Learn about the Smart Floating Assistant addon">Smart Floating Assistant addon</a> already loaded.</p>
+                </div>
+                
+                <div class="step-box" id="load-model">
+                    <h2>📥 Step 3: Load Your First Model</h2>
+                    
+                    <h3>Get a GGUF Model</h3>
+                    <p>Download a GGUF model from one of these sources:</p>
+                    
+                    <h4>Popular Model Sources:</h4>
+                    <ul>
+                        <li><strong>Hugging Face</strong>: <a href="https://huggingface.co/models?library=gguf" target="_blank" rel="noopener">https://huggingface.co/models?library=gguf</a></li>
+                        <li><strong>TheBloke's Models</strong>: Search for "TheBloke" on Hugging Face</li>
+                        <li><strong>Local Models</strong>: Convert your own models to GGUF format</li>
+                    </ul>
+                    
+                    <h4>Recommended Starter Models:</h4>
+                    <ul>
+                        <li><strong>Small (2-4GB)</strong>: <code>llama-2-7b-chat.Q4_K_M.gguf</code></li>
+                        <li><strong>Medium (4-8GB)</strong>: <code>mistral-7b-instruct-v0.1.Q5_K_M.gguf</code></li>
+                        <li><strong>Large (8GB+)</strong>: <code>llama-2-13b-chat.Q4_K_M.gguf</code></li>
+                    </ul>
+                    
+                    <h3>Load the Model</h3>
+                    <ol>
+                        <li><strong>Click "Select GGUF Model"</strong> in the main window</li>
+                        <li><strong>Browse and select</strong> your downloaded <code>.gguf</code> file</li>
+                        <li><strong>Wait for loading</strong> (this may take 1-5 minutes depending on model size)</li>
+                        <li><strong>Look for "Model ready!"</strong> message</li>
+                    </ol>
+                </div>
+                
+                <div class="step-box">
+                    <h2>💬 Step 4: Test Basic Chat</h2>
+                    
+                    <h3>Try Your First Chat</h3>
+                    <ol>
+                        <li><strong>Type a message</strong> in the chat input box</li>
+                        <li><strong>Press Enter</strong> or click "Send"</li>
+                        <li><strong>Watch the AI respond</strong> in real-time</li>
+                        <li><strong>Continue the conversation!</strong></li>
+                    </ol>
+                    
+                    <div class="example-box">
+                        <h4>Example Conversations:</h4>
+                        <pre><code>You: Hello! How are you today?
+AI: Hello! I'm doing well, thank you for asking. I'm here and ready to help you with any questions or tasks you might have. How can I assist you today?
+
+You: Can you explain what GGUF models are?
+AI: GGUF (GPT-Generated Unified Format) is a file format designed for storing large language models...</code></pre>
+                    </div>
+                </div>
+                
+                <div class="step-box" id="smart-assistant">
+                    <h2>✨ Step 5: Use the Smart Floating Assistant</h2>
+                    
+                    <p>The Smart Floating Assistant is GGUF Loader's killer feature - it works across ALL applications!</p>
+                    
+                    <h3>Select Text Anywhere</h3>
+                    <ol>
+                        <li><strong>Open any application</strong> (browser, Word, Notepad, etc.)</li>
+                        <li><strong>Select some text</strong> by highlighting it with your mouse</li>
+                        <li><strong>Look for the ✨ floating button</strong> that appears near your cursor</li>
+                    </ol>
+                    
+                    <h3>Process the Text</h3>
+                    <ol>
+                        <li><strong>Click the ✨ button</strong></li>
+                        <li><strong>Choose an action</strong>:
+                            <ul>
+                                <li><strong>Summarize</strong>: Get a concise summary</li>
+                                <li><strong>Comment</strong>: Generate an insightful comment</li>
+                            </ul>
+                        </li>
+                        <li><strong>Wait for AI processing</strong></li>
+                        <li><strong>Copy the result</strong> and use it anywhere!</li>
+                    </ol>
+                    
+                    <div class="example-box">
+                        <h4>Example Workflow:</h4>
+                        <ol>
+                            <li>Reading a long article in your browser</li>
+                            <li>Select a complex paragraph</li>
+                            <li>Click ✨ → "Summarize"</li>
+                            <li>Get: "This paragraph explains that..."</li>
+                            <li>Copy and paste the summary into your notes</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <h2 id="common-tasks">🔧 Common Tasks</h2>
+                
+                <h3>Task 1: Summarize Articles</h3>
+                <ol>
+                    <li><strong>Open an article</strong> in your browser</li>
+                    <li><strong>Select the main content</strong></li>
+                    <li><strong>Click ✨ → "Summarize"</strong></li>
+                    <li><strong>Get a concise summary</strong></li>
+                </ol>
+                
+                <h3>Task 2: Generate Comments</h3>
+                <ol>
+                    <li><strong>Select a social media post</strong> or forum discussion</li>
+                    <li><strong>Click ✨ → "Comment"</strong></li>
+                    <li><strong>Get a thoughtful response</strong></li>
+                    <li><strong>Edit and post</strong> your AI-assisted comment</li>
+                </ol>
+                
+                <h3>Task 3: Process Code</h3>
+                <ol>
+                    <li><strong>Select code</strong> in your IDE or GitHub</li>
+                    <li><strong>Click ✨ → "Comment"</strong></li>
+                    <li><strong>Get code explanation</strong> or suggestions</li>
+                </ol>
+                
+                <h3>Task 4: Email Assistance</h3>
+                <ol>
+                    <li><strong>Select email content</strong></li>
+                    <li><strong>Click ✨ → "Summarize"</strong> for long emails</li>
+                    <li><strong>Click ✨ → "Comment"</strong> to draft responses</li>
+                </ol>
+                
+                <h2 id="troubleshooting">🐛 Quick Troubleshooting</h2>
+                
+                <h3>Model Won't Load</h3>
+                <ul>
+                    <li><strong>Check file format</strong>: Must be <code>.gguf</code></li>
+                    <li><strong>Check file size</strong>: Ensure enough RAM</li>
+                    <li><strong>Try smaller model</strong>: Start with 4GB or less</li>
+                </ul>
+                
+                <h3>Floating Assistant Not Working</h3>
+                <ul>
+                    <li><strong>Check model</strong>: Must have a model loaded first</li>
+                    <li><strong>Try different text</strong>: Select at least 5+ characters</li>
+                    <li><strong>Restart application</strong>: Sometimes helps with initialization</li>
+                </ul>
+                
+                <h3>Performance Issues</h3>
+                <ul>
+                    <li><strong>Close other apps</strong>: Free up RAM</li>
+                    <li><strong>Use smaller model</strong>: Try Q4 quantization</li>
+                    <li><strong>Enable GPU</strong>: If you have compatible hardware</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <strong>💡 Pro Tips:</strong>
+                    <ul>
+                        <li><strong>Start small</strong>: Begin with 7B parameter models</li>
+                        <li><strong>Select quality text</strong>: Better input = better output</li>
+                        <li><strong>Practice regularly</strong>: The more you use it, the more useful it becomes</li>
+                        <li><strong>Edit the results</strong>: AI output is a starting point, not final copy</li>
+                    </ul>
+                </div>
+                
+                <h2 id="next-steps">🎉 You're Ready!</h2>
+                
+                <p>Congratulations! You now know the basics of GGUF Loader 2.0.0. The Smart Floating Assistant will transform how you work with text across all your applications.</p>
+                
+                <h3>What You've Learned:</h3>
+                <ul>
+                    <li>✅ How to install and launch GGUF Loader</li>
+                    <li>✅ How to load and use GGUF models</li>
+                    <li>✅ How to use the Smart Floating Assistant</li>
+                    <li>✅ Basic troubleshooting and customization</li>
+                </ul>
+                
+                <section class="related-articles" aria-labelledby="related-heading">
+                    <h3 id="related-heading">Related Documentation</h3>
+                    <ul>
+                        <li><a href="/docs/installation/" title="Complete installation guide for all platforms">Installation Guide</a> - Detailed setup instructions</li>
+                        <li><a href="/docs/addon-development/" title="Create custom GGUF Loader addons">Addon Development Guide</a> - Build custom extensions</li>
+                        <li><a href="/docs/smart-floater-example/" title="Learn from the built-in addon example">Smart Floater Example</a> - Deep dive into the floating assistant</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <!-- Enhanced Previous/Next Navigation -->
+            <nav class="docs-navigation" aria-label="Page navigation">
+                <div class="nav-links">
+                    <a href="/docs/installation/" class="nav-prev" title="Complete installation guide for all platforms">
+                        <span class="nav-direction">← Previous</span>
+                        <span class="nav-title">Installation Guide</span>
+                    </a>
+                    <a href="/docs/addon-development/" class="nav-next" title="Create custom GGUF Loader addons">
+                        <span class="nav-direction">Next →</span>
+                        <span class="nav-title">Addon Development Guide</span>
+                    </a>
+                </div>
+            </nav>
+
+            <footer class="docs-footer">
+                <div class="docs-meta">
+                    <p>Last updated: January 27, 2025</p>
+                    <p><a href="https://github.com/ggufloader/gguf-loader/edit/main/_docs/quick-start.md" title="Edit this page on GitHub">Edit this page on GitHub</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Analytics Configuration -->
+    <script src="../../analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="../../analytics.js" defer></script>
+    <script src="../../core-web-vitals-monitor.js" defer></script>
+    <script src="../../user-behavior-tracker.js" defer></script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

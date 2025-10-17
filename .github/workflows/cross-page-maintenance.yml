@@ -1,0 +1,196 @@
+name: Cross-Page Integration Maintenance
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '_docs/**'
+      - 'docs/**'
+      - 'index.html'
+      - 'includes/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '_docs/**'
+      - 'docs/**'
+      - 'index.html'
+      - 'includes/**'
+  workflow_dispatch:
+    inputs:
+      maintenance_type:
+        description: 'Type of maintenance to run'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+        - full
+        - links
+        - previews
+        - test
+
+jobs:
+  cross-page-maintenance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run Cross-Page Maintenance Tests
+      run: npm run test:cross-page-maintenance
+      
+    - name: Run Link Integrity Check
+      run: npm run maintenance:cross-page:links
+      
+    - name: Update Content Previews
+      run: npm run content:update-previews
+      
+    - name: Run Full Maintenance (Scheduled)
+      if: github.event_name == 'schedule'
+      run: npm run maintenance:cross-page
+      
+    - name: Run Specific Maintenance (Manual)
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        case "${{ github.event.inputs.maintenance_type }}" in
+          "links")
+            npm run maintenance:cross-page:links
+            ;;
+          "previews")
+            npm run content:update-previews
+            ;;
+          "test")
+            npm run maintenance:cross-page:test
+            ;;
+          *)
+            npm run maintenance:cross-page
+            ;;
+        esac
+        
+    - name: Run Cross-Page Integration Tests
+      run: npm run test:cross-page-integration
+      
+    - name: Upload Maintenance Reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: maintenance-reports-${{ github.run_number }}
+        path: |
+          maintenance-logs/
+          maintenance-reports/
+        retention-days: 30
+        
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-${{ github.run_number }}
+        path: |
+          maintenance-reports/cross-page-maintenance-test-report.json
+        retention-days: 7
+        
+    - name: Comment PR with Results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          try {
+            const reportPath = 'maintenance-reports/cross-page-maintenance-test-report.json';
+            if (fs.existsSync(reportPath)) {
+              const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+              
+              const body = `## Cross-Page Integration Test Results
+              
+              **Summary:**
+              - Total Tests: ${report.summary.total}
+              - Passed: ${report.summary.passed} ✅
+              - Failed: ${report.summary.failed} ❌
+              - Success Rate: ${report.summary.successRate}%
+              
+              ${report.summary.failed > 0 ? '**⚠️ Some tests failed. Please review the issues.**' : '**🎉 All tests passed!**'}
+              
+              <details>
+              <summary>Detailed Results</summary>
+              
+              ${report.details.map(test => 
+                `- ${test.passed ? '✅' : '❌'} **${test.category}**: ${test.message}`
+              ).join('\n')}
+              
+              </details>`;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: body
+              });
+            }
+          } catch (error) {
+            console.log('Could not post test results:', error.message);
+          }
+          
+    - name: Fail if Critical Issues Found
+      run: |
+        if [ -f "maintenance-reports/cross-page-maintenance-test-report.json" ]; then
+          FAILED_TESTS=$(node -e "
+            const report = require('./maintenance-reports/cross-page-maintenance-test-report.json');
+            console.log(report.summary.failed);
+          ")
+          
+          if [ "$FAILED_TESTS" -gt "0" ]; then
+            echo "❌ $FAILED_TESTS tests failed. Please review and fix the issues."
+            exit 1
+          fi
+        fi
+
+  content-preview-update:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && contains(github.event.head_commit.modified, '_docs/')
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Update Content Previews
+      run: npm run content:update-previews
+      
+    - name: Check for Changes
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit Updated Previews
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add index.html
+        git commit -m "Auto-update content previews from documentation changes" || exit 0
+        git push

@@ -1,0 +1,154 @@
+# Project Info
+title: "GGUF Loader"
+description: "GGUF Loader is the easiest way to run GGUF-based LLMs like Mistral, LLaMA, and DeepSeek offline on Windows — no Python, no setup, no internet. Perfect for private, local AI deployments with GUI."
+tagline: "Enterprise-Grade Local AI Deployment Platform"
+lang: en
+url: "https://ggufloader.github.io"
+baseurl: "/gguf-loader"
+
+
+# Social Metadata
+social:
+  name: "GGUF Loader"
+  links:
+    - "https://github.com/hussainnazary2"
+    - "https://github.com/ggufloader/gguf-loader"
+    - "https://linkedin.com/in/hussain-nazary-188b4385"
+    - "https://twitter.com/hussainnazary"
+
+# GitHub Info
+repository: "ggufloader/gguf-loader"
+github:
+  is_project_page: true
+
+# Visual & SEO Assets
+logo: "/docs/apple-touch-icon.png"
+image: "/docs/apple-touch-icon.png"
+theme_color: "#0a74da"
+
+# Theme — add a blog-friendly theme for post layout
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-minifier
+
+# Build Behavior
+permalink: pretty
+markdown: kramdown
+highlighter: rouge
+safe: true
+incremental: false
+lsi: false
+
+# Collections and Defaults — enable posts output and documentation collection
+collections:
+  posts:
+    output: true
+  docs:
+    output: true
+    permalink: /docs/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Hussain Nazary"
+  - scope:
+      path: "_docs"
+      type: "docs"
+    values:
+      layout: "docs"
+      toc: true
+      edit_page: true
+      author: "Hussain Nazary"
+  - scope:
+      path: ""
+    values:
+      layout: default
+      author: "GGUF Loader"
+
+# Time & Encoding
+timezone: UTC
+encoding: utf-8
+
+# Sitemap Settings
+sitemap:
+  filename: sitemap.xml
+  exclude:
+    - /404.html
+
+# Feed Settings
+feed:
+  collections:
+    - posts
+  excerpt_only: true
+
+# Plugin Configuration
+relative_links:
+  enabled: true
+  collections: true
+
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
+
+# File Inclusion & Exclusion
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - .gitignore
+  - docs/
+
+include:
+  - .htaccess
+  - _headers
+  - _pages
+  - _docs
+
+# Performance optimization settings
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+  compress_css: true
+  compress_javascript: true
+  compress_json: true
+  simple_doctype: false
+  remove_spaces_inside_tags: true
+  remove_multi_spaces: true
+  remove_comments: true
+  remove_intertag_spaces: true
+  remove_quotes: false
+  compress_css_files:
+    - "*.css"
+  compress_js_files:
+    - "*.js"
+  exclude:
+    - "*.min.css"
+    - "*.min.js"
+
+# Cache control headers
+cache_control:
+  css: "public, max-age=31536000, immutable"
+  js: "public, max-age=31536000, immutable"
+  images: "public, max-age=604800"
+  fonts: "public, max-age=31536000, immutable"
+  html: "public, max-age=3600"

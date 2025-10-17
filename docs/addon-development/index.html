@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addon Development Guide - GGUF Loader Documentation</title>
+    <meta name="description" content="Learn to create custom addons for GGUF Loader 2.0.0 with examples and best practices. Complete guide to addon architecture, development, and testing.">
+    <meta name="keywords" content="GGUF Loader, addon development, Python, API, extensions, plugins, Smart Floating Assistant">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/addon-development/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Addon Development Guide - GGUF Loader Documentation">
+    <meta property="og:description" content="Learn to create custom addons for GGUF Loader 2.0.0 with examples and best practices. Complete guide to addon architecture, development, and testing.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/addon-development/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="Addon Development Guide - GGUF Loader Documentation">
+    <meta name="twitter:description" content="Learn to create custom addons for GGUF Loader 2.0.0 with examples and best practices.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Addon Development Guide",
+                "item": "https://ggufloader.github.io/docs/addon-development/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- TechArticle structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "GGUF Loader Addon Development Guide",
+        "description": "Learn to create custom addons for GGUF Loader 2.0.0 with examples and best practices including addon architecture, development workflow, and testing",
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io/docs/addon-development/",
+        "articleSection": "Development",
+        "keywords": ["GGUF Loader", "addon development", "API", "Python", "extensions", "plugins", "Smart Floating Assistant"],
+        "about": {
+            "@type": "SoftwareApplication",
+            "name": "GGUF Loader",
+            "applicationCategory": "DeveloperApplication",
+            "programmingLanguage": "Python"
+        },
+        "image": "https://ggufloader.github.io/preview.png",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../css/enhanced-search.css">
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .docs-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-sidebar h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1.1em;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .docs-sidebar li {
+            margin: 5px 0;
+        }
+        
+        .docs-sidebar a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-sidebar a:hover,
+        .docs-sidebar a.active {
+            color: #0078d4;
+            background: #e3f2fd;
+            padding-left: 10px;
+        }
+        
+        .docs-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .docs-header {
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .docs-header h1 {
+            margin: 0 0 10px 0;
+            color: #212529;
+            font-size: 2.5em;
+        }
+        
+        .docs-description {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .docs-body h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .docs-body h3 {
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        
+        .docs-body pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .docs-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .docs-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .code-block {
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: attr(data-lang);
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: #6c757d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+        
+        .architecture-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0078d4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .architecture-box h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+        
+        .best-practice {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .best-practice h4 {
+            margin-top: 0;
+            color: #155724;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .warning-box strong {
+            color: #856404;
+        }
+        
+        .docs-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .docs-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .nav-prev, .nav-next {
+            color: #0078d4;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #0078d4;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-prev:hover, .nav-next:hover {
+            background: #0078d4;
+            color: white;
+        }
+        
+        .docs-meta {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .docs-meta a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .related-articles {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .related-articles h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin: 10px 0;
+        }
+        
+        .related-articles a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .docs-content {
+                padding: 20px;
+            }
+            
+            .docs-header h1 {
+                font-size: 2em;
+            }
+            
+            .docs-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .architecture-box, .best-practice, .warning-box {
+                margin: 15px 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced breadcrumb navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb navigation">
+        <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="/" title="GGUF Loader homepage">Home</a></li>
+            <li class="breadcrumb-item"><a href="/docs/" title="Documentation hub">Documentation</a></li>
+            <li class="breadcrumb-item current" aria-current="page">Addon Development Guide</li>
+        </ol>
+    </nav>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav aria-label="Documentation navigation">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="/docs/installation/">Installation Guide</a></li>
+                    <li><a href="/docs/quick-start/">Quick Start</a></li>
+                </ul>
+                
+                <h3>Development</h3>
+                <ul>
+                    <li><a href="/docs/addon-development/" class="active">Addon Development</a></li>
+                    <li><a href="/docs/addon-api/">API Reference</a></li>
+                    <li><a href="/docs/smart-floater-example/">Smart Floater Example</a></li>
+                </ul>
+                
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="/docs/package-structure/">Package Structure</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="docs-content">
+            <header class="docs-header">
+                <h1>Addon Development Guide</h1>
+                <p class="docs-description">Learn to create custom addons for GGUF Loader 2.0.0 with examples and best practices</p>
+            </header>
+            
+            <div class="docs-body">
+                <div class="architecture-box">
+                    <h2>🏗️ Addon Architecture</h2>
+                    
+                    <h3>What is an Addon?</h3>
+                    <p>An addon is a Python package that extends GGUF Loader's functionality. Addons can:</p>
+                    <ul>
+                        <li>Add new UI components and windows</li>
+                        <li>Process text and interact with AI models</li>
+                        <li>Integrate with external services</li>
+                        <li>Provide new workflows and automation</li>
+                        <li>Extend the main application's capabilities</li>
+                    </ul>
+                    
+                    <h3>Addon Structure</h3>
+                    <p>Every addon must follow this basic structure:</p>
+                    
+                    <div class="code-block" data-lang="text">
+                        <pre><code>addons/
+└── your_addon_name/
+    ├── __init__.py          # Addon entry point
+    ├── main.py              # Main addon logic
+    ├── ui.py                # UI components (optional)
+    ├── config.py            # Configuration (optional)
+    └── README.md            # Addon documentation</code></pre>
+                    </div>
+                </div>
+                
+                <h2 id="creating-first-addon">🚀 Creating Your First Addon</h2>
+                
+                <h3>Step 1: Create the Addon Directory</h3>
+                <div class="code-block" data-lang="bash">
+                    <pre><code>mkdir -p addons/my_awesome_addon
+cd addons/my_awesome_addon</code></pre>
+                </div>
+                
+                <h3>Step 2: Create the Entry Point (<code>__init__.py</code>)</h3>
+                <div class="code-block" data-lang="python">
+                    <pre><code>"""
+My Awesome Addon - A sample addon for GGUF Loader
+
+This addon demonstrates the basic structure and capabilities
+of the GGUF Loader addon system.
+"""
+
+__version__ = "1.0.0"
+__author__ = "Your Name"
+__description__ = "A sample addon that demonstrates basic functionality"
+
+# Import the register function
+from .main import register
+
+# Export the register function
+__all__ = ["register"]</code></pre>
+                </div>
+                
+                <h3>Step 3: Create the Main Logic (<code>main.py</code>)</h3>
+                <div class="code-block" data-lang="python">
+                    <pre><code>"""
+Main logic for My Awesome Addon
+"""
+
+import logging
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QTextEdit
+from PySide6.QtCore import QTimer
+
+class MyAwesomeAddon:
+    """Main addon class that handles the addon functionality."""
+    
+    def __init__(self, gguf_app):
+        """Initialize the addon with reference to the main GGUF app."""
+        self.gguf_app = gguf_app
+        self.logger = logging.getLogger(__name__)
+        self.is_running = False
+        
+        # Initialize your addon components here
+        self.setup_addon()
+    
+    def setup_addon(self):
+        """Setup the addon components."""
+        self.logger.info("Setting up My Awesome Addon")
+        # Add your initialization logic here
+    
+    def get_model(self):
+        """Get the currently loaded GGUF model."""
+        try:
+            if hasattr(self.gguf_app, 'model') and self.gguf_app.model:
+                return self.gguf_app.model
+            elif hasattr(self.gguf_app, 'ai_chat') and hasattr(self.gguf_app.ai_chat, 'model'):
+                return self.gguf_app.ai_chat.model
+            return None
+        except Exception as e:
+            self.logger.error(f"Error getting model: {e}")
+            return None
+    
+    def process_text_with_ai(self, text, prompt_template="Process this text: {text}"):
+        """Process text using the loaded AI model."""
+        model = self.get_model()
+        if not model:
+            return "Error: No AI model loaded"
+        
+        try:
+            prompt = prompt_template.format(text=text)
+            response = model(
+                prompt,
+                max_tokens=200,
+                temperature=0.7,
+                stop=["</s>", "\n\n"]
+            )
+            
+            # Extract text from response
+            if isinstance(response, dict) and 'choices' in response:
+                return response['choices'][0].get('text', '').strip()
+            elif isinstance(response, str):
+                return response.strip()
+            else:
+                return str(response).strip()
+                
+        except Exception as e:
+            self.logger.error(f"Error processing text: {e}")
+            return f"Error: {str(e)}"</code></pre>
+                </div>
+                
+                <h3>Step 4: Test Your Addon</h3>
+                <ol>
+                    <li><strong>Place your addon</strong> in the <code>addons/</code> directory</li>
+                    <li><strong>Launch GGUF Loader</strong>: <code>ggufloader</code></li>
+                    <li><strong>Load a GGUF model</strong> in the main application</li>
+                    <li><strong>Click your addon</strong> in the addon sidebar</li>
+                    <li><strong>Test the functionality</strong></li>
+                </ol>
+                
+                <h2 id="advanced-features">🎨 Advanced Addon Features</h2>
+                
+                <h3>Background Addons</h3>
+                <p>Some addons don't need a UI and run in the background:</p>
+                
+                <div class="code-block" data-lang="python">
+                    <pre><code>def register(parent=None):
+    """Register a background addon."""
+    try:
+        addon = MyBackgroundAddon(parent)
+        addon.start()
+        
+        # Store reference but return None (no UI)
+        parent._my_background_addon = addon
+        return None
+        
+    except Exception as e:
+        logging.error(f"Failed to register background addon: {e}")
+        return None</code></pre>
+                </div>
+                
+                <h3>Global Hotkeys and Text Selection</h3>
+                <p>Learn from the <a href="/docs/smart-floater-example/" title="Complete Smart Floating Assistant addon example">Smart Floating Assistant addon</a>:</p>
+                
+                <div class="code-block" data-lang="python">
+                    <pre><code>from PySide6.QtCore import QTimer
+import pyautogui
+import pyperclip
+
+class TextSelectionAddon:
+    def __init__(self, gguf_app):
+        self.gguf_app = gguf_app
+        self.selected_text = ""
+        
+        # Timer for checking text selection
+        self.selection_timer = QTimer()
+        self.selection_timer.timeout.connect(self.check_selection)
+        self.selection_timer.start(500)  # Check every 500ms
+    
+    def check_selection(self):
+        """Check for text selection."""
+        try:
+            # Save current clipboard
+            original_clipboard = pyperclip.paste()
+            
+            # Copy selection
+            pyautogui.hotkey('ctrl', 'c')
+            
+            # Check if we got new text
+            QTimer.singleShot(50, lambda: self.process_selection(original_clipboard))
+            
+        except:
+            pass</code></pre>
+                </div>
+                
+                <h3>Model Integration</h3>
+                <p>Access and use the loaded GGUF model:</p>
+                
+                <div class="code-block" data-lang="python">
+                    <pre><code>def use_model_for_processing(self, text):
+    """Use the GGUF model for text processing."""
+    model = self.get_model()
+    if not model:
+        return "No model loaded"
+    
+    try:
+        # Different processing modes
+        response = model(
+            f"Analyze this text: {text}",
+            max_tokens=300,
+            temperature=0.7,
+            top_p=0.9,
+            repeat_penalty=1.1,
+            stop=["</s>", "Human:", "User:"]
+        )
+        
+        return self.extract_response_text(response)
+        
+    except Exception as e:
+        return f"Error: {str(e)}"</code></pre>
+                </div>
+                
+                <h2 id="best-practices">📋 Addon Best Practices</h2>
+                
+                <div class="best-practice">
+                    <h4>1. Error Handling</h4>
+                    <p>Always wrap your code in try-catch blocks:</p>
+                    <div class="code-block" data-lang="python">
+                        <pre><code>def safe_operation(self):
+    try:
+        # Your code here
+        pass
+    except Exception as e:
+        self.logger.error(f"Operation failed: {e}")
+        return None</code></pre>
+                    </div>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>2. Resource Cleanup</h4>
+                    <p>Implement proper cleanup:</p>
+                    <div class="code-block" data-lang="python">
+                        <pre><code>def stop(self):
+    """Clean up addon resources."""
+    if hasattr(self, 'timer'):
+        self.timer.stop()
+    
+    if hasattr(self, 'ui_components'):
+        for component in self.ui_components:
+            component.close()
+    
+    self.logger.info("Addon stopped and cleaned up")</code></pre>
+                    </div>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>3. Configuration</h4>
+                    <p>Support user configuration:</p>
+                    <div class="code-block" data-lang="python">
+                        <pre><code>import json
+import os
+
+class AddonConfig:
+    def __init__(self, addon_name):
+        self.config_file = f"config/{addon_name}_config.json"
+        self.default_config = {
+            "enabled": True,
+            "hotkey": "Ctrl+Shift+A",
+            "auto_process": False
+        }
+        self.config = self.load_config()
+    
+    def load_config(self):
+        try:
+            if os.path.exists(self.config_file):
+                with open(self.config_file, 'r') as f:
+                    return {**self.default_config, **json.load(f)}
+        except:
+            pass
+        return self.default_config.copy()</code></pre>
+                    </div>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>4. Logging</h4>
+                    <p>Use proper logging:</p>
+                    <div class="code-block" data-lang="python">
+                        <pre><code>import logging
+
+class MyAddon:
+    def __init__(self, gguf_app):
+        self.logger = logging.getLogger(f"addon.{self.__class__.__name__}")
+        self.logger.setLevel(logging.INFO)
+        
+        # Log addon initialization
+        self.logger.info("Addon initialized")
+    
+    def process_data(self, data):
+        self.logger.debug(f"Processing data: {len(data)} items")
+        try:
+            # Process data
+            result = self.do_processing(data)
+            self.logger.info("Data processed successfully")
+            return result
+        except Exception as e:
+            self.logger.error(f"Processing failed: {e}")
+            raise</code></pre>
+                    </div>
+                </div>
+                
+                <h2 id="testing">🔧 Testing Your Addon</h2>
+                
+                <h3>Unit Testing</h3>
+                <p>Create tests for your addon:</p>
+                
+                <div class="code-block" data-lang="python">
+                    <pre><code># test_my_addon.py
+import unittest
+from unittest.mock import Mock, MagicMock
+from addons.my_awesome_addon.main import MyAwesomeAddon
+
+class TestMyAwesomeAddon(unittest.TestCase):
+    def setUp(self):
+        self.mock_gguf_app = Mock()
+        self.addon = MyAwesomeAddon(self.mock_gguf_app)
+    
+    def test_addon_initialization(self):
+        self.assertIsNotNone(self.addon)
+        self.assertEqual(self.addon.gguf_app, self.mock_gguf_app)
+    
+    def test_text_processing(self):
+        # Mock the model
+        mock_model = Mock()
+        mock_model.return_value = "Processed text"
+        self.mock_gguf_app.model = mock_model
+        
+        result = self.addon.process_text_with_ai("test text")
+        self.assertEqual(result, "Processed text")
+
+if __name__ == '__main__':
+    unittest.main()</code></pre>
+                </div>
+                
+                <h2 id="distributing">📦 Distributing Your Addon</h2>
+                
+                <h3>1. Create Documentation</h3>
+                <p>Create a <code>README.md</code> for your addon:</p>
+                
+                <div class="code-block" data-lang="markdown">
+                    <pre><code># My Awesome Addon
+
+A powerful addon for GGUF Loader that provides [functionality].
+
+## Features
+
+- Feature 1
+- Feature 2
+- Feature 3
+
+## Installation
+
+1. Copy the addon to `addons/my_awesome_addon/`
+2. Restart GGUF Loader
+3. Click on the addon in the sidebar
+
+## Configuration
+
+[Configuration instructions]
+
+## Usage
+
+[Usage instructions]</code></pre>
+                </div>
+                
+                <h3>2. Version Your Addon</h3>
+                <p>Use semantic versioning in <code>__init__.py</code>:</p>
+                
+                <div class="code-block" data-lang="python">
+                    <pre><code>__version__ = "1.0.0"  # Major.Minor.Patch</code></pre>
+                </div>
+                
+                <h3>3. Share with Community</h3>
+                <ul>
+                    <li>Create a GitHub repository</li>
+                    <li>Add installation instructions</li>
+                    <li>Include screenshots and examples</li>
+                    <li>Submit to the community addon registry</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> Always test your addon thoroughly before sharing. Make sure it handles errors gracefully and doesn't interfere with other addons or the main application.
+                </div>
+                
+                <section class="related-articles" aria-labelledby="related-heading">
+                    <h3 id="related-heading">Related Documentation</h3>
+                    <ul>
+                        <li><a href="/docs/addon-api/" title="Complete API reference for addon development">Addon API Reference</a> - Complete API documentation</li>
+                        <li><a href="/docs/smart-floater-example/" title="Learn from the built-in addon example">Smart Floater Example</a> - Learn from the built-in addon</li>
+                        <li><a href="/docs/package-structure/" title="Understanding GGUF Loader's package structure">Package Structure</a> - Technical documentation</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <!-- Enhanced Previous/Next Navigation -->
+            <nav class="docs-navigation" aria-label="Page navigation">
+                <div class="nav-links">
+                    <a href="/docs/quick-start/" class="nav-prev" title="Get started with GGUF Loader in minutes">
+                        <span class="nav-direction">← Previous</span>
+                        <span class="nav-title">Quick Start Guide</span>
+                    </a>
+                    <a href="/docs/addon-api/" class="nav-next" title="Complete API reference for addon developers">
+                        <span class="nav-direction">Next →</span>
+                        <span class="nav-title">API Reference</span>
+                    </a>
+                </div>
+            </nav>
+
+            <footer class="docs-footer">
+                <div class="docs-meta">
+                    <p>Last updated: January 27, 2025</p>
+                    <p><a href="https://github.com/ggufloader/gguf-loader/edit/main/_docs/addon-development.md" title="Edit this page on GitHub">Edit this page on GitHub</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Analytics Configuration -->
+    <script src="../../analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="../../analytics.js" defer></script>
+    <script src="../../core-web-vitals-monitor.js" defer></script>
+    <script src="../../user-behavior-tracker.js" defer></script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

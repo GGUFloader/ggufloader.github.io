@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Floater Addon Example - GGUF Loader Documentation</title>
+    <meta name="description" content="Learn addon development by studying the Smart Floating Assistant - a complete, real-world example with code analysis, architecture patterns, and best practices.">
+    <meta name="keywords" content="GGUF Loader, Smart Floating Assistant, addon example, code tutorial, Python, text selection, AI processing">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/smart-floater-example/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Smart Floater Addon Example - GGUF Loader Documentation">
+    <meta property="og:description" content="Learn addon development by studying the Smart Floating Assistant - a complete, real-world example with code analysis, architecture patterns, and best practices.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/smart-floater-example/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="Smart Floater Addon Example - GGUF Loader Documentation">
+    <meta name="twitter:description" content="Learn addon development by studying the Smart Floating Assistant example.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Smart Floater Example",
+                "item": "https://ggufloader.github.io/docs/smart-floater-example/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- CodeRepository structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CodeRepository",
+        "name": "Smart Floating Assistant Example",
+        "description": "Complete example of building addons for GGUF Loader using the Smart Floating Assistant with code analysis and best practices",
+        "programmingLanguage": "Python",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader",
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "isPartOf": {
+            "@type": "SoftwareApplication",
+            "name": "GGUF Loader",
+            "applicationCategory": "DeveloperApplication"
+        },
+        "mainEntityOfPage": "https://ggufloader.github.io/docs/smart-floater-example/",
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "image": "https://ggufloader.github.io/preview.png"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../css/enhanced-search.css">
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .docs-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-sidebar h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1.1em;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .docs-sidebar li {
+            margin: 5px 0;
+        }
+        
+        .docs-sidebar a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-sidebar a:hover,
+        .docs-sidebar a.active {
+            color: #0078d4;
+            background: #e3f2fd;
+            padding-left: 10px;
+        }
+        
+        .docs-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .docs-header {
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .docs-header h1 {
+            margin: 0 0 10px 0;
+            color: #212529;
+            font-size: 2.5em;
+        }
+        
+        .docs-description {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .docs-body h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .docs-body h3 {
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        
+        .docs-body pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .docs-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .docs-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .overview-box {
+            background: #e8f4fd;
+            border-left: 4px solid #0078d4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .overview-box h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+        
+        .architecture-diagram {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .code-analysis {
+            background: #fff8e1;
+            border: 1px solid #ffcc02;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .code-analysis h4 {
+            margin-top: 0;
+            color: #f57c00;
+        }
+        
+        .best-practice {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .best-practice h4 {
+            margin-top: 0;
+            color: #155724;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .feature-item h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .workflow-step {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .workflow-step h4 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        
+        .docs-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .docs-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .nav-prev, .nav-next {
+            color: #0078d4;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #0078d4;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-prev:hover, .nav-next:hover {
+            background: #0078d4;
+            color: white;
+        }
+        
+        .docs-meta {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .docs-meta a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .related-articles {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .related-articles h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin: 10px 0;
+        }
+        
+        .related-articles a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .docs-content {
+                padding: 20px;
+            }
+            
+            .docs-header h1 {
+                font-size: 2em;
+            }
+            
+            .docs-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .overview-box, .code-analysis, .best-practice {
+                margin: 15px 0;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="breadcrumb">
+        <a href="/">GGUF Loader</a> / <a href="/docs/">Documentation</a> / <span>Smart Floater Example</span>
+    </nav>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav aria-label="Documentation navigation">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="/docs/installation/">Installation Guide</a></li>
+                    <li><a href="/docs/quick-start/">Quick Start</a></li>
+                </ul>
+                
+                <h3>Development</h3>
+                <ul>
+                    <li><a href="/docs/addon-development/">Addon Development</a></li>
+                    <li><a href="/docs/addon-api/">API Reference</a></li>
+                    <li><a href="/docs/smart-floater-example/" class="active">Smart Floater Example</a></li>
+                </ul>
+                
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="/docs/package-structure/">Package Structure</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="docs-content">
+            <header class="docs-header">
+                <h1>Smart Floater Addon Example</h1>
+                <p class="docs-description">Learn addon development by studying the built-in Smart Floating Assistant</p>
+            </header>
+            
+            <div class="docs-body">
+                <div class="overview-box">
+                    <h2>📋 Overview</h2>
+                    
+                    <p>The Smart Floating Assistant is GGUF Loader's flagship addon that provides:</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <h4>🌐 Global Text Selection</h4>
+                            <p>Detection across all applications</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>✨ Floating Button Interface</h4>
+                            <p>Appears near selected text</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🤖 AI-Powered Processing</h4>
+                            <p>Summarize and comment features</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>📋 Seamless Clipboard Integration</h4>
+                            <p>Non-intrusive clipboard operations</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🔒 Privacy-First Processing</h4>
+                            <p>Local processing only</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="architecture">🏗️ Architecture</h2>
+                
+                <h3>File Structure</h3>
+                
+                <div class="architecture-diagram">
+                    <pre><code>addons/smart_floater/
+├── __init__.py              # Addon entry point
+├── simple_main.py           # Main addon logic (simplified version)
+├── main.py                  # Full-featured version
+├── floater_ui.py           # UI components
+├── comment_engine.py       # Text processing engine
+├── injector.py             # Text injection utilities
+├── error_handler.py        # Error handling
+├── privacy_security.py    # Privacy and security features
+└── performance_optimizer.py # Performance optimization</code></pre>
+                </div>
+                
+                <h3>Key Components</h3>
+                
+                <ol>
+                    <li><strong>SimpleFloatingAssistant</strong>: Main addon class</li>
+                    <li><strong>SmartFloaterStatusWidget</strong>: Control panel UI</li>
+                    <li><strong>Text Selection Monitor</strong>: Global text detection</li>
+                    <li><strong>AI Processing Engine</strong>: Text summarization and commenting</li>
+                    <li><strong>Clipboard Manager</strong>: Safe clipboard operations</li>
+                </ol>
+                
+                <h2 id="code-analysis">🔍 Code Analysis</h2>
+                
+                <h3>Entry Point (<code>__init__.py</code>)</h3>
+                
+                <pre><code>"""
+Simple Smart Floating Assistant
+
+Shows a button when you select text, processes it with AI. That's it.
+"""
+
+# Use the simple version instead of the complex one
+from .simple_main import register
+
+__all__ = ["register"]</code></pre>
+                
+                <div class="code-analysis">
+                    <h4>Key Lessons:</h4>
+                    <ul>
+                        <li>Keep the entry point simple</li>
+                        <li>Export only the <code>register</code> function</li>
+                        <li>Use clear, descriptive docstrings</li>
+                    </ul>
+                </div>
+                
+                <h3>Main Logic (<code>simple_main.py</code>)</h3>
+                
+                <p>Let's break down the main addon class:</p>
+                
+                <pre><code>class SimpleFloatingAssistant:
+    """Simple floating assistant that shows button on text selection."""
+    
+    def __init__(self, gguf_app_instance: Any):
+        """Initialize the addon with GGUF Loader reference."""
+        self.gguf_app = gguf_app_instance
+        self._is_running = False
+        self._floating_button = None
+        self._popup_window = None
+        self._selected_text = ""
+        self.model = None  # Store model reference directly
+        
+        # Initialize clipboard tracking
+        try:
+            self.last_clipboard = pyperclip.paste()
+        except:
+            self.last_clipboard = ""
+        
+        # Button persistence tracking
+        self.button_show_time = 0
+        self.button_should_stay = False
+        
+        # Connect to model loading signals
+        self.connect_to_model_signals()
+        
+        # Timer to check for text selection
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.check_selection)
+        self.timer.start(300)  # Check every 300ms</code></pre>
+                
+                <div class="code-analysis">
+                    <h4>Key Lessons:</h4>
+                    <ul>
+                        <li>Store reference to main app (<code>gguf_app</code>)</li>
+                        <li>Initialize all state variables</li>
+                        <li>Connect to model loading signals</li>
+                        <li>Use QTimer for periodic tasks</li>
+                        <li>Handle initialization errors gracefully</li>
+                    </ul>
+                </div>
+                
+                <h3>Model Integration</h3>
+                
+                <pre><code>def connect_to_model_signals(self):
+    """Connect to model loading signals from the main app."""
+    try:
+        # Connect to the main app's model_loaded signal
+        if hasattr(self.gguf_app, 'model_loaded'):
+            self.gguf_app.model_loaded.connect(self.on_model_loaded)
+            print("✅ Connected to model_loaded signal")
+        
+        # Also try to connect to ai_chat model_loaded signal
+        if hasattr(self.gguf_app, 'ai_chat') and hasattr(self.gguf_app.ai_chat, 'model_loaded'):
+            self.gguf_app.ai_chat.model_loaded.connect(self.on_model_loaded)
+            print("✅ Connected to ai_chat model_loaded signal")
+            
+    except Exception as e:
+        print(f"❌ Error connecting to model signals: {e}")
+
+def get_model(self):
+    """Get the loaded model."""
+    try:
+        # First try our stored model reference
+        if self.model:
+            print("✅ Using stored model reference")
+            return self.model
+        
+        # Try multiple fallback methods
+        if hasattr(self.gguf_app, 'model'):
+            if self.gguf_app.model:
+                self.model = self.gguf_app.model
+                return self.gguf_app.model
+        
+        # ... more fallback methods
+        
+        return None
+    except Exception as e:
+        print(f"❌ Error getting model: {e}")
+        return None</code></pre>
+                
+                <div class="code-analysis">
+                    <h4>Key Lessons:</h4>
+                    <ul>
+                        <li>Connect to model loading signals for real-time updates</li>
+                        <li>Implement multiple fallback methods for model access</li>
+                        <li>Store model reference locally for performance</li>
+                        <li>Use defensive programming with try-catch blocks</li>
+                        <li>Provide helpful debug output</li>
+                    </ul>
+                </div>
+                
+                <h3>Text Selection Detection</h3>
+                
+                <pre><code>def check_selection(self):
+    """Check if text is currently selected (without copying)."""
+    try:
+        # Save current clipboard content
+        original_clipboard = pyperclip.paste()
+        
+        # Temporarily copy selection to check if text is selected
+        pyautogui.hotkey('ctrl', 'c')
+        
+        # Small delay to let clipboard update
+        QTimer.singleShot(50, lambda: self._process_selection_check(original_clipboard))
+        
+    except:
+        pass
+
+def _process_selection_check(self, original_clipboard):
+    """Process the selection check and restore clipboard."""
+    try:
+        # Get what was copied
+        current_selection = pyperclip.paste()
+        
+        # Check if we got new selected text
+        if (current_selection != original_clipboard and 
+            current_selection and 
+            len(current_selection.strip()) > 3 and
+            len(current_selection) < 5000):
+            
+            # We have selected text!
+            if current_selection.strip() != self.selected_text:
+                self.selected_text = current_selection.strip()
+                self.show_button()
+                self.button_show_time = 0  # Reset timer
+                self.button_should_stay = True
+        else:
+            # No text selected - but don't hide immediately
+            if self.button_should_stay:
+                self.button_show_time += 1
+                
+                # Hide after 10 checks (about 3 seconds)
+                if self.button_show_time > 10:
+                    self.hide_button()
+                    self.button_should_stay = False
+                    self.button_show_time = 0
+        
+        # Always restore original clipboard immediately
+        pyperclip.copy(original_clipboard)
+        
+    except:
+        # Always try to restore clipboard even if there's an error
+        try:
+            pyperclip.copy(original_clipboard)
+        except:
+            pass</code></pre>
+                
+                <div class="code-analysis">
+                    <h4>Key Lessons:</h4>
+                    <ul>
+                        <li>Use non-intrusive text selection detection</li>
+                        <li>Always restore the user's clipboard</li>
+                        <li>Implement smart button persistence (don't hide immediately)</li>
+                        <li>Handle edge cases (empty text, very long text)</li>
+                        <li>Use defensive programming for clipboard operations</li>
+                    </ul>
+                </div>
+                
+                <h3>Floating UI</h3>
+                
+                <pre><code>def show_button(self):
+    """Show floating button near cursor."""
+    if self.button:
+        self.button.close()
+    
+    self.button = QPushButton("✨")
+    self.button.setFixedSize(40, 40)
+    self.button.setWindowFlags(Qt.ToolTip | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+    self.button.setStyleSheet("""
+        QPushButton {
+            background-color: #0078d4;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 16px;
+        }
+        QPushButton:hover {
+            background-color: #106ebe;
+        }
+    """)
+    
+    # Position near cursor
+    pos = QCursor.pos()
+    self.button.move(pos.x() + 10, pos.y() - 50)
+    self.button.clicked.connect(self.show_popup)
+    self.button.show()
+    
+    # Reset persistence tracking
+    self.button_show_time = 0
+    self.button_should_stay = True</code></pre>
+                
+                <div class="code-analysis">
+                    <h4>Key Lessons:</h4>
+                    <ul>
+                        <li>Use appropriate window flags for floating widgets</li>
+                        <li>Position relative to cursor for better UX</li>
+                        <li>Apply attractive styling with CSS</li>
+                        <li>Connect button clicks to actions</li>
+                        <li>Clean up previous instances before creating new ones</li>
+                    </ul>
+                </div>
+                
+                <h3>AI Text Processing</h3>
+                
+                <pre><code>def process_text(self, action):
+    """Process text with AI using GGUF Loader's model."""
+    try:
+        model = self.get_model()
+        if not model:
+            self.result_area.setText("❌ Error: No AI model loaded in GGUF Loader\n\nPlease load a GGUF model first!")
+            return
+        
+        self.result_area.setText("🤖 Processing with AI...")
+        
+        # Create appropriate prompt based on action
+        if action == "summarize":
+            prompt = f"Please provide a clear and concise summary of the following text:\n\n{self.selected_text}\n\nSummary:"
+        else:  # comment
+            prompt = f"Please write a thoughtful and insightful comment about the following text:\n\n{self.selected_text}\n\nComment:"
+        
+        # Process with GGUF model using the same interface as AIChat
+        try:
+            response = model(
+                prompt,
+                max_tokens=300,
+                stream=False,  # Don't stream for simplicity
+                temperature=0.7,
+                top_p=0.9,
+                repeat_penalty=1.1,
+                top_k=40,
+                stop=["</s>", "Human:", "User:", "\n\n\n"]
+            )
+            
+            # Extract text from response
+            if isinstance(response, dict) and 'choices' in response:
+                result_text = response['choices'][0].get('text', '').strip()
+            elif isinstance(response, str):
+                result_text = response.strip()
+            else:
+                result_text = str(response).strip()
+            
+            # Clean up the result
+            if result_text:
+                # Remove any prompt echoing
+                if "Summary:" in result_text:
+                    result_text = result_text.split("Summary:")[-1].strip()
+                elif "Comment:" in result_text:
+                    result_text = result_text.split("Comment:")[-1].strip()
+                
+                self.result_area.setText(result_text)
+                self.copy_btn.setEnabled(True)
+            else:
+                self.result_area.setText("❌ No response generated. Try again.")
+            
+        except Exception as e:
+            self.result_area.setText(f"❌ Error processing with AI model:\n{str(e)}\n\nMake sure a compatible GGUF model is loaded.")
+    
+    except Exception as e:
+        self.result_area.setText(f"❌ Unexpected error: {str(e)}")</code></pre>
+                
+                <div class="code-analysis">
+                    <h4>Key Lessons:</h4>
+                    <ul>
+                        <li>Check model availability before processing</li>
+                        <li>Create context-appropriate prompts</li>
+                        <li>Use consistent model parameters</li>
+                        <li>Handle different response formats</li>
+                        <li>Clean up AI responses (remove prompt echoing)</li>
+                        <li>Provide clear error messages to users</li>
+                    </ul>
+                </div>
+                
+                <h2 id="best-practices">🎯 Best Practices Demonstrated</h2>
+                
+                <div class="best-practice">
+                    <h4>1. Defensive Programming</h4>
+                    <ul>
+                        <li>Extensive use of try-catch blocks</li>
+                        <li>Graceful handling of missing dependencies</li>
+                        <li>Fallback methods for critical operations</li>
+                    </ul>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>2. User Experience</h4>
+                    <ul>
+                        <li>Non-intrusive text selection detection</li>
+                        <li>Smart button persistence (doesn't disappear immediately)</li>
+                        <li>Clear status messages and error handling</li>
+                        <li>Attractive, modern UI design</li>
+                    </ul>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>3. Performance Optimization</h4>
+                    <ul>
+                        <li>Efficient timer-based monitoring</li>
+                        <li>Minimal clipboard interference</li>
+                        <li>Lazy loading of UI components</li>
+                        <li>Resource cleanup on shutdown</li>
+                    </ul>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>4. Integration Patterns</h4>
+                    <ul>
+                        <li>Signal-based communication with main app</li>
+                        <li>Multiple fallback methods for model access</li>
+                        <li>Proper lifecycle management</li>
+                        <li>Clean separation of concerns</li>
+                    </ul>
+                </div>
+                
+                <div class="best-practice">
+                    <h4>5. Error Handling</h4>
+                    <ul>
+                        <li>Comprehensive error messages</li>
+                        <li>Graceful degradation when model unavailable</li>
+                        <li>User-friendly error reporting</li>
+                        <li>Debug information for developers</li>
+                    </ul>
+                </div>
+                
+                <h2 id="customization">🔧 Customization Examples</h2>
+                
+                <h3>Adding New Processing Actions</h3>
+                
+                <pre><code>def process_text(self, action):
+    """Extended processing with more actions."""
+    prompts = {
+        "summarize": "Please provide a clear and concise summary of: {text}",
+        "comment": "Please write a thoughtful comment about: {text}",
+        "explain": "Please explain this text in simple terms: {text}",
+        "translate": "Please translate this text to English: {text}",
+        "improve": "Please improve the writing of this text: {text}"
+    }
+    
+    prompt_template = prompts.get(action, prompts["summarize"])
+    prompt = prompt_template.format(text=self.selected_text)
+    
+    # ... rest of processing logic</code></pre>
+                
+                <h3>Custom Hotkeys</h3>
+                
+                <pre><code>def setup_hotkeys(self):
+    """Setup custom hotkeys for the addon."""
+    try:
+        import keyboard
+        
+        # Register global hotkey for instant processing
+        keyboard.add_hotkey('ctrl+shift+s', self.quick_summarize)
+        keyboard.add_hotkey('ctrl+shift+c', self.quick_comment)
+        
+    except ImportError:
+        print("Keyboard library not available for hotkeys")
+
+def quick_summarize(self):
+    """Quick summarize selected text without UI."""
+    # Get current selection and process immediately
+    pass</code></pre>
+                
+                <h2 id="workflow">📊 Development Workflow</h2>
+                
+                <div class="workflow-step">
+                    <h4>Step 1: Study the Code</h4>
+                    <p>Read through <code>addons/smart_floater/simple_main.py</code> to understand the structure and patterns.</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <h4>Step 2: Experiment with Modifications</h4>
+                    <p>Make small changes to understand how different parts work together.</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <h4>Step 3: Create Your Own Addon</h4>
+                    <p>Use the patterns shown to build your own addon with similar functionality.</p>
+                </div>
+                
+                <div class="workflow-step">
+                    <h4>Step 4: Test and Iterate</h4>
+                    <p>Test your addon thoroughly and refine based on the best practices shown.</p>
+                </div>
+                
+                <h2 id="testing">🧪 Testing the Smart Floater</h2>
+                
+                <h3>Manual Testing Checklist</h3>
+                
+                <ol>
+                    <li><strong>Basic Functionality</strong>
+                        <ul>
+                            <li>Addon loads without errors</li>
+                            <li>Status widget appears in sidebar</li>
+                            <li>Model connection test works</li>
+                        </ul>
+                    </li>
+                    <li><strong>Text Selection</strong>
+                        <ul>
+                            <li>Button appears when selecting text</li>
+                            <li>Button stays visible for appropriate time</li>
+                            <li>Works across different applications</li>
+                        </ul>
+                    </li>
+                    <li><strong>AI Processing</strong>
+                        <ul>
+                            <li>Summarize function works correctly</li>
+                            <li>Comment function generates appropriate responses</li>
+                            <li>Error handling when no model loaded</li>
+                        </ul>
+                    </li>
+                    <li><strong>UI/UX</strong>
+                        <ul>
+                            <li>Floating button positioned correctly</li>
+                            <li>Popup window displays properly</li>
+                            <li>Copy functionality works</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h2 id="next-steps">🚀 Next Steps</h2>
+                
+                <p>After studying the Smart Floater example:</p>
+                
+                <ol>
+                    <li><strong>Create your own addon</strong> using the patterns shown</li>
+                    <li><strong>Experiment with modifications</strong> to understand the code better</li>
+                    <li><strong>Read the full source code</strong> in <code>addons/smart_floater/</code></li>
+                    <li><strong>Join the community</strong> to share your addon ideas</li>
+                </ol>
+                
+                <section class="related-articles" aria-labelledby="related-heading">
+                    <h3 id="related-heading">Related Documentation</h3>
+                    <ul>
+                        <li><a href="/docs/addon-development/" title="Step-by-step addon development guide">Addon Development Guide</a> - Step-by-step development guide</li>
+                        <li><a href="/docs/addon-api/" title="Complete API reference for addon development">Addon API Reference</a> - Complete API documentation</li>
+                        <li><a href="/docs/package-structure/" title="Understanding GGUF Loader's package structure">Package Structure</a> - Technical documentation</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <footer class="docs-footer">
+                <div class="docs-navigation">
+                    <a href="/docs/addon-api/" class="nav-prev">← Previous: API Reference</a>
+                    <a href="/docs/package-structure/" class="nav-next">Next: Package Structure →</a>
+                </div>
+                
+                <div class="docs-meta">
+                    <p>Last updated: January 27, 2025</p>
+                    <p><a href="https://github.com/ggufloader/gguf-loader/edit/main/docs/smart-floater-example.md">Edit this page on GitHub</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Analytics Configuration -->
+    <script src="../../analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="../../analytics.js" defer></script>
+    <script src="../../core-web-vitals-monitor.js" defer></script>
+    <script src="../../user-behavior-tracker.js" defer></script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

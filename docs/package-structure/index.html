@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Structure - GGUF Loader Documentation</title>
+    <meta name="description" content="Technical documentation of GGUF Loader's package structure and organization. Learn about the PyPI package, addon system, and directory layout.">
+    <meta name="keywords" content="GGUF Loader, package structure, PyPI, addon system, directory layout, technical documentation">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ggufloader.github.io/docs/package-structure/">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Package Structure - GGUF Loader Documentation">
+    <meta property="og:description" content="Technical documentation of GGUF Loader's package structure and organization. Learn about the PyPI package, addon system, and directory layout.">
+    <meta property="og:url" content="https://ggufloader.github.io/docs/package-structure/">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Twitter Card optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:title" content="Package Structure - GGUF Loader Documentation">
+    <meta name="twitter:description" content="Technical documentation of GGUF Loader's package structure and organization.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Documentation",
+                "item": "https://ggufloader.github.io/docs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Package Structure",
+                "item": "https://ggufloader.github.io/docs/package-structure/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- TechArticle structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "GGUF Loader Package Structure",
+        "description": "Technical documentation of GGUF Loader's package structure and organization including PyPI package details, addon system, and directory layout",
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io"
+        },
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io/docs/package-structure/",
+        "articleSection": "Technical Documentation",
+        "keywords": ["GGUF Loader", "package structure", "PyPI", "addon system", "directory layout", "technical documentation"],
+        "about": {
+            "@type": "SoftwareApplication",
+            "name": "GGUF Loader",
+            "applicationCategory": "DeveloperApplication",
+            "programmingLanguage": "Python"
+        },
+        "image": "https://ggufloader.github.io/preview.png",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../css/enhanced-search.css">
+    <style>
+        .docs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        .docs-sidebar {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-sidebar h3 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1.1em;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .docs-sidebar li {
+            margin: 5px 0;
+        }
+        
+        .docs-sidebar a {
+            color: #6c757d;
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .docs-sidebar a:hover,
+        .docs-sidebar a.active {
+            color: #0078d4;
+            background: #e3f2fd;
+            padding-left: 10px;
+        }
+        
+        .docs-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .docs-header {
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .docs-header h1 {
+            margin: 0 0 10px 0;
+            color: #212529;
+            font-size: 2.5em;
+        }
+        
+        .docs-description {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .breadcrumb {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .docs-body h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .docs-body h3 {
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        
+        .docs-body pre {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .docs-body code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .docs-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .package-overview {
+            background: #e8f4fd;
+            border-left: 4px solid #0078d4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .package-overview h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+        
+        .directory-tree {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stat-item h4 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0078d4;
+        }
+        
+        .workflow-section {
+            background: #fff8e1;
+            border: 1px solid #ffcc02;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .workflow-section h4 {
+            margin-top: 0;
+            color: #f57c00;
+        }
+        
+        .config-example {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .config-example h4 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        
+        .troubleshooting {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .troubleshooting strong {
+            color: #856404;
+        }
+        
+        .docs-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        .docs-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .nav-prev, .nav-next {
+            color: #0078d4;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #0078d4;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-prev:hover, .nav-next:hover {
+            background: #0078d4;
+            color: white;
+        }
+        
+        .docs-meta {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .docs-meta a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .related-articles {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .related-articles h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .related-articles li {
+            margin: 10px 0;
+        }
+        
+        .related-articles a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .related-articles a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                order: 2;
+            }
+            
+            .docs-content {
+                padding: 20px;
+            }
+            
+            .docs-header h1 {
+                font-size: 2em;
+            }
+            
+            .docs-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-overview, .workflow-section, .config-example {
+                margin: 15px 0;
+                padding: 15px;
+            }
+            
+            .directory-tree {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="breadcrumb">
+        <a href="/">GGUF Loader</a> / <a href="/docs/">Documentation</a> / <span>Package Structure</span>
+    </nav>
+    
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <nav aria-label="Documentation navigation">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="/docs/installation/">Installation Guide</a></li>
+                    <li><a href="/docs/quick-start/">Quick Start</a></li>
+                </ul>
+                
+                <h3>Development</h3>
+                <ul>
+                    <li><a href="/docs/addon-development/">Addon Development</a></li>
+                    <li><a href="/docs/addon-api/">API Reference</a></li>
+                    <li><a href="/docs/smart-floater-example/">Smart Floater Example</a></li>
+                </ul>
+                
+                <h3>Advanced</h3>
+                <ul>
+                    <li><a href="/docs/package-structure/" class="active">Package Structure</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="docs-content">
+            <header class="docs-header">
+                <h1>Package Structure</h1>
+                <p class="docs-description">Technical documentation of GGUF Loader's package structure and organization</p>
+            </header>
+            
+            <div class="docs-body">
+                <div class="package-overview">
+                    <h2>📦 Package Overview</h2>
+                    
+                    <p><strong>Package Name</strong>: <code>ggufloader</code><br>
+                    <strong>Version</strong>: <code>2.0.0</code><br>
+                    <strong>Command</strong>: <code>ggufloader</code></p>
+                    
+                    <p>When users install with <code>pip install ggufloader</code>, they get:</p>
+                    <ul>
+                        <li>Complete GGUF Loader application</li>
+                        <li><a href="/docs/smart-floater-example/" title="Learn about the Smart Floating Assistant addon">Smart Floating Assistant addon</a> (pre-installed)</li>
+                        <li>Comprehensive documentation</li>
+                        <li>All necessary dependencies</li>
+                    </ul>
+                </div>
+                
+                <h2 id="directory-structure">🏗️ Directory Structure</h2>
+                
+                <div class="directory-tree">
+ggufloader/
+├── pyproject.toml              # Package configuration
+├── README_PYPI.md             # PyPI package description
+├── build_pypi.py              # Build script for PyPI
+├── requirements.txt           # Dependencies
+├── 
+├── # Main Application Files
+├── main.py                    # Basic GGUF Loader (no addons)
+├── gguf_loader_main.py        # GGUF Loader with addon support
+├── addon_manager.py           # Addon management system
+├── config.py                  # Configuration
+├── utils.py                   # Utilities
+├── icon.ico                   # Application icon
+├── 
+├── # UI Components
+├── ui/
+│   ├── ai_chat_window.py      # Main chat interface
+│   └── apply_style.py         # UI styling
+├── 
+├── # Core Models
+├── models/
+│   ├── model_loader.py        # GGUF model loading
+│   └── chat_generator.py      # Text generation
+├── 
+├── # UI Mixins
+├── mixins/
+│   ├── ui_setup_mixin.py      # UI setup
+│   ├── model_handler_mixin.py # Model handling
+│   ├── chat_handler_mixin.py  # Chat functionality
+│   ├── event_handler_mixin.py # Event handling
+│   └── utils_mixin.py         # Utility functions
+├── 
+├── # Widgets
+├── widgets/
+│   └── chat_bubble.py         # Chat bubble component
+├── 
+├── # Pre-installed Addons
+├── addons/
+│   └── smart_floater/         # Smart Floating Assistant
+│       ├── __init__.py        # Addon entry point
+│       ├── simple_main.py     # Main addon logic
+│       ├── main.py            # Full-featured version
+│       ├── floater_ui.py      # UI components
+│       ├── comment_engine.py  # Text processing
+│       ├── injector.py        # Text injection
+│       ├── error_handler.py   # Error handling
+│       ├── privacy_security.py # Privacy features
+│       └── performance_optimizer.py # Performance
+├── 
+└── # Documentation
+    └── docs/
+        ├── README.md              # Documentation index
+        ├── installation.md        # Installation guide
+        ├── quick-start.md         # Quick start guide
+        ├── user-guide.md          # Complete user manual
+        ├── addon-development.md   # Addon development guide
+        ├── addon-api.md           # API reference
+        ├── smart-floater-example.md # Example addon
+        ├── configuration.md       # Configuration guide
+        ├── troubleshooting.md     # Troubleshooting
+        ├── contributing.md        # Contributing guide
+        └── package-structure.md   # This file
+                </div>
+                
+                <h2 id="installation-usage">🚀 Installation and Usage</h2>
+                
+                <h3>Installation</h3>
+                <pre><code>pip install ggufloader</code></pre>
+                
+                <h3>Launch Application</h3>
+                <pre><code>ggufloader</code></pre>
+                
+                <p>This command launches <code>gguf_loader_main.py</code> which includes:</p>
+                <ul>
+                    <li>Full GGUF Loader functionality</li>
+                    <li>Smart Floating Assistant addon (automatically loaded)</li>
+                    <li>Addon management system</li>
+                    <li>All UI components</li>
+                </ul>
+                
+                <h2 id="addon-integration">🔧 How Addons Are Included</h2>
+                
+                <h3>Addon Discovery</h3>
+                <p>When GGUF Loader starts, the <code>AddonManager</code> automatically:</p>
+                
+                <ol>
+                    <li><strong>Scans</strong> the <code>addons/</code> directory</li>
+                    <li><strong>Finds</strong> folders with <code>__init__.py</code> files</li>
+                    <li><strong>Loads</strong> addons by calling their <code>register()</code> function</li>
+                    <li><strong>Displays</strong> addon buttons in the sidebar</li>
+                </ol>
+                
+                <h3>Smart Floater Integration</h3>
+                <p>The Smart Floating Assistant is included as a pre-installed addon:</p>
+                
+                <pre><code># addons/smart_floater/__init__.py
+from .simple_main import register
+__all__ = ["register"]
+
+# When loaded, it provides:
+# - Global text selection detection
+# - Floating button interface  
+# - AI text processing (summarize/comment)
+# - Seamless clipboard integration</code></pre>
+                
+                <div class="workflow-section">
+                    <h4>Addon Lifecycle</h4>
+                    <ol>
+                        <li><strong>Package Installation</strong>: Addon files are installed with the package</li>
+                        <li><strong>Application Start</strong>: <code>AddonManager</code> discovers and loads addons</li>
+                        <li><strong>User Interaction</strong>: Users can access addons via the sidebar</li>
+                        <li><strong>Background Operation</strong>: Smart Floater runs continuously in background</li>
+                    </ol>
+                </div>
+                
+                <h2 id="package-configuration">📋 Package Configuration</h2>
+                
+                <h3>pyproject.toml Key Sections</h3>
+                
+                <div class="config-example">
+                    <h4>Project Configuration</h4>
+                    <pre><code>[project]
+name = "ggufloader"
+version = "2.0.0"
+dependencies = [
+    "llama-cpp-python>=0.2.72",
+    "PySide6>=6.6.1", 
+    "pyautogui>=0.9.54",
+    "pyperclip>=1.8.2",
+    "pywin32>=306; sys_platform == 'win32'",
+]
+
+[project.scripts]
+ggufloader = "gguf_loader.gguf_loader_main:main"
+
+[tool.setuptools]
+packages = [
+    "gguf_loader", 
+    "gguf_loader.addons", 
+    "gguf_loader.addons.smart_floater"
+]
+include-package-data = true</code></pre>
+                </div>
+                
+                <h3>Package Data Inclusion</h3>
+                <p>All necessary files are included:</p>
+                <ul>
+                    <li>Python source code</li>
+                    <li>Documentation (<code>.md</code> files)</li>
+                    <li>Icons and images</li>
+                    <li>Configuration files</li>
+                    <li>Addon files</li>
+                </ul>
+                
+                <h2 id="user-experience">🎯 User Experience</h2>
+                
+                <h3>First-Time Users</h3>
+                <ol>
+                    <li><strong>Install</strong>: <code>pip install ggufloader</code></li>
+                    <li><strong>Launch</strong>: <code>ggufloader</code></li>
+                    <li><strong>Load Model</strong>: Click "Select GGUF Model"</li>
+                    <li><strong>Use Smart Floater</strong>: Select text anywhere → click ✨ button</li>
+                </ol>
+                
+                <h3>Addon Discovery</h3>
+                <ul>
+                    <li>Smart Floater appears in addon sidebar automatically</li>
+                    <li>Users can click to open control panel</li>
+                    <li>No additional installation required</li>
+                    <li>Works immediately after model loading</li>
+                </ul>
+                
+                <h3>Documentation Access</h3>
+                <p>Users can access documentation:</p>
+                <ul>
+                    <li>Online: GitHub repository</li>
+                    <li>Locally: Installed with package in <code>docs/</code> folder</li>
+                    <li>In-app: Help links and tooltips</li>
+                </ul>
+                
+                <h2 id="version-updates">🔄 Version Updates</h2>
+                
+                <div class="workflow-section">
+                    <h4>Updating the Package</h4>
+                    <p>When releasing new versions:</p>
+                    <ol>
+                        <li><strong>Update version</strong> in <code>pyproject.toml</code></li>
+                        <li><strong>Update changelog</strong> and documentation</li>
+                        <li><strong>Test addon compatibility</strong></li>
+                        <li><strong>Build and upload</strong> to PyPI</li>
+                    </ol>
+                </div>
+                
+                <h3>Addon Updates</h3>
+                <p>Smart Floater updates are included in package updates:</p>
+                <ul>
+                    <li>Bug fixes and improvements</li>
+                    <li>New features and capabilities</li>
+                    <li>Performance optimizations</li>
+                    <li>Security enhancements</li>
+                </ul>
+                
+                <h2 id="development-workflow">🛠️ Development Workflow</h2>
+                
+                <div class="workflow-section">
+                    <h4>For Package Maintainers</h4>
+                    <ol>
+                        <li><strong>Develop</strong> new features and addons</li>
+                        <li><strong>Test</strong> thoroughly with various models</li>
+                        <li><strong>Update</strong> documentation</li>
+                        <li><strong>Build</strong> package with <code>python build_pypi.py</code></li>
+                        <li><strong>Upload</strong> to PyPI</li>
+                    </ol>
+                </div>
+                
+                <div class="workflow-section">
+                    <h4>For Addon Developers</h4>
+                    <ol>
+                        <li><strong>Study</strong> the <a href="/docs/smart-floater-example/" title="Complete Smart Floating Assistant addon example">Smart Floater example</a></li>
+                        <li><strong>Follow</strong> the <a href="/docs/addon-development/" title="Step-by-step addon development guide">addon development guide</a></li>
+                        <li><strong>Create</strong> addons in <code>addons/</code> directory</li>
+                        <li><strong>Test</strong> with GGUF Loader</li>
+                        <li><strong>Share</strong> with community</li>
+                    </ol>
+                </div>
+                
+                <h2 id="package-statistics">📊 Package Statistics</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>Package Size</h4>
+                        <div class="stat-value">~50MB</div>
+                        <p>Includes all dependencies</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Core Dependencies</h4>
+                        <div class="stat-value">5</div>
+                        <p>Main packages</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Documentation</h4>
+                        <div class="stat-value">10+</div>
+                        <p>Comprehensive guides</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Python Support</h4>
+                        <div class="stat-value">3.8+</div>
+                        <p>Tested versions</p>
+                    </div>
+                </div>
+                
+                <h3>Compatibility</h3>
+                <ul>
+                    <li><strong>Python</strong>: 3.8+ (tested on 3.8, 3.9, 3.10, 3.11, 3.12)</li>
+                    <li><strong>Operating Systems</strong>: Windows, macOS, Linux</li>
+                    <li><strong>Architectures</strong>: x86_64, ARM64 (Apple Silicon)</li>
+                </ul>
+                
+                <h2 id="troubleshooting">🔍 Troubleshooting Package Issues</h2>
+                
+                <h3>Common Installation Issues</h3>
+                <ol>
+                    <li><strong>Python Version</strong>: Ensure Python 3.8+</li>
+                    <li><strong>Dependencies</strong>: Install build tools if needed</li>
+                    <li><strong>Permissions</strong>: Use <code>--user</code> flag if needed</li>
+                    <li><strong>Virtual Environment</strong>: Recommended for isolation</li>
+                </ol>
+                
+                <h3>Addon Loading Issues</h3>
+                <ol>
+                    <li><strong>Check Logs</strong>: Look for addon loading errors</li>
+                    <li><strong>Verify Structure</strong>: Ensure <code>__init__.py</code> exists</li>
+                    <li><strong>Dependencies</strong>: Check addon-specific requirements</li>
+                    <li><strong>Permissions</strong>: Verify file permissions</li>
+                </ol>
+                
+                <div class="troubleshooting">
+                    <strong>Getting Help:</strong>
+                    <ul>
+                        <li><strong>Documentation</strong>: Check <code>docs/</code> folder</li>
+                        <li><strong>GitHub Issues</strong>: Report bugs and issues</li>
+                        <li><strong>Community</strong>: Join discussions and forums</li>
+                        <li><strong>Support</strong>: Contact support@ggufloader.com</li>
+                    </ul>
+                </div>
+                
+                <h2 id="success-metrics">🎉 Success Metrics</h2>
+                
+                <p>The package structure is designed to provide:</p>
+                
+                <ul>
+                    <li><strong>Easy Installation</strong>: Single <code>pip install</code> command</li>
+                    <li><strong>Immediate Functionality</strong>: Smart Floater works out of the box</li>
+                    <li><strong>Extensibility</strong>: Clear addon development path</li>
+                    <li><strong>Maintainability</strong>: Well-organized codebase</li>
+                    <li><strong>User-Friendly</strong>: Comprehensive documentation</li>
+                </ul>
+                
+                <section class="related-articles" aria-labelledby="related-heading">
+                    <h3 id="related-heading">Related Documentation</h3>
+                    <ul>
+                        <li><a href="/docs/installation/" title="Complete installation guide for all platforms">Installation Guide</a> - Get GGUF Loader running on your system</li>
+                        <li><a href="/docs/addon-development/" title="Create custom GGUF Loader addons">Addon Development Guide</a> - Create custom extensions and integrations</li>
+                        <li><a href="/docs/smart-floater-example/" title="Learn from the built-in addon example">Smart Floater Example</a> - Learn from the built-in addon example</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <footer class="docs-footer">
+                <div class="docs-navigation">
+                    <a href="/docs/smart-floater-example/" class="nav-prev">← Previous: Smart Floater Example</a>
+                    <span></span>
+                </div>
+                
+                <div class="docs-meta">
+                    <p>Last updated: January 27, 2025</p>
+                    <p><a href="https://github.com/ggufloader/gguf-loader/edit/main/docs/package-structure.md">Edit this page on GitHub</a></p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Analytics Configuration -->
+    <script src="../../analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="../../analytics.js" defer></script>
+    <script src="../../core-web-vitals-monitor.js" defer></script>
+    <script src="../../user-behavior-tracker.js" defer></script>
+    
+    <!-- SEO Internal Linking Script -->
+    <script src="../../js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="../../js/structured-data-enhancement.js" defer></script>
+    
+    <!-- Internal Link Reporter (Development/Testing) -->
+    <script src="../../js/internal-link-reporter.js" defer></script>
+</body>
+</html>

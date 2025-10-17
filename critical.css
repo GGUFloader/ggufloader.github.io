@@ -1,0 +1,360 @@
+/* Critical Above-the-Fold CSS - Inlined for Performance */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Skip Links for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Container - Mobile-First */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0 2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* Navigation - Critical Styles */
+nav {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #34495e;
+    text-decoration: none;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background: #2c3e50;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Navigation menu - initially hidden on mobile */
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    border-radius: 0 0 8px 8px;
+}
+
+.nav-menu a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+/* Desktop navigation */
+@media (min-width: 768px) {
+    .mobile-menu-toggle {
+        display: none;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        gap: 2rem;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
+    }
+    
+    .nav-menu a {
+        padding: 0.5rem 0;
+        background: none !important;
+        border-bottom: none;
+    }
+}
+
+/* Hero Section - Critical Above-the-Fold */
+.hero {
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.hero-description {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cta-section {
+    margin-top: 1.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Progressive enhancement for larger screens */
+@media (min-width: 576px) {
+    .hero {
+        padding: 3rem 0;
+        min-height: 65vh;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 4rem 0;
+        min-height: 70vh;
+    }
+    
+    .hero-content {
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+    
+    .cta-section {
+        margin-top: 2rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Floating buttons removed */
+
+.floating-button {
+    position: absolute;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    padding: 0 12px;
+    background: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 22px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    color: #495057;
+    text-decoration: none;
+}
+
+.btn-icon {
+    font-size: 1.3em;
+    flex-shrink: 0;
+}
+
+.btn-text {
+    font-weight: 500;
+    font-size: 0.8em;
+    display: none; /* Hidden on mobile by default */
+}
+
+/* Progressive enhancement for floating buttons */
+@media (min-width: 576px) {
+    .btn-text {
+        display: block;
+        font-size: 0.85em;
+    }
+}
+
+@media (min-width: 768px) {
+    .floating-button {
+        min-width: 60px;
+        height: 60px;
+        padding: 0 max(15px, 1em);
+        border-radius: 30px;
+        font-size: 1rem;
+        gap: 8px;
+    }
+    
+    .btn-text {
+        font-size: 0.9em;
+    }
+}

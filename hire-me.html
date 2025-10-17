@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me - Professional Services by Hussain Nazary</title>
+    <meta name="description" content="Professional AI development, software engineering, and consulting services by Hussain Nazary">
+    <link rel="stylesheet" href="styles.min.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS after the library is loaded
+        window.addEventListener('load', function() {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("Aif7atVmhmC4vCzO2"); // Your EmailJS public key
+                console.log('EmailJS initialized');
+            } else {
+                console.error('EmailJS library failed to load');
+            }
+        });
+    </script>
+    <style>
+        .services-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 0;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            background: #1a252f;
+        }
+        
+        .github-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .github-link {
+            display: inline-block;
+            margin: 1rem;
+            padding: 1rem 2rem;
+            background: #24292e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .github-link:hover {
+            background: #1a1e22;
+        }
+        
+        .contact-form-section {
+            background: #f8f9fa;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            width: 100%;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" 
+                        aria-label="Toggle navigation menu" 
+                        aria-expanded="false" 
+                        aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem" aria-label="View features section">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem" aria-label="View frequently asked questions">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem" aria-label="View model download information">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem" aria-label="View contact information">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" aria-label="View blog posts">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="profile-section">
+                        <img src="profile.png" alt="Hussain Nazary - AI Developer" class="profile-photo">
+                        <div>
+                            <h1>Hire Professional Services</h1>
+                            <p class="hero-subtitle" role="doc-subtitle">Local AI Deployment & Consulting</p>
+                            <p class="hero-description">I provide expert services in local AI deployment, privacy-first AI solutions, and technology consulting. With extensive experience in GGUF models and offline AI systems, I can help deploy AI solutions that run entirely on your infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="services-container">
+            <section class="services-header">
+                <h2>Professional Services I Offer</h2>
+                <p>Specialized expertise in AI development, software engineering, and technology solutions</p>
+            </section>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">AI Model Development</h3>
+                    <p class="service-description">Development and deployment of custom AI models for specific business needs. Including fine-tuning, optimization, and integration with existing systems.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3 class="service-title">Software Development</h3>
+                    <p class="service-description">Full-stack software development with focus on Python, JavaScript, and modern web technologies. Building scalable and maintainable applications.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">AI Integration</h3>
+                    <p class="service-description">Helping businesses integrate AI capabilities into existing products and workflows. Making AI accessible and practical for real-world applications.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">Modern web application development with focus on user experience and performance. Responsive design and cross-platform compatibility.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3 class="service-title">Privacy-First AI Solutions</h3>
+                    <p class="service-description">Development of offline AI solutions that prioritize data privacy and security. Ensuring sensitive data never leaves your infrastructure.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3 class="service-title">System Architecture</h3>
+                    <p class="service-description">Designing scalable system architectures for AI applications and software solutions. Optimizing for performance, reliability, and maintainability.</p>
+                </div>
+            </div>
+
+            <section class="contact-section">
+                <div class="container">
+                    <h2>Ready to Start a Project?</h2>
+                    <p>Let's discuss how my expertise can help bring your ideas to life. I provide high-quality, professional services with a focus on results.</p>
+                    
+                    <div class="contact-buttons">
+                        <a href="mailto:hossainnazary475@gmail.com" class="contact-button">Email Me</a>
+                        <a href="https://github.com/hussainnazary2" target="_blank" class="contact-button">GitHub</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="github-section">
+                <h3>Check Out My Work</h3>
+                <p>Explore my projects and contributions on GitHub</p>
+                <a href="https://github.com/hussainnazary2" target="_blank" class="github-link">
+                    <span aria-hidden="true">💻</span> View My GitHub Profile
+                </a>
+            </section>
+
+            <section class="contact-form-section">
+                <div class="container">
+                    <div class="text-center">
+                        <h2>Contact Me Directly</h2>
+                        <p>Fill out the form below and I'll get back to you as soon as possible</p>
+                    </div>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="ai-development">AI Model Development</option>
+                                <option value="software-dev">Software Development</option>
+                                <option value="ai-integration">AI Integration</option>
+                                <option value="web-dev">Web Development</option>
+                                <option value="privacy-ai">Privacy-First AI Solutions</option>
+                                <option value="system-arch">System Architecture</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project, requirements, and timeline..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <button type="submit" class="contact-button">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="guides.html">Guides</a> | <a href="blog.html">Blog</a> | <a href="hire-me.html">Hire Me</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    
+                    if (navMenu.style.display === 'block' || navMenu.classList.contains('show')) {
+                        navMenu.style.display = 'none';
+                        navMenu.classList.remove('show');
+                    } else {
+                        navMenu.style.display = 'block';
+                        navMenu.classList.add('show');
+                    }
+                });
+            }
+        });
+        
+        // Contact form handling with EmailJS and fallback
+        function setupContactForm() {
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value || 'No Subject';
+                const service = document.getElementById('service').value;
+                const message = document.getElementById('message').value;
+                
+                // Check if emailjs is loaded
+                if (typeof emailjs !== 'undefined') {
+                    // Show loading state
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    const originalText = submitButton.textContent;
+                    submitButton.textContent = 'Sending...';
+                    submitButton.disabled = true;
+                    
+                    // Prepare template parameters
+                    const templateParams = {
+                        from_name: name,
+                        from_email: email,
+                        subject: subject,
+                        service_interested: service,
+                        message: message,
+                        reply_to: email
+                    };
+                    
+                    // Send email using EmailJS
+                    emailjs.send('service_7evq2pa', 'template_u8bup9s', templateParams)
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            alert('Thank you for your message! I will get back to you soon.');
+                            document.getElementById('contactForm').reset();
+                        }, function(error) {
+                            console.log('FAILED...', error);
+                            // Fallback to manual contact
+                            alert('There was an issue sending your message through the form. Please manually email me at hossainnazary475@gmail.com with your inquiry. Thank you for your understanding.');
+                        })
+                        .finally(function() {
+                            // Reset button state
+                            submitButton.textContent = originalText;
+                            submitButton.disabled = false;
+                        });
+                } else {
+                    // Fallback to manual contact when EmailJS is not available
+                    alert('Please manually email me at hossainnazary475@gmail.com with your inquiry. Thank you for your understanding.');
+                }
+            });
+        }
+
+        // Initialize when page is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setupContactForm();
+        });
+    </script>
+</body>
+</html>
