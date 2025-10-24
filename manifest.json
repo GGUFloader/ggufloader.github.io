@@ -1,0 +1,110 @@
+{
+    "name": "GGUF Loader - Enterprise-Grade Local AI Platform",
+    "short_name": "GGUF Loader",
+    "description": "Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2c3e50",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "dir": "ltr",
+    
+    "icons": [
+        {
+            "src": "preview.png",
+            "sizes": "1200x630",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "preview-400w.png",
+            "sizes": "400x210",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "preview-800w.png",
+            "sizes": "800x420",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    
+    "categories": [
+        "developer",
+        "productivity",
+        "utilities",
+        "ai",
+        "machine-learning"
+    ],
+    
+    "screenshots": [
+        {
+            "src": "preview.png",
+            "sizes": "1200x630",
+            "type": "image/png",
+            "label": "GGUF Loader main interface"
+        }
+    ],
+    
+    "shortcuts": [
+        {
+            "name": "Installation Guide",
+            "short_name": "Install",
+            "description": "Complete installation guide for all platforms",
+            "url": "/docs/installation/",
+            "icons": [
+                {
+                    "src": "preview-400w.png",
+                    "sizes": "400x210",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Quick Start",
+            "short_name": "Quick Start",
+            "description": "Get started with GGUF Loader in minutes",
+            "url": "/docs/quick-start/",
+            "icons": [
+                {
+                    "src": "preview-400w.png",
+                    "sizes": "400x210",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Download Models",
+            "short_name": "Models",
+            "description": "Download GGUF models for your system",
+            "url": "/#download",
+            "icons": [
+                {
+                    "src": "preview-400w.png",
+                    "sizes": "400x210",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+    
+    "prefer_related_applications": false,
+    
+    "protocol_handlers": [
+        {
+            "protocol": "web+gguf",
+            "url": "/?model=%s"
+        }
+    ],
+    
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    }
+}

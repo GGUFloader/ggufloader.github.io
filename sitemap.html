@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map - GGUF Loader</title>
+    <meta name="description" content="Complete site map of GGUF Loader website including all pages, documentation, and resources.">
+    <meta name="keywords" content="sitemap, navigation, GGUF Loader, documentation, pages">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ggufloader.github.io/sitemap.html">
+    
+    <!-- Open Graph optimization -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:title" content="Site Map - GGUF Loader">
+    <meta property="og:description" content="Complete site map of GGUF Loader website including all pages, documentation, and resources.">
+    <meta property="og:url" content="https://ggufloader.github.io/sitemap.html">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Breadcrumb structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ggufloader.github.io"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Site Map",
+                "item": "https://ggufloader.github.io/sitemap.html"
+            }
+        ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/enhanced-search.css">
+    
+    <style>
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .sitemap-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+        }
+        
+        .sitemap-header h1 {
+            margin: 0 0 1rem 0;
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+        
+        .sitemap-header p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .sitemap-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #0078d4;
+        }
+        
+        .sitemap-section h2 {
+            margin: 0 0 1.5rem 0;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-icon {
+            font-size: 1.5rem;
+        }
+        
+        .sitemap-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sitemap-links li {
+            margin: 0.75rem 0;
+        }
+        
+        .sitemap-links a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #0078d4;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+        
+        .sitemap-links a:hover {
+            background: #f8f9fa;
+            border-color: #0078d4;
+            transform: translateX(5px);
+        }
+        
+        .link-icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+        
+        .link-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+            display: block;
+        }
+        
+        .subsection {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .subsection h3 {
+            margin: 0 0 1rem 0;
+            color: #495057;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .subsection .sitemap-links a {
+            padding-left: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .priority-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+        
+        .priority-high {
+            background: #28a745;
+        }
+        
+        .priority-medium {
+            background: #ffc107;
+        }
+        
+        .priority-low {
+            background: #6c757d;
+        }
+        
+        .sitemap-stats {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0078d4;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .last-updated {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .sitemap-container {
+                padding: 1rem;
+            }
+            
+            .sitemap-header h1 {
+                font-size: 2rem;
+            }
+            
+            .sitemap-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .sitemap-section {
+                padding: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo" role="img" aria-label="GGUF Loader">
+                    <a href="/" style="color: inherit; text-decoration: none;">GGUF Loader</a>
+                </div>
+                
+                <ul class="nav-menu" style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#how-to">How-To</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                    <li><a href="/docs/">Documentation</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb navigation">
+        <div class="nav-container">
+            <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" title="GGUF Loader homepage" itemprop="item">
+                        <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                
+                <li class="breadcrumb-item current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">Site Map</span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <main class="sitemap-container">
+        <header class="sitemap-header">
+            <h1>Site Map</h1>
+            <p>Complete navigation guide to all pages and resources on GGUF Loader</p>
+        </header>
+
+        <div class="sitemap-grid">
+            <!-- Homepage Section -->
+            <section class="sitemap-section">
+                <h2>
+                    <span class="section-icon">🏠</span>
+                    Homepage
+                </h2>
+                <ul class="sitemap-links">
+                    <li>
+                        <a href="/">
+                            <span class="link-icon">🏠</span>
+                            <div>
+                                <strong>Homepage</strong>
+                                <span class="link-description">Main landing page with features and overview</span>
+                            </div>
+                            <span class="priority-indicator priority-high" title="High Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#features">
+                            <span class="link-icon">⭐</span>
+                            <div>
+                                <strong>Features</strong>
+                                <span class="link-description">GGUF Loader features and capabilities</span>
+                            </div>
+                            <span class="priority-indicator priority-high" title="High Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#how-to">
+                            <span class="link-icon">📋</span>
+                            <div>
+                                <strong>How-To Guides</strong>
+                                <span class="link-description">Step-by-step tutorials and guides</span>
+                            </div>
+                            <span class="priority-indicator priority-high" title="High Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#faq">
+                            <span class="link-icon">❓</span>
+                            <div>
+                                <strong>FAQ</strong>
+                                <span class="link-description">Frequently asked questions and answers</span>
+                            </div>
+                            <span class="priority-indicator priority-high" title="High Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#model-comparison">
+                            <span class="link-icon">🤖</span>
+                            <div>
+                                <strong>Model Comparison</strong>
+                                <span class="link-description">Compare AI models and their capabilities</span>
+                            </div>
+                            <span class="priority-indicator priority-medium" title="Medium Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#roadmap">
+                            <span class="link-icon">🗺️</span>
+                            <div>
+                                <strong>Roadmap</strong>
+                                <span class="link-description">Development roadmap and future plans</span>
+                            </div>
+                            <span class="priority-indicator priority-medium" title="Medium Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#contact">
+                            <span class="link-icon">📧</span>
+                            <div>
+                                <strong>Contact</strong>
+                                <span class="link-description">Contact information and support</span>
+                            </div>
+                            <span class="priority-indicator priority-medium" title="Medium Priority"></span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Documentation Section -->
+            <section class="sitemap-section">
+                <h2>
+                    <span class="section-icon">📚</span>
+                    Documentation
+                </h2>
+                <ul class="sitemap-links">
+                    <li>
+                        <a href="/docs/">
+                            <span class="link-icon">📚</span>
+                            <div>
+                                <strong>Documentation Hub</strong>
+                                <span class="link-description">Central hub for all documentation</span>
+                            </div>
+                            <span class="priority-indicator priority-high" title="High Priority"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="subsection">
+                    <h3>
+                        <span class="section-icon">🚀</span>
+                        Getting Started
+                    </h3>
+                    <ul class="sitemap-links">
+                        <li>
+                            <a href="/docs/installation/">
+                                <span class="link-icon">⚙️</span>
+                                <div>
+                                    <strong>Installation Guide</strong>
+                                    <span class="link-description">Complete installation instructions for all platforms</span>
+                                </div>
+                                <span class="priority-indicator priority-high" title="High Priority"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/quick-start/">
+                                <span class="link-icon">⚡</span>
+                                <div>
+                                    <strong>Quick Start Guide</strong>
+                                    <span class="link-description">Get up and running in minutes</span>
+                                </div>
+                                <span class="priority-indicator priority-high" title="High Priority"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>
+                        <span class="section-icon">🛠️</span>
+                        Development
+                    </h3>
+                    <ul class="sitemap-links">
+                        <li>
+                            <a href="/docs/addon-development/">
+                                <span class="link-icon">🔧</span>
+                                <div>
+                                    <strong>Addon Development</strong>
+                                    <span class="link-description">Create custom addons and extensions</span>
+                                </div>
+                                <span class="priority-indicator priority-medium" title="Medium Priority"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/addon-api/">
+                                <span class="link-icon">📖</span>
+                                <div>
+                                    <strong>API Reference</strong>
+                                    <span class="link-description">Complete API documentation for developers</span>
+                                </div>
+                                <span class="priority-indicator priority-medium" title="Medium Priority"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/smart-floater-example/">
+                                <span class="link-icon">✨</span>
+                                <div>
+                                    <strong>Smart Floater Example</strong>
+                                    <span class="link-description">Learn from the built-in addon example</span>
+                                </div>
+                                <span class="priority-indicator priority-medium" title="Medium Priority"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>
+                        <span class="section-icon">🔬</span>
+                        Advanced
+                    </h3>
+                    <ul class="sitemap-links">
+                        <li>
+                            <a href="/docs/package-structure/">
+                                <span class="link-icon">📦</span>
+                                <div>
+                                    <strong>Package Structure</strong>
+                                    <span class="link-description">Technical architecture and package details</span>
+                                </div>
+                                <span class="priority-indicator priority-low" title="Low Priority"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section class="sitemap-section">
+                <h2>
+                    <span class="section-icon">📄</span>
+                    Resources
+                </h2>
+                <ul class="sitemap-links">
+                    <li>
+                        <a href="/sitemap.html">
+                            <span class="link-icon">🗺️</span>
+                            <div>
+                                <strong>Site Map</strong>
+                                <span class="link-description">This page - complete site navigation</span>
+                            </div>
+                            <span class="priority-indicator priority-low" title="Low Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sitemap.xml">
+                            <span class="link-icon">🔗</span>
+                            <div>
+                                <strong>XML Sitemap</strong>
+                                <span class="link-description">Machine-readable sitemap for search engines</span>
+                            </div>
+                            <span class="priority-indicator priority-low" title="Low Priority"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/2025-07-07-top-10-gguf-models-i5-16gb.html">
+                            <span class="link-icon">📝</span>
+                            <div>
+                                <strong>Top 10 GGUF Models</strong>
+                                <span class="link-description">Best GGUF models for i5 systems with 16GB RAM</span>
+                            </div>
+                            <span class="priority-indicator priority-low" title="Low Priority"></span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Site Statistics -->
+        <section class="sitemap-stats">
+            <h2>Site Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <div class="stat-label">Total Pages</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <div class="stat-label">Documentation Pages</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <div class="stat-label">Homepage Sections</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <div class="stat-label">Resource Pages</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="last-updated">
+            <p>Last updated: January 27, 2025</p>
+            <p>This sitemap is automatically updated when new content is added to the site.</p>
+        </div>
+    </main>
+
+    <!-- SEO Internal Linking Script -->
+    <script src="js/seo-internal-linking.js" defer></script>
+    
+    <!-- Structured Data Enhancement Script -->
+    <script src="js/structured-data-enhancement.js" defer></script>
+</body>
+</html>
