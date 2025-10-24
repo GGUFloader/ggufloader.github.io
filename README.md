@@ -1,6 +1,6 @@
 # GGUF Loader
 
-GGUF Loader is an enterprise-grade local AI deployment platform for Windows, MacOS, and Linux. Run Mistral, LLaMA, and DeepSeek models offline without requiring Python or command-line knowledge. The platform prioritizes privacy-first AI with a Smart Floating Assistant.
+GGUF Loader with its floating button is an enterprise-grade local AI deployment platform for Windows, MacOS, and Linux. Run Mistral, LLaMA, and DeepSeek models offline without requiring Python or command-line knowledge. The platform prioritizes privacy-first AI with a Smart Floating Assistant.
 
 ## Features
 
