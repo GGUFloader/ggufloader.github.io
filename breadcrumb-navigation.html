@@ -1,0 +1,326 @@
+<!-- Enhanced Breadcrumb Navigation Component -->
+<nav class="breadcrumb-nav" aria-label="Breadcrumb navigation">
+    <div class="nav-container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="/" title="GGUF Loader homepage" itemprop="item">
+                    <span itemprop="name">Home</span>
+                </a>
+                <meta itemprop="position" content="1" />
+            </li>
+            
+            <!-- Documentation breadcrumb item (conditional) -->
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="/docs/" title="Documentation hub" itemprop="item">
+                    <span itemprop="name">Documentation</span>
+                </a>
+                <meta itemprop="position" content="2" />
+            </li>
+            
+            <!-- Current page breadcrumb item -->
+            <li class="breadcrumb-item current" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name">{{ page.title | default: "Current Page" }}</span>
+                <meta itemprop="position" content="3" />
+            </li>
+        </ol>
+        
+        <!-- Mobile breadcrumb toggle -->
+        <button class="breadcrumb-toggle" aria-label="Toggle breadcrumb navigation" aria-expanded="false" aria-controls="breadcrumb-list">
+            <span class="breadcrumb-icon">📍</span>
+            <span class="breadcrumb-current">{{ page.title | default: "Current Page" }}</span>
+            <span class="breadcrumb-arrow">▼</span>
+        </button>
+    </div>
+</nav>
+
+<style>
+/* Enhanced Breadcrumb Navigation Styles */
+.breadcrumb-nav {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.75rem 0;
+    position: relative;
+}
+
+.breadcrumb-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.breadcrumb-item {
+    color: #6c757d;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: " / ";
+    margin: 0 0.5rem;
+    color: #adb5bd;
+    font-weight: normal;
+}
+
+.breadcrumb-item a {
+    color: #0078d4;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+}
+
+.breadcrumb-item a:hover {
+    color: #106ebe;
+    background: rgba(0, 120, 212, 0.1);
+    text-decoration: underline;
+}
+
+.breadcrumb-item a:focus {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+}
+
+.breadcrumb-item.current {
+    color: #495057;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Mobile breadcrumb toggle */
+.breadcrumb-toggle {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #495057;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.breadcrumb-toggle:hover {
+    background: #e9ecef;
+    border-color: #0078d4;
+}
+
+.breadcrumb-toggle:focus {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+}
+
+.breadcrumb-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.breadcrumb-current {
+    flex: 1;
+    text-align: left;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.breadcrumb-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.breadcrumb-toggle[aria-expanded="true"] .breadcrumb-arrow {
+    transform: rotate(180deg);
+}
+
+/* Mobile responsive behavior */
+@media (max-width: 768px) {
+    .breadcrumb-list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 1rem;
+        right: 1rem;
+        background: white;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        z-index: 1000;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .breadcrumb-list.show {
+        display: flex;
+    }
+    
+    .breadcrumb-toggle {
+        display: flex;
+    }
+    
+    .breadcrumb-item {
+        width: 100%;
+        font-size: 1rem;
+    }
+    
+    .breadcrumb-item:not(:last-child)::after {
+        display: none;
+    }
+    
+    .breadcrumb-item a {
+        padding: 0.75rem;
+        width: 100%;
+        border-radius: 6px;
+        min-height: 48px;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+    }
+    
+    .breadcrumb-item a:hover {
+        background: #e3f2fd;
+        border-color: #0078d4;
+    }
+    
+    .breadcrumb-item.current {
+        padding: 0.75rem;
+        background: #e3f2fd;
+        border: 1px solid #0078d4;
+        border-radius: 6px;
+        color: #0078d4;
+        font-weight: 600;
+        width: 100%;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Enhanced accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .breadcrumb-item a,
+    .breadcrumb-toggle,
+    .breadcrumb-arrow {
+        transition: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .breadcrumb-item a {
+        border: 1px solid currentColor;
+    }
+    
+    .breadcrumb-item.current {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Print styles */
+@media print {
+    .breadcrumb-nav {
+        background: none;
+        border: none;
+        padding: 0.5rem 0;
+    }
+    
+    .breadcrumb-toggle {
+        display: none;
+    }
+    
+    .breadcrumb-list {
+        display: flex !important;
+    }
+    
+    .breadcrumb-item a {
+        color: #000;
+        text-decoration: underline;
+    }
+}
+</style>
+
+<script>
+// Enhanced breadcrumb navigation functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const breadcrumbToggle = document.querySelector('.breadcrumb-toggle');
+    const breadcrumbList = document.querySelector('.breadcrumb-list');
+    
+    if (breadcrumbToggle && breadcrumbList) {
+        // Mobile breadcrumb toggle
+        breadcrumbToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            breadcrumbList.classList.toggle('show', !isExpanded);
+        });
+        
+        // Close breadcrumb when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.breadcrumb-nav')) {
+                breadcrumbToggle.setAttribute('aria-expanded', 'false');
+                breadcrumbList.classList.remove('show');
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                breadcrumbToggle.setAttribute('aria-expanded', 'false');
+                breadcrumbList.classList.remove('show');
+            }
+        });
+        
+        // Keyboard navigation
+        breadcrumbToggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    }
+    
+    // Generate structured data for breadcrumbs
+    const breadcrumbItems = document.querySelectorAll('.breadcrumb-item[itemprop="itemListElement"]');
+    if (breadcrumbItems.length > 0) {
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": []
+        };
+        
+        breadcrumbItems.forEach((item, index) => {
+            const link = item.querySelector('a');
+            const name = item.querySelector('[itemprop="name"]').textContent;
+            const url = link ? link.href : window.location.href;
+            
+            structuredData.itemListElement.push({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": name,
+                "item": url
+            });
+        });
+        
+        // Add structured data to page if not already present
+        if (!document.querySelector('script[type="application/ld+json"]')) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(structuredData);
+            document.head.appendChild(script);
+        }
+    }
+});
+</script>
