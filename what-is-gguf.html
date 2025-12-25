@@ -3,24 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What is GGUF? Complete Guide to GGUF Format (2025)</title>
-    <meta name="description" content="GGUF (GPT-Generated Unified Format) explained. Learn what GGUF is, how it works, memory requirements, quantization types (Q4_K_M, Q5_K_M), and why it's the best format for running AI locally.">
-    <meta name="keywords" content="what is gguf, gguf format, gguf file format, gguf specification, gguf meaning, gguf vs ggml, gguf quantization, q4_k_m, q5_k_m, llama.cpp, local ai, gguf models">
+    <title>What is GGUF? Complete Guide to GGUF Format & Quantization (2025)</title>
+    <meta name="description" content="GGUF (GPT-Generated Unified Format) explained. Learn what GGUF is, how it works, memory requirements, quantization types (Q4_K_M, Q5_K_M, Q6_K, Q8_0), GGUF vs GGML differences, and why it's the best format for running AI locally. Complete technical guide.">
+    <meta name="keywords" content="what is gguf, gguf format, gguf file format, gguf specification, gguf meaning, gguf vs ggml, gguf quantization, q4_k_m, q5_k_m, q6_k, q8_0, llama.cpp, local ai, gguf models, gguf explained, gguf file, what does gguf stand for, gguf format explained, gguf memory requirements, gguf file size, gguf compatibility, georgi gerganov, gguf architecture">
     <meta name="author" content="Hussain Nazary">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://ggufloader.github.io/what-is-gguf.html">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="What is GGUF? Complete Guide to GGUF Format">
-    <meta property="og:description" content="Everything you need to know about GGUF format - the standard for running AI models locally. Quantization, memory usage, compatibility explained.">
+    <meta property="og:title" content="What is GGUF? Complete Guide to GGUF Format & Quantization">
+    <meta property="og:description" content="Everything about GGUF format - quantization types, memory usage, GGUF vs GGML, and how to run AI locally. Technical deep-dive.">
     <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://ggufloader.github.io/what-is-gguf.html">
     <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2025-12-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-25T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Technical">
+    <meta property="article:tag" content="GGUF">
+    <meta property="article:tag" content="Quantization">
+    <meta property="article:tag" content="llama.cpp">
     
-    <!-- Twitter -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What is GGUF? Complete Guide to GGUF Format">
     <meta name="twitter:description" content="GGUF format explained - quantization types, memory requirements, and how to run AI locally.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ggufloader.github.io/what-is-gguf.html"
+      },
+      "headline": "What is GGUF? Complete Guide to GGUF Format & Quantization",
+      "description": "Comprehensive guide to GGUF format - what it is, quantization types, memory requirements, and why it's the standard for local AI inference.",
+      "image": "https://ggufloader.github.io/preview.png",
+      "datePublished": "2025-12-01T00:00:00+00:00",
+      "dateModified": "2025-12-25T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "keywords": ["GGUF", "GGUF format", "quantization", "Q4_K_M", "llama.cpp", "local AI"],
+      "articleSection": "Technical",
+      "proficiencyLevel": "Beginner"
+    }
+    </script>
+    
+    <!-- JSON-LD DefinedTerm Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DefinedTerm",
+      "name": "GGUF",
+      "description": "GPT-Generated Unified Format - a binary file format for storing and running quantized large language models efficiently on consumer hardware",
+      "inDefinedTermSet": {
+        "@type": "DefinedTermSet",
+        "name": "AI/ML Terminology"
+      }
+    }
+    </script>
+    
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ggufloader.github.io"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ggufloader.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "What is GGUF", "item": "https://ggufloader.github.io/what-is-gguf.html"}
+      ]
+    }
+    </script>
     
     <!-- JSON-LD FAQ Schema -->
     <script type="application/ld+json">

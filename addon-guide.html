@@ -3,8 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Create Addons for GGUF Loader - Complete Guide</title>
-    <meta name="description" content="Complete guide to creating addons for GGUF Loader 2.0.0">
+    <title>How to Create Addons for GGUF Loader - Complete Developer Guide (2025)</title>
+    <meta name="description" content="Learn how to create custom addons for GGUF Loader 2.0.0. Complete guide covering addon architecture, Python package structure, UI components, API hooks, best practices, and distribution on PyPI. Build extensions that add new features to your local AI setup.">
+    <meta name="keywords" content="gguf loader addon, create gguf addon, gguf loader plugin, gguf loader extension, gguf loader api, gguf loader development, python addon tutorial, local ai customization, gguf loader 2.0, addon architecture, plugin development guide, gguf loader hooks, custom ui components, gguf loader pypi">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://ggufloader.github.io/addon-guide.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Create Addons for GGUF Loader - Complete Developer Guide">
+    <meta property="og:description" content="Build custom addons for GGUF Loader. Learn addon architecture, API hooks, UI components, and distribution. Complete Python development guide.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ggufloader.github.io/addon-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2024-10-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-25T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Development">
+    <meta property="article:tag" content="Addon Development">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="GGUF Loader">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Create Addons for GGUF Loader">
+    <meta name="twitter:description" content="Complete guide to building custom addons. Addon architecture, API hooks, UI components, and PyPI distribution.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ggufloader.github.io/addon-guide.html"
+      },
+      "headline": "How to Create Addons for GGUF Loader - Complete Developer Guide",
+      "description": "Comprehensive guide to creating custom addons for GGUF Loader 2.0.0. Covers addon architecture, Python package structure, UI components, API hooks, and distribution.",
+      "image": "https://ggufloader.github.io/preview.png",
+      "datePublished": "2024-10-17T00:00:00+00:00",
+      "dateModified": "2025-12-25T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "keywords": ["GGUF Loader", "addon development", "Python plugin", "local AI", "extension development"],
+      "articleSection": "Development",
+      "proficiencyLevel": "Intermediate"
+    }
+    </script>
+    
+    <!-- JSON-LD HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Create an Addon for GGUF Loader",
+      "description": "Step-by-step guide to building custom addons for GGUF Loader",
+      "totalTime": "PT30M",
+      "tool": [
+        {"@type": "HowToTool", "name": "Python 3.8+"},
+        {"@type": "HowToTool", "name": "GGUF Loader 2.0.0"},
+        {"@type": "HowToTool", "name": "Text Editor or IDE"}
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Set Up Project Structure",
+          "text": "Create a Python package with __init__.py, manifest.json, and your addon code"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Define Manifest",
+          "text": "Create manifest.json with addon metadata, version, and dependencies"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Implement Addon Class",
+          "text": "Create your addon class extending BaseAddon with initialize() and cleanup() methods"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Add Features",
+          "text": "Implement UI components, API hooks, or custom functionality"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Test and Distribute",
+          "text": "Test your addon locally, then publish to PyPI for distribution"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What can GGUF Loader addons do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF Loader addons can add new UI components, integrate external services, provide custom model loaders, add new chat features, implement custom preprocessing/postprocessing, and extend the settings panel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What programming language are GGUF Loader addons written in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF Loader addons are written in Python. They use a simple package structure with a manifest.json file and Python modules that extend the BaseAddon class."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I install a GGUF Loader addon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Addons can be installed via pip (pip install addon-name), from the GGUF Loader addon manager UI, or by placing the addon folder in the addons directory."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ggufloader.github.io"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ggufloader.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "Addon Development Guide", "item": "https://ggufloader.github.io/addon-guide.html"}
+      ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="styles.min.css">
     <link rel="stylesheet" href="mobile-fixes.css">
     <style>

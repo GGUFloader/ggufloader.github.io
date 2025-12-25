@@ -123,8 +123,8 @@
 
     <!-- Blog/Posts (High Traffic Content) -->
     <url>
-        <loc>https://ggufloader.github.io/2025-07-07-top-10-gguf-models-i5-16gb.html</loc>
-        <lastmod>2025-12-25</lastmod>
+        <loc>https://ggufloader.github.io/2025-07-07-top-10-gguf-models-i5-16gb/</loc>
+        <lastmod>2025-12-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>

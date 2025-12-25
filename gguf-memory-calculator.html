@@ -4,18 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GGUF Memory Calculator - RAM Requirements for Q4_K_M, Q5_K_M, Q6_K (2025)</title>
-    <meta name="description" content="Calculate GGUF model RAM requirements. Memory usage for Mistral 7B, Llama, Qwen with Q4_K_M, Q5_K_M, Q6_K quantization. Find the right model for your 8GB, 16GB, or 32GB RAM system.">
-    <meta name="keywords" content="gguf memory calculator, mistral 7b gguf q4_k_m memory usage, gguf ram requirements, q4_k_m memory, q5_k_m size, 7b model ram, gguf quantization memory, mistral 7b memory requirements, llama memory usage, gguf size calculator">
+    <meta name="description" content="Calculate GGUF model RAM requirements instantly. Memory usage calculator for Mistral 7B, Llama 3.2, Qwen 2.5 with Q4_K_M, Q5_K_M, Q6_K, Q8_0 quantization. Find the right model for your 8GB, 16GB, 32GB, or 64GB RAM system. Interactive calculator included.">
+    <meta name="keywords" content="gguf memory calculator, mistral 7b gguf q4_k_m memory usage, gguf ram requirements, q4_k_m memory, q5_k_m size, q6_k ram, q8_0 memory, 7b model ram, 13b model ram, 70b model ram, gguf quantization memory, mistral 7b memory requirements, llama memory usage, llama 3.2 ram, qwen 2.5 memory, gguf size calculator, how much ram for gguf, gguf vram requirements, local ai memory">
     <meta name="author" content="Hussain Nazary">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://ggufloader.github.io/gguf-memory-calculator.html">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="GGUF Memory Calculator - RAM Requirements">
-    <meta property="og:description" content="Calculate how much RAM you need for GGUF models. Covers Q4_K_M, Q5_K_M, Q6_K quantization for 7B, 13B, 70B models.">
+    <meta property="og:title" content="GGUF Memory Calculator - RAM Requirements for All Quantizations">
+    <meta property="og:description" content="Calculate how much RAM you need for GGUF models. Covers Q4_K_M, Q5_K_M, Q6_K, Q8_0 for 7B, 13B, 70B models. Interactive calculator.">
     <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://ggufloader.github.io/gguf-memory-calculator.html">
     <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2025-12-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-25T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Tools">
+    <meta property="article:tag" content="GGUF">
+    <meta property="article:tag" content="Memory">
+    <meta property="article:tag" content="Calculator">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GGUF Memory Calculator - RAM Requirements">
+    <meta name="twitter:description" content="Calculate RAM needs for GGUF models. Q4_K_M, Q5_K_M, Q6_K for 7B, 13B, 70B models.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ggufloader.github.io/gguf-memory-calculator.html"
+      },
+      "headline": "GGUF Memory Calculator - RAM Requirements for All Quantizations",
+      "description": "Calculate GGUF model RAM requirements. Memory usage for different model sizes and quantization types.",
+      "image": "https://ggufloader.github.io/preview.png",
+      "datePublished": "2025-12-01T00:00:00+00:00",
+      "dateModified": "2025-12-25T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "keywords": ["GGUF memory", "RAM calculator", "Q4_K_M", "Q5_K_M", "model size", "quantization"],
+      "articleSection": "Tools"
+    }
+    </script>
+    
+    <!-- JSON-LD Table Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Table",
+      "about": "GGUF Model RAM Requirements",
+      "description": "RAM requirements for different GGUF model sizes with Q4_K_M quantization"
+    }
+    </script>
+    
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ggufloader.github.io"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ggufloader.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "Memory Calculator", "item": "https://ggufloader.github.io/gguf-memory-calculator.html"}
+      ]
+    }
+    </script>
     
     <!-- JSON-LD FAQ Schema -->
     <script type="application/ld+json">
@@ -91,6 +161,265 @@
         .ram-card h4 { color: #e74c3c; margin-bottom: 10px; }
         .back-link { display: inline-block; margin-bottom: 20px; color: #e74c3c; text-decoration: none; font-weight: 500; }
         code { background: #f1f3f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        
+        /* Simulator Styles */
+        .simulator-container {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+            padding: 30px;
+            color: white;
+        }
+        .sim-control {
+            margin-bottom: 25px;
+        }
+        .sim-control label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .sim-control input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #374151;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .sim-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(231, 76, 60, 0.5);
+        }
+        .sim-control select {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 2px solid #374151;
+            border-radius: 8px;
+            background: #1f2937;
+            color: white;
+            cursor: pointer;
+        }
+        .sim-control select:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+        .sim-value {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin: 10px 0;
+        }
+        .ram-presets, .context-presets {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .ram-presets button, .context-presets button {
+            padding: 8px 16px;
+            border: 2px solid #374151;
+            border-radius: 20px;
+            background: transparent;
+            color: #9ca3af;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .ram-presets button:hover, .context-presets button:hover {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+        .ram-presets button.active, .context-presets button.active {
+            background: #e74c3c;
+            border-color: #e74c3c;
+            color: white;
+        }
+        
+        /* Result Section */
+        .sim-result {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+        .ram-bar-container {
+            margin-bottom: 20px;
+        }
+        .ram-bar-label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+        .ram-bar {
+            height: 40px;
+            background: #374151;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+        .ram-bar-used {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: width 0.5s ease;
+            min-width: 60px;
+        }
+        .ram-bar-os {
+            background: #f39c12;
+            height: 100%;
+            width: 0;
+        }
+        .ram-bar-free {
+            background: #27ae60;
+            height: 100%;
+            flex: 1;
+            transition: all 0.5s ease;
+        }
+        .ram-bar-legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            flex-wrap: wrap;
+        }
+        .legend-used, .legend-os, .legend-free {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .legend-used { background: #e74c3c; }
+        .legend-os { background: #f39c12; }
+        .legend-free { background: #27ae60; }
+        
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .result-item {
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .result-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 5px;
+        }
+        .result-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .result-total {
+            color: #e74c3c;
+        }
+        
+        .verdict {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        .verdict.success {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(39, 174, 96, 0.1));
+            border: 2px solid #27ae60;
+        }
+        .verdict.warning {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(243, 156, 18, 0.1));
+            border: 2px solid #f39c12;
+        }
+        .verdict.danger {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(231, 76, 60, 0.1));
+            border: 2px solid #e74c3c;
+        }
+        .verdict-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .verdict-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .verdict-detail {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        .speed-indicator {
+            margin-top: 20px;
+        }
+        .speed-label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+        .speed-bar {
+            height: 12px;
+            background: #374151;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .speed-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        .speed-text {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 600;
+            color: #27ae60;
+        }
+        
+        .sim-recommendations {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .sim-recommendations h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        .sim-recommendations ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #d1d5db;
+        }
+        .sim-recommendations li {
+            margin: 8px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .simulator-container { padding: 20px; }
+            .result-details { grid-template-columns: 1fr 1fr; }
+            .ram-bar-legend { justify-content: center; }
+        }
         @media (max-width: 768px) {
             .article-header { padding: 25px; }
             .article-header h1 { font-size: 1.5rem; }
@@ -120,6 +449,128 @@
         </div>
 
         <article>
+            <!-- Interactive Simulator -->
+            <section class="content-section" id="simulator">
+                <h2>🎮 Interactive RAM Simulator</h2>
+                <p>Play with the sliders to see if a model will run on your system!</p>
+                
+                <div class="simulator-container">
+                    <!-- Your System RAM -->
+                    <div class="sim-control">
+                        <label>💻 Your System RAM</label>
+                        <input type="range" id="systemRam" min="4" max="128" value="16" step="4">
+                        <div class="sim-value"><span id="systemRamValue">16</span> GB</div>
+                        <div class="ram-presets">
+                            <button onclick="setRam(8)">8GB</button>
+                            <button onclick="setRam(16)" class="active">16GB</button>
+                            <button onclick="setRam(32)">32GB</button>
+                            <button onclick="setRam(64)">64GB</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Model Selection -->
+                    <div class="sim-control">
+                        <label>🤖 Model Size</label>
+                        <select id="modelSize" onchange="updateSimulator()">
+                            <option value="1">TinyLlama 1.1B</option>
+                            <option value="1.5">Llama 3.2 1B / Qwen 1.5B</option>
+                            <option value="3">Llama 3.2 3B / Phi-3</option>
+                            <option value="7" selected>Mistral 7B / Llama 3 8B</option>
+                            <option value="13">Llama 2 13B</option>
+                            <option value="34">CodeLlama 34B</option>
+                            <option value="47">Mixtral 8x7B (MoE)</option>
+                            <option value="70">Llama 2/3 70B</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Quantization -->
+                    <div class="sim-control">
+                        <label>📊 Quantization</label>
+                        <select id="quantization" onchange="updateSimulator()">
+                            <option value="0.45">Q3_K_M (Smallest)</option>
+                            <option value="0.55" selected>Q4_K_M (Recommended)</option>
+                            <option value="0.65">Q5_K_M (Better Quality)</option>
+                            <option value="0.75">Q6_K (High Quality)</option>
+                            <option value="1.0">Q8_0 (Near Lossless)</option>
+                            <option value="2.0">FP16 (Full Precision)</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Context Length -->
+                    <div class="sim-control">
+                        <label>📝 Context Length</label>
+                        <input type="range" id="contextLength" min="512" max="32768" value="4096" step="512">
+                        <div class="sim-value"><span id="contextValue">4096</span> tokens</div>
+                        <div class="context-presets">
+                            <button onclick="setContext(2048)">2K</button>
+                            <button onclick="setContext(4096)" class="active">4K</button>
+                            <button onclick="setContext(8192)">8K</button>
+                            <button onclick="setContext(16384)">16K</button>
+                            <button onclick="setContext(32768)">32K</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Visual Result -->
+                    <div class="sim-result" id="simResult">
+                        <div class="ram-bar-container">
+                            <div class="ram-bar-label">RAM Usage Visualization</div>
+                            <div class="ram-bar">
+                                <div class="ram-bar-used" id="ramBarUsed">
+                                    <span id="ramBarText">5.2 GB</span>
+                                </div>
+                                <div class="ram-bar-free" id="ramBarFree"></div>
+                            </div>
+                            <div class="ram-bar-legend">
+                                <span><span class="legend-used"></span> Model + Context</span>
+                                <span><span class="legend-os"></span> OS Reserved (~3GB)</span>
+                                <span><span class="legend-free"></span> Free RAM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="result-details">
+                            <div class="result-item">
+                                <span class="result-label">Model Size:</span>
+                                <span class="result-value" id="resultModelSize">4.6 GB</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Context Memory:</span>
+                                <span class="result-value" id="resultContext">1.0 GB</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Total Required:</span>
+                                <span class="result-value result-total" id="resultTotal">5.6 GB</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Available (after OS):</span>
+                                <span class="result-value" id="resultAvailable">13 GB</span>
+                            </div>
+                        </div>
+                        
+                        <div class="verdict" id="verdict">
+                            <div class="verdict-icon" id="verdictIcon">✅</div>
+                            <div class="verdict-text" id="verdictText">Will run smoothly!</div>
+                            <div class="verdict-detail" id="verdictDetail">You have 7.4 GB headroom for other apps</div>
+                        </div>
+                        
+                        <div class="speed-indicator">
+                            <div class="speed-label">Expected Speed:</div>
+                            <div class="speed-bar">
+                                <div class="speed-fill" id="speedFill"></div>
+                            </div>
+                            <div class="speed-text" id="speedText">~25-35 tokens/sec</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recommendations -->
+                    <div class="sim-recommendations" id="simRecommendations">
+                        <h4>💡 Recommendations</h4>
+                        <ul id="recommendationsList">
+                            <li>This configuration should work well on your system</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <section class="content-section">
                 <h2>Quick RAM Reference</h2>
                 <p>How much RAM do you need for popular GGUF models? Here's a comprehensive reference:</p>
@@ -394,5 +845,187 @@
     </footer>
     
     <script src="mobile-menu.js" defer></script>
+    
+    <!-- Simulator JavaScript -->
+    <script>
+        // Initialize simulator
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSimulator();
+            
+            // Add event listeners
+            document.getElementById('systemRam').addEventListener('input', function() {
+                document.getElementById('systemRamValue').textContent = this.value;
+                updatePresetButtons('ram', this.value);
+                updateSimulator();
+            });
+            
+            document.getElementById('contextLength').addEventListener('input', function() {
+                document.getElementById('contextValue').textContent = this.value;
+                updatePresetButtons('context', this.value);
+                updateSimulator();
+            });
+        });
+        
+        function setRam(value) {
+            document.getElementById('systemRam').value = value;
+            document.getElementById('systemRamValue').textContent = value;
+            updatePresetButtons('ram', value);
+            updateSimulator();
+        }
+        
+        function setContext(value) {
+            document.getElementById('contextLength').value = value;
+            document.getElementById('contextValue').textContent = value;
+            updatePresetButtons('context', value);
+            updateSimulator();
+        }
+        
+        function updatePresetButtons(type, value) {
+            const container = type === 'ram' ? '.ram-presets' : '.context-presets';
+            document.querySelectorAll(container + ' button').forEach(btn => {
+                btn.classList.remove('active');
+                if (parseInt(btn.textContent) === parseInt(value) || 
+                    btn.textContent === value + 'GB' || 
+                    btn.textContent === (value/1000) + 'K' ||
+                    (btn.textContent === '2K' && value == 2048) ||
+                    (btn.textContent === '4K' && value == 4096) ||
+                    (btn.textContent === '8K' && value == 8192) ||
+                    (btn.textContent === '16K' && value == 16384) ||
+                    (btn.textContent === '32K' && value == 32768)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        function updateSimulator() {
+            const systemRam = parseFloat(document.getElementById('systemRam').value);
+            const modelParams = parseFloat(document.getElementById('modelSize').value);
+            const bytesPerParam = parseFloat(document.getElementById('quantization').value);
+            const contextLength = parseInt(document.getElementById('contextLength').value);
+            
+            // Calculate memory requirements
+            const modelSize = modelParams * bytesPerParam * 1.1; // 10% overhead
+            const contextMemory = (contextLength / 1000) * (modelParams / 7) * 0.25; // Rough estimate
+            const totalRequired = modelSize + contextMemory;
+            const osReserved = 3; // Reserve 3GB for OS
+            const availableRam = systemRam - osReserved;
+            const freeRam = availableRam - totalRequired;
+            
+            // Update display values
+            document.getElementById('resultModelSize').textContent = modelSize.toFixed(1) + ' GB';
+            document.getElementById('resultContext').textContent = contextMemory.toFixed(1) + ' GB';
+            document.getElementById('resultTotal').textContent = totalRequired.toFixed(1) + ' GB';
+            document.getElementById('resultAvailable').textContent = availableRam.toFixed(0) + ' GB';
+            
+            // Update RAM bar
+            const usedPercent = Math.min((totalRequired / systemRam) * 100, 100);
+            const osPercent = (osReserved / systemRam) * 100;
+            document.getElementById('ramBarUsed').style.width = usedPercent + '%';
+            document.getElementById('ramBarText').textContent = totalRequired.toFixed(1) + ' GB';
+            
+            // Update verdict
+            const verdict = document.getElementById('verdict');
+            const verdictIcon = document.getElementById('verdictIcon');
+            const verdictText = document.getElementById('verdictText');
+            const verdictDetail = document.getElementById('verdictDetail');
+            
+            verdict.classList.remove('success', 'warning', 'danger');
+            
+            if (freeRam >= 4) {
+                verdict.classList.add('success');
+                verdictIcon.textContent = '✅';
+                verdictText.textContent = 'Will run smoothly!';
+                verdictDetail.textContent = 'You have ' + freeRam.toFixed(1) + ' GB headroom for other apps';
+            } else if (freeRam >= 1) {
+                verdict.classList.add('warning');
+                verdictIcon.textContent = '⚠️';
+                verdictText.textContent = 'Will run, but tight on RAM';
+                verdictDetail.textContent = 'Only ' + freeRam.toFixed(1) + ' GB free - close other apps';
+            } else if (freeRam >= -2) {
+                verdict.classList.add('warning');
+                verdictIcon.textContent = '😰';
+                verdictText.textContent = 'Might work with swapping';
+                verdictDetail.textContent = 'Will be slow - consider smaller model or lower quant';
+            } else {
+                verdict.classList.add('danger');
+                verdictIcon.textContent = '❌';
+                verdictText.textContent = 'Not enough RAM!';
+                verdictDetail.textContent = 'Need ' + Math.abs(freeRam).toFixed(1) + ' GB more RAM';
+            }
+            
+            // Update speed indicator
+            const speedFill = document.getElementById('speedFill');
+            const speedText = document.getElementById('speedText');
+            let speedPercent, speedLabel;
+            
+            if (freeRam >= 8) {
+                speedPercent = 90;
+                speedLabel = '~30-50 tokens/sec (Fast)';
+            } else if (freeRam >= 4) {
+                speedPercent = 70;
+                speedLabel = '~20-35 tokens/sec (Good)';
+            } else if (freeRam >= 1) {
+                speedPercent = 50;
+                speedLabel = '~10-20 tokens/sec (Moderate)';
+            } else if (freeRam >= -2) {
+                speedPercent = 25;
+                speedLabel = '~2-10 tokens/sec (Slow)';
+            } else {
+                speedPercent = 5;
+                speedLabel = 'Too slow / Won\'t run';
+            }
+            
+            speedFill.style.width = speedPercent + '%';
+            speedText.textContent = speedLabel;
+            
+            // Update recommendations
+            updateRecommendations(systemRam, modelParams, bytesPerParam, contextLength, freeRam);
+        }
+        
+        function updateRecommendations(systemRam, modelParams, bytesPerParam, contextLength, freeRam) {
+            const list = document.getElementById('recommendationsList');
+            const recommendations = [];
+            
+            if (freeRam < 0) {
+                recommendations.push('🔴 Try a smaller model (e.g., ' + (modelParams > 7 ? '7B' : '1-3B') + ' parameters)');
+                recommendations.push('🔴 Use Q4_K_M or Q3_K_M quantization for lower memory');
+                if (contextLength > 4096) {
+                    recommendations.push('🔴 Reduce context length to 2K-4K tokens');
+                }
+            } else if (freeRam < 2) {
+                recommendations.push('🟡 Close other applications before running');
+                recommendations.push('🟡 Consider Q4_K_M quantization if using higher');
+                if (contextLength > 4096) {
+                    recommendations.push('🟡 Reduce context to 4K for better performance');
+                }
+            } else if (freeRam < 4) {
+                recommendations.push('🟢 Good configuration for your system');
+                if (bytesPerParam < 0.65) {
+                    recommendations.push('💡 You could try Q5_K_M for slightly better quality');
+                }
+            } else {
+                recommendations.push('🟢 Excellent! This will run very smoothly');
+                if (modelParams < 7 && systemRam >= 16) {
+                    recommendations.push('💡 You have room for a larger model (7B+)');
+                }
+                if (bytesPerParam < 0.75 && freeRam > 8) {
+                    recommendations.push('💡 Try Q6_K or Q8_0 for better quality');
+                }
+                if (contextLength < 8192 && freeRam > 6) {
+                    recommendations.push('💡 You can increase context length for longer conversations');
+                }
+            }
+            
+            // Model-specific tips
+            if (modelParams >= 70) {
+                recommendations.push('📌 70B models work best with GPU offloading');
+            }
+            if (modelParams === 47) {
+                recommendations.push('📌 Mixtral uses MoE - only ~12B active at once');
+            }
+            
+            list.innerHTML = recommendations.map(r => '<li>' + r + '</li>').join('');
+        }
+    </script>
 </body>
 </html>
