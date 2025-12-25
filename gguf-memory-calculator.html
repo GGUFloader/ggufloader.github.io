@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGUF Memory Calculator - RAM Requirements for Q4_K_M, Q5_K_M, Q6_K (2025)</title>
+    <meta name="description" content="Calculate GGUF model RAM requirements. Memory usage for Mistral 7B, Llama, Qwen with Q4_K_M, Q5_K_M, Q6_K quantization. Find the right model for your 8GB, 16GB, or 32GB RAM system.">
+    <meta name="keywords" content="gguf memory calculator, mistral 7b gguf q4_k_m memory usage, gguf ram requirements, q4_k_m memory, q5_k_m size, 7b model ram, gguf quantization memory, mistral 7b memory requirements, llama memory usage, gguf size calculator">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ggufloader.github.io/gguf-memory-calculator.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GGUF Memory Calculator - RAM Requirements">
+    <meta property="og:description" content="Calculate how much RAM you need for GGUF models. Covers Q4_K_M, Q5_K_M, Q6_K quantization for 7B, 13B, 70B models.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:url" content="https://ggufloader.github.io/gguf-memory-calculator.html">
+    <meta property="og:type" content="article">
+    
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much RAM does Mistral 7B GGUF Q4_K_M need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mistral 7B with Q4_K_M quantization requires approximately 5-6GB RAM for the model itself, plus 1-2GB for context window. Total recommended: 8GB RAM minimum, 16GB for comfortable usage with other applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the memory footprint of Q4_K_M quantization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Q4_K_M uses approximately 0.5-0.6 bytes per parameter. For a 7B model: ~4GB file size, ~5-6GB RAM usage. For a 13B model: ~7.5GB file size, ~9-10GB RAM usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I run a 7B GGUF model on 8GB RAM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but barely. A 7B Q4_K_M model uses ~5-6GB RAM. With 8GB total, you'll have limited headroom for context and other apps. 16GB RAM is recommended for 7B models. For 8GB systems, use 1-3B models instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much RAM per parameter for GGUF Q4_K_M?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Q4_K_M uses approximately 0.5-0.6 bytes per parameter in RAM. This means: 1B params ≈ 0.6GB, 7B params ≈ 4-5GB, 13B params ≈ 7-8GB, 70B params ≈ 35-40GB."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between Q4_K_M and Q5_K_M memory usage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Q5_K_M uses about 20% more memory than Q4_K_M but offers slightly better quality. For a 7B model: Q4_K_M ≈ 5GB RAM, Q5_K_M ≈ 6GB RAM, Q6_K ≈ 7GB RAM."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <style>
+        .article-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin-bottom: 20px; }
+        .memory-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .memory-table th, .memory-table td { padding: 12px; text-align: center; border: 1px solid #e9ecef; }
+        .memory-table th { background: #e74c3c; color: white; }
+        .memory-table tr:nth-child(even) { background: #f8f9fa; }
+        .memory-table tr:hover { background: #fff3cd; }
+        .highlight { background: #27ae60; color: white; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+        .warning { background: #f39c12; color: white; padding: 2px 8px; border-radius: 4px; }
+        .danger { background: #e74c3c; color: white; padding: 2px 8px; border-radius: 4px; }
+        .calculator-box { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 25px; margin: 20px 0; border: 2px solid #e74c3c; }
+        .calculator-box h3 { color: #e74c3c; margin-bottom: 15px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .ram-recommendation { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .ram-card { background: #fff; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1); border-top: 4px solid #e74c3c; }
+        .ram-card h4 { color: #e74c3c; margin-bottom: 10px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #e74c3c; text-decoration: none; font-weight: 500; }
+        code { background: #f1f3f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.5rem; }
+            .content-section { padding: 20px; }
+            .memory-table { font-size: 0.8rem; display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GGUF Loader</a>
+            <ul>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="article-header">
+            <h1>GGUF Memory Calculator</h1>
+            <p>RAM requirements for Q4_K_M, Q5_K_M, Q6_K quantization - Find the right model for your system</p>
+        </div>
+
+        <article>
+            <section class="content-section">
+                <h2>Quick RAM Reference</h2>
+                <p>How much RAM do you need for popular GGUF models? Here's a comprehensive reference:</p>
+                
+                <table class="memory-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Parameters</th>
+                            <th>Q4_K_M RAM</th>
+                            <th>Q5_K_M RAM</th>
+                            <th>Q6_K RAM</th>
+                            <th>Q8_0 RAM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TinyLlama</td>
+                            <td>1.1B</td>
+                            <td><span class="highlight">~1 GB</span></td>
+                            <td>~1.2 GB</td>
+                            <td>~1.4 GB</td>
+                            <td>~1.5 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Llama 3.2 1B</td>
+                            <td>1B</td>
+                            <td><span class="highlight">~1.5 GB</span></td>
+                            <td>~1.8 GB</td>
+                            <td>~2 GB</td>
+                            <td>~2.2 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Qwen 2.5 1.5B</td>
+                            <td>1.5B</td>
+                            <td><span class="highlight">~2 GB</span></td>
+                            <td>~2.3 GB</td>
+                            <td>~2.6 GB</td>
+                            <td>~3 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Phi-2</td>
+                            <td>2.7B</td>
+                            <td>~3 GB</td>
+                            <td>~3.5 GB</td>
+                            <td>~4 GB</td>
+                            <td>~5 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Llama 3.2 3B</td>
+                            <td>3B</td>
+                            <td>~3.5 GB</td>
+                            <td>~4 GB</td>
+                            <td>~4.5 GB</td>
+                            <td>~5.5 GB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mistral 7B</strong></td>
+                            <td>7B</td>
+                            <td><span class="highlight">~5-6 GB</span></td>
+                            <td>~6-7 GB</td>
+                            <td>~7-8 GB</td>
+                            <td>~9 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Llama 3 8B</td>
+                            <td>8B</td>
+                            <td>~6 GB</td>
+                            <td>~7 GB</td>
+                            <td>~8 GB</td>
+                            <td>~10 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Llama 2 13B</td>
+                            <td>13B</td>
+                            <td>~9-10 GB</td>
+                            <td>~11-12 GB</td>
+                            <td>~13 GB</td>
+                            <td>~15 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Mixtral 8x7B</td>
+                            <td>47B (MoE)</td>
+                            <td>~26 GB</td>
+                            <td>~32 GB</td>
+                            <td>~38 GB</td>
+                            <td>~50 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Llama 2 70B</td>
+                            <td>70B</td>
+                            <td><span class="danger">~40 GB</span></td>
+                            <td>~50 GB</td>
+                            <td>~55 GB</td>
+                            <td>~70 GB</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="info-box">
+                    <strong>⚠️ Important:</strong> These are base model RAM requirements. Add 1-2GB for context window (more for longer contexts) and system overhead. Your OS and other apps also need RAM!
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>RAM Recommendations by System</h2>
+                
+                <div class="ram-recommendation">
+                    <div class="ram-card">
+                        <h4>8GB RAM</h4>
+                        <p><strong>Best models:</strong></p>
+                        <p>TinyLlama 1.1B<br>Llama 3.2 1B<br>Qwen 2.5 1.5B</p>
+                        <p><small>Use Q4_K_M quantization</small></p>
+                    </div>
+                    <div class="ram-card">
+                        <h4>16GB RAM</h4>
+                        <p><strong>Best models:</strong></p>
+                        <p>All 1-3B models<br>Mistral 7B<br>Llama 3 8B</p>
+                        <p><small>Q4_K_M or Q5_K_M</small></p>
+                    </div>
+                    <div class="ram-card">
+                        <h4>32GB RAM</h4>
+                        <p><strong>Best models:</strong></p>
+                        <p>All 7B models<br>13B models<br>Mixtral 8x7B</p>
+                        <p><small>Q5_K_M or Q6_K</small></p>
+                    </div>
+                    <div class="ram-card">
+                        <h4>64GB+ RAM</h4>
+                        <p><strong>Best models:</strong></p>
+                        <p>70B models<br>Large MoE models</p>
+                        <p><small>Any quantization</small></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Mistral 7B Memory Deep Dive</h2>
+                <p>Mistral 7B is one of the most popular models. Here's detailed memory info:</p>
+                
+                <div class="calculator-box">
+                    <h3>Mistral 7B Q4_K_M Memory Breakdown</h3>
+                    <table class="memory-table">
+                        <tr>
+                            <td><strong>Model weights</strong></td>
+                            <td>~4.1 GB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>KV cache (2K context)</strong></td>
+                            <td>~0.5 GB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>KV cache (8K context)</strong></td>
+                            <td>~2 GB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compute buffers</strong></td>
+                            <td>~0.5 GB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total (2K context)</strong></td>
+                            <td><span class="highlight">~5-6 GB</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total (8K context)</strong></td>
+                            <td><span class="warning">~7-8 GB</span></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="info-box">
+                    <strong>💡 Tip:</strong> For 16GB RAM systems running Mistral 7B, use 2K-4K context to leave room for your OS and other applications. Reduce context size if you experience slowdowns.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Memory Per Parameter Formula</h2>
+                <p>Quick formula to estimate RAM for any model:</p>
+                
+                <div class="calculator-box">
+                    <h3>RAM Estimation Formula</h3>
+                    <p><code>RAM (GB) = Parameters (B) × Bytes per Parameter × 1.2 (overhead)</code></p>
+                    <br>
+                    <table class="memory-table">
+                        <thead>
+                            <tr>
+                                <th>Quantization</th>
+                                <th>Bytes per Parameter</th>
+                                <th>7B Model Size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Q4_K_M</td>
+                                <td>~0.55</td>
+                                <td>~4.6 GB</td>
+                            </tr>
+                            <tr>
+                                <td>Q5_K_M</td>
+                                <td>~0.65</td>
+                                <td>~5.5 GB</td>
+                            </tr>
+                            <tr>
+                                <td>Q6_K</td>
+                                <td>~0.75</td>
+                                <td>~6.3 GB</td>
+                            </tr>
+                            <tr>
+                                <td>Q8_0</td>
+                                <td>~1.0</td>
+                                <td>~8.4 GB</td>
+                            </tr>
+                            <tr>
+                                <td>FP16</td>
+                                <td>~2.0</td>
+                                <td>~16.8 GB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Context Window Impact</h2>
+                <p>Longer context windows require more RAM. Here's how context affects memory:</p>
+                
+                <table class="memory-table">
+                    <thead>
+                        <tr>
+                            <th>Context Length</th>
+                            <th>7B Model Extra RAM</th>
+                            <th>13B Model Extra RAM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2,048 tokens</td>
+                            <td>+0.5 GB</td>
+                            <td>+0.8 GB</td>
+                        </tr>
+                        <tr>
+                            <td>4,096 tokens</td>
+                            <td>+1 GB</td>
+                            <td>+1.5 GB</td>
+                        </tr>
+                        <tr>
+                            <td>8,192 tokens</td>
+                            <td>+2 GB</td>
+                            <td>+3 GB</td>
+                        </tr>
+                        <tr>
+                            <td>32,768 tokens</td>
+                            <td>+8 GB</td>
+                            <td>+12 GB</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Related Resources</h2>
+                <ul>
+                    <li><a href="what-is-gguf.html">What is GGUF? Complete Format Guide</a></li>
+                    <li><a href="2025-07-07-top-10-gguf-models-i5-16gb.html">Best GGUF Models for 16GB RAM</a></li>
+                    <li><a href="how-to-run-gguf-models.html">How to Run GGUF Models Locally</a></li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GGUF Loader. All rights reserved.</p>
+    </footer>
+    
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>

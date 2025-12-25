@@ -430,6 +430,39 @@
             }
         }
 
+        /* Quick Start GitHub Section Styles */
+        .quick-start-github {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .quick-start-github h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .quick-start-github .step code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .quick-start-github {
+                background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+            }
+            
+            .quick-start-github .step code {
+                background: #2d2d2d;
+                color: #f8f8f2;
+            }
+            
+            .quick-start-github .cta-button {
+                background: #3498db;
+            }
+        }
+
         /* Additional styles for simplicity */
         .section {
             padding: 40px 0;
@@ -1505,6 +1538,8 @@
                 </button>
 
                 <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#quick-start-github" role="menuitem"
+                            aria-label="Quick start guide from GitHub">Quick Start</a></li>
                     <li role="none"><a href="#features-philosophy" role="menuitem"
                             aria-label="View features and philosophy section">Features</a></li>
                     <li role="none"><a href="#guide" role="menuitem" aria-label="View how-to guides">How-To</a></li>
@@ -1587,8 +1622,64 @@
             </div>
         </section>
 
+        <!-- Quick Start from GitHub Section -->
+        <section id="quick-start-github" class="quick-start-github section" aria-labelledby="quick-start-heading">
+            <div class="container">
+                <h2 id="quick-start-heading">🚀 Quick Start - Run from Source Code</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #6c757d;">New to this? No problem! Follow these simple steps:</p>
+                
+                <div class="guide-steps">
+                    <div class="step">
+                        <h3>Step 1: Download the Code</h3>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Click the button below to open GitHub</li>
+                            <li>Look for the green <strong>"Code"</strong> button</li>
+                            <li>Click it and select <strong>"Download ZIP"</strong></li>
+                            <li>Save the ZIP file to your computer</li>
+                        </ol>
+                        <a href="https://github.com/GGUFloader/gguf-loader" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin-top: 1rem; display: inline-block; font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                            📥 Open GitHub to Download
+                        </a>
+                    </div>
+                    <div class="step">
+                        <h3>Step 2: Extract the Files</h3>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Find the downloaded ZIP file</li>
+                            <li>Right-click on it</li>
+                            <li>Select <strong>"Extract All"</strong> (Windows) or double-click (Mac)</li>
+                            <li>Open the extracted <strong>gguf-loader</strong> folder</li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <h3>Step 3: Run the App</h3>
+                        <p style="text-align: left;"><strong>🪟 Windows Users:</strong></p>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Find <code style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">run_gguf_loader.bat</code></li>
+                            <li>Double-click it to run</li>
+                        </ol>
+                        <p style="text-align: left; margin-top: 1rem;"><strong>🍎🐧 Mac/Linux Users:</strong></p>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Open Terminal in the folder</li>
+                            <li>Type: <code style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">chmod +x run_gguf_loader.sh</code> and press Enter</li>
+                            <li>Type: <code style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">./run_gguf_loader.sh</code> and press Enter</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(40, 167, 69, 0.1); border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 1rem 0;">🎮 After the App Opens:</h4>
+                    <ol style="text-align: left; max-width: 500px; margin: 0 auto; line-height: 2;">
+                        <li>Click the <strong>"Load Model"</strong> button</li>
+                        <li>Browse and select your <code>.gguf</code> model file</li>
+                        <li>Wait for it to load (may take a minute)</li>
+                        <li>Start chatting with your AI! 🎉</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
         <!-- Short Guide Section -->
-        <section id="guide" class="how-it-works section" aria-labelledby="guide-heading">
+        <section id="guide" class="how-it-works section" aria-labelledby="guide-heading"></section>
             <div class="container">
                 <h2 id="guide-heading">How to Use It</h2>
                 <div class="guide-steps">
@@ -1844,11 +1935,11 @@
                             </article>
                             <article class="faq-item">
                                 <h4>What is GGUF?</h4>
-                                <p>An optimized model format created for llama.cpp to enable fast local inference.</p>
+                                <p>An optimized model format created for llama.cpp to enable fast local inference. <a href="what-is-gguf.html">Learn more about GGUF format →</a></p>
                             </article>
                             <article class="faq-item">
                                 <h4>Do I need Python or CLI knowledge?</h4>
-                                <p>No. Everything runs in a visual interface.</p>
+                                <p>No. Everything runs in a visual interface. <a href="how-to-run-gguf-models.html">See our beginner's guide →</a></p>
                             </article>
                             <article class="faq-item">
                                 <h4>Is it really offline?</h4>
@@ -1856,20 +1947,19 @@
                             </article>
                             <article class="faq-item">
                                 <h4>Which models work?</h4>
-                                <p>Any GGUF model, including Mistral, LLaMA 2/3, DeepSeek, Gemma, and TinyLLaMA.</p>
+                                <p>Any GGUF model, including Mistral, LLaMA 2/3, DeepSeek, Gemma, and TinyLLaMA. <a href="2025-07-07-top-10-gguf-models-i5-16gb.html">See best models →</a></p>
                             </article>
                             <article class="faq-item">
                                 <h4>Where can I find GGUF models?</h4>
-                                <p>You can download them from Hugging Face (e.g., TheBloke) or use your own.</p>
+                                <p>Download from Hugging Face (TheBloke, bartowski) or official sources. <a href="download-gguf-models.html">Download guide →</a></p>
                             </article>
                             <article class="faq-item">
-                                <h4>Can I use it to build my own AI assistant?</h4>
-                                <p>Yes. GGUF Loader is ideal for prototyping and deploying enterprise-grade assistants.
-                                </p>
+                                <h4>How much RAM do I need?</h4>
+                                <p>Depends on model size. 8GB for small models, 16GB for 7B models. <a href="gguf-memory-calculator.html">Check RAM requirements →</a></p>
                             </article>
                             <article class="faq-item">
                                 <h4>What platforms are supported?</h4>
-                                <p>Currently Windows, Linux, and macOS .</p>
+                                <p>Currently Windows, Linux, and macOS.</p>
                             </article>
                         </div>
                     </div>

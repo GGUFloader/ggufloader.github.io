@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is GGUF? Complete Guide to GGUF Format (2025)</title>
+    <meta name="description" content="GGUF (GPT-Generated Unified Format) explained. Learn what GGUF is, how it works, memory requirements, quantization types (Q4_K_M, Q5_K_M), and why it's the best format for running AI locally.">
+    <meta name="keywords" content="what is gguf, gguf format, gguf file format, gguf specification, gguf meaning, gguf vs ggml, gguf quantization, q4_k_m, q5_k_m, llama.cpp, local ai, gguf models">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ggufloader.github.io/what-is-gguf.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="What is GGUF? Complete Guide to GGUF Format">
+    <meta property="og:description" content="Everything you need to know about GGUF format - the standard for running AI models locally. Quantization, memory usage, compatibility explained.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:url" content="https://ggufloader.github.io/what-is-gguf.html">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What is GGUF? Complete Guide to GGUF Format">
+    <meta name="twitter:description" content="GGUF format explained - quantization types, memory requirements, and how to run AI locally.">
+    
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is GGUF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF (GPT-Generated Unified Format) is a file format designed for storing and running large language models efficiently on consumer hardware. Created by the llama.cpp project, GGUF replaced the older GGML format and is now the standard for local AI inference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does GGUF stand for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF stands for GPT-Generated Unified Format. It's a binary file format optimized for fast loading and efficient inference of quantized language models."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Q4_K_M quantization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Q4_K_M is a 4-bit quantization method that reduces model size by ~75% while maintaining excellent quality. The 'K' indicates k-quant (improved quantization), and 'M' means medium quality. It's the recommended quantization for most users, offering the best balance of size, speed, and quality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much RAM do GGUF models need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RAM requirements depend on model size and quantization. With Q4_K_M: 7B models need ~6GB RAM, 13B models need ~10GB RAM, 1-3B models need 1-3GB RAM. Add 1-2GB for context and system overhead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is GGUF better than GGML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, GGUF replaced GGML and offers significant improvements: single-file format (no separate vocab files), extensible metadata, better compatibility, faster loading, and support for more model architectures. All modern tools use GGUF."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <style>
+        .article-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .article-header .subtitle { font-size: 1.1rem; opacity: 0.9; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #667eea; padding-bottom: 10px; margin-bottom: 20px; }
+        .content-section h3 { color: #34495e; margin: 25px 0 15px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .info-box.warning { border-left-color: #f39c12; background: #fffbf0; }
+        .info-box.success { border-left-color: #27ae60; background: #f0fff4; }
+        .quant-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .quant-table th, .quant-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e9ecef; }
+        .quant-table th { background: #667eea; color: white; }
+        .quant-table tr:hover { background: #f8f9fa; }
+        .highlight { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2px 8px; border-radius: 4px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #667eea; text-decoration: none; font-weight: 500; }
+        .cta-box { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 12px; text-align: center; margin-top: 30px; }
+        .cta-box a { color: white; background: rgba(255,255,255,0.2); padding: 12px 25px; border-radius: 8px; text-decoration: none; display: inline-block; margin-top: 15px; }
+        code { background: #f1f3f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.6rem; }
+            .content-section { padding: 20px; }
+            .quant-table { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GGUF Loader</a>
+            <ul>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="article-header">
+            <h1>What is GGUF? Complete Guide to GGUF Format</h1>
+            <div class="subtitle">Everything you need to know about the standard format for running AI models locally</div>
+        </div>
+
+        <article>
+            <section class="content-section">
+                <h2>What is GGUF?</h2>
+                <p><strong>GGUF (GPT-Generated Unified Format)</strong> is a file format designed for storing and running large language models (LLMs) efficiently on consumer hardware. Created by the <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> project, GGUF is now the standard format for local AI inference.</p>
+                
+                <div class="info-box success">
+                    <strong>Key Benefits of GGUF:</strong>
+                    <ul>
+                        <li>Run AI models on CPU without expensive GPUs</li>
+                        <li>Quantization reduces model size by 50-75%</li>
+                        <li>Single file contains everything needed</li>
+                        <li>Works on Windows, Mac, and Linux</li>
+                        <li>Supported by all major local AI tools</li>
+                    </ul>
+                </div>
+
+                <h3>What Does GGUF Stand For?</h3>
+                <p>GGUF stands for <strong>GPT-Generated Unified Format</strong>. The name reflects its purpose: a unified, standardized way to store AI models that were originally in various formats (PyTorch, SafeTensors, etc.).</p>
+            </section>
+
+            <section class="content-section">
+                <h2>GGUF Quantization Types Explained</h2>
+                <p>Quantization reduces model precision to decrease file size and memory usage. Here are the common GGUF quantization types:</p>
+                
+                <table class="quant-table">
+                    <thead>
+                        <tr>
+                            <th>Quantization</th>
+                            <th>Bits</th>
+                            <th>Size Reduction</th>
+                            <th>Quality</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Q4_K_M</code></td>
+                            <td>4-bit</td>
+                            <td>~75%</td>
+                            <td>Excellent</td>
+                            <td><span class="highlight">Recommended</span> - Best balance</td>
+                        </tr>
+                        <tr>
+                            <td><code>Q4_K_S</code></td>
+                            <td>4-bit</td>
+                            <td>~75%</td>
+                            <td>Good</td>
+                            <td>Low RAM systems</td>
+                        </tr>
+                        <tr>
+                            <td><code>Q5_K_M</code></td>
+                            <td>5-bit</td>
+                            <td>~65%</td>
+                            <td>Very Good</td>
+                            <td>Quality-focused users</td>
+                        </tr>
+                        <tr>
+                            <td><code>Q5_K_S</code></td>
+                            <td>5-bit</td>
+                            <td>~65%</td>
+                            <td>Good</td>
+                            <td>Balance with smaller size</td>
+                        </tr>
+                        <tr>
+                            <td><code>Q6_K</code></td>
+                            <td>6-bit</td>
+                            <td>~55%</td>
+                            <td>Excellent</td>
+                            <td>Near-original quality</td>
+                        </tr>
+                        <tr>
+                            <td><code>Q8_0</code></td>
+                            <td>8-bit</td>
+                            <td>~50%</td>
+                            <td>Best</td>
+                            <td>Maximum quality</td>
+                        </tr>
+                        <tr>
+                            <td><code>Q2_K</code></td>
+                            <td>2-bit</td>
+                            <td>~85%</td>
+                            <td>Lower</td>
+                            <td>Extreme compression</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <strong>💡 Recommendation:</strong> For most users, <code>Q4_K_M</code> offers the best balance of quality, speed, and memory usage. Use <code>Q5_K_M</code> or <code>Q6_K</code> if you have extra RAM and want better quality.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>GGUF Memory Requirements</h2>
+                <p>How much RAM do you need for different GGUF models? Here's a quick reference:</p>
+                
+                <table class="quant-table">
+                    <thead>
+                        <tr>
+                            <th>Model Size</th>
+                            <th>Q4_K_M RAM</th>
+                            <th>Q5_K_M RAM</th>
+                            <th>Q8_0 RAM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1B parameters</td>
+                            <td>~1 GB</td>
+                            <td>~1.2 GB</td>
+                            <td>~1.5 GB</td>
+                        </tr>
+                        <tr>
+                            <td>3B parameters</td>
+                            <td>~2.5 GB</td>
+                            <td>~3 GB</td>
+                            <td>~4 GB</td>
+                        </tr>
+                        <tr>
+                            <td>7B parameters</td>
+                            <td>~5-6 GB</td>
+                            <td>~6-7 GB</td>
+                            <td>~8-9 GB</td>
+                        </tr>
+                        <tr>
+                            <td>13B parameters</td>
+                            <td>~9-10 GB</td>
+                            <td>~11-12 GB</td>
+                            <td>~15 GB</td>
+                        </tr>
+                        <tr>
+                            <td>70B parameters</td>
+                            <td>~40 GB</td>
+                            <td>~50 GB</td>
+                            <td>~70 GB</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box warning">
+                    <strong>⚠️ Important:</strong> Add 1-2 GB for context window and system overhead. For 16GB RAM systems, stick to models under 7B parameters with Q4_K_M quantization.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>GGUF vs GGML: What's the Difference?</h2>
+                <p>GGUF replaced the older GGML format in August 2023. Here's why GGUF is better:</p>
+                
+                <table class="quant-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>GGML (Old)</th>
+                            <th>GGUF (New)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>File Structure</td>
+                            <td>Multiple files needed</td>
+                            <td>Single file</td>
+                        </tr>
+                        <tr>
+                            <td>Metadata</td>
+                            <td>Limited</td>
+                            <td>Extensible key-value</td>
+                        </tr>
+                        <tr>
+                            <td>Compatibility</td>
+                            <td>Breaking changes</td>
+                            <td>Forward compatible</td>
+                        </tr>
+                        <tr>
+                            <td>Loading Speed</td>
+                            <td>Slower</td>
+                            <td>Faster</td>
+                        </tr>
+                        <tr>
+                            <td>Tool Support</td>
+                            <td>Deprecated</td>
+                            <td>All modern tools</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box success">
+                    <strong>✅ Bottom Line:</strong> Always use GGUF format. GGML is deprecated and no longer supported by modern tools like llama.cpp, Ollama, and LM Studio.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Where to Download GGUF Models</h2>
+                <p>GGUF models are available on HuggingFace. Popular sources include:</p>
+                <ul>
+                    <li><strong><a href="https://huggingface.co/TheBloke" target="_blank">TheBloke</a></strong> - Thousands of quantized models</li>
+                    <li><strong><a href="https://huggingface.co/bartowski" target="_blank">bartowski</a></strong> - High-quality quantizations</li>
+                    <li><strong><a href="https://huggingface.co/Qwen" target="_blank">Qwen</a></strong> - Official Qwen GGUF models</li>
+                    <li><strong><a href="https://huggingface.co/meta-llama" target="_blank">Meta</a></strong> - Official Llama models</li>
+                </ul>
+                
+                <p>Look for files ending in <code>.gguf</code> with quantization suffix like <code>Q4_K_M.gguf</code>.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Tools That Support GGUF</h2>
+                <ul>
+                    <li><strong><a href="index.html">GGUF Loader</a></strong> - Simple GUI for running GGUF models</li>
+                    <li><strong>llama.cpp</strong> - The original GGUF runtime</li>
+                    <li><strong>Ollama</strong> - Easy model management</li>
+                    <li><strong>LM Studio</strong> - Desktop app for local AI</li>
+                    <li><strong>GPT4All</strong> - Cross-platform local AI</li>
+                    <li><strong>KoboldCpp</strong> - For creative writing</li>
+                </ul>
+            </section>
+
+            <div class="cta-box">
+                <h2>Ready to Run GGUF Models?</h2>
+                <p>GGUF Loader makes it easy to run AI models locally - no Python or command line needed.</p>
+                <a href="index.html">Get Started with GGUF Loader →</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GGUF Loader. All rights reserved.</p>
+    </footer>
+    
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>
