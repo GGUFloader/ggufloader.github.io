@@ -31,7 +31,6 @@ Welcome to the GGUF Loader documentation! This guide will help you get started w
 ### Developer Resources
 - [Contributing Guide](/docs/contributing/) - How to contribute to the project
 - [Architecture Overview](/docs/architecture/) - Technical architecture details
-- [API Reference](/docs/api-reference/) - Complete API documentation
 
 ## 🚀 What's New in Version 2.0.0
 

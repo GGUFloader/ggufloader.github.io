@@ -1,5 +1,4 @@
 ---
-layout: default
 ---
 
 <div class="docs-container">
@@ -62,12 +61,15 @@ layout: default
             <ul class="nav-dropdown-menu" role="menu" aria-label="Documentation submenu">
               <li role="none"><a href="/docs/installation/" role="menuitem" title="Complete installation guide" {% if page.url == '/docs/installation/' %}class="current-page"{% endif %}>Installation Guide</a></li>
               <li role="none"><a href="/docs/quick-start/" role="menuitem" title="Get started in minutes" {% if page.url == '/docs/quick-start/' %}class="current-page"{% endif %}>Quick Start</a></li>
+              <li role="none"><a href="/docs/user-guide/" role="menuitem" title="Complete user manual" {% if page.url == '/docs/user-guide/' %}class="current-page"{% endif %}>User Guide</a></li>
               <li role="none" class="dropdown-divider"></li>
               <li role="none"><a href="/docs/addon-development/" role="menuitem" title="Create custom addons" {% if page.url == '/docs/addon-development/' %}class="current-page"{% endif %}>Addon Development</a></li>
               <li role="none"><a href="/docs/addon-api/" role="menuitem" title="API reference" {% if page.url == '/docs/addon-api/' %}class="current-page"{% endif %}>API Reference</a></li>
               <li role="none"><a href="/docs/smart-floater-example/" role="menuitem" title="Smart Floater example" {% if page.url == '/docs/smart-floater-example/' %}class="current-page"{% endif %}>Smart Floater Example</a></li>
               <li role="none" class="dropdown-divider"></li>
               <li role="none"><a href="/docs/package-structure/" role="menuitem" title="Technical architecture" {% if page.url == '/docs/package-structure/' %}class="current-page"{% endif %}>Package Structure</a></li>
+              <li role="none"><a href="/docs/configuration/" role="menuitem" title="Configuration options" {% if page.url == '/docs/configuration/' %}class="current-page"{% endif %}>Configuration</a></li>
+              <li role="none"><a href="/docs/troubleshooting/" role="menuitem" title="Common issues and solutions" {% if page.url == '/docs/troubleshooting/' %}class="current-page"{% endif %}>Troubleshooting</a></li>
             </ul>
           </li>
           
@@ -128,6 +130,7 @@ layout: default
         <ul>
           <li><a href="/docs/installation/" {% if page.url == '/docs/installation/' %}class="active"{% endif %} title="Complete installation guide for all platforms">Installation Guide</a></li>
           <li><a href="/docs/quick-start/" {% if page.url == '/docs/quick-start/' %}class="active"{% endif %} title="Get started with GGUF Loader in minutes">Quick Start</a></li>
+          <li><a href="/docs/user-guide/" {% if page.url == '/docs/user-guide/' %}class="active"{% endif %} title="Complete user manual">User Guide</a></li>
         </ul>
         
         <h3>Development</h3>
@@ -140,6 +143,14 @@ layout: default
         <h3>Advanced</h3>
         <ul>
           <li><a href="/docs/package-structure/" {% if page.url == '/docs/package-structure/' %}class="active"{% endif %} title="Understanding GGUF Loader's architecture">Package Structure</a></li>
+          <li><a href="/docs/architecture/" {% if page.url == '/docs/architecture/' %}class="active"{% endif %} title="Technical architecture overview">Architecture</a></li>
+          <li><a href="/docs/configuration/" {% if page.url == '/docs/configuration/' %}class="active"{% endif %} title="Configuration options">Configuration</a></li>
+        </ul>
+        
+        <h3>Help & Community</h3>
+        <ul>
+          <li><a href="/docs/troubleshooting/" {% if page.url == '/docs/troubleshooting/' %}class="active"{% endif %} title="Common issues and solutions">Troubleshooting</a></li>
+          <li><a href="/docs/contributing/" {% if page.url == '/docs/contributing/' %}class="active"{% endif %} title="How to contribute">Contributing</a></li>
         </ul>
         
         <div class="docs-menu-footer">
