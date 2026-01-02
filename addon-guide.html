@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create Addons for GGUF Loader - Complete Developer Guide (2025)</title>
+    <meta name="description" content="Learn how to create custom addons for GGUF Loader 2.0.0. Complete guide covering addon architecture, Python package structure, UI components, API hooks, best practices, and distribution on PyPI. Build extensions that add new features to your local AI setup.">
+    <meta name="keywords" content="gguf loader addon, create gguf addon, gguf loader plugin, gguf loader extension, gguf loader api, gguf loader development, python addon tutorial, local ai customization, gguf loader 2.0, addon architecture, plugin development guide, gguf loader hooks, custom ui components, gguf loader pypi">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://ggufloader.github.io/addon-guide.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Create Addons for GGUF Loader - Complete Developer Guide">
+    <meta property="og:description" content="Build custom addons for GGUF Loader. Learn addon architecture, API hooks, UI components, and distribution. Complete Python development guide.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ggufloader.github.io/addon-guide.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2024-10-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-25T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Development">
+    <meta property="article:tag" content="Addon Development">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="GGUF Loader">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Create Addons for GGUF Loader">
+    <meta name="twitter:description" content="Complete guide to building custom addons. Addon architecture, API hooks, UI components, and PyPI distribution.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ggufloader.github.io/addon-guide.html"
+      },
+      "headline": "How to Create Addons for GGUF Loader - Complete Developer Guide",
+      "description": "Comprehensive guide to creating custom addons for GGUF Loader 2.0.0. Covers addon architecture, Python package structure, UI components, API hooks, and distribution.",
+      "image": "https://ggufloader.github.io/preview.png",
+      "datePublished": "2024-10-17T00:00:00+00:00",
+      "dateModified": "2025-12-25T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "keywords": ["GGUF Loader", "addon development", "Python plugin", "local AI", "extension development"],
+      "articleSection": "Development",
+      "proficiencyLevel": "Intermediate"
+    }
+    </script>
+    
+    <!-- JSON-LD HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Create an Addon for GGUF Loader",
+      "description": "Step-by-step guide to building custom addons for GGUF Loader",
+      "totalTime": "PT30M",
+      "tool": [
+        {"@type": "HowToTool", "name": "Python 3.8+"},
+        {"@type": "HowToTool", "name": "GGUF Loader 2.0.0"},
+        {"@type": "HowToTool", "name": "Text Editor or IDE"}
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Set Up Project Structure",
+          "text": "Create a Python package with __init__.py, manifest.json, and your addon code"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Define Manifest",
+          "text": "Create manifest.json with addon metadata, version, and dependencies"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Implement Addon Class",
+          "text": "Create your addon class extending BaseAddon with initialize() and cleanup() methods"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Add Features",
+          "text": "Implement UI components, API hooks, or custom functionality"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Test and Distribute",
+          "text": "Test your addon locally, then publish to PyPI for distribution"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What can GGUF Loader addons do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF Loader addons can add new UI components, integrate external services, provide custom model loaders, add new chat features, implement custom preprocessing/postprocessing, and extend the settings panel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What programming language are GGUF Loader addons written in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF Loader addons are written in Python. They use a simple package structure with a manifest.json file and Python modules that extend the BaseAddon class."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I install a GGUF Loader addon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Addons can be installed via pip (pip install addon-name), from the GGUF Loader addon manager UI, or by placing the addon folder in the addons directory."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ggufloader.github.io"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ggufloader.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "Addon Development Guide", "item": "https://ggufloader.github.io/addon-guide.html"}
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <style>
+        .addon-guide-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .addon-guide-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+        
+        .addon-structure {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .addon-structure ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .addon-structure li {
+            margin: 0.3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" 
+                        aria-label="Toggle navigation menu" 
+                        aria-expanded="false" 
+                        aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem" aria-label="View features section">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem" aria-label="View frequently asked questions">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem" aria-label="View model download information">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem" aria-label="View contact information">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" aria-label="View blog posts">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero">
+            <div class="container">
+                <h1>How to Create Addons for GGUF Loader</h1>
+                <p>Complete Guide to Extending GGUF Loader Functionality</p>
+            </div>
+        </section>
+
+        <div class="addon-guide-container">
+            <section class="addon-guide-section">
+                <p>This guide will teach you how to create custom addons for GGUF Loader 2.0.0. Addons extend the functionality of GGUF Loader and can provide new features, UI components, and integrations.</p>
+
+                <h2>Addon Architecture</h2>
+                <h3>What is an Addon?</h3>
+                <p>An addon is a Python package that extends GGUF Loader's functionality. Addons can:</p>
+                <ul>
+                    <li>Add new UI components and windows</li>
+                    <li>Process text and interact with AI models</li>
+                    <li>Integrate with external services</li>
+                    <li>Provide new workflows and automation</li>
+                    <li>Extend the main application's capabilities</li>
+                </ul>
+
+                <h3>Addon Structure</h3>
+                <p>Every addon must follow this basic structure:</p>
+                <div class="addon-structure">
+                    <pre><code>addons/
+└── your_addon_name/
+    ├── __init__.py          # Addon entry point
+    ├── main.py              # Main addon logic
+    ├── ui.py                # UI components (optional)
+    ├── config.py            # Configuration (optional)
+    └── README.md            # Addon documentation</code></pre>
+                </div>
+
+                <h2>Creating Your First Addon</h2>
+                <h3>Step 1: Create the Addon Directory</h3>
+                <div class="code-block">
+                    <pre>mkdir -p addons/my_awesome_addon
+cd addons/my_awesome_addon</pre>
+                </div>
+
+                <h3>Step 2: Create the Entry Point (__init__.py)</h3>
+                <div class="code-block">
+                    <pre><code>"""
+My Awesome Addon - A sample addon for GGUF Loader
+
+This addon demonstrates the basic structure and capabilities
+of the GGUF Loader addon system.
+"""
+
+__version__ = "1.0.0"
+__author__ = "Your Name"
+__description__ = "A sample addon that demonstrates basic functionality"
+
+# Import the register function
+from .main import register
+
+# Export the register function
+__all__ = ["register"]</code></pre>
+                </div>
+
+                <h3>Step 3: Create the Main Logic (main.py)</h3>
+                <p>The main logic file contains the core functionality of your addon. Here's a basic example:</p>
+                <div class="code-block">
+                    <pre><code>"""
+Main logic for My Awesome Addon
+"""
+
+import logging
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QTextEdit
+from PySide6.QtCore import QTimer
+
+class MyAwesomeAddon:
+    """Main addon class that handles the addon functionality."""
+    
+    def __init__(self, gguf_app):
+        """Initialize the addon with reference to the main GGUF app."""
+        self.gguf_app = gguf_app
+        self.logger = logging.getLogger(__name__)
+        self.is_running = False
+        
+        # Initialize your addon components here
+        self.setup_addon()
+    
+    def setup_addon(self):
+        """Setup the addon components."""
+        self.logger.info("Setting up My Awesome Addon")
+        # Add your initialization logic here
+    
+    def get_model(self):
+        """Get the currently loaded GGUF model."""
+        try:
+            if hasattr(self.gguf_app, 'model') and self.gguf_app.model:
+                return self.gguf_app.model
+            elif hasattr(self.gguf_app, 'ai_chat') and hasattr(self.gguf_app.ai_chat, 'model'):
+                return self.gguf_app.ai_chat.model
+            return None
+        except Exception as e:
+            self.logger.error(f"Error getting model: {e}")
+            return None
+    
+    def process_text_with_ai(self, text, prompt_template="Process this text: {text}"):
+        """Process text using the loaded AI model."""
+        model = self.get_model()
+        if not model:
+            return "Error: No AI model loaded"
+        
+        try:
+            prompt = prompt_template.format(text=text)
+            response = model(
+                prompt,
+                max_tokens=200,
+                temperature=0.7,
+                stop=["</s>", "\n\n"]
+            )
+            
+            # Extract text from response
+            if isinstance(response, dict) and 'choices' in response:
+                return response['choices'][0].get('text', '').strip()
+            elif isinstance(response, str):
+                return response.strip()
+            else:
+                return str(response).strip()
+                
+        except Exception as e:
+            self.logger.error(f"Error processing text: {e}")
+            return f"Error: {str(e)}"
+    
+    def start(self):
+        """Start the addon."""
+        self.is_running = True
+        self.logger.info("My Awesome Addon started")
+    
+    def stop(self):
+        """Stop the addon."""
+        self.is_running = False
+        self.logger.info("My Awesome Addon stopped")
+
+
+class MyAwesomeAddonWidget(QWidget):
+    """UI widget for the addon."""
+    
+    def __init__(self, addon_instance):
+        super().__init__()
+        self.addon = addon_instance
+        self.setup_ui()
+    
+    def setup_ui(self):
+        """Setup the addon UI."""
+        self.setWindowTitle("My Awesome Addon")
+        self.setMinimumSize(400, 300)
+        
+        layout = QVBoxLayout(self)
+        
+        # Title
+        title = QLabel("🚀 My Awesome Addon")
+        title.setStyleSheet("font-size: 18px; font-weight: bold; margin: 10px;")
+        layout.addWidget(title)
+        
+        # Description
+        description = QLabel("This is a sample addon that demonstrates basic functionality.")
+        description.setWordWrap(True)
+        layout.addWidget(description)
+        
+        # Input area
+        layout.addWidget(QLabel("Enter text to process:"))
+        self.input_text = QTextEdit()
+        self.input_text.setMaximumHeight(100)
+        self.input_text.setPlaceholderText("Type some text here...")
+        layout.addWidget(self.input_text)
+        
+        # Process button
+        self.process_btn = QPushButton("🤖 Process with AI")
+        self.process_btn.clicked.connect(self.process_text)
+        layout.addWidget(self.process_btn)
+        
+        # Output area
+        layout.addWidget(QLabel("AI Response:"))
+        self.output_text = QTextEdit()
+        self.output_text.setReadOnly(True)
+        layout.addWidget(self.output_text)
+        
+        # Status
+        self.status_label = QLabel("Ready")
+        self.status_label.setStyleSheet("color: green;")
+        layout.addWidget(self.status_label)
+    
+    def process_text(self):
+        """Process the input text with AI."""
+        input_text = self.input_text.toPlainText().strip()
+        if not input_text:
+            self.output_text.setText("Please enter some text to process.")
+            return
+
+        self.status_label.setText("Processing...")
+        self.status_label.setStyleSheet("color: orange;")
+        self.process_btn.setEnabled(False)
+        
+        # Process with AI (using QTimer to avoid blocking UI)
+        QTimer.singleShot(100, lambda: self._do_processing(input_text))
+    
+    def _do_processing(self, text):
+        """Actually process the text."""
+        try:
+            result = self.addon.process_text_with_ai(
+                text, 
+                "Please provide a helpful and insightful response to: {text}"
+            )
+            self.output_text.setText(result)
+            self.status_label.setText("Complete!")
+            self.status_label.setStyleSheet("color: green;")
+        except Exception as e:
+            self.output_text.setText(f"Error: {str(e)}")
+            self.status_label.setText("Error occurred")
+            self.status_label.setStyleSheet("color: red;")
+        finally:
+            self.process_btn.setEnabled(True)
+
+def register(parent=None):
+    """
+    Register function called by GGUF Loader when loading the addon.
+    
+    Args:
+        parent: The main GGUF Loader application instance
+        
+    Returns:
+        QWidget: The addon's UI widget, or None for background addons
+    """
+    try:
+        # Create the addon instance
+        addon = MyAwesomeAddon(parent)
+        addon.start()
+        
+        # Store addon reference in parent for lifecycle management
+        if not hasattr(parent, '_addons'):
+            parent._addons = {}
+        parent._addons['my_awesome_addon'] = addon
+        
+        # Create and return the UI widget
+        widget = MyAwesomeAddonWidget(addon)
+        return widget
+        
+    except Exception as e:
+        logging.error(f"Failed to register My Awesome Addon: {e}")
+        return None</code></pre>
+                </div>
+
+                <h3>Step 4: Test Your Addon</h3>
+                <ol>
+                    <li><strong>Place your addon</strong> in the <code>addons/</code> directory</li>
+                    <li><strong>Launch GGUF Loader</strong>: <code>ggufloader</code></li>
+                    <li><strong>Load a GGUF model</strong> in the main application</li>
+                    <li><strong>Click your addon</strong> in the addon sidebar</li>
+                    <li><strong>Test the functionality</strong></li>
+                </ol>
+
+                <h2>Advanced Addon Features</h2>
+                <h3>Background Addons</h3>
+                <p>Some addons don't need a UI and run in the background:</p>
+                <div class="code-block">
+                    <pre><code>def register(parent=None):
+    """Register a background addon."""
+    try:
+        addon = MyBackgroundAddon(parent)
+        addon.start()
+        
+        # Store reference but return None (no UI)
+        parent._my_background_addon = addon
+        return None
+        
+    except Exception as e:
+        logging.error(f"Failed to register background addon: {e}")
+        return None</code></pre>
+                </div>
+
+                <h3>Model Integration</h3>
+                <p>Access and use the loaded GGUF model:</p>
+                <div class="code-block">
+                    <pre><code>def use_model_for_processing(self, text):
+    """Use the GGUF model for text processing."""
+    model = self.get_model()
+    if not model:
+        return "No model loaded"
+    
+    try:
+        # Different processing modes
+        response = model(
+            f"Analyze this text: {text}",
+            max_tokens=300,
+            temperature=0.7,
+            top_p=0.9,
+            repeat_penalty=1.1,
+            stop=["</s>", "Human:", "User:"]
+        )
+        
+        return self.extract_response_text(response)
+        
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+def extract_response_text(self, response):
+    """Extract text from model response."""
+    if isinstance(response, dict) and 'choices' in response:
+        return response['choices'][0].get('text', '').strip()
+    elif isinstance(response, str):
+        return response.strip()
+    else:
+        return str(response).strip()</code></pre>
+                </div>
+
+                <h2>Best Practices</h2>
+                <h3>1. Error Handling</h3>
+                <p>Always wrap your code in try-catch blocks:</p>
+                <div class="code-block">
+                    <pre><code>def safe_operation(self):
+    try:
+        # Your code here
+        pass
+    except Exception as e:
+        self.logger.error(f"Operation failed: {e}")
+        return None</code></pre>
+                </div>
+
+                <h3>2. Resource Cleanup</h3>
+                <p>Implement proper cleanup:</p>
+                <div class="code-block">
+                    <pre><code>def stop(self):
+    """Clean up addon resources."""
+    if hasattr(self, 'timer'):
+        self.timer.stop()
+    
+    if hasattr(self, 'ui_components'):
+        for component in self.ui_components:
+            component.close()
+    
+    self.logger.info("Addon stopped and cleaned up")</code></pre>
+                </div>
+
+                <h3>3. Configuration</h3>
+                <p>Support user configuration:</p>
+                <div class="code-block">
+                    <pre><code>import json
+import os
+
+class AddonConfig:
+    def __init__(self, addon_name):
+        self.config_file = f"config/{addon_name}_config.json"
+        self.default_config = {
+            "enabled": True,
+            "hotkey": "Ctrl+Shift+A",
+            "auto_process": False
+        }
+        self.config = self.load_config()
+    
+    def load_config(self):
+        try:
+            if os.path.exists(self.config_file):
+                with open(self.config_file, 'r') as f:
+                    return {**self.default_config, **json.load(f)}
+        except:
+            pass
+        return self.default_config.copy()
+    
+    def save_config(self):
+        os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
+        with open(self.config_file, 'w') as f:
+            json.dump(self.config, f, indent=2)</code></pre>
+                </div>
+
+                <h3>4. Logging</h3>
+                <p>Use proper logging:</p>
+                <div class="code-block">
+                    <pre><code>import logging
+
+class MyAddon:
+    def __init__(self, gguf_app):
+        self.logger = logging.getLogger(f"addon.{self.__class__.__name__}")
+        self.logger.setLevel(logging.INFO)
+        
+        # Log addon initialization
+        self.logger.info("Addon initialized")
+    
+    def process_data(self, data):
+        self.logger.debug(f"Processing data: {len(data)} items")
+        try:
+            # Process data
+            result = self.do_processing(data)
+            self.logger.info("Data processed successfully")
+            return result
+        except Exception as e:
+            self.logger.error(f"Processing failed: {e}")
+            raise</code></pre>
+                </div>
+
+                <h2>Distributing Your Addon</h2>
+                <h3>1. Create Documentation</h3>
+                <p>Create a <code>README.md</code> for your addon:</p>
+                <div class="code-block">
+                    <pre><code># My Awesome Addon
+
+A powerful addon for GGUF Loader that provides [functionality].
+
+## Features
+
+- Feature 1
+- Feature 2
+- Feature 3
+
+## Installation
+
+1. Copy the addon to `addons/my_awesome_addon/`
+2. Restart GGUF Loader
+3. Click on the addon in the sidebar
+
+## Configuration
+
+[Configuration instructions]
+
+## Usage
+
+[Usage instructions]</code></pre>
+                </div>
+
+                <h3>2. Version Your Addon</h3>
+                <p>Use semantic versioning in <code>__init__.py</code>:</p>
+                <div class="code-block">
+                    <pre><code>__version__ = "1.0.0"  # Major.Minor.Patch</code></pre>
+                </div>
+
+                <h3>3. Share with Community</h3>
+                <ul>
+                    <li>Create a GitHub repository</li>
+                    <li>Add installation instructions</li>
+                    <li>Include screenshots and examples</li>
+                    <li>Submit to the community addon registry</li>
+                </ul>
+
+                <h2>Additional Resources</h2>
+                <ul>
+                    <li><a href="https://github.com/gguf-loader/gguf-loader/discussions" target="_blank">Community Discussions</a> - Get help from the community</li>
+                    <li><a href="mailto:support@ggufloader.com">Email Support</a> - For specific questions about addon development</li>
+                </ul>
+
+                <p><strong>Happy addon development! 🎉</strong></p>
+            </section>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="guides.html">Guides</a> | <a href="blog.html">Blog</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    
+                    if (navMenu.style.display === 'block' || navMenu.classList.contains('show')) {
+                        navMenu.style.display = 'none';
+                        navMenu.classList.remove('show');
+                    } else {
+                        navMenu.style.display = 'block';
+                        navMenu.classList.add('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
