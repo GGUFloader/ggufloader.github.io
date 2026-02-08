@@ -769,9 +769,10 @@ select:focus {
 
 /* Image lazy loading support */
 img {
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
     display: block;
+    margin: 1rem auto;
 }
 
 img[loading="lazy"] {
@@ -820,8 +821,9 @@ img[loading="lazy"].loaded {
 img {
     opacity: 1 !important;
     display: block !important;
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
+    margin: 1rem auto;
 }
 
 /* Override any loading states that hide images */
@@ -836,5 +838,6 @@ img[loading] {
 figure img {
     opacity: 1 !important;
     display: block !important;
-    margin: 0 auto;
+    max-width: 60%;
+    margin: 1rem auto;
 }
