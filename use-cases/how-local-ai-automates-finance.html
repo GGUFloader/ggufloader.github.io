@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Local AI Can Automate Accounting Tasks | GGUF Loader</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover how local AI automates accounting and finance tasks—invoice processing, expense report extraction, bank reconciliation, and ledger data entry—while keeping sensitive financial data secure on-device.">
+    <meta name="keywords" content="local AI accounting, finance automation, invoice processing AI, expense report extraction, on-device accounting AI, financial data privacy, GGUF accounting, secure AI bookkeeping, accounting document automation, ERP data entry automation">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="language" content="English">
+    <meta name="theme-color" content="#0078d4">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ggufloader.github.io/use-cases/how-local-ai-automates-finance.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How Local AI Can Automate Accounting Tasks">
+    <meta property="og:description" content="Discover how local AI automates accounting and finance tasks—invoice processing, expense report extraction, bank reconciliation, and ledger data entry—while keeping sensitive financial data secure on-device.">
+    <meta property="og:url" content="https://ggufloader.github.io/use-cases/how-local-ai-automates-finance.html">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:site_name" content="GGUF Loader">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Local AI Can Automate Accounting Tasks">
+    <meta name="twitter:description" content="Discover how local AI automates accounting and finance tasks—invoice processing, expense report extraction, bank reconciliation, and ledger data entry—while keeping sensitive financial data secure on-device.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    
+    <!-- Preload Stylesheet -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+
+    
+    <!-- JSON-LD Structured Data: Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How Local AI Can Automate Accounting Tasks",
+      "description": "Discover how local AI automates accounting and finance tasks—invoice processing, expense report extraction, bank reconciliation, and ledger data entry—while keeping sensitive financial data secure on-device.",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "datePublished": "2026-02-07T00:00:00Z",
+      "dateModified": "2026-02-07T00:00:00Z",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "image": "https://ggufloader.github.io/preview.png"
+    }
+    </script>
+
+    
+    <!-- JSON-LD Structured Data: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can local AI handle sensitive financial data securely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, local AI processes all financial data on-device without sending information to external servers. Invoices, bank statements, payroll ledgers, and expense reports remain within your secure infrastructure, addressing regulatory compliance and data privacy requirements for accounting firms and finance departments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What accounting tasks can local AI automate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI excels at high-volume, rule-based tasks including invoice data extraction, expense report processing, bank statement reconciliation, transaction classification and categorization, data normalization across formats, and automated report generation. It handles mechanical, repetitive operations that follow predictable patterns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is local AI for processing invoices and receipts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI typically achieves 90-96% accuracy for field extraction from standardized invoices and receipts. Accuracy is highest with typed documents and structured formats, and lower (85-90%) with handwritten sections or poor-quality scans. All outputs should be validated before ERP import."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does local AI make accounting decisions or judgments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, local AI should never make accounting judgments, interpret tax laws, or determine financial strategies. It only performs mechanical data extraction and organization tasks. All accounting decisions, compliance determinations, and financial analysis must be made by qualified accounting professionals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the cost savings of using local AI for accounting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI eliminates per-transaction cloud API fees, which can save thousands of dollars monthly for high-volume operations. After initial hardware investment, processing costs are effectively zero. Accounting firms typically see 60-80% reduction in manual data entry time, allowing staff to focus on analysis and client advisory rather than repetitive data tasks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can local AI detect fraudulent transactions or accounting errors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI is not suitable for fraud detection or error analysis, which requires pattern recognition, contextual understanding, and professional judgment beyond deterministic AI capabilities. Fraud detection should use specialized systems with human oversight. Local AI is best for mechanical tasks like data extraction and classification, not security analysis or professional judgment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What hardware is needed to run local AI for accounting tasks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For processing hundreds of invoices or expense reports daily, a workstation with 16-32GB RAM and a modern CPU is sufficient. Larger operations processing thousands of records may benefit from 64GB RAM or GPU acceleration. A 7B-13B parameter GGUF model typically handles most accounting automation tasks effectively on standard business hardware."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does local AI integrate with accounting software like QuickBooks or Xero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI processes documents and outputs structured data in CSV or JSON format compatible with most accounting software. The extracted data is validated, then imported directly into your ERP system (QuickBooks, Xero, NetSuite, etc.) using standard import functions. This eliminates manual data entry while maintaining full control over the import process."
+          }
+        }
+      ]
+    }
+    </script>
+
+    
+    <!-- JSON-LD Structured Data: HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Automate Invoice Processing with Local AI",
+      "description": "Step-by-step guide for using local AI to extract data from invoices and automate accounting workflows while maintaining data security.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Digitize and Prep",
+          "text": "Gather your batch of PDF invoices. If they are scanned images, run them through a local OCR tool (like Tesseract or a vision-enabled local model) to convert them into raw text files. The cleaner the text, the better the AI performs."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Define the Schema",
+          "text": "Create a strict prompt for the Local AI that defines exactly what you need. Command it to extract specific fields into a strict JSON format with vendor, date, total, and invoice ID. If a field is missing, return null."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Batch Processing",
+          "text": "Run a simple script (Python is common) that loops through your folder of text files. The script feeds each file into the local model with your prompt. Because it's local, you can run this loop over 500 files without worrying about API rate limits or costs."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Validation Script",
+          "text": "Run automated checks for basic errors: Does the Date field follow the YYYY-MM-DD format? Is Total a valid number? Is the Vendor on your approved vendor list? Any entry that fails these checks is flagged for manual review."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Formatting and Human Review",
+          "text": "The valid data is converted into a CSV file matching your ERP's import format. The accountant opens this CSV, quickly scans it to ensure it looks reasonable, and spot-checks the totals against a control sum."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "ERP Import",
+          "text": "Once verified, the CSV is imported directly into your accounting software (QuickBooks, Xero, NetSuite, etc.). You have effectively skipped the manual data entry phase."
+        }
+      ]
+    }
+    </script>
+
+    
+    <!-- JSON-LD Structured Data: BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ggufloader.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Use Cases",
+          "item": "https://ggufloader.github.io/use-cases/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Accounting Automation",
+          "item": "https://ggufloader.github.io/use-cases/how-local-ai-automates-finance.html"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GGUF Loader",
+      "url": "https://ggufloader.github.io",
+      "logo": "https://ggufloader.github.io/preview.png",
+      "sameAs": [
+        "https://github.com/ggufloader/gguf-loader"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <a href="../index.html" class="logo">GGUF Loader</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../use-cases.html">Use Cases</a></li>
+                <li><a href="../need-help.html">Need Help?</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <article>
+        <header class="hero-section">
+            <div class="container">
+                <h1>How Local AI Can Automate Accounting Tasks</h1>
+            </div>
+        </header>
+
+        <!-- Hardware Scope Notice -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-left: 5px solid #4c51bf; padding: 20px; margin: 25px auto; max-width: 1200px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3 style="color: #fff; margin-top: 0; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.5em;">💡</span> Important: Consumer-Grade Hardware Focus
+            </h3>
+            <p style="color: #f0f0f0; margin-bottom: 0; line-height: 1.6;">
+                This guide focuses on <strong>consumer-grade GPUs and AI setups</strong> suitable for individuals and small teams. However, larger organizations with substantial budgets can deploy <strong>multi-GPU, TPU, or NPU clusters</strong> to run significantly more powerful local AI models that approach or match <strong>Claude AI-level intelligence</strong>. With enterprise-grade hardware infrastructure, local AI can deliver state-of-the-art performance while maintaining complete data privacy and control.
+            </p>
+        </div>
+
+        <div class="container">
+
+            <section>
+                <p>For accountants, controllers, and bookkeepers, the month-end close is often a race against time. The workload isn't just about high-level financial strategy or advising clients; it is frequently buried under mountains of repetitive, rule-based data entry and reconciliation. Whether it's verifying hundreds of vendor invoices, matching ledger entries to bank statements line-by-line, or processing stacks of employee expense reports, these "static" tasks consume hours of valuable professional time.</p>
+        
+                <p>These tasks share a common set of frustrations: they are high-volume, necessary for compliance, and incredibly prone to human error due to fatigue. Yet, crucially, they require almost zero creative accounting judgment. You don't need a CPA license to copy a date from an invoice to a spreadsheet—you just need eyes and patience.</p>
+        
+                <p>This is exactly where <strong>Local AI</strong> thrives. Unlike general-purpose cloud chatbots that might try to be "helpful" by hallucinating creative answers or exposing sensitive data to third-party servers, local AI models (running privately on your own hardware) can be deployed as strict, deterministic engines. They don't "think" about your finances; they simply process documents, extract fields, and format data with mechanical consistency.</p>
+            </section>
+
+            <section>
+                <h2>Why These Tasks are "Static"</h2>
+        
+                <p>To understand where local AI fits, we must first define a "static" task in accounting. A static task is one where the outcome is totally predictable and governed by fixed rules, regardless of who (or what) performs it.</p>
+        
+                <ul>
+                    <li><strong>Rule-Based:</strong> If an invoice says "Vendor A" and the date is "Jan 15," the entry is always "Vendor A, Jan 15." There is no ambiguity or "it depends."</li>
+                    <li><strong>Deterministic:</strong> The input (a PDF invoice, a bank CSV) should always yield the exact same output (a journal entry, a reconciliation flag).</li>
+                    <li><strong>No Judgment Required:</strong> You aren't deciding if an expense is deductible or how to amortize a complex asset; you are simply recording what the transaction is based on the document in front of you.</li>
+                </ul>
+        
+                <p>Because these tasks rely on visual pattern recognition and data formatting rather than professional interpretation, they are perfect candidates for automation.</p>
+            </section>
+
+            <section>
+                <h2>Why Local AI is the Right Fit</h2>
+        
+                <p>You might wonder why you should use Local AI (like Llama 3, Mistral, or specialized GGUF models running on your laptop) instead of a cloud service or traditional OCR. For accounting, the advantages are specific and critical:</p>
+        
+                <p><strong>1. Privacy & Security:</strong> Financial data constitutes some of the most sensitive information a business holds. With local AI, invoices, bank statements, and payroll ledgers never leave your specialized machine or local network. You eliminate the risk of data leaks to third-party API providers or training sets.</p>
+        
+                <p><strong>2. Cost Efficiency:</strong> Cloud AI APIs charge by the "token" (word part). When you are processing thousands of pages of historical documents, those costs add up fast. Local AI runs for the cost of electricity and hardware you likely already own.</p>
+        
+                <p><strong>3. Deterministic Control:</strong> By using specific parameters (like setting "temperature" to 0), local models can be forced to act more like software functions than creative writers. This reduces the risk of "creative" errors that plague chatty online models.</p>
+        
+                <p><strong>4. Offline Capability:</strong> You can process sensitive client data on an air-gapped machine without an internet connection, offering the ultimate security guarantee.</p>
+            </section>
+
+            <section>
+                <h2>What Local AI Actually Does (And What It Doesn't)</h2>
+        
+                <p>Local AI should be viewed as a tool for <strong>mechanical, deterministic actions</strong>. It is an advanced data processor, not a junior accountant.</p>
+        
+                <p><strong>Allowed Actions:</strong></p>
+        
+                <ul>
+                    <li><strong>Document Handling:</strong> Reading PDFs, CSVs, scanned images, and treating them as raw text data effectively. It can "read" a scanned receipt that traditional OCR might struggle with due to folds or coffee stains.</li>
+                    <li><strong>Field Extraction:</strong> Pulling out specific, structured data points like Invoice #, Date, Total Amount, Vendor Name, and Line Items from unstructured documents.</li>
+                    <li><strong>Matching & Comparison:</strong> Comparing a list of extracted invoice amounts against a bank ledger CSV to find exact matches or likely pairs, flagging processed transactions versus pending ones.</li>
+                    <li><strong>Classification:</strong> Tagging transactions based on strict keyword rules (e.g., if "Uber" appears, categorize as "Travel"; if "Staples," categorize as "Office Supplies") using your specific chart of accounts as a reference.</li>
+                    <li><strong>Summarization (Non-Interpretive):</strong> Creating purely extractive summaries of invoice line items or condensing lengthy transaction descriptions into standardized memo fields.</li>
+                    <li><strong>Formatting:</strong> Converting unstructured text (like an email body request for reimbursement) into a structured JSON or CSV row ready for direct ERP import.</li>
+                </ul>
+        
+                <p><strong>What It Does NOT Do:</strong></p>
+                <ul>
+                    <li>Make accounting judgments or interpret ambiguous tax laws.</li>
+                    <li>Decide solely how to depreciate a complex asset without human input.</li>
+                    <li>Verify if a transaction is fraudulent (it can only flag anomalies based on rules, not intent).</li>
+                    <li>Offer financial advice or strategic business recommendations.</li>
+                </ul>
+            </section>
+
+
+            <section>
+                <h2>Step-by-Step Workflow: Automating Invoice Processing</h2>
+        
+                <p>Here is a practical, realistic workflow for using a local LLM to automate the entry of vendor invoices into a CSV format for review.</p>
+        
+                <h3>1. Digitize and Prep</h3>
+                <p>Gather your batch of PDF invoices. If they are scanned images, run them through a local OCR tool (like Tesseract or a vision-enabled local model) to convert them into raw text files. The cleaner the text, the better the AI performs.</p>
+        
+                <h3>2. Define the Schema</h3>
+                <p>Create a strict prompt for the Local AI that defines exactly what you need. Do not ask it to "read the invoice." Instead, command it:</p>
+                <p><em>"Extract the following fields from the text below into a strict JSON format: {"Vendor": string, "Date": "YYYY-MM-DD", "Total": float, "InvoiceID": string}. If a field is missing, return null."</em></p>
+        
+                <h3>3. Batch Processing</h3>
+                <p>Run a simple script (Python is common for this) that loops through your folder of text files. The script feeds each file into the local model with your prompt. Because it's local, you can run this loop over 500 files without worrying about API rate limits or costs.</p>
+        
+                <h3>4. Validation Script</h3>
+                <p>This is a crucial quality control step. Have a simple code script run over the JSON output to check for basic errors. For example:</p>
+                <ul>
+                    <li>Does the "Date" field follow the YYYY-MM-DD format?</li>
+                    <li>Is "Total" a valid number?</li>
+                    <li>Is the "Vendor" on your approved vendor list?</li>
+                </ul>
+                <p>Any entry that fails these checks is flagged for manual review; the rest are passed through.</p>
+        
+                <h3>5. Formatting & Human Review</h3>
+                <p>The valid data is converted into a CSV file matching your ERP's import format. The accountant opens this CSV, quickly scans it to ensure it looks reasonable, and spot-checks the totals against a control sum.</p>
+        
+                <h3>6. ERP Import</h3>
+                <p>Once verified, the CSV is imported directly into your accounting software (QuickBooks, Xero, NetSuite, etc.). You have effectively skipped the manual data entry phase.</p>
+            </section>
+
+            <section>
+                <h2>Realistic Example: The AP Clerk's Assistant</h2>
+        
+                <p><strong>Scenario:</strong> A mid-sized manufacturing firm receives <strong>400 invoices per month</strong> from various material suppliers.</p>
+                
+                <ul>
+                    <li><strong>Old Process:</strong> The accounts payable clerk spends roughly <strong>12 hours a month</strong> manually typing data into the ERP, correcting typos, and double-checking totals.</li>
+                    <li><strong>New Process with Local AI:</strong>
+                        <ul>
+                            <li>The batch process script runs overnight on a dedicated office PC with a decent GPU.</li>
+                            <li>The AI successfully extracts and validates data for <strong>385</strong> of the 400 invoices (96% success rate).</li>
+                            <li><strong>15</strong> invoices are flagged as "unreadable," "handwritten," or "missing date" and put into a separate folder.</li>
+                            <li>The clerk comes in the next morning, spends <strong>45 minutes</strong> reviewing the ready-to-import CSV and <strong>15 minutes</strong> manually processing the 15 exceptions.</li>
+                        </ul>
+                    </li>
+                </ul>
+        
+                <p><strong>Result:</strong> The clerk saves <strong>11 hours</strong> per month. Data entry errors from fatigue are eliminated. Privacy is maintained. The clerk can now spend that extra day on vendor relationship management or analyzing spending trends.</p>
+            </section>
+
+            <section>
+                <h2>Limitations: When NOT to Use Local AI</h2>
+        
+                <p>It is critical to know when to stop. Local AI is a power tool; misuse can cause damage. Do <strong>not</strong> use local AI for:</p>
+        
+                <ul>
+                    <li><strong>Ambiguous Transactions:</strong> If an invoice description is vague ("Services Rendered - Q3") and could be either "Legal Fees" or "Consulting," the AI cannot and should not guess. It must flag it for human review.</li>
+                    <li><strong>High-Stakes Compliance:</strong> Creating financial statements for audits, tax filings, or banking covenants should remain strictly in human hands. The cost of an error here is too high.</li>
+                    <li><strong>Complex Reasoning:</strong> Any task that requires contextual knowledge outside the document provided (e.g., "Was this lunch a client meeting (50% deductible) or internal training (100% deductible)?") is out of bounds.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Key Takeaways</h2>
+        
+                <ul>
+                    <li><strong>Efficiency:</strong> Local AI excels at high-volume, repetitive tasks like data extraction and formatting, tirelessly processing documents that would burn out a human.</li>
+                    <li><strong>Privacy First:</strong> Keeping financial data on-premise eliminates cloud security risks, a non-negotiable for many firms.</li>
+                    <li><strong>Assistant, Not Replacement:</strong> The AI handles the "grunt work," allowing accountants to focus on analysis, strategy, and judgment.</li>
+                    <li><strong>Rule-Based Success:</strong> Success comes from defining strict rules, schemas, and validation scripts, not asking the AI to "be creative."</li>
+                </ul>
+        
+                <blockquote>
+                    <p><strong>Local AI is best used as a deterministic assistant for static, repetitive accounting tasks where consistency, privacy, and volume matter more than reasoning or judgment.</strong></p>
+                </blockquote>
+            </section>
+
+            <section>
+                <h2>Next Steps</h2>
+        
+                <p>Identify high-volume, repetitive tasks in your accounting operations:</p>
+        
+                <ul>
+                    <li>Are you manually entering invoice data from PDFs or scanned documents?</li>
+                    <li>Do you spend hours extracting fields from expense reports or receipts?</li>
+                    <li>Are you categorizing thousands of transactions for reporting or audits?</li>
+                    <li>Do you generate the same formatted reports from raw data every week or month?</li>
+                </ul>
+        
+                <p>These are ideal candidates for local AI automation. Start with a small pilot project processing 100-500 records to test accuracy and workflow integration before scaling to full production volumes.</p>
+        
+                <p>For detailed implementation guides and model recommendations for accounting tasks, explore our technical documentation on local AI deployment in financial environments.</p>
+            </section>
+        </div>
+    </article>
+    
+    <!-- Call-to-Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help Implementing Local AI?</h2>
+            <p>Our team can help you deploy local AI solutions tailored to your accounting and finance needs.</p>
+            <a href="../need-help.html" class="cta-button" aria-label="Contact us for help with local AI implementation">Get in Touch</a>
+        </div>
+    </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../use-cases.html">Use Cases</a></li>
+                <li><a href="../need-help.html">Contact</a></li>
+                <li><a href="https://github.com/ggufloader/gguf-loader" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

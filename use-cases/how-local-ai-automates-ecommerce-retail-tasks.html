@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Standard Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover how local AI automates e-commerce tasks—product data processing, inventory reconciliation, and catalog management—while keeping data secure.">
+    <meta name="keywords" content="local AI ecommerce, retail automation, product data processing, inventory reconciliation, catalog management, AI retail, ecommerce AI, supplier feed processing, SKU matching, product normalization, local AI retail, privacy-preserving ecommerce, on-device AI retail">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="language" content="English">
+    <meta name="theme-color" content="#0078d4">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ggufloader.github.io/use-cases/how-local-ai-automates-ecommerce-retail-tasks.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How Local AI Automates E-Commerce & Retail Tasks">
+    <meta property="og:description" content="Discover how local AI automates e-commerce tasks—product data processing, inventory reconciliation, and catalog management—while keeping data secure.">
+    <meta property="og:url" content="https://ggufloader.github.io/use-cases/how-local-ai-automates-ecommerce-retail-tasks.html">
+    <meta property="og:image" content="https://ggufloader.github.io/use-cases/images/how-local-ai-automates-ecommerce-retail-tasks.png">
+    <meta property="og:site_name" content="GGUF Loader">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Local AI Automates E-Commerce & Retail Tasks">
+    <meta name="twitter:description" content="Discover how local AI automates e-commerce tasks—product data processing, inventory reconciliation, and catalog management—while keeping data secure.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/use-cases/images/how-local-ai-automates-ecommerce-retail-tasks.png">
+    
+    <title>How Local AI Can Automate E-Commerce & Retail Tasks | Local AI Guide</title>
+    
+    <!-- Preload Stylesheet -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JSON-LD Structured Data: Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How Local AI Can Automate E-Commerce & Retail Tasks",
+      "description": "Discover how local AI automates e-commerce tasks—product data processing, inventory reconciliation, and catalog management—while keeping data secure.",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "datePublished": "2026-02-08T00:00:00Z",
+      "dateModified": "2026-02-08T00:00:00Z",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "image": "https://ggufloader.github.io/use-cases/images/how-local-ai-automates-ecommerce-retail-tasks.png"
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can local AI handle large product catalogs securely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Local AI runs entirely on your device or internal network, meaning product data, supplier pricing, and inventory levels never leave your controlled environment. There are no API calls to external servers, no data retention by third parties, and no risk of exposing proprietary product information to cloud providers. This makes local AI ideal for retailers handling sensitive supplier data, competitive pricing information, or large product catalogs while maintaining complete data privacy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of e-commerce tasks can local AI automate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI excels at mechanical, rule-based e-commerce tasks including: extracting product fields from supplier feeds (SKU, title, price, dimensions, stock level), normalizing data formats (units, category names, date formats), matching supplier SKUs to internal product IDs, detecting duplicate products or missing required fields, sorting and categorizing products by predefined criteria, reconciling inventory records against supplier feeds, and generating structured reports on stock levels, order fulfillment, or data quality issues."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much time can local AI save in product data processing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI can significantly reduce product data processing time. For example, a home goods retailer processing 3,200 products from four suppliers weekly reduced processing time from 6 hours to 90 minutes—saving 4.5 hours per week. Data quality improved with missing fields decreasing from 8% to 2%, and duplicate detection caught 47 redundant entries that would have created fulfillment errors. The team now processes supplier feeds the same day they arrive instead of batching them weekly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does local AI replace e-commerce managers or merchandisers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Local AI is a tool for mechanical data processing and format standardization, not a replacement for business strategy or customer service. It cannot make pricing decisions, determine product positioning, create marketing content, forecast demand, or handle customer inquiries. Strategic decisions like which products to feature, how to price items, or which suppliers to use require human judgment, market analysis, and business expertise. Local AI handles repetitive data work so teams can focus on strategic decisions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the cost benefits of using local AI for retail operations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI eliminates per-token cloud costs, making it economical for high-volume product data processing. Processing 3,200 products weekly or reconciling 10,000 inventory records incurs no ongoing API fees since the model runs locally. A home goods retailer saved approximately 4.5 hours per week in manual data processing time, allowing the operations team to focus on exception handling and strategic tasks rather than mechanical data cleaning and format standardization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is local AI for product data extraction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI produces consistent, deterministic outputs—given the same supplier feed and extraction rules, it returns identical results. This consistency is valuable for e-commerce operations where accuracy and reliability are important. However, human review is essential: operations teams should review data quality reports, validate flagged items, and spot-check results before importing into e-commerce platforms. Local AI handles the mechanical extraction and normalization; humans make final decisions and handle exceptions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What product data formats can local AI process?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local AI can process common e-commerce data formats including CSV files, Excel spreadsheets, JSON feeds, and XML product catalogs. It can extract fields from structured supplier feeds, normalize mixed units (converting inches to centimeters, pounds to kilograms), standardize category names and color descriptions, match products across different naming conventions, and output clean data in formats ready for import into e-commerce platforms like Shopify, WooCommerce, Magento, or custom systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I start using local AI for e-commerce automation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with a small pilot project: identify one repetitive task (e.g., processing 100-200 products from a single supplier feed), define clear extraction rules specifying required fields and format standards, set up a local AI model on your workstation, process a test batch and validate results manually, then measure time savings and data quality improvements before scaling. Choose models like Llama 3 or Mistral that can run on standard hardware, and ensure your setup keeps proprietary product and supplier data within your controlled environment."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ggufloader.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Use Cases",
+          "item": "https://ggufloader.github.io/use-cases/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "E-Commerce & Retail Automation",
+          "item": "https://ggufloader.github.io/use-cases/how-local-ai-automates-ecommerce-retail-tasks.html"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Process Supplier Product Feeds with Local AI",
+      "description": "A step-by-step guide for retail operations teams to use local AI to process weekly supplier feeds while maintaining data privacy.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Prepare the Supplier Data",
+          "text": "Export the supplier's product feed (CSV or Excel) to a local folder. The file contains products with columns for supplier SKU, product name, wholesale price, stock quantity, and specifications."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Define Extraction Rules",
+          "text": "Create a prompt template that tells the local AI what to extract and how to format it. Specify required fields, unit conversions, and naming conventions. For example: Extract SKU, title, price in USD, stock level, dimensions in cm, and weight in kg."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Batch Process Products",
+          "text": "Feed the supplier data to the local AI in batches of 50-100 products. The model extracts fields, standardizes formats, and flags any missing or malformed data. This runs locally without uploading proprietary supplier information."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Reconcile with Internal Catalog",
+          "text": "Compare the processed supplier data against your existing product catalog. The local AI identifies matches based on SKU or product name, detects new products, and flags discontinued items."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Generate Data Quality Report",
+          "text": "Have the local AI produce a summary listing products with missing dimensions, zero stock levels, or price discrepancies. This gives the operations team a clear action list."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Output Clean Data",
+          "text": "Generate a standardized CSV file ready for import into your e-commerce platform. All fields are normalized, formats are consistent, and data quality issues are documented separately."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Review and Import",
+          "text": "The operations team reviews the data quality report, resolves flagged issues, and imports the clean product data. The local AI handled the mechanical processing; humans make the final decisions."
+        }
+      ]
+    }
+    </script>
+    
+    <!-- JSON-LD Structured Data: Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GGUF Loader",
+      "url": "https://ggufloader.github.io",
+      "logo": "https://ggufloader.github.io/preview.png",
+      "sameAs": [
+        "https://github.com/ggufloader/gguf-loader"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <a href="../index.html" class="logo">GGUF Loader</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#use-cases">Use Cases</a></li>
+                <li><a href="../download-gguf-models.html">Models</a></li>
+                <li><a href="../need-help.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="content-wrapper" id="main-content">
+        <article class="blog-post">
+            <header class="post-header">
+                <h1>How Local AI Can Automate E-Commerce & Retail Tasks</h1>
+                <p class="post-meta">A practical guide to using on-device AI for high-volume product data processing and inventory management</p>
+            </header>
+
+            <!-- Hardware Scope Notice -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-left: 5px solid #4c51bf; padding: 20px; margin: 25px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <h3 style="color: #fff; margin-top: 0; font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.5em;">💡</span> Important: Consumer-Grade Hardware Focus
+                </h3>
+                <p style="color: #f0f0f0; margin-bottom: 0; line-height: 1.6;">
+                    This guide focuses on <strong>consumer-grade GPUs and AI setups</strong> suitable for individuals and small teams. However, larger organizations with substantial budgets can deploy <strong>multi-GPU, TPU, or NPU clusters</strong> to run significantly more powerful local AI models that approach or match <strong>Claude AI-level intelligence</strong>. With enterprise-grade hardware infrastructure, local AI can deliver state-of-the-art performance while maintaining complete data privacy and control.
+                </p>
+            </div>
+
+            <!-- Featured Image -->
+            <figure style="margin: 30px 0; text-align: center;">
+                <img src="images/how-local-ai-automates-ecommerce-retail-tasks.png" 
+                     alt="Local AI automating e-commerce and retail tasks - product data processing, inventory management, and order fulfillment workflow" 
+                     title="How Local AI Automates E-Commerce & Retail Operations"
+                     style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+                     loading="lazy"
+                     width="1200"
+                     height="630">
+                <figcaption style="margin-top: 12px; font-size: 0.9em; color: #666; font-style: italic;">
+                    Visual overview of local AI automating e-commerce product data and inventory management
+                </figcaption>
+            </figure>
+
+            <section class="post-content">
+                <h2>The Product Data Problem</h2>
+                <p>Managing an online store with thousands of products means dealing with endless spreadsheets, supplier feeds, and inventory updates. A mid-size retailer might receive weekly CSV files from five different suppliers, each with different column names, formatting conventions, and data quality issues. Product titles are inconsistent. Dimensions are in mixed units. SKUs don't match across systems.</p>
+
+                <p>The operations team spends hours each week cleaning this data, standardizing formats, and reconciling inventory counts. One missing field can break an import. One duplicate entry can create fulfillment errors. The work is tedious, repetitive, and error-pronebut it has to be done.</p>
+
+                <p>This is where local AI becomes useful. Not for making business decisions or writing marketing copy, but for handling the mechanical, high-volume data work that follows predictable rules.</p>
+
+                <h2>Why These Tasks Are Static</h2>
+                <p>Product data management is fundamentally rule-based. When you normalize a supplier feed, you're applying consistent logic:</p>
+
+                <ul>
+                    <li>Extract product ID, title, price, and stock level from specific columns</li>
+                    <li>Convert all dimensions to centimeters</li>
+                    <li>Standardize color names (e.g., "navy blue" becomes "Navy")</li>
+                    <li>Flag missing required fields</li>
+                    <li>Match supplier SKUs to internal product IDs</li>
+                </ul>
+
+                <p>These operations don't require judgment or creativity. They follow deterministic patterns. The same input should always produce the same output. There's no strategic thinking involvedjust consistent application of predefined rules across large datasets.</p>
+
+                <h2>Why Local AI Is a Good Fit</h2>
+                <p>E-commerce operations generate massive volumes of structured and semi-structured data. Product catalogs, order records, inventory feeds, and supplier documents all need processing. Local AI excels at this type of work because:</p>
+
+                <ul>
+                    <li><strong>Volume handling:</strong> Processing thousands of product records or order lines is exactly what local models do efficiently</li>
+                    <li><strong>Deterministic outputs:</strong> Field extraction, format standardization, and data matching produce consistent, predictable results</li>
+                    <li><strong>Privacy:</strong> Proprietary product data, supplier pricing, and inventory levels stay on your deviceno cloud uploads required</li>
+                    <li><strong>Offline operation:</strong> Process supplier feeds and generate reports without internet connectivity or API costs</li>
+                    <li><strong>Cost structure:</strong> No per-token charges for processing large catalogs or reconciling inventory</li>
+                </ul>
+
+                <p>Local AI handles the mechanical work of reading, extracting, comparing, and formatting data. It doesn't make pricing decisions, choose product positioning, or determine marketing strategy.</p>
+
+                <h2>What Local AI Actually Does</h2>
+                <p>Local AI for e-commerce is a tool for mechanical data operations. It reads structured or semi-structured product data, applies extraction and transformation rules, and outputs clean, standardized results. Specifically, it can:</p>
+
+                <ul>
+                    <li><strong>Extract product fields:</strong> Pull SKU, title, price, dimensions, weight, stock level, and specifications from supplier feeds</li>
+                    <li><strong>Normalize formats:</strong> Convert mixed units (inches to cm, pounds to kg), standardize date formats, and unify category names</li>
+                    <li><strong>Match and reconcile:</strong> Compare supplier SKUs against internal product IDs, identify matches, and flag new or discontinued items</li>
+                    <li><strong>Detect data quality issues:</strong> Flag missing required fields, zero stock levels, invalid prices, or duplicate entries</li>
+                    <li><strong>Sort and categorize:</strong> Organize products by category, supplier, price range, or stock status based on predefined rules</li>
+                    <li><strong>Generate reports:</strong> Produce structured summaries of inventory levels, data quality issues, or fulfillment status</li>
+                </ul>
+
+                <p>These are mechanical operations. Local AI doesn't decide which products to stock, how to price items, or which suppliers to use. It processes data according to rules you define.</p>
+
+                <h2>Step-by-Step Workflow: Processing Supplier Product Feeds</h2>
+                <p>Here's how a retail operations team might use local AI to process weekly supplier feeds:</p>
+
+                <ol>
+                    <li><strong>Prepare the supplier data:</strong> Export the supplier's product feed (CSV or Excel) to a local folder. The file contains products with columns for supplier SKU, product name, wholesale price, stock quantity, and specifications.</li>
+                    
+                    <li><strong>Define extraction rules:</strong> Create a prompt template that tells the local AI what to extract and how to format it. Specify required fields, unit conversions, and naming conventions. For example: "Extract SKU, title, price in USD, stock level, dimensions in cm, and weight in kg."</li>
+                    
+                    <li><strong>Batch process products:</strong> Feed the supplier data to the local AI in batches of 50-100 products. The model extracts fields, standardizes formats, and flags any missing or malformed data. This runs locally without uploading proprietary supplier information.</li>
+                    
+                    <li><strong>Reconcile with internal catalog:</strong> Compare the processed supplier data against your existing product catalog. The local AI identifies matches based on SKU or product name, detects new products, and flags discontinued items.</li>
+                    
+                    <li><strong>Generate data quality report:</strong> Have the local AI produce a summary listing products with missing dimensions, zero stock levels, or price discrepancies. This gives the operations team a clear action list.</li>
+                    
+                    <li><strong>Output clean data:</strong> Generate a standardized CSV file ready for import into your e-commerce platform. All fields are normalized, formats are consistent, and data quality issues are documented separately.</li>
+                    
+                    <li><strong>Human review and import:</strong> The operations team reviews the data quality report, resolves flagged issues, and imports the clean product data. The local AI handled the mechanical processing; humans make the final decisions.</li>
+                </ol>
+
+                <h2>Realistic Example</h2>
+                <p>A home goods retailer receives weekly product feeds from four suppliers, totaling approximately 3,200 products. Each supplier uses different column names, mixed units (inches and centimeters, pounds and kilograms), and inconsistent category naming. The operations team previously spent 6 hours each week manually cleaning this data, standardizing formats, and reconciling inventory.</p>
+
+                <p>Using a local AI model running on a standard workstation, the team:</p>
+                <ul>
+                    <li>Processed all 3,200 products in 90 minutes of machine time</li>
+                    <li>Extracted and standardized product fields (SKU, title, price, dimensions, weight, stock level)</li>
+                    <li>Converted all dimensions to centimeters and weights to kilograms</li>
+                    <li>Matched 2,847 products to existing catalog entries based on SKU</li>
+                    <li>Flagged 353 products requiring manual review (new items, discontinued SKUs, or data quality issues)</li>
+                    <li>Detected 47 duplicate entries that would have created fulfillment errors</li>
+                </ul>
+
+                <p>Time saved: 4.5 hours per week. Data quality improved: missing fields decreased from 8% to 2%. The team now processes supplier feeds the same day they arrive instead of batching them weekly. All proprietary product data and supplier pricing remained on the company's internal network.</p>
+
+                <h2>Limits & When NOT to Use Local AI</h2>
+                <p>Local AI is not appropriate for tasks requiring business judgment, market analysis, or customer interaction:</p>
+
+                <ul>
+                    <li><strong>Pricing decisions:</strong> Do not use local AI to determine product pricing, discount strategies, or competitive positioning</li>
+                    <li><strong>Product selection:</strong> Deciding which products to stock, which suppliers to use, or which items to feature requires market knowledge and business strategy</li>
+                    <li><strong>Marketing content:</strong> Writing product descriptions, creating promotional copy, or developing brand messaging demands creativity and marketing expertise</li>
+                    <li><strong>Demand forecasting:</strong> Predicting sales trends, seasonal demand, or inventory requirements involves complex analysis and market understanding</li>
+                    <li><strong>Customer service:</strong> Handling customer inquiries, resolving complaints, or providing product recommendations requires empathy and problem-solving</li>
+                </ul>
+
+                <p>Local AI is a tool for mechanical data processing. It accelerates repetitive work but cannot replace the strategic thinking, market knowledge, and customer focus that e-commerce teams provide.</p>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Local AI excels at static, high-volume e-commerce tasks: extraction, normalization, matching, and reporting</li>
+                    <li>Privacy and cost advantages make local AI practical for retailers handling sensitive supplier data and large product catalogs</li>
+                    <li>Local AI reduces time and errors in repetitive data processing while keeping proprietary information secure</li>
+                    <li>It is not a replacement for business strategy, pricing decisions, or customer service</li>
+                    <li>Best results come from combining local AI automation with human oversight and strategic decision-making</li>
+                </ul>
+
+                <h2>Next Steps</h2>
+                <p>If your e-commerce operations team handles high volumes of product data, supplier feeds, or inventory reconciliation, consider starting with a small pilot project:</p>
+                
+                <ul>
+                    <li>Identify one repetitive task (e.g., processing 100-200 products from a single supplier feed)</li>
+                    <li>Define clear extraction rules specifying required fields and format standards</li>
+                    <li>Set up a local AI model on your workstation (models like Llama 3 or Mistral work well for structured data)</li>
+                    <li>Process a test batch and validate results manually</li>
+                    <li>Measure time savings and data quality improvements before scaling</li>
+                </ul>
+
+                <p>For detailed setup guides and model recommendations for e-commerce data processing, explore our <a href="../docs/index.html">documentation</a> and <a href="../download-gguf-models.html">model selection guide</a>.</p>
+            </section>
+
+            <footer class="post-footer">
+                <p><a href="../blog.html">← Back to Blog</a></p>
+            </footer>
+        </article>
+        
+        <!-- Call-to-Action Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Need Help Implementing Local AI?</h2>
+                <p>Our team can help you deploy local AI solutions tailored to your e-commerce and retail operations needs.</p>
+                <a href="../need-help.html" class="cta-button" aria-label="Contact us for help with local AI implementation">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../use-cases.html">Use Cases</a></li>
+                <li><a href="../need-help.html">Contact</a></li>
+                <li><a href="https://github.com/ggufloader/gguf-loader" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

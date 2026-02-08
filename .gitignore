@@ -79,3 +79,4 @@ __pycache__/
 *~
 .DS_Store
 Thumbs.db
+tmp_delete_test.txt
