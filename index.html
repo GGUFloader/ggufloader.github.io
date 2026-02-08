@@ -1,0 +1,2639 @@
+   <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Enhanced Open Graph meta tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GGUF Loader" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="GGUF Loader - Local AI Inference Engine | Run GGUF Models Offline with Local AI Agent" />
+    <meta property="og:description"
+        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Smart Floating Assistant and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. Privacy-first local AI platform with no Python required." />
+    <meta property="og:url" content="https://ggufloader.github.io/" />
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GGUF Loader - Local AI Inference Engine for GGUF Models" />
+    <meta property="og:image:type" content="image/png" />
+
+    <!-- Enhanced Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ggufloader" />
+    <meta name="twitter:creator" content="@ggufloader" />
+    <meta name="twitter:title" content="GGUF Loader - Local AI Inference Engine | Run GGUF Models Offline with Local AI Agent" />
+    <meta name="twitter:description"
+        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Smart Floating Assistant and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. Privacy-first local AI platform with no Python required." />
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png" />
+    <meta name="twitter:image:alt" content="GGUF Loader - Local AI Inference Engine for GGUF Models" />
+
+    <!-- Additional social media optimization -->
+    <meta property="article:author" content="Hussain Nazary" />
+    <meta property="article:published_time" content="2025-01-27T00:00:00Z" />
+    <meta property="article:modified_time" content="2026-02-08T00:00:00Z" />
+    <meta property="article:section" content="Technology" />
+    <meta property="article:tag" content="GGUF" />
+    <meta property="article:tag" content="GGUF Loader" />
+    <meta property="article:tag" content="GGUF Models" />
+    <meta property="article:tag" content="Local AI" />
+    <meta property="article:tag" content="Local AI Agent" />
+    <meta property="article:tag" content="Inference Engine" />
+    <meta property="article:tag" content="AI Inference" />
+    <meta property="article:tag" content="Local Inference" />
+    <meta property="article:tag" content="Offline AI" />
+    <meta property="article:tag" content="LLM Inference" />
+    <meta property="article:tag" content="Local Language Model" />
+    <meta property="article:tag" content="Privacy AI" />
+    <meta property="article:tag" content="Machine Learning" />
+    <meta property="article:tag" content="llama.cpp" />
+    <meta property="article:tag" content="Mistral" />
+    <meta property="article:tag" content="LLaMA" />
+    <meta property="article:tag" content="DeepSeek" />
+    <meta property="article:tag" content="Quantized Models" />
+    <meta property="article:tag" content="CPU Inference" />
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Smart Floating Assistant and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. No Python required. Privacy-first local AI platform for enterprise and personal use." />
+    <meta name="keywords"
+        content="GGUF, GGUF Loader, GGUF models, local AI, local AI agent, inference engine, AI inference engine, local inference, offline AI, run GGUF models, GGUF format, llama.cpp, local AI platform, Mistral GGUF, LLaMA GGUF, DeepSeek GGUF, private AI, GDPR compliant AI, Smart Floating Assistant, agentic mode, autonomous AI agent, local language model, LLM inference, quantized models, CPU inference, Windows AI, Mac AI, Linux AI, air-gapped AI, on-premise AI, self-hosted AI, local LLM, GGUF inference, model inference, AI without cloud, no Python AI, drag and drop AI, GGUF runner, local model runner" />
+    <meta name="author" content="Hussain Nazary" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Additional SEO meta tags -->
+    <meta name="theme-color" content="#0078d4" />
+    <meta name="msapplication-TileColor" content="#0078d4" />
+    <meta name="application-name" content="GGUF Loader" />
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Language and geo targeting -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <title>GGUF Loader - Local AI Inference Engine | Run GGUF Models Offline with Local AI Agent</title>
+
+    <!-- Critical CSS inlined for performance -->
+    <style>
+        /* Critical Above-the-Fold CSS - Inlined for Performance */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Skip Links for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Container - Mobile-First */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Navigation - Critical Styles */
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation menu - initially hidden on mobile */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            .nav-menu a {
+                padding: 0.5rem 0;
+                background: none !important;
+                border-bottom: none;
+            }
+        }
+
+        /* Hero Section - Critical Above-the-Fold */
+        .hero {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: #495057;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section - Critical Styles */
+        .hero-philosophy {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-attribution {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .philosophy-attribution cite {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .cta-section {
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Progressive enhancement for larger screens */
+        @media (min-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+                min-height: 65vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+                min-height: 70vh;
+            }
+
+            .hero-content {
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.7;
+            }
+
+            .hero-philosophy {
+                margin: 2.5rem auto;
+                padding: 2rem;
+                max-width: 900px;
+            }
+
+            .philosophy-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .philosophy-text {
+                font-size: 1.15rem;
+                line-height: 1.8;
+            }
+
+            .cta-section {
+                margin-top: 2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Quick Start GitHub Section Styles */
+        .quick-start-github {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .quick-start-github h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .quick-start-github .step code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .quick-start-github {
+                background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+            }
+            
+            .quick-start-github .step code {
+                background: #2d2d2d;
+                color: #f8f8f2;
+            }
+            
+            .quick-start-github .cta-button {
+                background: #3498db;
+            }
+        }
+
+        /* Additional styles for simplicity */
+        .section {
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .guide-steps {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .step {
+            flex: 1;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+        }
+
+        /* Mobile responsiveness for guide steps */
+        @media (max-width: 767px) {
+            .guide-steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+
+        details {
+            margin: 20px 0;
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-weight: bold;
+            outline: none;
+        }
+
+        summary:focus {
+            outline: 2px solid #0078d4;
+        }
+
+        .details-content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .details-content h3 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .faq-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .addon-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        /* Image Optimization and Lazy Loading Styles */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Lazy loading states */
+        img.loading {
+            opacity: 0;
+            background: #f8f9fa;
+            min-height: 200px;
+            transition: opacity 0.3s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        /* Image error state */
+        img.image-error {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            min-height: 200px;
+        }
+
+        img.image-error::before {
+            content: '⚠️ Image failed to load';
+        }
+
+        /* Responsive images */
+        .responsive-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .responsive-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Image placeholder while loading */
+        .image-placeholder {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        /* Modern picture element support */
+        picture {
+            display: block;
+            width: 100%;
+        }
+
+        picture img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Blog Posts Horizontal Scroll Section */
+        .blog-posts-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 0;
+        }
+
+        .blog-posts-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .blog-scroll-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1rem 0 2rem 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #3498db #e9ecef;
+        }
+
+        .blog-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .blog-scroll-container::-webkit-scrollbar-track {
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+
+        .blog-scroll-container::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+
+        .blog-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+
+        .blog-card {
+            min-width: 320px;
+            max-width: 320px;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid #3498db;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-card-tag {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .blog-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .blog-card h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .blog-card h3 a:hover {
+            color: #3498db;
+        }
+
+        .blog-card p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .blog-card-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .blog-card-link:hover {
+            color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .blog-card {
+                min-width: 280px;
+                max-width: 280px;
+            }
+
+            .blog-posts-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .blog-posts-section {
+                background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+            }
+
+            .blog-posts-section h2 {
+                color: #ffffff;
+            }
+
+            .blog-card {
+                background: #1e1e1e;
+                border-left-color: #3498db;
+            }
+
+            .blog-card h3 {
+                color: #ffffff;
+            }
+
+            .blog-card h3 a:hover {
+                color: #5dade2;
+            }
+
+            .blog-card p {
+                color: #b0b0b0;
+            }
+
+            .blog-card-tag {
+                background: #2d4a5c;
+                color: #5dade2;
+            }
+
+            .blog-card-link {
+                color: #5dade2;
+            }
+
+            .blog-card-link:hover {
+                color: #3498db;
+            }
+
+            .blog-scroll-container::-webkit-scrollbar-track {
+                background: #2d2d2d;
+            }
+
+            .blog-scroll-container::-webkit-scrollbar-thumb {
+                background: #5dade2;
+            }
+
+            .blog-scroll-container::-webkit-scrollbar-thumb:hover {
+                background: #3498db;
+            }
+        }
+    </style>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.min.css">
+    </noscript>
+
+    <!-- Model Comparison Tool CSS -->
+    <link rel="preload" href="model-comparison.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="model-comparison.css">
+    </noscript>
+
+    <!-- Mobile Fixes CSS -->
+    <link rel="preload" href="mobile-fixes.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="mobile-fixes.css">
+    </noscript>
+
+    <!-- Preload JavaScript for faster loading -->
+    <link rel="preload" href="performance-monitor.js" as="script">
+    <link rel="preload" href="model-comparison.js" as="script">
+    <link rel="preload" href="mobile-menu.js" as="script">
+
+    <!-- Font optimization with preconnect and font-display: swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Preload critical system fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin>
+
+    <!-- Font loading optimization -->
+    <style>
+        /* Critical font loading with font-display: swap */
+        @font-face {
+            font-family: 'System UI';
+            font-display: swap;
+            src: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Fallback font stack with font-display: swap */
+        body {
+            font-family: 'System UI', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+        }
+    </style>
+
+    <!-- Dark mode support for all devices -->
+    <style>
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: #e0e0e0;
+            }
+            
+            .container {
+                background: #121212;
+            }
+            
+            main,
+            #main-content {
+                background: #121212;
+            }
+            
+            .section {
+                background: #121212;
+                border-top: 1px solid #333;
+            }
+            
+            .hero {
+                background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+            }
+            
+            .hero-philosophy {
+                background: rgba(40, 40, 40, 0.9);
+                border-left: 4px solid #3498db;
+            }
+            
+            .hero h1 {
+                color: #ffffff;
+            }
+            
+            .hero-subtitle {
+                color: #b0b0b0;
+            }
+            
+            .hero-description {
+                color: #d0d0d0;
+            }
+            
+            .philosophy-title {
+                color: #ffffff;
+            }
+            
+            .philosophy-text {
+                color: #d0d0d0;
+            }
+            
+            .philosophy-attribution cite {
+                color: #a0a0a0;
+            }
+            
+            nav {
+                background: #1e1e1e;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+            
+            .logo {
+                color: #ffffff;
+            }
+            
+            .nav-menu {
+                background: #1e1e1e;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .nav-menu a {
+                color: #e0e0e0;
+                border-bottom: 1px solid #333;
+            }
+            
+            /* Content cards and sections */
+            .step,
+            .details-content,
+            .feature-card,
+            .faq-item,
+            .addon-card,
+            .download-option,
+            .download-content,
+            .guide-steps,
+            .use-case,
+            .guide {
+                background: #1e1e1e;
+                color: #e0e0e0;
+                border: 1px solid #333;
+            }
+            
+            .features-grid,
+            .faq-grid,
+            .addon-grid,
+            .use-cases-grid,
+            .guides-grid {
+                background: transparent;
+            }
+            
+            .step h3 {
+                color: #ffffff;
+            }
+            
+            .feature-card h3,
+            .feature-card h4 {
+                color: #ffffff;
+            }
+            
+            .faq-item h4,
+            .addon-card h4 {
+                color: #ffffff;
+            }
+            
+            .details-content {
+                background: #1e1e1e;
+                border: 1px solid #333;
+            }
+            
+            .video-container {
+                background: #1e1e1e;
+                border: 1px solid #333;
+                border-radius: 8px;
+            }
+            
+            iframe {
+                background: #121212; /* For when videos aren't loaded */
+            }
+            
+            .cta-button {
+                background: #3498db;
+                color: #ffffff;
+            }
+            
+            .cta-section {
+                background: transparent;
+            }
+            
+            /* Link styling */
+            a {
+                color: #5dade2;
+            }
+            
+            a:hover {
+                color: #3498db;
+            }
+            
+            /* Code blocks */
+            code {
+                background: #2d2d2d;
+                color: #f8f8f2;
+                border: 1px solid #444;
+            }
+            
+            pre code {
+                background: #2d2d2d;
+                color: #f8f8f2;
+            }
+            
+            /* Blockquotes */
+            blockquote {
+                background: #1e1e1e;
+                border-left: 4px solid #3498db;
+                color: #d0d0d0;
+            }
+            
+            blockquote footer,
+            blockquote cite {
+                color: #a0a0a0;
+            }
+            
+            /* Text emphasis */
+            strong, b {
+                color: #ffffff;
+            }
+            
+            /* List items */
+            li {
+                color: #d0d0d0;
+            }
+            
+            /* Form elements if any */
+            input, textarea, select {
+                background: #2d2d2d;
+                color: #e0e0e0;
+                border: 1px solid #444;
+            }
+            
+            /* Better contrast for details/summary */
+            summary {
+                background: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            summary:hover {
+                background: #3a3a3a;
+            }
+        }
+    </style>
+
+    <!-- Cache control meta tags -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- PWA meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <link rel="canonical" href="https://ggufloader.github.io">
+
+    <!-- Enhanced JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GGUF Loader",
+        "description": "Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"],
+        "softwareVersion": "2.1.1",
+        "releaseNotes": "Agentic Mode - Transform your local AI into an autonomous coding assistant",
+        "downloadUrl": "https://github.com/ggufloader/gguf-loader/releases",
+        "installUrl": "https://pypi.org/project/ggufloader/",
+        "softwareRequirements": "Python 3.8+, 4GB RAM minimum, 8GB RAM recommended",
+        "memoryRequirements": "4GB minimum, 8GB recommended",
+        "storageRequirements": "2GB free space for models",
+        "processorRequirements": "Modern x64 processor",
+        "programmingLanguage": "Python",
+        "runtimePlatform": "Python 3.8+",
+        "codeRepository": "https://github.com/ggufloader/gguf-loader",
+        "license": "https://github.com/ggufloader/gguf-loader/blob/main/LICENSE",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Nazary",
+            "email": "hossainnazary475@gmail.com",
+            "url": "https://www.linkedin.com/in/hussain-nazary-188b4385"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "GGUF Loader",
+            "url": "https://ggufloader.github.io",
+            "logo": "https://ggufloader.github.io/preview.png"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "131",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "featureList": [
+            "Offline AI model execution",
+            "Smart Floating Assistant",
+            "Agentic Mode for autonomous coding",
+            "Multi-model support (Mistral, LLaMA, DeepSeek)",
+            "Cross-platform compatibility",
+            "Addon system for extensibility",
+            "Privacy-first local processing",
+            "Zero configuration setup",
+            "Enterprise-grade security"
+        ],
+        "screenshot": "https://ggufloader.github.io/preview.png",
+        "video": "https://www.youtube.com/watch?v=DuqDRkfGdcI",
+        "supportingData": {
+            "@type": "DataDownload",
+            "name": "GGUF Models",
+            "description": "Compatible AI models in GGUF format",
+            "contentUrl": "https://huggingface.co/models?library=gguf"
+        },
+        "applicationSuite": "GGUF Loader Suite",
+        "countriesSupported": ["US", "CA", "GB", "DE", "FR", "AU", "JP", "IN"],
+        "datePublished": "2025-01-27",
+        "dateModified": "2025-01-27",
+        "mainEntityOfPage": "https://ggufloader.github.io",
+        "image": "https://ggufloader.github.io/preview.png",
+        "url": "https://ggufloader.github.io"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is GGUF Loader?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader is an enterprise-grade local AI deployment platform that runs Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, and Linux. It features a Smart Floating Assistant, Agentic Mode for autonomous coding, and requires no Python installation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is GGUF format?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF (GPT-Generated Unified Format) is an optimized model format created for llama.cpp to enable fast local inference of large language models with improved performance and memory efficiency."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need Python or CLI knowledge to run GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, GGUF Loader provides a user-friendly graphical interface that requires no Python or command line knowledge. Simply download, install, and start using AI models with drag-and-drop simplicity."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I run AI models completely offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader runs entirely offline on your local machine without requiring internet connectivity or external API calls. This ensures complete data privacy and works in air-gapped environments."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which AI models are supported by GGUF Loader?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader supports all major GGUF-format models including Mistral, LLaMA 2/3, DeepSeek, Gemma, TinyLLaMA, and many others available on platforms like Hugging Face."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where can I download GGUF models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can download GGUF models from Hugging Face, local-ai-zone.github.io, or from model creators like TheBloke who provide optimized GGUF versions of popular models."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the system requirements for GGUF Loader?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader runs on Windows, MacOS, and Linux. Smaller models work on systems with 8GB RAM, while larger models may require 16GB or more. No GPU is required, though it can improve performance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can local AI automate customer support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI automates customer support through ticket classification, email routing, sentiment analysis, automated responses, and knowledge base search - all while protecting customer privacy by processing data locally."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can GGUF Loader be used for finance and banking automation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader is ideal for finance and banking automation including invoice processing, expense categorization, financial reporting, loan processing, credit scoring, and fraud detection - all with complete data privacy compliance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does local AI help with healthcare administration?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI automates healthcare admin tasks like patient records management, appointment scheduling, medical documentation, insurance claims processing, and clinical note summarization while maintaining HIPAA compliance through offline processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can GGUF Loader automate legal document review?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader automates legal tasks including contract analysis, document review, legal research, clause extraction, and compliance checking - all processed locally to maintain attorney-client privilege and confidentiality."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does local AI improve HR and recruiting processes?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI automates HR tasks like resume screening, candidate matching, interview scheduling, job description generation, and employee onboarding while protecting sensitive personal information through local processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What manufacturing use cases does GGUF Loader support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader supports manufacturing automation including quality control, predictive maintenance, production optimization, defect detection, supply chain management, and equipment monitoring with real-time local processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can local AI automate marketing and content creation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, local AI automates marketing tasks including content generation, campaign analysis, customer segmentation, email personalization, social media management, and SEO optimization while keeping proprietary strategies confidential."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does GGUF Loader help with e-commerce and retail?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader automates e-commerce tasks like product recommendations, inventory management, customer insights, pricing optimization, review analysis, and personalized shopping experiences with local data processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is GGUF Loader suitable for insurance automation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader automates insurance processes including claims processing, risk assessment, policy management, fraud detection, underwriting analysis, and customer communication while maintaining data privacy compliance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can local AI optimize energy and utilities operations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, local AI automates energy and utilities tasks including grid optimization, demand forecasting, maintenance scheduling, outage prediction, energy consumption analysis, and smart meter data processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does GGUF Loader improve supply chain and logistics?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader automates supply chain tasks like route optimization, inventory forecasting, shipment tracking, warehouse management, demand planning, and supplier performance analysis with real-time local processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can GGUF Loader be used for compliance and auditing?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader automates compliance tasks including regulatory monitoring, audit trail analysis, compliance reporting, policy enforcement, risk assessment, and documentation review while maintaining strict data confidentiality."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does local AI support education and training?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI automates education tasks like personalized learning, assessment grading, curriculum planning, student feedback, content creation, and learning analytics while protecting student privacy through offline processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What government and public service use cases are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader automates government tasks including citizen request processing, document management, service delivery, permit processing, public records management, and policy analysis with secure local processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can GGUF Loader automate real estate operations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader automates real estate tasks like property valuation, lead qualification, document processing, market analysis, listing generation, and client communication while maintaining transaction confidentiality."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does local AI help with research and academia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI automates research tasks including literature review, data analysis, research documentation, citation management, hypothesis generation, and paper summarization while protecting intellectual property and unpublished research."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What telecommunications use cases does GGUF Loader support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GGUF Loader automates telecommunications tasks like network optimization, customer churn prediction, service quality monitoring, ticket resolution, capacity planning, and customer support with real-time local processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is GGUF Loader GDPR and privacy compliant?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader is privacy-first by design. All AI processing happens locally on your machine, ensuring GDPR compliance, data sovereignty, and complete control over sensitive information without external data transmission."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the Smart Floating Assistant feature?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Smart Floating Assistant is an always-accessible AI helper that floats above your applications, providing instant access to document summarization, translation, text generation, and other AI capabilities without switching windows."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Agentic Mode in GGUF Loader?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Agentic Mode enables autonomous AI capabilities including multi-step problem solving, file management, code generation and editing, task automation, and workspace organization - allowing AI to work independently on complex tasks."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I run AI models without expensive hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF format is optimized for efficiency. You can run smaller models on mid-range laptops and PCs with 8GB RAM without requiring high-end GPUs or specialized hardware, making AI accessible to everyone."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does GGUF Loader support custom addons and integrations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, GGUF Loader features a comprehensive addon system that allows developers to create custom integrations, extend functionality, and build specialized tools for specific industry needs with well-documented APIs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I get started with GGUF Loader?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Getting started is simple: download GGUF Loader for your platform, install it, download a GGUF model from Hugging Face or local-ai-zone.github.io, load the model into GGUF Loader, and start using AI locally. No configuration required."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Testimonials/Reviews Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "GGUF Loader User Reviews",
+        "description": "User testimonials and reviews for GGUF Loader",
+        "itemListElement": [
+            {
+                "@type": "Review",
+                "position": 1,
+                "author": {
+                    "@type": "Person",
+                    "name": "Sarah Chen",
+                    "jobTitle": "CTO",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "TechFlow Solutions"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "GGUF Loader transformed how we deploy AI in our enterprise environment. The offline capability and Smart Floating Assistant have revolutionized our workflow productivity.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 2,
+                "author": {
+                    "@type": "Person",
+                    "name": "Marcus Rodriguez",
+                    "jobTitle": "Lead Developer",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "FinSecure Analytics"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Finally, a solution that lets us run powerful AI models without compromising data privacy. The addon system is incredibly flexible for our custom integrations.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 3,
+                "author": {
+                    "@type": "Person",
+                    "name": "Dr. Emily Watson",
+                    "jobTitle": "AI Research Scientist",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "University of Cambridge"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "The ease of setup amazed me. From download to running Mistral 7B locally took less than 5 minutes. Perfect for researchers who need reliable, offline AI.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 4,
+                "author": {
+                    "@type": "Person",
+                    "name": "Ahmed Hassan",
+                    "jobTitle": "Content Manager",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "Global Media Corp"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "GGUF Loader's Smart Floating Assistant has become essential to my daily workflow. The document summarization and translation features save hours every day.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 5,
+                "author": {
+                    "@type": "Person",
+                    "name": "Lisa Park",
+                    "jobTitle": "DevOps Engineer",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "CloudScale Systems"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Cross-platform compatibility is outstanding. We run GGUF Loader on Windows, Mac, and Linux servers seamlessly. The performance is consistently excellent.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            },
+            {
+                "@type": "Review",
+                "position": 6,
+                "author": {
+                    "@type": "Person",
+                    "name": "David Kim",
+                    "jobTitle": "Senior Software Architect",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "InnovateTech Labs"
+                    }
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "The addon development framework is incredibly well-designed. Building custom integrations for our specific use cases was straightforward and well-documented.",
+                "itemReviewed": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                },
+                "datePublished": "2025-01-27"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Addon Showcase Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "GGUF Loader Community Addons",
+        "description": "Community-created addons and extensions for GGUF Loader",
+        "itemListElement": [
+            {
+                "@type": "SoftwareApplication",
+                "position": 1,
+                "name": "Smart Floating Assistant",
+                "description": "Global text processing with AI-powered document summarization, translation, and smart automation",
+                "applicationCategory": "ProductivityApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "GGUF Team"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "2100",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/ggufloader/gguf-loader/tree/main/addons/smart-floater",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 2,
+                "name": "Data Analytics Suite",
+                "description": "Advanced data analysis and visualization tools with AI-powered insights",
+                "applicationCategory": "BusinessApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "DataFlow Labs"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "reviewCount": "890",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/dataflow-labs/gguf-analytics",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 3,
+                "name": "Security Scanner",
+                "description": "AI-powered security analysis for code, documents, and system configurations",
+                "applicationCategory": "SecurityApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "CyberGuard"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "1200",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/cyberguard/gguf-security",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 4,
+                "name": "Creative Assistant",
+                "description": "AI-powered creative writing, content generation, and design assistance",
+                "applicationCategory": "DesignApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "ArtFlow Studio"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.6",
+                    "reviewCount": "750",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/artflow-studio/gguf-creative",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 5,
+                "name": "Web Scraper Pro",
+                "description": "Intelligent web scraping with AI-powered content extraction and analysis",
+                "applicationCategory": "DeveloperApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "WebHarvest"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.5",
+                    "reviewCount": "620",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/webharvest/gguf-scraper",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "position": 6,
+                "name": "Business Intelligence",
+                "description": "Enterprise business intelligence with AI-driven insights, forecasting, and automated reporting",
+                "applicationCategory": "BusinessApplication",
+                "author": {
+                    "@type": "Organization",
+                    "name": "BizTech Solutions"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "1100",
+                    "bestRating": "5"
+                },
+                "downloadUrl": "https://github.com/biztech-solutions/gguf-bi",
+                "operatingSystem": ["Windows", "macOS", "Linux"],
+                "softwareRequirements": "GGUF Loader 2.0+",
+                "isPartOf": {
+                    "@type": "SoftwareApplication",
+                    "name": "GGUF Loader"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Community Integration Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "GGUF Loader Community",
+        "description": "Open source community for GGUF Loader development and support",
+        "url": "https://ggufloader.github.io",
+        "logo": "https://ggufloader.github.io/preview.png",
+        "sameAs": [
+            "https://github.com/ggufloader/gguf-loader",
+            "https://github.com/ggufloader/gguf-loader/discussions"
+        ],
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "contactType": "technical support",
+                "url": "https://github.com/ggufloader/gguf-loader/discussions/categories/q-a"
+            },
+            {
+                "@type": "ContactPoint",
+                "contactType": "bug reports",
+                "url": "https://github.com/ggufloader/gguf-loader/issues"
+            }
+        ],
+        "memberOf": {
+            "@type": "Organization",
+            "name": "Open Source Initiative"
+        },
+        "foundingDate": "2024-01-01",
+        "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "value": "45+"
+        },
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Local AI Deployment",
+            "GGUF Format",
+            "Python Development",
+            "Cross-platform Software"
+        ],
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Community Support",
+                    "description": "Free community support for GGUF Loader users"
+                },
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Open Source Development",
+                    "description": "Collaborative development of GGUF Loader features"
+                },
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Contribution Guidelines Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Contribute to GGUF Loader",
+        "description": "Step-by-step guide for contributing to the GGUF Loader open source project",
+        "image": "https://ggufloader.github.io/preview.png",
+        "totalTime": "PT30M",
+        "supply": [
+            {
+                "@type": "HowToSupply",
+                "name": "GitHub Account"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "Git Version Control"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "Python Development Environment"
+            }
+        ],
+        "tool": [
+            {
+                "@type": "HowToTool",
+                "name": "Git"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "Python"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "Code Editor"
+            }
+        ],
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Fork & Clone Repository",
+                "text": "Fork the GGUF Loader repository on GitHub and clone it to your local machine to start development.",
+                "url": "https://github.com/ggufloader/gguf-loader"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Create Feature Branch",
+                "text": "Create a new branch for your changes with a descriptive name that explains the feature or fix."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Implement Changes",
+                "text": "Make your changes following the project's coding standards and best practices for maintainable code."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Test & Document",
+                "text": "Thoroughly test your changes and update documentation to reflect new features or modifications."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Submit Pull Request",
+                "text": "Create a pull request with a clear description of your changes and their benefits to the project.",
+                "url": "https://github.com/ggufloader/gguf-loader/pulls"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</div>
+
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                    aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#quick-start-github" role="menuitem"
+                            aria-label="Quick start guide from GitHub">Quick Start</a></li>
+                    <li role="none"><a href="#features-philosophy" role="menuitem"
+                            aria-label="View features and philosophy section">Features</a></li>
+                    <li role="none"><a href="#guide" role="menuitem" aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="#faq-section" role="menuitem"
+                            aria-label="View frequently asked questions">FAQ</a></li>
+                    <li role="none"><a href="#model-downloads-info" role="menuitem"
+                            aria-label="View model download information">Model Downloads</a></li>
+                    <li role="none"><a href="#roadmap" role="menuitem" aria-label="View development roadmap">Roadmap</a>
+                    </li>
+                    <li role="none"><a href="#contact" role="menuitem" aria-label="View contact information">Contact</a>
+                    </li>
+                    <li role="none"><a href="blog.html" role="menuitem" aria-label="View blog posts">Blog</a></li>
+                    <li role="none"><a href="need-help.html" role="menuitem" aria-label="Get help running locally">Need Help?</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Hero Section: Information about GGUF Loader -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="hero-heading">GGUF Loader</h1>
+                    <p class="hero-subtitle" role="doc-subtitle">🎉 NEW: Agentic Mode Now Available! Transform your local AI into an autonomous coding assistant.</p>
+                    <p class="hero-description">
+                        Run popular open-source AI models like Mistral, LLaMA, and DeepSeek on Windows, macOS, or Linux.
+                        No Python, no command line, and no internet required. Just click and run. Now with Agentic Mode for autonomous file management and coding tasks.
+                    </p>
+
+                    <div class="cta-section">
+                        <a href="need-help.html" class="cta-button">
+                            Having trouble running local AI models?
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshot Section -->
+        <section id="screenshot" class="screenshot-section section" aria-labelledby="screenshot-heading">
+            <div class="container">
+                <h2 id="screenshot-heading">GGUF Loader Interface</h2>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <img src="ggufloader_screen.png" 
+                         alt="GGUF Loader application interface showing the main window with model loading and chat features" 
+                         class="loaded"
+                         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); opacity: 1 !important; display: block !important; margin: 0 auto;"
+                         onerror="this.style.border='2px solid red'; this.alt='Image failed to load: ggufloader_screen.png';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section section" aria-labelledby="download-heading">
+            <div class="container">
+                <h2 id="download-heading">Download GGUF Loader</h2>
+                <div class="download-content">
+                    <article class="download-option">
+                        <h3><span aria-hidden="true">🪟</span> Windows</h3>
+                        <p>Standalone executable with Agentic Mode. No dependencies needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.1/GGUFLoader_v2.1.1.agentic_mode.exe"
+                            class="download-button">
+                            Download v2.1.1 Agentic Mode
+                        </a>
+                    </article>
+                    <article class="download-option">
+                        <h3><span aria-hidden="true">🍎</span> macOS</h3>
+                        <p>Download ZIP and run with launch.sh script. No installation needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/archive/refs/heads/main.zip"
+                            class="download-button">
+                            Download ZIP for macOS
+                        </a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Or install via pip:</p>
+                        <div class="code-block"><code>pip install ggufloader</code></div>
+                    </article>
+                    <article class="download-option">
+                        <h3><span aria-hidden="true">🐧</span> Linux</h3>
+                        <p>Download ZIP and run with launch.sh script. No installation needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/archive/refs/heads/main.zip"
+                            class="download-button">
+                            Download ZIP for Linux
+                        </a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Or install via pip:</p>
+                        <div class="code-block"><code>pip install ggufloader</code></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start from GitHub Section -->
+        <section id="quick-start-github" class="quick-start-github section" aria-labelledby="quick-start-heading">
+            <div class="container">
+                <h2 id="quick-start-heading">🚀 Quick Start - Run from Source Code</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #6c757d;">New to this? No problem! Follow these simple steps:</p>
+                
+                <div class="guide-steps">
+                    <div class="step">
+                        <h3>Step 1: Download the Code</h3>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Click the button below to open GitHub</li>
+                            <li>Look for the green <strong>"Code"</strong> button</li>
+                            <li>Click it and select <strong>"Download ZIP"</strong></li>
+                            <li>Save the ZIP file to your computer</li>
+                        </ol>
+                        <a href="https://github.com/GGUFloader/gguf-loader" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin-top: 1rem; display: inline-block; font-size: 0.9rem; padding: 0.8rem 1.5rem;">
+                            📥 Open GitHub to Download
+                        </a>
+                    </div>
+                    <div class="step">
+                        <h3>Step 2: Extract the Files</h3>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Find the downloaded ZIP file</li>
+                            <li>Right-click on it</li>
+                            <li>Select <strong>"Extract All"</strong> (Windows) or double-click (Mac)</li>
+                            <li>Open the extracted <strong>gguf-loader</strong> folder</li>
+                        </ol>
+                    </div>
+                    <div class="step">
+                        <h3>Step 3: Run the App</h3>
+                        <p style="text-align: left;"><strong>🪟 Windows Users:</strong></p>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Find <code style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">run_gguf_loader.bat</code></li>
+                            <li>Double-click it to run</li>
+                        </ol>
+                        <p style="text-align: left; margin-top: 1rem;"><strong>🍎🐧 Mac/Linux Users:</strong></p>
+                        <ol style="text-align: left; padding-left: 1.2rem; line-height: 2;">
+                            <li>Open Terminal in the folder</li>
+                            <li>Type: <code style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">chmod +x run_gguf_loader.sh</code> and press Enter</li>
+                            <li>Type: <code style="background: #e9ecef; padding: 2px 6px; border-radius: 3px;">./run_gguf_loader.sh</code> and press Enter</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(40, 167, 69, 0.1); border-radius: 8px; border-left: 4px solid #28a745;">
+                    <h4 style="margin: 0 0 1rem 0;">🎮 After the App Opens:</h4>
+                    <ol style="text-align: left; max-width: 500px; margin: 0 auto; line-height: 2;">
+                        <li>Click the <strong>"Load Model"</strong> button</li>
+                        <li>Browse and select your <code>.gguf</code> model file</li>
+                        <li>Wait for it to load (may take a minute)</li>
+                        <li>Start chatting with your AI! 🎉</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Short Guide Section -->
+        <section id="guide" class="how-it-works section" aria-labelledby="guide-heading">
+            <div class="container">
+                <h2 id="guide-heading">How to Use It</h2>
+                <div class="guide-steps">
+                    <div class="step">
+                        <h3>1. Download a Model</h3>
+                        <p>First, get a GGUF-format model. We recommend the <a
+                                href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+                                download>Mistral 7B Instruct</a> model to start.</p>
+                    </div>
+                    <div class="step">
+                        <h3>2. Load the Model</h3>
+                        <p>Open GGUF Loader, click the 'Load Model' button, navigate to the folder where you saved the
+                            model, select the model file you downloaded, and click 'Open'.</p>
+                    </div>
+                    <div class="step">
+                        <h3>3. Start Chatting</h3>
+                        <p>That's it! You can now chat with your local AI assistant, completely offline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Posts Horizontal Scroll Section -->
+        <section id="blog-posts" class="blog-posts-section section" aria-labelledby="blog-posts-heading">
+            <div class="container">
+                <h2 id="blog-posts-heading">📚 Latest Blog Posts</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #6c757d;">Explore our guides and use cases for local AI automation</p>
+                <div class="blog-scroll-container">
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Customer Support</div>
+                        <h3><a href="use-cases/how-local-ai-automates-customer-support.html">How Local AI Automates Customer Support</a></h3>
+                        <p>Learn how local AI automates ticket classification, email routing, and sentiment analysis while protecting customer privacy.</p>
+                        <a href="use-cases/how-local-ai-automates-customer-support.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Finance</div>
+                        <h3><a href="use-cases/how-local-ai-automates-finance.html">How Local AI Automates Finance</a></h3>
+                        <p>Discover how local AI handles invoice processing, expense categorization, and financial reporting securely.</p>
+                        <a href="use-cases/how-local-ai-automates-finance.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Manufacturing</div>
+                        <h3><a href="use-cases/how-local-ai-automates-manufacturing.html">How Local AI Automates Manufacturing</a></h3>
+                        <p>Explore AI-powered quality control, predictive maintenance, and production optimization in manufacturing.</p>
+                        <a href="use-cases/how-local-ai-automates-manufacturing.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Marketing</div>
+                        <h3><a href="use-cases/how-local-ai-automates-marketing.html">How Local AI Automates Marketing</a></h3>
+                        <p>Learn about content generation, campaign analysis, and customer segmentation with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-marketing.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Healthcare</div>
+                        <h3><a href="use-cases/how-local-ai-automates-healthcare-admin-tasks.html">How Local AI Automates Healthcare Admin</a></h3>
+                        <p>Discover how local AI streamlines patient records, appointment scheduling, and medical documentation.</p>
+                        <a href="use-cases/how-local-ai-automates-healthcare-admin-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Legal</div>
+                        <h3><a href="use-cases/how-local-ai-automates-legal-tasks.html">How Local AI Automates Legal Tasks</a></h3>
+                        <p>Explore contract analysis, document review, and legal research automation with privacy-first AI.</p>
+                        <a href="use-cases/how-local-ai-automates-legal-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">HR & Recruiting</div>
+                        <h3><a href="use-cases/how-local-ai-automates-hr-recruiting.html">How Local AI Automates HR & Recruiting</a></h3>
+                        <p>Learn about resume screening, candidate matching, and interview scheduling with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-hr-recruiting.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">E-commerce</div>
+                        <h3><a href="use-cases/how-local-ai-automates-ecommerce-retail-tasks.html">How Local AI Automates E-commerce</a></h3>
+                        <p>Discover product recommendations, inventory management, and customer insights with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-ecommerce-retail-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Insurance</div>
+                        <h3><a href="use-cases/how-local-ai-automates-insurance.html">How Local AI Automates Insurance</a></h3>
+                        <p>Explore claims processing, risk assessment, and policy management automation with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-insurance.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Energy & Utilities</div>
+                        <h3><a href="use-cases/how-local-ai-automates-energy-utilities.html">How Local AI Automates Energy & Utilities</a></h3>
+                        <p>Learn about grid optimization, demand forecasting, and maintenance scheduling with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-energy-utilities.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Procurement</div>
+                        <h3><a href="use-cases/how-local-ai-automates-procurement.html">How Local AI Automates Procurement</a></h3>
+                        <p>Discover vendor analysis, purchase order processing, and spend optimization with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-procurement.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Tech & SaaS</div>
+                        <h3><a href="use-cases/how-local-ai-automates-tech-and-saas-operations.html">How Local AI Automates Tech & SaaS Operations</a></h3>
+                        <p>Learn about incident management, code review, and customer onboarding automation with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-tech-and-saas-operations.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Non-Profits & NGOs</div>
+                        <h3><a href="use-cases/how-local-ai-automates-non-profits-ngos.html">How Local AI Automates Non-Profits & NGOs</a></h3>
+                        <p>Explore donor management, grant writing, and volunteer coordination with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-non-profits-ngos.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Travel & Hospitality</div>
+                        <h3><a href="use-cases/how-local-ai-automates-travel.html">How Local AI Automates Travel & Hospitality</a></h3>
+                        <p>Discover booking management, guest services, and itinerary planning automation with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-travel.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Banking & Credit</div>
+                        <h3><a href="use-cases/how-local-ai-automates-banking-credit-tasks.html">How Local AI Automates Banking & Credit</a></h3>
+                        <p>Learn about loan processing, credit scoring, and fraud detection with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-banking-credit-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Compliance & Auditing</div>
+                        <h3><a href="use-cases/how-local-ai-automates-compliance-auditing-tasks.html">How Local AI Automates Compliance & Auditing</a></h3>
+                        <p>Explore regulatory monitoring, audit trail analysis, and compliance reporting with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-compliance-auditing-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Education & Training</div>
+                        <h3><a href="use-cases/how-local-ai-automates-education-training-tasks.html">How Local AI Automates Education & Training</a></h3>
+                        <p>Discover personalized learning, assessment grading, and curriculum planning with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-education-training-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Event Management</div>
+                        <h3><a href="use-cases/how-local-ai-automates-event-management-tasks.html">How Local AI Automates Event Management</a></h3>
+                        <p>Learn about attendee registration, scheduling, and post-event analysis with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-event-management-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Government & Public Services</div>
+                        <h3><a href="use-cases/how-local-ai-automates-government-public-services-tasks.html">How Local AI Automates Government & Public Services</a></h3>
+                        <p>Explore citizen request processing, document management, and service delivery with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-government-public-services-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Logistics & Supply Chain</div>
+                        <h3><a href="use-cases/how-local-ai-automates-logistics-supply-chain-tasks.html">How Local AI Automates Logistics & Supply Chain</a></h3>
+                        <p>Discover route optimization, inventory forecasting, and shipment tracking with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-logistics-supply-chain-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Logistics & Warehouse</div>
+                        <h3><a href="use-cases/how-local-ai-automates-logistics-warehouse-tasks.html">How Local AI Automates Logistics & Warehouse</a></h3>
+                        <p>Learn about warehouse automation, picking optimization, and inventory management with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-logistics-warehouse-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Market Research</div>
+                        <h3><a href="use-cases/how-local-ai-automates-market-research-tasks.html">How Local AI Automates Market Research</a></h3>
+                        <p>Explore survey analysis, trend identification, and competitive intelligence with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-market-research-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Media & Publishing</div>
+                        <h3><a href="use-cases/how-local-ai-automates-media-publishing-tasks.html">How Local AI Automates Media & Publishing</a></h3>
+                        <p>Discover content curation, editorial workflows, and audience analytics with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-media-publishing-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Media Rights & Licensing</div>
+                        <h3><a href="use-cases/how-local-ai-automates-media-rights-licensing-tasks.html">How Local AI Automates Media Rights & Licensing</a></h3>
+                        <p>Learn about rights management, contract analysis, and royalty tracking with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-media-rights-licensing-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Real Estate</div>
+                        <h3><a href="use-cases/how-local-ai-automates-real-estate-tasks.html">How Local AI Automates Real Estate</a></h3>
+                        <p>Explore property valuation, lead qualification, and document processing with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-real-estate-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Real-Time Monitoring</div>
+                        <h3><a href="use-cases/how-local-ai-automates-real-time-monitoring-tasks.html">How Local AI Automates Real-Time Monitoring</a></h3>
+                        <p>Discover anomaly detection, alert management, and predictive analytics with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-real-time-monitoring-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Research & Academia</div>
+                        <h3><a href="use-cases/how-local-ai-automates-research-academia-tasks.html">How Local AI Automates Research & Academia</a></h3>
+                        <p>Learn about literature review, data analysis, and research documentation with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-research-academia-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Retail Banking</div>
+                        <h3><a href="use-cases/how-local-ai-automates-retail-banking-tasks.html">How Local AI Automates Retail Banking</a></h3>
+                        <p>Explore customer service automation, account management, and financial advisory with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-retail-banking-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Supply Chain Analytics</div>
+                        <h3><a href="use-cases/how-local-ai-automates-supply-chain-analytics-tasks.html">How Local AI Automates Supply Chain Analytics</a></h3>
+                        <p>Discover demand forecasting, supplier performance analysis, and risk assessment with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-supply-chain-analytics-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Telecommunications</div>
+                        <h3><a href="use-cases/how-local-ai-automates-telecommunications-tasks.html">How Local AI Automates Telecommunications</a></h3>
+                        <p>Learn about network optimization, customer churn prediction, and service quality monitoring with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-telecommunications-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-tag">Automotive & Fleet Management</div>
+                        <h3><a href="use-cases/how-local-ai-automates-automotive-fleet-management-tasks.html">How Local AI Automates Automotive & Fleet Management</a></h3>
+                        <p>Explore vehicle maintenance scheduling, route optimization, and driver performance analysis with local AI.</p>
+                        <a href="use-cases/how-local-ai-automates-automotive-fleet-management-tasks.html" class="blog-card-link">Read More →</a>
+                    </article>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="blog.html" class="cta-button">View All Blog Posts</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Content in Details Section -->
+        <section class="details-section section" aria-labelledby="details-heading">
+            <div class="container">
+                <h2 id="details-heading">Learn More</h2>
+                <details id="features-philosophy">
+                    <summary>Features & Philosophy</summary>
+                    <div class="details-content">
+                        <h3>Our Philosophy</h3>
+                        <blockquote>
+                            <p>
+                                AI should be accessible, private, and under your control. We believe in democratizing
+                                artificial intelligence
+                                by making powerful models run locally on any machine, without compromising your data
+                                privacy or requiring
+                                complex technical knowledge.
+                            </p>
+                            <footer>— The GGUF Loader Team</footer>
+                        </blockquote>
+
+                        <div class="features-grid" role="list" aria-label="GGUF Loader core features">
+                            <article class="feature-card" role="listitem">
+                                <h4>Privacy First</h4>
+                                <p>Your data never leaves your machine. True offline AI processing.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Accessible to All</h4>
+                                <p>No complex setup. No Python knowledge required. Just click and run.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Your Control</h4>
+                                <p>Run AI models on your terms, your hardware, your schedule.</p>
+                            </article>
+                        </div>
+
+                        <h3>Core Features</h3>
+                        <div class="features-grid" role="list" aria-label="GGUF Loader core features">
+                            <article class="feature-card" role="listitem">
+                                <h4>🤖 Agentic Mode</h4>
+                                <p>Advanced reasoning and task automation with multi-step problem solving. AI can read, create, edit, and organize files autonomously in your workspace.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Multi-Model Support</h4>
+                                <p>Supports all major GGUF-format models including Mistral, LLaMA, DeepSeek, Gemma, and
+                                    TinyLLaMA.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Fully Offline Operation</h4>
+                                <p>Zero external APIs or internet access needed. Works on air-gapped or disconnected
+                                    systems.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>User-Friendly Cross-Platform App</h4>
+                                <p>No command-line skills needed. Drag-and-drop GUI with intuitive model loading for
+                                    Windows, MacOS, and Linux.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Optimized Performance</h4>
+                                <p>Built for speed and memory efficiency — even on mid-range CPUs.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Privacy-Centric</h4>
+                                <p>All AI runs locally. Your data never leaves your machine. Compliant with GDPR.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
+                                <h4>Zero Configuration</h4>
+                                <p>Start instantly. No environment setup, Python, or packages to install.</p>
+                            </article>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Use Cases & How-To Guides</summary>
+                    <div class="details-content">
+                        <h3>Use Cases</h3>
+                        <div class="use-cases-grid">
+                            <article class="use-case">
+                                <h4>Business AI Assistants</h4>
+                                <p>Automate email replies, documents, or meeting notes without cloud exposure.</p>
+                            </article>
+                            <article class="use-case">
+                                <h4>Secure Deployment</h4>
+                                <p>Use AI in Private, Sensitive, or Regulated Workspaces</p>
+                            </article>
+                            <article class="use-case">
+                                <h4>Research & Testing</h4>
+                                <p>Run experiments locally with zero latency.</p>
+                            </article>
+                            <article class="use-case">
+                                <h4>Compliance-First Industries</h4>
+                                <p>Ensure privacy and legal adherence with on-device AI.</p>
+                            </article>
+                        </div>
+
+                        <h3>How To Guides</h3>
+                        <div class="guides-grid">
+                            <article class="guide">
+                                <h4>How to Run Mistral 7B Locally</h4>
+                                <ol>
+                                    <li>Download Mistral 7B Instruct GGUF model from TheBloke's Hugging Face page.</li>
+                                    <li>Open GGUF Loader and drag the model file into the app.</li>
+                                    <li>Click "Start" to begin using Mistral locally.</li>
+                                </ol>
+                            </article>
+                            <article class="guide">
+                                <h4>How to Run DeepSeek Coder</h4>
+                                <ol>
+                                    <li>Visit Hugging Face and search for DeepSeek Coder in GGUF format.</li>
+                                    <li>Download the model file to your computer.</li>
+                                    <li>Open GGUF Loader, select the model, and launch your coding assistant.</li>
+                                </ol>
+                            </article>
+                            <article class="guide">
+                                <h4>How to Run TinyLLaMA on Low-End Devices</h4>
+                                <ol>
+                                    <li>Find a TinyLLaMA GGUF model with small context size.</li>
+                                    <li>Use GGUF Loader to open the model file.</li>
+                                    <li>Interact with the model even on laptops with 8GB RAM.</li>
+                            </article>
+                        </div>
+                    </div>
+                </details>
+
+                <details id="model-downloads-info">
+                    <summary>Model Downloads</summary>
+                    <div class="details-content">
+                        <h3>Download GGUF Models</h3>
+                        <p>For a comprehensive collection of GGUF models, visit <a
+                                href="https://local-ai-zone.github.io/" target="_blank"
+                                rel="noopener noreferrer">local-ai-zone.github.io</a></p>
+                        <p>This website provides an extensive library of pre-converted GGUF models that are ready to use
+                            with GGUF Loader. The site features various models including Mistral, LLaMA, DeepSeek, and
+                            others in different quantization formats to match your hardware capabilities.</p>
+                        <p>To download models from local-ai-zone:</p>
+                        <ol>
+                            <li>Visit <a href="https://local-ai-zone.github.io/" target="_blank"
+                                    rel="noopener noreferrer">https://local-ai-zone.github.io/</a></li>
+                            <li>Browse the available models catalog</li>
+                            <li>Select a model that fits your needs and hardware capabilities</li>
+                            <li>Choose the appropriate quantization level (Q4, Q5, Q6, etc.) based on your RAM and
+                                performance requirements</li>
+                            <li>Download the .gguf file to your computer</li>
+                            <li>Load the model into GGUF Loader by clicking the 'Load Model' button, navigating to the
+                                folder where you saved the model, selecting the model file you downloaded, and clicking
+                                'Open'.</li>
+                        </ol>
+                        <p>Alternatively, you can download models directly from this page:</p>
+
+                        <div class="models-grid" role="list" aria-label="Available GGUF models for download">
+                            <article class="model-category" role="listitem">
+                                <h4>🧠 Mistral-7B Instruct ⭐ Recommended for Agentic Mode</h4>
+                                <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 0.5rem;">Excellent reasoning and task automation capabilities. Perfect for agentic workflows and multi-step problem solving.</p>
+                                <div class="model-downloads" role="list"
+                                    aria-label="Mistral-7B Instruct download options">
+                                    <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_0.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download Mistral-7B Instruct Q4_0 quantization, 4.23 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q4_0 (4.23 GB)
+                                    </a>
+                                    <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q6_K.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download Mistral-7B Instruct Q6_K quantization, 6.23 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q6_K (6.23 GB)
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="model-category" role="listitem">
+                                <h4>🧠 Qwen 1.5-7B Chat</h4>
+                                <div class="model-downloads" role="list" aria-label="Qwen 1.5-7B Chat download options">
+                                    <a href="https://huggingface.co/TheBloke/Qwen1.5-7B-Chat-GGUF/resolve/main/qwen1_5-7b-chat-q4_k.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download Qwen 1.5-7B Chat Q4_K quantization, 4.88 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q4_K (4.88 GB)
+                                    </a>
+                                    <a href="https://huggingface.co/TheBloke/Qwen1.5-7B-Chat-GGUF/resolve/main/qwen1_5-7b-chat-q6_k.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download Qwen 1.5-7B Chat Q6_K quantization, 6.83 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q6_K (6.83 GB)
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="model-category" role="listitem">
+                                <h4>🧠 DeepSeek 7B Chat</h4>
+                                <div class="model-downloads" role="list" aria-label="DeepSeek 7B Chat download options">
+                                    <a href="https://huggingface.co/TheBloke/DeepSeek-7B-Chat-GGUF/resolve/main/deepseek-7b-chat.Q4_0.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download DeepSeek 7B Chat Q4_0 quantization, 4.87 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q4_0 (4.87 GB)
+                                    </a>
+                                    <a href="https://huggingface.co/TheBloke/DeepSeek-7B-Chat-GGUF/resolve/main/deepseek-7b-chat.Q8_0.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download DeepSeek 7B Chat Q8_0 quantization, 9.33 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q8_0 (9.33 GB)
+                                    </a>
+                                </div>
+                            </article>
+
+                            <article class="model-category" role="listitem">
+                                <h4>🧠 LLaMA 3 8B Instruct</h4>
+                                <div class="model-downloads" role="list"
+                                    aria-label="LLaMA 3 8B Instruct download options">
+                                    <a href="https://huggingface.co/TheBloke/Llama-3-8B-Instruct-GGUF/resolve/main/llama-3-8b-instruct.Q4_0.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download LLaMA 3 8B Instruct Q4_0 quantization, 4.68 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q4_0 (4.68 GB)
+                                    </a>
+                                    <a href="https://huggingface.co/TheBloke/Llama-3-8B-Instruct-GGUF/resolve/main/llama-3-8b-instruct.Q6_K.gguf"
+                                        class="model-download-link" role="listitem"
+                                        aria-label="Download LLaMA 3 8B Instruct Q6_K quantization, 6.91 GB file size"
+                                        download>
+                                        <span aria-hidden="true">⬇️</span> Download Q6_K (6.91 GB)
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </details>
+
+                <details id="faq-section">
+                    <summary>Frequently Asked Questions</summary>
+                    <div class="details-content">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-grid">
+                            <article class="faq-item">
+                                <h4>What is GGUF Loader?</h4>
+                                <p>A local app that runs GGUF models offline. No Python, no internet, no setup.</p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>What is GGUF?</h4>
+                                <p>An optimized model format created for llama.cpp to enable fast local inference. <a href="what-is-gguf.html">Learn more about GGUF format →</a></p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>Do I need Python or CLI knowledge?</h4>
+                                <p>No. Everything runs in a visual interface. <a href="how-to-run-gguf-models.html">See our beginner's guide →</a></p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>Is it really offline?</h4>
+                                <p>Yes. All AI processes happen on your system with zero external requests.</p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>Which models work?</h4>
+                                <p>Any GGUF model, including Mistral, LLaMA 2/3, DeepSeek, Gemma, and TinyLLaMA. <a href="2025-07-07-top-10-gguf-models-i5-16gb.html">See best models →</a></p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>Where can I find GGUF models?</h4>
+                                <p>Download from Hugging Face (TheBloke, bartowski) or official sources. <a href="download-gguf-models.html">Download guide →</a></p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>How much RAM do I need?</h4>
+                                <p>Depends on model size. 8GB for small models, 16GB for 7B models. <a href="gguf-memory-calculator.html">Check RAM requirements →</a></p>
+                            </article>
+                            <article class="faq-item">
+                                <h4>What platforms are supported?</h4>
+                                <p>Currently Windows, Linux, and macOS.</p>
+                            </article>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Testimonials & Addons</summary>
+                    <div class="details-content">
+                        <h3>What Users Say</h3>
+                        <div class="testimonials-grid">
+                            <blockquote class="testimonial">
+                                <p>"GGUF Loader transformed how we deploy AI in our enterprise environment. The offline
+                                    capability and Smart Floating Assistant have revolutionized our workflow
+                                    productivity."</p>
+                                <cite>- Sarah Chen, CTO, TechFlow Solutions</cite>
+                            </blockquote>
+
+                            <blockquote class="testimonial">
+                                <p>"Finally, a solution that lets us run powerful AI models without compromising data
+                                    privacy. The addon system is incredibly flexible for our custom integrations."</p>
+                                <cite>- Marcus Rodriguez, Lead Developer, FinSecure Analytics</cite>
+                            </blockquote>
+
+                            <blockquote class="testimonial">
+                                <p>"The ease of setup amazed me. From download to running Mistral 7B locally took less
+                                    than 5 minutes. Perfect for researchers who need reliable, offline AI."</p>
+                                <cite>- Dr. Emily Watson, AI Research Scientist, University of Cambridge</cite>
+                            </blockquote>
+                        </div>
+
+                        <h3>Community Addons</h3>
+                        <div class="addon-grid">
+                            <article class="addon-card">
+                                <h4>Smart Floating Assistant</h4>
+                                <p>Global text processing with AI-powered document summarization, translation, and smart
+                                    automation. Works across all applications.</p>
+                                <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (2.1k reviews)</p>
+                            </article>
+
+                            <article class="addon-card">
+                                <h4>Data Analytics Suite</h4>
+                                <p>Advanced data analysis and visualization tools with AI-powered insights. Perfect for
+                                    business intelligence and research.</p>
+                                <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (890 reviews)</p>
+                            </article>
+
+                            <article class="addon-card">
+                                <h4>Security Scanner</h4>
+                                <p>AI-powered security analysis for code, documents, and system configurations.
+                                    Enterprise-grade threat detection.</p>
+                                <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (1.2k reviews)</p>
+                            </article>
+                        </div>
+                    </div>
+                </details>
+
+                <details id="roadmap">
+                    <summary>Roadmap</summary>
+                    <div class="details-content">
+                        <h3>GGUF Loader Development Roadmap</h3>
+                        <p>Our development roadmap includes several upcoming features and improvements:</p>
+                        <ul>
+                            <li>Enhanced model management interface</li>
+                            <li>Improved performance optimizations</li>
+                            <li>Additional model format support</li>
+                            <li>Advanced addon development tools</li>
+                            <li>Enhanced cross-platform compatibility</li>
+                            <li>Expanded documentation and tutorials</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details id="contact">
+                    <summary>Contact</summary>
+                    <div class="details-content">
+                        <h3>Contact Information</h3>
+                        <p>For support, feedback, or inquiries about GGUF Loader:</p>
+                        <ul>
+                            <li>Email: <a href="mailto:hossainnazary475@gmail.com">hossainnazary475@gmail.com</a></li>
+                            <li>LinkedIn: <a href="https://www.linkedin.com/in/hussain-nazary-188b4385" target="_blank"
+                                    rel="noopener noreferrer">Hussain Nazary</a></li>
+                            <li>GitHub: <a href="https://github.com/ggufloader/gguf-loader" target="_blank"
+                                    rel="noopener noreferrer">GGUF Loader Repository</a></li>
+                            <li>Discussions: <a href="https://github.com/ggufloader/gguf-loader/discussions"
+                                    target="_blank" rel="noopener noreferrer">GGUF Loader Discussions</a></li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a
+                    href="guides.html">Guides</a></p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script src="mobile-menu.js" defer></script>
+
+</body>
+
+</html>

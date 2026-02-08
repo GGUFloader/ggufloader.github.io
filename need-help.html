@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Need Help? - GGUF Loader Support</title>
+    <meta name="description"
+        content="Having trouble running GGUF Loader locally? I'm here to help! Get friendly support for setup issues, model problems, and local AI deployment.">
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <!-- EmailJS Library - Using local copy for reliability -->
+    <script type="text/javascript" src="emailjs.min.js"></script>
+    <!-- Fallback to CDN if local file fails -->
+    <script type="text/javascript">
+        if (typeof emailjs === 'undefined') {
+            document.write('<script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"><\/script>');
+        }
+    </script>
+    <script type="text/javascript">
+        // ============================================
+        // EmailJS Configuration
+        // ============================================
+        // Replace these values with your EmailJS credentials
+        // Get them from: https://dashboard.emailjs.com/
+        const EMAILJS_CONFIG = {
+            publicKey: "Aif7atVmhmC4vCzO2",      // Your EmailJS Public Key
+            serviceId: "service_7evq2pa",         // Your EmailJS Service ID
+            templateId: "template_u8bup9s"        // Your EmailJS Template ID
+        };
+        // ============================================
+        // Note: EmailJS will be initialized at the bottom of the page
+        // after all form setup functions are defined
+    </script>
+    <style>
+        .services-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 0;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background: #1a252f;
+        }
+
+        .github-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin: 1rem;
+            padding: 1rem 2rem;
+            background: #24292e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .github-link:hover {
+            background: #1a1e22;
+        }
+
+        .contact-form-section {
+            background: #f8f9fa;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-status {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .form-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .form-status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: #dc3545;
+        }
+
+        .form-group .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group .error-message.show {
+            display: block;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-button:hover:not(:disabled) {
+            background: #1a252f;
+        }
+
+        .submit-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .submit-button .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .submit-button.loading .spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .required-note {
+            color: #6c757d;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Dark mode support for all devices */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #121212;
+                color: #e0e0e0;
+            }
+            
+            .container {
+                background: #121212;
+            }
+            
+            main,
+            #main-content {
+                background: #121212;
+            }
+            
+            .section {
+                background: #121212;
+                border-top: 1px solid #333;
+            }
+            
+            .hero {
+                background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+            }
+            
+            .hero-content,
+            .hero-description {
+                color: #d0d0d0;
+            }
+            
+            .hero h1 {
+                color: #ffffff;
+            }
+            
+            .hero-subtitle {
+                color: #b0b0b0;
+            }
+            
+            nav {
+                background: #1e1e1e;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+            
+            .logo {
+                color: #ffffff;
+            }
+            
+            .nav-menu {
+                background: #1e1e1e;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .nav-menu a {
+                color: #e0e0e0;
+                border-bottom: 1px solid #333;
+            }
+            
+            /* Service cards and related sections */
+            .service-card {
+                background: #1e1e1e;
+                color: #e0e0e0;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .service-title {
+                color: #ffffff;
+            }
+            
+            .service-description {
+                color: #d0d0d0;
+            }
+            
+            .contact-section {
+                background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+                color: #e0e0e0;
+            }
+            
+            .contact-button {
+                background: #3498db;
+                color: #ffffff;
+            }
+            
+            .contact-button:hover {
+                background: #2980b9;
+            }
+            
+            .github-section {
+                background: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            .github-link {
+                background: #2a2a2a;
+                color: #e0e0e0;
+            }
+            
+            .github-link:hover {
+                background: #333333;
+            }
+            
+            .contact-form-section {
+                background: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            .contact-form {
+                background: #2a2a2a;
+                color: #e0e0e0;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .form-group label {
+                color: #ffffff;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                background: #333333;
+                color: #e0e0e0;
+                border: 1px solid #444;
+            }
+            
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                border-color: #3498db;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            }
+            
+            .submit-button {
+                background: #3498db;
+                color: #ffffff;
+            }
+            
+            .submit-button:hover:not(:disabled) {
+                background: #2980b9;
+            }
+            
+            .submit-button:disabled {
+                background: #555555;
+            }
+            
+            .form-status.success {
+                background: #2d5a2d;
+                color: #a3d9a5;
+                border: 1px solid #3d6b3d;
+            }
+            
+            .form-status.error {
+                background: #5a2d2d;
+                color: #d9a3a3;
+                border: 1px solid #6b3d3d;
+            }
+            
+            .form-status.info {
+                background: #2d4d5a;
+                color: #a3c7d9;
+                border: 1px solid #3d5d6b;
+            }
+            
+            footer {
+                background: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            .form-group .error-message {
+                color: #ff6b6b;
+            }
+            
+            .form-group input.error {
+                border-color: #ff6b6b;
+            }
+            
+            .required-note {
+                color: #a0a0a0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+
+                <!-- Mobile menu toggle button -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                    aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem"
+                            aria-label="View features section">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem"
+                            aria-label="View how-to guides">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem"
+                            aria-label="View frequently asked questions">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem"
+                            aria-label="View model download information">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem"
+                            aria-label="View development roadmap">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem"
+                            aria-label="View contact information">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" aria-label="View blog posts">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="profile-section">
+                        <img src="profile.jpg" alt="Hussain Nazary - Here to help" class="profile-photo">
+                        <div>
+                            <h1>Need Help? I've Got You! 👋</h1>
+                            <p class="hero-subtitle" role="doc-subtitle">Stuck with something? Let's figure it out together.</p>
+                            <p class="hero-description">Running local AI can be tricky sometimes — I totally get it! Whether you're having trouble with setup, models not loading, GPU acceleration, Agentic Mode, or just confused about where to start, drop me a message. I built GGUF Loader to make local AI easy, and I'm happy to help you get it working.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="services-container">
+            <section class="services-header">
+                <h2>Things I Can Help You With</h2>
+                <p>No question is too small — if you're stuck, just ask!</p>
+                
+                <ul style="text-align: left; max-width: 700px; margin: 2rem auto; line-height: 2; font-size: 1.1rem;">
+                    <li>🚀 <strong>Getting Started</strong> — First time using GGUF Loader? I can walk you through the basics.</li>
+                    <li>🔧 <strong>Setup Issues</strong> — Installation problems, missing dependencies, or errors during setup.</li>
+                    <li>🤖 <strong>Model Problems</strong> — Model not loading, running slow, or giving weird outputs.</li>
+                    <li>🎯 <strong>Agentic Mode Help</strong> — Need help setting up or using the new autonomous coding assistant features?</li>
+                    <li>💻 <strong>Hardware Questions</strong> — Wondering if your PC can run a specific model? I'll help you figure it out.</li>
+                    <li>🛒 <strong>PC Buying Advice</strong> — Need guidance on what kind of computer to buy for your AI needs? Just ask!</li>
+                    <li>⚡ <strong>GPU Acceleration</strong> — Want to speed up your models with GPU? I can help you set it up.</li>
+                    <li>📦 <strong>Model Selection</strong> — Not sure which model to download? I'll recommend the best one for your needs.</li>
+                    <li>❓ <strong>General Questions</strong> — Curious about how something works? Want to understand GGUF better?</li>
+                    <li>💡 <strong>Feature Requests</strong> — Have an idea that would make GGUF Loader better? I'd love to hear it!</li>
+                    <li>🔌 <strong>App Integration</strong> — Need help deploying AI to your own app or project? I can guide you.</li>
+                    <li>🌐 <strong>Local AI Beyond GGUF Loader</strong> — Want to run local AI using other tools or methods? Happy to help with that too!</li>
+                </ul>
+            </section>
+
+            <section class="contact-section">
+                <div class="container">
+                    <h2>Before You Reach Out</h2>
+                    <p>You might find your answer in these resources — but if not, I'm just a message away!</p>
+
+                    <div class="contact-buttons">
+                        <a href="faq.html" class="contact-button">Check the FAQ</a>
+                        <a href="guides.html" class="contact-button">Browse Guides</a>
+                        <a href="https://github.com/ggufloader/gguf-loader/issues" target="_blank" class="contact-button">GitHub Issues</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-form-section">
+                <div class="container">
+                    <div class="text-center">
+                        <h2>Send Me a Message</h2>
+                        <p>Describe what's happening and I'll do my best to help. The more details you share, the faster we can solve it!</p>
+                    </div>
+
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <!-- Status Message Area -->
+                        <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
+
+                        <p class="required-note">* Required fields</p>
+
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required aria-required="true"
+                                aria-describedby="name-error" minlength="2" maxlength="100">
+                            <span id="name-error" class="error-message">Please enter your name (at least 2
+                                characters)</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required aria-required="true"
+                                aria-describedby="email-error" placeholder="your.email@example.com">
+                            <span id="email-error" class="error-message">Please enter a valid email address</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">What's the issue about?</label>
+                            <input type="text" id="subject" name="subject" maxlength="200"
+                                placeholder="e.g., Model won't load, Setup error, etc.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Type of Help Needed</label>
+                            <select id="service" name="service" aria-label="Select help type">
+                                <option value="">Select an option (optional)</option>
+                                <option value="setup-help">Setup / Installation Help</option>
+                                <option value="agentic-mode">Agentic Mode Setup / Usage</option>
+                                <option value="model-issue">Model Not Working</option>
+                                <option value="performance">Performance / Speed Issues</option>
+                                <option value="gpu-acceleration">GPU Acceleration Setup</option>
+                                <option value="hardware-question">Hardware / Compatibility Question</option>
+                                <option value="model-selection">Model Selection / Recommendation</option>
+                                <option value="how-to">How-To Question</option>
+                                <option value="bug-report">Bug Report</option>
+                                <option value="feature-request">Feature Request / Suggestion</option>
+                                <option value="other">Something Else</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">Tell me what's happening *</label>
+                            <textarea id="message" name="message" rows="6" required aria-required="true"
+                                aria-describedby="message-error" minlength="10" maxlength="2000"
+                                placeholder="Describe the issue you're facing, what you've tried, and any error messages you're seeing..."></textarea>
+                            <span id="message-error" class="error-message">Please enter a message (at least 10
+                                characters)</span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <button type="submit" class="submit-button" id="submitButton">
+                                <span class="spinner"></span>
+                                <span class="button-text">Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a
+                    href="guides.html">Guides</a> | <a href="blog.html">Blog</a> | <a href="need-help.html">Need Help?</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+
+                    if (navMenu.style.display === 'block' || navMenu.classList.contains('show')) {
+                        navMenu.style.display = 'none';
+                        navMenu.classList.remove('show');
+                    } else {
+                        navMenu.style.display = 'block';
+                        navMenu.classList.add('show');
+                    }
+                });
+            }
+        });
+
+        // ============================================
+        // Form Validation Functions
+        // ============================================
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldName = field.name;
+            let isValid = true;
+            let errorMsg = '';
+
+            // Clear previous error state
+            field.classList.remove('error');
+            const errorElement = document.getElementById(`${fieldName}-error`);
+            if (errorElement) {
+                errorElement.classList.remove('show');
+            }
+
+            // Validate based on field type
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+                errorMsg = `${field.labels[0].textContent.replace('*', '').trim()} is required`;
+            } else if (fieldName === 'email' && value && !validateEmail(value)) {
+                isValid = false;
+                errorMsg = 'Please enter a valid email address';
+            } else if (field.hasAttribute('minlength') && value.length < field.getAttribute('minlength')) {
+                isValid = false;
+                errorMsg = `Please enter at least ${field.getAttribute('minlength')} characters`;
+            }
+
+            // Show error if invalid
+            if (!isValid && errorElement) {
+                field.classList.add('error');
+                errorElement.textContent = errorMsg;
+                errorElement.classList.add('show');
+            }
+
+            return isValid;
+        }
+
+        function validateForm(form) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+
+        // ============================================
+        // Status Message Functions
+        // ============================================
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('formStatus');
+            statusElement.textContent = message;
+            statusElement.className = `form-status ${type}`;
+            statusElement.style.display = 'block';
+
+            // Scroll to status message
+            statusElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusElement.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function hideStatus() {
+            const statusElement = document.getElementById('formStatus');
+            statusElement.style.display = 'none';
+        }
+
+        // ============================================
+        // Contact Form Setup
+        // ============================================
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            const submitButton = document.getElementById('submitButton');
+
+            // Check if form elements exist
+            if (!form) {
+                console.error('Contact form not found!');
+                return;
+            }
+            if (!submitButton) {
+                console.error('Submit button not found!');
+                return;
+            }
+
+            console.log('✓ Setting up contact form...');
+
+            // Add real-time validation
+            const fields = form.querySelectorAll('input, textarea');
+            fields.forEach(field => {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('error')) {
+                        validateField(field);
+                    }
+                });
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Hide any previous status messages
+                hideStatus();
+
+                // Validate form
+                if (!validateForm(form)) {
+                    showStatus('Please fix the errors above before submitting.', 'error');
+                    return;
+                }
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.classList.add('loading');
+
+                // Check if emailjs is available
+                if (typeof emailjs === 'undefined' || !emailjs.send) {
+                    console.error('EmailJS library is not loaded or initialized properly.');
+                    showStatus('EmailJS service is not available. Please email me directly at hossainnazary475@gmail.com', 'error');
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('loading');
+                    return;
+                }
+
+                // Get form values
+                const formData = {
+                    from_name: document.getElementById('name').value.trim(),
+                    from_email: document.getElementById('email').value.trim(),
+                    subject: document.getElementById('subject').value.trim() || 'No Subject',
+                    service_interested: document.getElementById('service').value || 'Not specified',
+                    message: document.getElementById('message').value.trim(),
+                    reply_to: document.getElementById('email').value.trim()
+                };
+
+                // Send email using EmailJS with configured values
+                emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, formData)
+                    .then(function (response) {
+                        console.log('Email sent successfully!', response.status, response.text);
+                        showStatus('✓ Thank you for your message! I will get back to you as soon as possible.', 'success');
+                        form.reset();
+
+                        // Clear any error states
+                        fields.forEach(field => {
+                            field.classList.remove('error');
+                            const errorElement = document.getElementById(`${field.name}-error`);
+                            if (errorElement) {
+                                errorElement.classList.remove('show');
+                            }
+                        });
+                    })
+                    .catch(function (error) {
+                        console.error('EmailJS Error:', error);
+
+                        // Detailed error handling
+                        let errorMessage = 'There was an issue sending your message. ';
+
+                        if (error && error.status) {
+                            switch (error.status) {
+                                case 401:
+                                    errorMessage += 'Authentication failed. Please contact me directly at hossainnazary475@gmail.com';
+                                    break;
+                                case 404:
+                                    errorMessage += 'Service configuration error. Please contact me directly at hossainnazary475@gmail.com';
+                                    break;
+                                case 429:
+                                    errorMessage += 'Too many requests. Please try again in a few minutes or email me at hossainnazary475@gmail.com';
+                                    break;
+                                case 500:
+                                    errorMessage += 'Server error. Please try again later or email me at hossainnazary475@gmail.com';
+                                    break;
+                                default:
+                                    errorMessage += `Please email me directly at hossainnazary475@gmail.com`;
+                            }
+                        } else {
+                            errorMessage += 'Please email me directly at hossainnazary475@gmail.com';
+                        }
+
+                        showStatus(errorMessage, 'error');
+                    })
+                    .finally(function () {
+                        // Reset button state
+                        submitButton.disabled = false;
+                        submitButton.classList.remove('loading');
+                    });
+            });
+        }
+
+        // ============================================
+        // Initialize EmailJS and Form
+        // ============================================
+        function initializeEmailJS() {
+            console.log('Initializing EmailJS...');
+            console.log('EmailJS available:', typeof emailjs !== 'undefined');
+            console.log('Config:', EMAILJS_CONFIG);
+
+            if (typeof emailjs !== 'undefined') {
+                try {
+                    emailjs.init(EMAILJS_CONFIG.publicKey);
+                    console.log('✓ EmailJS initialized successfully');
+                    setupContactForm();
+                } catch (error) {
+                    console.error('✗ EmailJS initialization error:', error);
+                    setupFallbackForm();
+                }
+            } else {
+                console.error('✗ EmailJS library not loaded');
+                setupFallbackForm();
+            }
+        }
+
+        // Fallback form handler when EmailJS is not available
+        function setupFallbackForm() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    showStatus('EmailJS service is not available. Please email me directly at hossainnazary475@gmail.com', 'error');
+                });
+            }
+        }
+
+        // Wait for DOM to be ready, then initialize
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+                console.log('DOM loaded, checking EmailJS...');
+                // Give EmailJS library a moment to load
+                setTimeout(initializeEmailJS, 100);
+            });
+        } else {
+            // DOM is already ready
+            console.log('DOM already loaded, checking EmailJS...');
+            setTimeout(initializeEmailJS, 100);
+        }
+    </script>
+</body>
+
+</html>

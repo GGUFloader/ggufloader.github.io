@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGUF Loader Blog - Learn About Local AI</title>
+    <meta name="description" content="Latest news, updates, and insights about GGUF Loader and local AI deployment">
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <style>
+        .blog-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        .blog-header h1 { margin: 0 0 1rem 0; font-size: 2.5rem; }
+        .blog-header p { margin: 0; opacity: 0.9; font-size: 1.2rem; }
+        .blog-container { max-width: 900px; margin: 0 auto; padding: 0 1rem 3rem; }
+        .blog-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: #667eea; }
+        .stat-label { font-size: 0.85rem; color: #6c757d; }
+        .blog-section-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+        .blog-post {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .blog-post:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+        .blog-post.featured { border-left-color: #f39c12; background: linear-gradient(135deg, #fffbf0 0%, #ffffff 100%); }
+        .blog-post.coming-soon { opacity: 0.7; border-left-color: #95a5a6; }
+        .blog-post h3 { margin: 0 0 0.5rem 0; color: #2c3e50; font-size: 1.25rem; }
+        .blog-post h3 a { color: inherit; text-decoration: none; }
+        .blog-post h3 a:hover { color: #667eea; }
+        .blog-post-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; font-size: 0.85rem; }
+        .blog-post-date { color: #6c757d; }
+        .blog-post-tag { background: #e3f2fd; color: #1976d2; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+        .blog-post-tag.new { background: #e8f5e9; color: #388e3c; }
+        .blog-post-tag.popular { background: #fff3e0; color: #f57c00; }
+        .blog-post-excerpt { line-height: 1.7; color: #495057; margin-bottom: 1rem; }
+        .blog-post-excerpt p { margin: 0; }
+        .read-more { display: inline-flex; align-items: center; gap: 0.5rem; color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        .read-more:hover { color: #764ba2; }
+        .model-highlight { background: #f8f9fa; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+        .model-highlight h4 { margin: 0 0 0.5rem 0; color: #495057; font-size: 0.9rem; }
+        .model-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .model-badge { background: white; border: 1px solid #dee2e6; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.8rem; color: #495057; }
+        @media (max-width: 768px) {
+            .blog-header { padding: 2.5rem 1rem; }
+            .blog-header h1 { font-size: 1.8rem; }
+            .blog-stats { grid-template-columns: repeat(2, 1fr); }
+            .blog-post { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" class="active">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="blog-header">
+            <div class="container">
+                <h1>📚 GGUF Loader Blog</h1>
+                <p>Latest news, tutorials, and insights about local AI deployment</p>
+            </div>
+        </section>
+
+        <div class="blog-container">
+            <div class="blog-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">GGUF Models Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">v3</div>
+                    <div class="stat-label">Latest GGUF Format</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">128K</div>
+                    <div class="stat-label">Max Context Length</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">Size Reduction via Quantization</div>
+                </div>
+            </div>
+
+            <h2 class="blog-section-title">📖 Published Articles (14 Guides)</h2>
+
+            <article class="blog-post featured">
+                <h3><a href="what-is-gguf.html">What is GGUF? Complete Guide to GGUF Format</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 December 2025</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Beginner</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Everything you need to know about GGUF format - what it is, quantization types (Q4_K_M, Q5_K_M, Q6_K), memory requirements, and why it's the standard for local AI.</p>
+                </div>
+                <a href="what-is-gguf.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post featured">
+                <h3><a href="how-to-run-gguf-models.html">How to Run GGUF Models Locally - Step by Step</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 December 2025</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Tutorial</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Complete beginner's guide to running AI models locally. No Python or command line required. Works on Windows, Mac, and Linux.</p>
+                </div>
+                <a href="how-to-run-gguf-models.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post featured">
+                <h3><a href="gguf-memory-calculator.html">GGUF Memory Calculator - RAM Requirements Guide</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 December 2025</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Technical</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Calculate RAM requirements for GGUF models. Detailed memory usage for Mistral 7B, Llama, Qwen with Q4_K_M, Q5_K_M quantization.</p>
+                </div>
+                <a href="gguf-memory-calculator.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post featured">
+                <h3><a href="download-gguf-models.html">Where to Download GGUF Models - Best Sources</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 December 2025</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Resources</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Direct download links to popular GGUF models. Find Mistral, Llama, Qwen, DeepSeek models on HuggingFace from TheBloke, bartowski, and official sources.</p>
+                </div>
+                <a href="download-gguf-models.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post featured">
+                <h3><a href="addon-guide.html">How to Create Addons for GGUF Loader - Complete Guide</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 December 2024</span>
+                    <span class="blog-post-tag popular">Popular</span>
+                    <span class="blog-post-tag">Development</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Learn how to create custom addons for GGUF Loader 2.0.0. Covers addon architecture, creating your first addon, advanced features, best practices, and distribution.</p>
+                </div>
+                <a href="addon-guide.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post featured">
+                <h3><a href="2025-07-07-top-10-gguf-models-i5-16gb.html">Top 10 GGUF Models for i5 + 16GB RAM Systems</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 July 2025</span>
+                    <span class="blog-post-tag new">Updated</span>
+                    <span class="blog-post-tag">Models</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Curated list of the best GGUF models for Intel i5 + 16GB RAM. Includes benchmarks, quantization recommendations (Q4_K_M, Q5_K_M), and real-world use cases.</p>
+                </div>
+                <div class="model-highlight">
+                    <h4>Featured Models:</h4>
+                    <div class="model-list">
+                        <span class="model-badge">Llama 3.3 70B</span>
+                        <span class="model-badge">Qwen 2.5</span>
+                        <span class="model-badge">Mistral 7B</span>
+                        <span class="model-badge">DeepSeek V3</span>
+                        <span class="model-badge">Phi-3</span>
+                    </div>
+                </div>
+                <a href="2025-07-07-top-10-gguf-models-i5-16gb.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <h2 class="blog-section-title">🏢 Use Cases & Industry Applications</h2>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-customer-support.html">How Local AI Automates Customer Support</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Learn how local AI automates ticket classification, email routing, response suggestions, and sentiment analysis while protecting customer privacy and PII data on-device.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-customer-support.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-finance.html">How Local AI Automates Finance Operations</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Discover how local AI handles invoice processing, expense categorization, financial reporting, and compliance checks securely without cloud dependencies.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-finance.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-manufacturing.html">How Local AI Automates Manufacturing</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Explore AI-powered quality control, predictive maintenance, production optimization, and supply chain management in manufacturing environments.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-manufacturing.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-marketing.html">How Local AI Automates Marketing Tasks</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Learn about content generation, campaign analysis, customer segmentation, and marketing automation with privacy-first local AI.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-marketing.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-healthcare-admin-tasks.html">How Local AI Automates Healthcare Admin</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Discover how local AI streamlines patient records, appointment scheduling, medical documentation, and HIPAA-compliant data processing.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-healthcare-admin-tasks.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-legal-tasks.html">How Local AI Automates Legal Tasks</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Explore contract analysis, document review, legal research automation, and case management with privacy-first AI for law firms.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-legal-tasks.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-hr-recruiting.html">How Local AI Automates HR & Recruiting</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Learn about resume screening, candidate matching, interview scheduling, and employee onboarding automation with local AI.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-hr-recruiting.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <article class="blog-post">
+                <h3><a href="use-cases/how-local-ai-automates-ecommerce-retail-tasks.html">How Local AI Automates E-commerce & Retail</a></h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 February 2026</span>
+                    <span class="blog-post-tag new">New</span>
+                    <span class="blog-post-tag">Use Case</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Discover product recommendations, inventory management, customer insights, and order processing automation with local AI.</p>
+                </div>
+                <a href="use-cases/how-local-ai-automates-ecommerce-retail-tasks.html" class="read-more">Read full guide →</a>
+            </article>
+
+            <h2 class="blog-section-title">🚀 Coming Soon</h2>
+
+            <article class="blog-post coming-soon">
+                <h3>Understanding GGUF Format and Quantization in 2025</h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 Coming Soon</span>
+                    <span class="blog-post-tag">Technical</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Deep dive into GGUF v3 format by Georgi Gerganov and llama.cpp. Learn about Unsloth's Dynamic 2.0 GGUFs achieving 75% size reduction. Compare Q2_K through Q8_0 quantization levels.</p>
+                </div>
+                <div class="model-highlight">
+                    <h4>Topics:</h4>
+                    <div class="model-list">
+                        <span class="model-badge">GGUF v3 Format</span>
+                        <span class="model-badge">Dynamic Quantization</span>
+                        <span class="model-badge">llama.cpp</span>
+                        <span class="model-badge">Memory Optimization</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-post coming-soon">
+                <h3>Privacy-First AI: Why Local Processing Matters in 2025</h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 Coming Soon</span>
+                    <span class="blog-post-tag">Privacy</span>
+                    <span class="blog-post-tag">Enterprise</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>AI incidents jumped 56.4% in 2024 (Stanford AI Index). Learn why 90% of organizations prefer local storage and how enterprises adopt private AI for healthcare, legal, and business.</p>
+                </div>
+                <div class="model-highlight">
+                    <h4>Key Benefits:</h4>
+                    <div class="model-list">
+                        <span class="model-badge">Complete Data Privacy</span>
+                        <span class="model-badge">No Cloud Dependencies</span>
+                        <span class="model-badge">Regulatory Compliance</span>
+                        <span class="model-badge">Cost Efficiency</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-post coming-soon">
+                <h3>Best Open Source LLMs for Local Deployment in 2025</h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 Coming Soon</span>
+                    <span class="blog-post-tag">Models</span>
+                    <span class="blog-post-tag new">New</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Compare latest GGUF models: Llama 4 (10M context), DeepSeek V3 671B (quantized to 185GB), Qwen 2.5, and more. Find the best model for your hardware.</p>
+                </div>
+                <div class="model-highlight">
+                    <h4>2025 Models:</h4>
+                    <div class="model-list">
+                        <span class="model-badge">Llama 4 (10M ctx)</span>
+                        <span class="model-badge">DeepSeek V3.1</span>
+                        <span class="model-badge">Qwen 2.5</span>
+                        <span class="model-badge">Mistral Large 2</span>
+                        <span class="model-badge">Llama 3.3 70B</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-post coming-soon">
+                <h3>Running DeepSeek V3 Locally with GGUF</h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 Coming Soon</span>
+                    <span class="blog-post-tag">Tutorial</span>
+                    <span class="blog-post-tag">Advanced</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Run DeepSeek V3 (671B params) locally using Unsloth Dynamic 2.0 GGUFs. Quantization reduces 720GB to 185GB (75% reduction) with near-perfect accuracy.</p>
+                </div>
+            </article>
+
+            <article class="blog-post coming-soon">
+                <h3>Optimizing Performance on Limited Hardware</h3>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">📅 Coming Soon</span>
+                    <span class="blog-post-tag">Performance</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>Run AI efficiently on limited RAM. Learn about SLMs, optimal quantization, and maximizing performance without sacrificing quality.</p>
+                </div>
+                <div class="model-highlight">
+                    <h4>Hardware Guide:</h4>
+                    <div class="model-list">
+                        <span class="model-badge">4GB → 3B models</span>
+                        <span class="model-badge">8GB → 7B models</span>
+                        <span class="model-badge">16GB → 13B models</span>
+                        <span class="model-badge">32GB+ → 70B models</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="guides.html">Guides</a> | <a href="blog.html">Blog</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+        });
+    </script>
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>
