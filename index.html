@@ -8,7 +8,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="GGUF Loader with its floating button - Enterprise-Grade Local AI Deployment Platform" />
     <meta property="og:description"
-        content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant." />
+        content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant and Agentic Mode for autonomous coding." />
     <meta property="og:url" content="https://ggufloader.github.io/" />
     <meta property="og:image" content="https://ggufloader.github.io/preview.png" />
     <meta property="og:image:width" content="1200" />
@@ -22,7 +22,7 @@
     <meta name="twitter:creator" content="@ggufloader" />
     <meta name="twitter:title" content="GGUF Loader with its floating button - Enterprise-Grade Local AI Deployment Platform" />
     <meta name="twitter:description"
-        content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant." />
+        content="Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant and Agentic Mode for autonomous coding." />
     <meta name="twitter:image" content="https://ggufloader.github.io/preview.png" />
     <meta name="twitter:image:alt" content="GGUF Loader with its floating button - Enterprise-Grade Local AI Platform" />
 
@@ -41,9 +41,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="GGUF Loader with its floating button - Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python. Click-and-run AI with full privacy and Smart Floating Assistant." />
+        content="GGUF Loader with its floating button - Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python. Click-and-run AI with full privacy, Smart Floating Assistant, and Agentic Mode for autonomous coding." />
     <meta name="keywords"
-        content="GGUF, local AI, offline AI, Mistral, LLaMA, DeepSeek, Windows AI, Mac AI, Linux AI, private AI, enterprise AI, air-gapped AI, GDPR compliant AI, Smart Floating Assistant, addon system" />
+        content="GGUF, local AI, offline AI, Mistral, LLaMA, DeepSeek, Windows AI, Mac AI, Linux AI, private AI, enterprise AI, air-gapped AI, GDPR compliant AI, Smart Floating Assistant, addon system, agentic mode, autonomous coding assistant" />
     <meta name="author" content="Hussain Nazary" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -925,8 +925,8 @@
         "description": "Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": ["Windows", "macOS", "Linux"],
-        "softwareVersion": "2.0.0",
-        "releaseNotes": "Enhanced addon system with Smart Floating Assistant",
+        "softwareVersion": "2.1.1",
+        "releaseNotes": "Agentic Mode - Transform your local AI into an autonomous coding assistant",
         "downloadUrl": "https://github.com/ggufloader/gguf-loader/releases",
         "installUrl": "https://pypi.org/project/ggufloader/",
         "softwareRequirements": "Python 3.8+, 4GB RAM minimum, 8GB RAM recommended",
@@ -965,6 +965,7 @@
         "featureList": [
             "Offline AI model execution",
             "Smart Floating Assistant",
+            "Agentic Mode for autonomous coding",
             "Multi-model support (Mistral, LLaMA, DeepSeek)",
             "Cross-platform compatibility",
             "Addon system for extensibility",
@@ -1564,11 +1565,10 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 id="hero-heading">GGUF Loader</h1>
-                    <p class="hero-subtitle" role="doc-subtitle"> With its floating button The simplest way to run powerful AI models locally on
-                        your computer.</p>
+                    <p class="hero-subtitle" role="doc-subtitle">🎉 NEW: Agentic Mode Now Available! Transform your local AI into an autonomous coding assistant.</p>
                     <p class="hero-description">
                         Run popular open-source AI models like Mistral, LLaMA, and DeepSeek on Windows, macOS, or Linux.
-                        No Python, no command line, and no internet required. Just click and run.
+                        No Python, no command line, and no internet required. Just click and run. Now with Agentic Mode for autonomous file management and coding tasks.
                     </p>
 
                     <div class="cta-section">
@@ -1580,16 +1580,16 @@
             </div>
         </section>
 
-        <!-- Demo Video Section -->
-        <section id="demo" class="demo-video-section section" aria-labelledby="demo-heading">
+        <!-- Screenshot Section -->
+        <section id="screenshot" class="screenshot-section section" aria-labelledby="screenshot-heading">
             <div class="container">
-                <h2 id="demo-heading">See It in Action</h2>
-                <div class="video-container responsive-embed">
-                    <iframe src="https://www.youtube.com/embed/5lQui7EeUe0?si=CeScD6yc3-Q5R4qz"
-                        title="GGUF Loader demonstration video"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen loading="lazy">
-                    </iframe>
+                <h2 id="screenshot-heading">GGUF Loader Interface</h2>
+                <div class="responsive-image">
+                    <img src="ggufloader_screen.png" 
+                         alt="GGUF Loader application interface showing the main window with model loading and chat features" 
+                         loading="lazy"
+                         width="1200"
+                         height="800">
                 </div>
             </div>
         </section>
@@ -1601,20 +1601,30 @@
                 <div class="download-content">
                     <article class="download-option">
                         <h3><span aria-hidden="true">🪟</span> Windows</h3>
-                        <p>Standalone executable. No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.0/GGUFLoader_v2.1.0.exe"
+                        <p>Standalone executable with Agentic Mode. No dependencies needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.1/GGUFLoader_v2.1.1.agentic_mode.exe"
                             class="download-button">
-                            Download for Windows
+                            Download v2.1.1 Agentic Mode
                         </a>
                     </article>
                     <article class="download-option">
                         <h3><span aria-hidden="true">🍎</span> macOS</h3>
-                        <p>Install via pip and run from your terminal.</p>
+                        <p>Download ZIP and run with launch.sh script. No installation needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/archive/refs/heads/main.zip"
+                            class="download-button">
+                            Download ZIP for macOS
+                        </a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Or install via pip:</p>
                         <div class="code-block"><code>pip install ggufloader</code></div>
                     </article>
                     <article class="download-option">
                         <h3><span aria-hidden="true">🐧</span> Linux</h3>
-                        <p>Install via pip and run from your terminal.</p>
+                        <p>Download ZIP and run with launch.sh script. No installation needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/archive/refs/heads/main.zip"
+                            class="download-button">
+                            Download ZIP for Linux
+                        </a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Or install via pip:</p>
                         <div class="code-block"><code>pip install ggufloader</code></div>
                     </article>
                 </div>
@@ -1738,6 +1748,10 @@
                         <h3>Core Features</h3>
                         <div class="features-grid" role="list" aria-label="GGUF Loader core features">
                             <article class="feature-card" role="listitem">
+                                <h4>🤖 Agentic Mode</h4>
+                                <p>Advanced reasoning and task automation with multi-step problem solving. AI can read, create, edit, and organize files autonomously in your workspace.</p>
+                            </article>
+                            <article class="feature-card" role="listitem">
                                 <h4>Multi-Model Support</h4>
                                 <p>Supports all major GGUF-format models including Mistral, LLaMA, DeepSeek, Gemma, and
                                     TinyLLaMA.</p>
@@ -1847,7 +1861,8 @@
 
                         <div class="models-grid" role="list" aria-label="Available GGUF models for download">
                             <article class="model-category" role="listitem">
-                                <h4>🧠 Mistral-7B Instruct</h4>
+                                <h4>🧠 Mistral-7B Instruct ⭐ Recommended for Agentic Mode</h4>
+                                <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 0.5rem;">Excellent reasoning and task automation capabilities. Perfect for agentic workflows and multi-step problem solving.</p>
                                 <div class="model-downloads" role="list"
                                     aria-label="Mistral-7B Instruct download options">
                                     <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_0.gguf"
