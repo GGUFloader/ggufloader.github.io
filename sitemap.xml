@@ -182,9 +182,227 @@
 
     <url>
         <loc>https://ggufloader.github.io/blog.html</loc>
-        <lastmod>2025-12-25</lastmod>
+        <lastmod>2026-02-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <!-- Use Cases / Blog Posts -->
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-customer-support.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-finance.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-manufacturing.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-marketing.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-healthcare-admin-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-legal-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-hr-recruiting.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-ecommerce-retail-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-insurance.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-energy-utilities.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-procurement.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-tech-and-saas-operations.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-non-profits-ngos.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-travel.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-banking-credit-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-compliance-auditing-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-education-training-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-event-management-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-government-public-services-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-logistics-supply-chain-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-logistics-warehouse-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-market-research-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-media-publishing-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-media-rights-licensing-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-real-estate-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-real-time-monitoring-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-research-academia-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-retail-banking-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-supply-chain-analytics-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-telecommunications-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://ggufloader.github.io/use-cases/how-local-ai-automates-automotive-fleet-management-tasks.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 
 </urlset>

@@ -812,3 +812,29 @@ img[loading="lazy"].loaded {
         text-decoration: underline;
     }
 }
+
+
+/* ============================================
+   IMAGE FIX - Ensure images are always visible
+   ============================================ */
+img {
+    opacity: 1 !important;
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Override any loading states that hide images */
+img.loading,
+img.lazy,
+img[loading] {
+    opacity: 1 !important;
+    display: block !important;
+}
+
+/* Ensure figure images display properly */
+figure img {
+    opacity: 1 !important;
+    display: block !important;
+    margin: 0 auto;
+}
