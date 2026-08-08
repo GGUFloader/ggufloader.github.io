@@ -61,17 +61,46 @@
 
     <link rel="stylesheet" href="styles.min.css">
     <link rel="stylesheet" href="mobile-fixes.css">
+<style>
+        .article-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #0078d4 0%, #3498db 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,120,212,0.15); }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .article-header p { font-size: 1.05rem; opacity: 0.95; margin: 0; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #0078d4; padding-bottom: 10px; margin-bottom: 20px; }
+        .content-section h3 { color: #0078d4; margin: 20px 0 10px; }
+        .content-section ul, .content-section ol { padding-left: 1.5rem; margin: 10px 0; }
+        .content-section li { margin-bottom: 8px; }
+        .content-section a { color: #0078d4; }
+        .content-section a:hover { text-decoration: underline; }
+        blockquote { background: #f0f7fd; border-left: 4px solid #0078d4; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.6rem; }
+            .content-section { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">GGUF Loader</a>
-            <ul>
-                <li><a href="index.html#features-philosophy">Features</a></li>
-                <li><a href="guides.html">Guides</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" class="active">Blog</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 

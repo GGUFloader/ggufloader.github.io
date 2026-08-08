@@ -119,17 +119,48 @@
 
     <link rel="stylesheet" href="styles.min.css">
     <link rel="stylesheet" href="mobile-fixes.css">
+<style>
+        .article-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #0078d4 0%, #3498db 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,120,212,0.15); }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .article-header p { font-size: 1.05rem; opacity: 0.95; margin: 0; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #0078d4; padding-bottom: 10px; margin-bottom: 20px; }
+        .content-section h3 { color: #0078d4; margin: 20px 0 10px; }
+        .content-section ul, .content-section ol { padding-left: 1.5rem; margin: 10px 0; }
+        .content-section li { margin-bottom: 8px; }
+        .content-section a { color: #0078d4; }
+        .content-section a:hover { text-decoration: underline; }
+        blockquote { background: #f0f7fd; border-left: 4px solid #0078d4; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+        .code-block { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px 20px; margin: 15px 0; overflow-x: auto; }
+        .code-block pre { margin: 0; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; color: #2c3e50; }
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.6rem; }
+            .content-section { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">GGUF Loader</a>
-            <ul>
-                <li><a href="index.html#features-philosophy">Features</a></li>
-                <li><a href="guides.html">Guides</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" class="active">Blog</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -143,18 +174,19 @@
 
         <article>
             <section class="content-section">
-                <h2>Legal research shouldn't mean digging through hundreds of pages</h2>
-                <p>Searching contracts is slow, important clauses get missed, and online AI tools mean shipping confidential documents to someone else's server. <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener">Lawyer Assistant</a> sits in between: a desktop app that does real retrieval over <em>your</em> files — <strong>100% private, runs on your machine, no cloud required</strong>.</p>
+                <h2>Why citation-verified answers matter more than ever</h2>
+                <p>Legal AI got a wake-up call in 2023. The <em>Mata v. Avianca</em> case — where lawyers filed a ChatGPT-drafted brief full of fabricated citations and were sanctioned <strong>$5,000</strong> — showed exactly what happens when an AI answers from memory instead of your documents. Then Stanford's benchmark study confirmed the scope of the problem: even the best commercial legal AI produces incorrect or unsupported answers <strong>17-33% of the time</strong>, and general-purpose chatbots hallucinate far more.</p>
+                <p>The fix is architectural, not aspirational: an AI that only answers from documents it can point to, page by page. That's the design philosophy behind <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener">Lawyer Assistant</a> — a desktop app that does real retrieval over <em>your</em> files, <strong>100% privately, on your machine, with no cloud required</strong>.</p>
                 <p>It's an open-source project (MIT license, <a href="https://github.com/haal-lab/Lawyer-Assistant" target="_blank" rel="noopener">haal-lab/Lawyer-Assistant on GitHub</a>) built with the same local-first philosophy as GGUF Loader: your data never leaves your computer.</p>
             </section>
 
             <section class="content-section">
                 <h2>What Lawyer Assistant actually does</h2>
                 <h3>1. Ask questions in plain English — get answers with page numbers</h3>
-                <p>Type "What are the payment terms?" or "Can I terminate this contract early?" and the app searches every document in your workspace, then answers with the <strong>exact source</strong>: document name, page number, and a preview of the relevant text. No guessing — every claim is backed by a passage you can open and verify.</p>
+                <p>Type "What are the payment terms?" or "Can I terminate this contract early?" and the app searches every document in your workspace, then answers with the <strong>exact source</strong>: document name, page number, and a preview of the relevant text. No guessing — every claim is backed by a passage you can open and verify. In a profession where even top commercial tools are wrong one time in six, an answer you can verify in seconds is the difference between useful and dangerous.</p>
 
                 <h3>2. Scan contracts for risky clauses automatically</h3>
-                <p>One click flags the clauses lawyers care about: unlimited liability, automatic renewal, broad indemnification, vague payment terms, missing termination rights. Each finding is rated <strong>High / Medium / Low risk</strong> and explained in plain English.</p>
+                <p>One click flags the clauses lawyers care about: unlimited liability, automatic renewal, broad indemnification, vague payment terms, missing termination rights. Each finding is rated <strong>High / Medium / Low risk</strong> and explained in plain English — the same pattern used by enterprise tools like Luminance and Kira, without the per-document subscription fees.</p>
 
                 <h3>3. Works with the documents you already have</h3>
                 <ul>
@@ -178,7 +210,7 @@ Works with no subscription    Bring your own key, your choice
 Nothing ever leaves the PC    Only the needed text is sent,
                               never your full documents</pre>
                 </div>
-                <p>In local mode everything runs on your hardware — ingest, index, search, and answering — so no question, document, or answer ever touches a third-party server. In API mode, only the small retrieved passage needed for the answer goes to your chosen provider, and that's shown clearly in the app.</p>
+                <p>In local mode everything runs on your hardware — ingest, index, search, and answering — so no question, document, or answer ever touches a third-party server. That directly addresses the confidentiality duty under <strong>ABA Model Rule 1.6</strong> and the guidance in <strong>ABA Formal Opinion 512</strong>: no retention, no training on client data, nothing to audit. In API mode, only the small retrieved passage needed for the answer goes to your chosen provider, and that's shown clearly in the app.</p>
                 <p>That makes it a genuinely practical <strong>legal document chatbot</strong> for solo lawyers, small firms, and legal teams that care about attorney–client privilege — a design goal, not a checkbox.</p>
             </section>
 
@@ -207,7 +239,7 @@ Nothing ever leaves the PC    Only the needed text is sent,
 
             <section class="content-section">
                 <h2>Why it matters for legal AI</h2>
-                <p>Generic AI chatbots answer from memory and can guess. Cloud "legal AI" tools hold your documents hostage and charge per-document subscription fees. <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener">Lawyer Assistant</a> answers only from your own documents, cites every source, runs offline, and is free forever — no account, no cloud, no lock-in.</p>
+                <p>Generic AI chatbots answer from memory and can guess — the behavior that produced <em>Mata v. Avianca</em>. Cloud "legal AI" tools hold your documents hostage and charge per-document subscription fees, while raising retention and training questions under Rule 1.6. <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener">Lawyer Assistant</a> answers only from your own documents, cites every source, runs offline, and is free forever — no account, no cloud, no lock-in.</p>
                 <p>If you do legal research, contract review, or compliance work, it's worth a look. The website has full docs, installers for all three platforms, and a deep dive into how the retrieval pipeline works: <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener">lawyers-assistant.github.io</a>.</p>
             </section>
 
