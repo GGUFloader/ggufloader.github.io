@@ -1028,8 +1028,88 @@
             }
         }
 
-        /* The announcement stays light regardless of system dark mode so it
-           always reads as bright, welcoming launch news. */
+        /* The announcement follows the site's theme like every other section,
+           including a dark-mode variant via prefers-color-scheme. */
+        @media (prefers-color-scheme: dark) {
+            .lawyer-recommend-section {
+                background: #1e1e1e;
+                border-color: #3a3a3a;
+                border-left-color: #3498db;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .lawyer-recommend-section h2,
+            .lawyer-recommend-feature h3 {
+                color: #ffffff;
+            }
+
+            .lawyer-recommend-section .lawyer-recommend-intro {
+                color: #b0b0b0;
+            }
+
+            .lawyer-recommend-dateline,
+            .lawyer-recommend-ui-label {
+                color: #8a8a8a;
+            }
+
+            .lawyer-recommend-feature {
+                background: #2a2a2a;
+                border-color: #3a3a3a;
+            }
+
+            .lawyer-recommend-feature p {
+                color: #b0b0b0;
+            }
+
+            .lawyer-recommend-badge {
+                background: #2d4a5c;
+                color: #5dade2;
+                border-color: #2d4a5c;
+            }
+
+            .lawyer-recommend-ui {
+                background: #121212;
+                border-color: #3a3a3a;
+            }
+
+            .lawyer-recommend-btn-secondary {
+                background: #2a2a2a;
+                color: #ffffff;
+                border-color: #4a4a4a;
+            }
+
+            .recommend-card {
+                background: #1e1e1e;
+                border-color: #3a3a3a;
+                border-top-color: #3498db;
+            }
+
+            .recommend-card h3 {
+                color: #ffffff;
+            }
+
+            .recommend-card h3 a:hover {
+                color: #5dade2;
+            }
+
+            .recommend-card p {
+                color: #b0b0b0;
+            }
+
+            .recommend-card-tag {
+                background: #2d4a5c;
+                color: #5dade2;
+                border-color: #2d4a5c;
+            }
+
+            .recommend-card-link {
+                color: #5dade2;
+            }
+
+            .recommend-card-link:hover {
+                color: #7fb3e8;
+            }
+        }
 
         @media (max-width: 768px) {
             .recommend-card {
