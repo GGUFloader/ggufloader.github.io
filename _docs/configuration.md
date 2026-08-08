@@ -12,321 +12,79 @@ reading_time: "10 minutes"
 
 # Configuration Guide
 
-This guide covers all configuration options available in GGUF Loader 2.0.0.
+Most GGUF Loader settings are controlled from the in-app UI (sidebar + menus), but developer-facing constants live in `config.py`, and two runtime details are configured with files next to the app.
 
-## 📁 Configuration Files
+## ⚙️ In-App Settings
 
-### Location
+### Model Settings Sidebar
+| Setting | Options | Notes |
+|---|---|---|
+| Processing | `CPU Only` / `GPU Accelerated` | Choose before loading a model |
+| Context Length | 512 – 32768 | Default `32768`; larger = more RAM |
 
-Configuration files are stored in:
+### Menu Bar
+| Menu | Item | Effect |
+|---|---|---|
+| File | Load Model… | Open a `.gguf` file |
+| File | Clear Chat | Wipe the conversation |
+| View | Dark Mode | Toggle Midnight & Amber ↔ light theme |
+| View | Text Size | 12–22 px bubble font |
+| Addons | <addon name> | Open an addon dialog |
+| Help | Send Feedback / About | Feedback form, version info |
 
-| Platform | Location |
-|----------|----------|
-| Windows | `%APPDATA%\ggufloader\` |
-| macOS | `~/.config/ggufloader/` |
-| Linux | `~/.config/ggufloader/` |
+## 📝 config.py
 
-### Files
+Developer-facing constants at the repo root:
 
-- `config.json` - Main application settings
-- `models.json` - Model-specific settings
-- `addons/` - Addon configurations
+```python
+WINDOW_TITLE = "GGUF Loader"
+WINDOW_SIZE = (1200, 900)
+MIN_WINDOW_SIZE = (800, 500)
 
-## ⚙️ Application Settings
+GPU_OPTIONS = ["CPU Only", "GPU Accelerated"]
+DEFAULT_CONTEXT_SIZES = ["512", "1024", "2048", "4096", "8192", "16384", "32768"]
+MAX_TOKENS = 2048
 
-### General Settings
-
-```json
-{
-  "theme": "dark",
-  "language": "en",
-  "font_size": 14,
-  "auto_save_chat": true,
-  "startup_model": null,
-  "check_updates": true
-}
-```
-
-
-| Setting | Type | Default | Description |
-|---------|------|---------|-------------|
-| `theme` | string | "dark" | UI theme ("dark" or "light") |
-| `language` | string | "en" | Interface language |
-| `font_size` | int | 14 | Base font size in pixels |
-| `auto_save_chat` | bool | true | Auto-save chat history |
-| `startup_model` | string | null | Model to load on startup |
-| `check_updates` | bool | true | Check for updates on launch |
-
-### Window Settings
-
-```json
-{
-  "window": {
-    "width": 1200,
-    "height": 800,
-    "x": 100,
-    "y": 100,
-    "maximized": false,
-    "sidebar_visible": true,
-    "sidebar_width": 250
-  }
-}
-```
-
-## 🤖 Model Settings
-
-### Default Model Parameters
-
-```json
-{
-  "model_defaults": {
-    "temperature": 0.7,
-    "top_p": 0.9,
-    "top_k": 40,
-    "repeat_penalty": 1.1,
-    "max_tokens": 512,
-    "context_length": 4096
-  }
-}
-```
-
-| Parameter | Range | Default | Description |
-|-----------|-------|---------|-------------|
-| `temperature` | 0.0-2.0 | 0.7 | Response randomness |
-| `top_p` | 0.0-1.0 | 0.9 | Nucleus sampling |
-| `top_k` | 1-100 | 40 | Token selection limit |
-| `repeat_penalty` | 1.0-2.0 | 1.1 | Repetition reduction |
-| `max_tokens` | 1-4096 | 512 | Max response length |
-| `context_length` | 512-32768 | 4096 | Context window size |
-
-### Performance Settings
-
-```json
-{
-  "performance": {
-    "n_threads": 4,
-    "n_gpu_layers": 0,
-    "n_batch": 512,
-    "use_mmap": true,
-    "use_mlock": false
-  }
-}
-```
-
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `n_threads` | 4 | CPU threads for inference |
-| `n_gpu_layers` | 0 | Layers to offload to GPU |
-| `n_batch` | 512 | Batch size for processing |
-| `use_mmap` | true | Memory-map model file |
-| `use_mlock` | false | Lock model in RAM |
-
-## 🔧 GPU Configuration
-
-### NVIDIA CUDA
-
-```json
-{
-  "gpu": {
-    "enabled": true,
-    "type": "cuda",
-    "device_id": 0,
-    "layers": 35
-  }
-}
-```
-
-### Apple Metal
-
-```json
-{
-  "gpu": {
-    "enabled": true,
-    "type": "metal",
-    "layers": -1
-  }
-}
-```
-
-### Determining GPU Layers
-
-| GPU VRAM | Recommended Layers (7B model) |
-|----------|------------------------------|
-| 4GB | 10-15 layers |
-| 6GB | 20-25 layers |
-| 8GB | 30-35 layers |
-| 12GB+ | All layers (-1) |
-
-## ✨ Addon Configuration
-
-### Smart Floater Settings
-
-Located in `addons/smart_floater/config.json`:
-
-```json
-{
-  "enabled": true,
-  "check_interval": 300,
-  "button_timeout": 3000,
-  "max_text_length": 5000,
-  "auto_copy_results": false,
-  "hotkeys": {
-    "quick_summarize": "ctrl+shift+s",
-    "quick_comment": "ctrl+shift+c"
-  }
-}
-```
-
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `enabled` | true | Enable/disable addon |
-| `check_interval` | 300 | Selection check interval (ms) |
-| `button_timeout` | 3000 | Button visibility duration (ms) |
-| `max_text_length` | 5000 | Max characters to process |
-| `auto_copy_results` | false | Auto-copy results to clipboard |
-
-### Custom Addon Settings
-
-Each addon can have its own `config.json` in:
-```
-~/.ggufloader/addons/<addon_name>/config.json
-```
-
-## 💬 Chat Settings
-
-### Chat History
-
-```json
-{
-  "chat": {
-    "save_history": true,
-    "max_history_items": 100,
-    "history_location": "default",
-    "export_format": "json"
-  }
-}
+FONT_FAMILY = "Vazirmatn, Segoe UI, Arial"
+BUBBLE_FONT_SIZE = 18
+CHAT_BUBBLE_FONT_SIZE = 14
 ```
 
 ### System Prompts
+`ENGLISH_SYSTEM_PROMPTS` maps a prompt preset name to a `{name, prompt, params}` dict. `params` are the generation defaults (`temperature`, `top_p`, `max_tokens`) used for that preset. Prompts are consumed by `core/llm/prompt_builder.py`.
+
+### Paths
+`get_paths()` returns directories for models, chats, exports, logs, config, and cache. It delegates to `resource_manager.py`, which resolves them correctly in dev, installed-package, and frozen (PyInstaller) deployments:
+
+- **Windows (frozen)**: `%APPDATA%\GGUFLoader` (config), `%LOCALAPPDATA%\GGUFLoader\cache` and `\logs`
+- **Linux/macOS (frozen)**: `~/.ggufloader` (config), `~/.cache/ggufloader` (cache), `~/.ggufloader/logs`
+- **Dev**: local `config/`, `cache/`, `logs/` folders in the repo
+
+## 📄 Runtime Config Files
+
+### feedback_config.json (optional)
+Placed next to the app; points the Feedback dialog at your own endpoint:
 
 ```json
-{
-  "system_prompts": {
-    "default": "You are a helpful AI assistant.",
-    "coding": "You are an expert programmer...",
-    "writing": "You are a creative writer..."
-  }
-}
+{ "endpoint_url": "https://formspree.io/f/YOUR_FORM_ID" }
 ```
 
-## 🎨 UI Customization
+If missing, the dialog uses the default Formspree placeholder.
 
-### Theme Colors
+### Agent workspace
+The agent workspace defaults to `./agent_workspace` (created automatically). You can type any path in the workspace combo box or browse with the 📁 button.
 
-```json
-{
-  "theme_colors": {
-    "primary": "#0078d4",
-    "secondary": "#106ebe",
-    "background": "#1e1e1e",
-    "text": "#ffffff",
-    "accent": "#4CAF50"
-  }
-}
+## 🎨 Themes
+
+Themes are defined as token dicts in `ui/theme.py` (`DARK_TOKENS`, `LIGHT_TOKENS`) rendered through a single QSS template. To recolor the app, edit the token values — not the stylesheet — so both themes stay consistent.
+
+## 🛠️ Advanced: Command-Line Flags
+
+`python main.py` accepts:
+
+```
+--version, -v   Show version and exit
+--help, -h      Show help and exit
 ```
 
-### Font Settings
-
-```json
-{
-  "fonts": {
-    "ui_font": "Segoe UI",
-    "code_font": "Consolas",
-    "chat_font_size": 14,
-    "code_font_size": 12
-  }
-}
-```
-
-## 🔄 Import/Export Settings
-
-### Export Configuration
-
-```bash
-# Export all settings
-ggufloader --export-config backup.json
-
-# Export specific section
-ggufloader --export-config model_settings.json --section model
-```
-
-### Import Configuration
-
-```bash
-# Import settings
-ggufloader --import-config backup.json
-
-# Import and merge
-ggufloader --import-config new_settings.json --merge
-```
-
-## 🛠️ Command Line Options
-
-### Override Settings
-
-```bash
-# Override temperature
-ggufloader --temperature 0.8
-
-# Override GPU layers
-ggufloader --n-gpu-layers 35
-
-# Override threads
-ggufloader --threads 8
-```
-
-### Configuration Commands
-
-```bash
-# Show current config
-ggufloader --show-config
-
-# Reset to defaults
-ggufloader --reset-config
-
-# Open config directory
-ggufloader --config-dir
-```
-
-## 📋 Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `GGUF_LOADER_CONFIG` | Custom config file path |
-| `GGUF_LOADER_MODELS` | Default models directory |
-| `GGUF_LOADER_THEME` | Override theme |
-| `GGUF_LOADER_GPU` | Enable/disable GPU |
-
-## 🔒 Security Settings
-
-```json
-{
-  "security": {
-    "allow_external_addons": false,
-    "verify_addon_signatures": true,
-    "sandbox_addons": true,
-    "log_level": "info"
-  }
-}
-```
-
-## 📚 Related Documentation
-
-- [Installation Guide](/docs/installation/ "Setup and install") - Initial setup
-- [User Guide](/docs/user-guide/ "Complete manual") - Using GGUF Loader
-- [Troubleshooting](/docs/troubleshooting/ "Fix issues") - Common problems
-- [Addon Development](/docs/addon-development/ "Create addons") - Addon configuration
-
----
-
-**Need help with configuration?** Check our [community discussions](https://github.com/gguf-loader/gguf-loader/discussions) or contact support@ggufloader.com.
+These short-circuit before any Qt window is created (useful for CI smoke tests).

@@ -11,6 +11,17 @@ These tasks are not creative. They are mechanical, repetitive, and volume-heavy.
 
 This guide explains how **local AI**—running privately on your own device—can automate these static, high-volume marketing tasks. We will look at exactly what local AI can do, how it differs from cloud tools, and importantly, where it should *not* be used.
 
+### Where AI Is Already Deployed in Marketing
+
+Marketing has moved faster than any other function. Salesforce's State of Marketing finds **87% of marketers now use generative AI** in at least one recurring workflow (up from 51% in 2024), with enterprise adoption at 94%, and HubSpot reports 78-88% using AI tools daily. Where is it working?
+
+*   **Content and ad copy**: 80-87% of marketers use AI for content creation, with 71% generating ad copy variants weekly (ChatGPT, Claude, Jasper, Copy.ai); only 5% now avoid AI for blog creation, down from 65% in 2024.
+*   **Email personalization**: Klaviyo's AI product recommendations lift email click rates to a 3.75% average (8.79% for top brands), Braze reports +26% click rates and +20% conversions, and 60% of consumers now interact with AI-driven marketing weekly.
+*   **Social media management**: Hootsuite, Sprout Social, and Buffer embed AI captioning, scheduling, and listening; Buffer users report 25-40% engagement gains from AI-optimized posting times.
+*   **Measurement**: Meta Robyn and Google Meridian turn marketing-mix modeling from a months-long project into days—though Funnel finds 86% of in-house marketers still can't isolate each channel's individual impact.
+
+But adoption stops at the strategy line: 61% of CMOs cite campaign-strategy confidentiality as a top AI governance risk, and a CRM export sent to a public model is a GDPR/CCPA exposure waiting to happen.
+
 ### The Problem: Mechanical Volume in a Creative Field
 
 Marketing operations often hit a bottleneck not because of a lack of ideas, but because of the sheer volume of execution required.
@@ -34,11 +45,13 @@ Because these tasks follow rigid logic, they do not require human intuition. The
 
 ### Why Local AI Is a Good Fit
 
-Local AI refers to running models (like Llama 3 or Mistral) directly on your laptop or a dedicated on-premise server, rather than sending data to the cloud. For marketing operations, this offers three distinct advantages:
+Marketing's cloud AI layer is built on your data flowing out. A local engine is the layer cloud can't be trusted with:
 
-1.  **Privacy & Compliance**: Customer lists, campaign performance data, and internal strategy docs never leave your machine. This is critical for agencies handling NDA-bound client data.
-2.  **Zero Marginal Cost**: High-volume tasks are expensive with paid APIs. If you need to categorize 50,000 comments, running a local model costs nothing but electricity.
-3.  **Speed**: There is no network latency. You can process thousands of text snippets in a batch loop as fast as your hardware allows.
+*   **Campaign and strategy confidentiality**: Unreleased briefs, go-to-market plans, and positioning frameworks are trade secrets; 61% of CMOs rank them their top AI governance risk. Local AI keeps the campaign inside the agency, not in a vendor's training pipeline.
+*   **Customer PII in CRM exports**: Emails, phone numbers, and behavioral scores sent to public models trigger GDPR/CCPA failures, and third-party tools can't guarantee cryptographically secure deletion on request. Local processing keeps consent and deletion under your control.
+*   **Unreleased product data**: Roadmaps and unannounced specs fed to multi-tenant LLMs risk leakage or training-pipeline contamination. Local models keep pre-launch detail on your network.
+*   **Per-seat cost at scale**: Enterprise social tools run $199-399 per seat per month, and agentic token consumption scales non-linearly. Local AI processes 50,000 comments for the cost of electricity.
+*   **Offline and air-gapped work**: Field marketing at live events and secure corporate environments can't depend on connectivity; local models batch-process anywhere.
 
 ### What Local AI Actually Does
 
@@ -89,6 +102,7 @@ It is vital to understand the boundary. Local AI is a processor, not a strategis
 *   **Keep Data Private**: Local models ensure sensitive campaign metrics and customer info stay on your device.
 *   **Volume = Value**: The more repetitive tasks you have (thousands of rows vs. ten), the more value local AI provides.
 *   **Human Strategy First**: Use the time saved on mechanics to focus on creative strategy, brand voice, and genuine connection.
+*   **The Unreleased Campaign**: Launch dates, briefs, and CRM lists are the trade secrets cloud marketing AI gets trained on—local AI keeps the campaign inside the agency until you're ready to ship.
 
 ### Next Steps
 

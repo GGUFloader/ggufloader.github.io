@@ -74,9 +74,9 @@ class SiteSearch {
             {
                 id: 'features',
                 title: 'Features',
-                description: 'Explore GGUF Loader features including addon system, Smart Floating Assistant, and cross-platform support.',
-                keywords: ['features', 'addon system', 'smart floater', 'cross-platform', 'offline AI'],
-                relatedDocs: ['/docs/addon-development/', '/docs/smart-floater-example/']
+                description: 'Explore GGUF Loader features including addon system, Floating Chat, and cross-platform support.',
+                keywords: ['features', 'addon system', 'Floating Chat', 'cross-platform', 'offline AI'],
+                relatedDocs: ['/docs/addon-development/', '/docs/floating-chat-example/']
             },
             {
                 id: 'how-to',
@@ -164,10 +164,10 @@ class SiteSearch {
                 keywords: ['api', 'reference', 'documentation', 'methods', 'functions', 'developer']
             },
             { 
-                url: '/docs/smart-floater-example/', 
-                title: 'Smart Floater Example',
-                description: 'Detailed example of the Smart Floating Assistant addon implementation.',
-                keywords: ['smart floater', 'floating assistant', 'example', 'implementation', 'addon example']
+                url: '/docs/floating-chat-example/', 
+                title: 'Floating Chat Example',
+                description: 'Detailed example of the Floating Chat addon implementation.',
+                keywords: ['Floating Chat', 'floating button', 'example', 'implementation', 'addon example']
             },
             { 
                 url: '/docs/package-structure/', 
@@ -665,7 +665,7 @@ class SiteSearch {
             '/docs/quick-start/': 'Quick Start',
             '/docs/addon-development/': 'Addon Development',
             '/docs/addon-api/': 'API Reference',
-            '/docs/smart-floater-example/': 'Smart Floater Example',
+            '/docs/floating-chat-example/': 'Floating Chat Example',
             '/docs/package-structure/': 'Package Structure'
         };
         return titles[url] || 'Documentation';
@@ -782,7 +782,7 @@ class SiteSearch {
             { text: 'quick start', icon: '⚡', type: 'Documentation' },
             { text: 'addon development', icon: '🔧', type: 'Documentation' },
             { text: 'API reference', icon: '📚', type: 'Documentation' },
-            { text: 'smart floater example', icon: '✨', type: 'Documentation' },
+            { text: 'Floating Chat example', icon: '✨', type: 'Documentation' },
             
             // Common topics
             { text: 'installation', icon: '⚙️', type: 'Topic' },

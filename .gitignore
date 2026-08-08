@@ -51,6 +51,9 @@ temp/
 config.local.js
 secrets.json
 
+# Tool / editor internal files
+.freebuff/
+
 # System files
 .DS_Store
 .DS_Store?

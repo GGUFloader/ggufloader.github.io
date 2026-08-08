@@ -107,8 +107,8 @@
     </url>
 
     <url>
-        <loc>https://ggufloader.github.io/docs/smart-floater-example/</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://ggufloader.github.io/docs/floating-chat-example/</loc>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -137,6 +137,42 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://ggufloader.github.io/gguf-loader-2-1-2-release-notes.html</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://ggufloader.github.io/ai-in-legal-jobs-tasks-lawyers-automate.html</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ggufloader.github.io/ai-legal-research-for-law-firms.html</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ggufloader.github.io/ai-contract-review-for-law-firms.html</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ggufloader.github.io/ask-your-contracts-anything-free-ai-legal-research.html</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ggufloader.github.io/running-deepseek-v3-locally.html</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <url>
         <loc>https://ggufloader.github.io/how-to-run-gguf-models.html</loc>
         <lastmod>2025-12-25</lastmod>
@@ -182,7 +218,7 @@
 
     <url>
         <loc>https://ggufloader.github.io/blog.html</loc>
-        <lastmod>2026-02-08</lastmod>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>

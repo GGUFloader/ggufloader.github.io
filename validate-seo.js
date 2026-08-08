@@ -22,7 +22,7 @@ const DOCS_PAGES = [
     'docs/quick-start/index.html',
     'docs/addon-development/index.html',
     'docs/addon-api/index.html',
-    'docs/smart-floater-example/index.html',
+    'docs/floating-chat-example/index.html',
     'docs/package-structure/index.html'
 ];
 
@@ -185,7 +185,7 @@ class SEOValidator {
                 `${SITE_URL}/docs/quick-start/`,
                 `${SITE_URL}/docs/addon-development/`,
                 `${SITE_URL}/docs/addon-api/`,
-                `${SITE_URL}/docs/smart-floater-example/`,
+                `${SITE_URL}/docs/floating-chat-example/`,
                 `${SITE_URL}/docs/package-structure/`
             ];
             
@@ -217,7 +217,7 @@ class SEOValidator {
             '/docs/quick-start/': 'Quick Start Guide',
             '/docs/addon-development/': 'Addon Development Guide',
             '/docs/addon-api/': 'API Reference',
-            '/docs/smart-floater-example/': 'Smart Floater Example',
+            '/docs/floating-chat-example/': 'Floating Chat Example',
             '/docs/package-structure/': 'Package Structure'
         };
         

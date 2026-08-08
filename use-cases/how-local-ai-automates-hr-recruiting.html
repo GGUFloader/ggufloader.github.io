@@ -47,7 +47,7 @@
         "name": "Hussain Nazary"
       },
       "datePublished": "2026-02-08T00:00:00Z",
-      "dateModified": "2026-02-08T00:00:00Z",
+      "dateModified": "2026-08-08T00:00:00Z",
       "publisher": {
         "@type": "Organization",
         "name": "GGUF Loader",
@@ -285,6 +285,21 @@
                 </section>
 
                 <section>
+                    <h2>Where AI Is Already Deployed in HR & Recruiting</h2>
+                    <p>Recruiting is the single most common AI use case in HR today. SHRM's State of AI in HR finds 27-39% of organizations now use AI in their talent functions—up from 26% in 2024—and roughly 58% of firms use AI for candidate screening and 46% for sourcing. Where is that AI working?</p>
+                    
+                    <ul>
+                        <li><strong>Resume screening and matching:</strong> Workday (with HiredScore), LinkedIn Hiring Assistant, Eightfold, SeekOut, and Beamery parse resumes and rank candidates against open roles at enterprise scale.</li>
+                        <li><strong>Conversational hiring:</strong> Paradox's "Olivia" and similar bots handle 24/7 candidate screening, texting, and interview scheduling; conversational self-service resolves 60-80% of routine tier-zero HR inquiries.</li>
+                        <li><strong>Video and skills assessment:</strong> HireVue and game-based assessments score structured interviews and cognitive tests automatically.</li>
+                        <li><strong>Onboarding paperwork:</strong> Workday, ServiceNow, and Rippling use OCR and AI to verify W-4s, I-9s, and direct deposit forms, cutting manual onboarding processing time by over 50%.</li>
+                        <li><strong>People analytics:</strong> Predictive models estimate flight risk and skill gaps from HRIS data.</li>
+                    </ul>
+                    
+                    <p>Yet the adoption-value gap is stark: Gartner finds 88% of HR leaders say AI hasn't yet delivered significant business value, only 6% of firms qualify as AI "high performers," and 56% of organizations don't formally measure their AI ROI. And the front end—resume screening—is exactly where regulation is tightening fastest.</p>
+                </section>
+
+                <section>
                     <h2>Why This Task Is Static</h2>
                     <p>Resume processing and initial application screening follow predictable patterns:</p>
                     
@@ -299,16 +314,17 @@
                 </section>
 
                 <section>
-                    <h2>Why Local AI Is a Good Fit</h2>
-                    <p>Local AI—models running on your own hardware, not cloud services—aligns naturally with HR recruiting realities:</p>
+                    <h2>Why Local AI Is a Good Fit for HR & Recruiting</h2>
+                    <p>Enterprise HR AI is powerful, but it runs on regulated candidate data and priced-for-enterprise licensing. The case for a local engine comes down to what HR data actually is:</p>
                     
-                    <p><strong>Privacy-sensitive data stays on-device.</strong> Candidate resumes contain personal information: addresses, phone numbers, employment history. Processing this data locally means it never leaves your infrastructure. No third-party API calls, no data transmission, no compliance concerns about where candidate information is stored.</p>
+                    <ul>
+                        <li><strong>Candidate PII and employment law:</strong> Resumes carry Social Security numbers, salary history, health disclosures, and home addresses. Under the EU AI Act (effective August 2, 2026), CV screening and ranking are classified High-Risk, with fines up to €15 million or 3% of global turnover; NYC Local Law 144 mandates annual bias audits for automated hiring tools. Local AI keeps the data and the screening logic inside your own network.</li>
+                        <li><strong>Bias and auditability:</strong> The Mobley v. Workday class action shows that vendors themselves can be held liable for algorithmic discrimination. A local engine lets your compliance team inspect, tune, and document the exact rules applied to every applicant.</li>
+                        <li><strong>Offline and frontline offices:</strong> Blue-collar, retail, and manufacturing sites often lack stable connectivity or corporate email. A local model runs on the office PC regardless.</li>
+                        <li><strong>Cost per candidate:</strong> Enterprise talent platforms run $50,000-$500,000+ per year. For high-turnover SMBs, a local GGUF model processes resumes for the cost of the hardware already on the desk.</li>
+                    </ul>
                     
-                    <p><strong>High-volume document processing.</strong> Local models excel at repetitive tasks across large document sets. Processing 300 resumes uses the same computational pattern 300 times. This is exactly what local AI handles efficiently.</p>
-                    
-                    <p><strong>Deterministic, consistent output.</strong> When you need the same fields extracted from every resume in the same format, local AI delivers predictable results. It doesn't get tired, doesn't skip documents, and applies the same logic to application #1 and application #300.</p>
-                    
-                    <p><strong>Cost-effective for ongoing use.</strong> After initial setup, local AI has no per-use costs. Process 50 resumes or 5,000—the expense is the same. For companies with regular hiring needs, this makes economic sense.</p>
+                    <p>Run on your own hardware, the screening pipeline becomes inspectable end-to-end—which is precisely what a bias audit wants to see.</p>
                 </section>
 
 
@@ -400,6 +416,8 @@
                         <li>It is not a replacement for human judgment. Candidate assessment, hiring decisions, and strategic planning remain human responsibilities.</li>
                         
                         <li>Best results come from clearly defined, rule-based tasks with predictable inputs and outputs.</li>
+                        
+                        <li><strong>The Bias-Audit Layer:</strong> Cloud ATS vendors face class-action scrutiny and NYC Local Law 144 bias audits; a local engine keeps the resume data, screening rules, and audit trail where your compliance team can actually defend them.</li>
                     </ul>
                 </section>
 

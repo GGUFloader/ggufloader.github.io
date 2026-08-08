@@ -8,7 +8,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="GGUF Loader - Local AI Inference Engine | Run GGUF Models Offline with Local AI Agent" />
     <meta property="og:description"
-        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Smart Floating Assistant and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. Privacy-first local AI platform with no Python required." />
+        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Floating Chat and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. Privacy-first local AI platform with no Python required." />
     <meta property="og:url" content="https://ggufloader.github.io/" />
     <meta property="og:image" content="https://ggufloader.github.io/preview.png" />
     <meta property="og:image:width" content="1200" />
@@ -22,14 +22,14 @@
     <meta name="twitter:creator" content="@ggufloader" />
     <meta name="twitter:title" content="GGUF Loader - Local AI Inference Engine | Run GGUF Models Offline with Local AI Agent" />
     <meta name="twitter:description"
-        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Smart Floating Assistant and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. Privacy-first local AI platform with no Python required." />
+        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Floating Chat and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. Privacy-first local AI platform with no Python required." />
     <meta name="twitter:image" content="https://ggufloader.github.io/preview.png" />
     <meta name="twitter:image:alt" content="GGUF Loader - Local AI Inference Engine for GGUF Models" />
 
     <!-- Additional social media optimization -->
     <meta property="article:author" content="Hussain Nazary" />
     <meta property="article:published_time" content="2025-01-27T00:00:00Z" />
-    <meta property="article:modified_time" content="2026-02-08T00:00:00Z" />
+    <meta property="article:modified_time" content="2026-08-07T00:00:00Z" />
     <meta property="article:section" content="Technology" />
     <meta property="article:tag" content="GGUF" />
     <meta property="article:tag" content="GGUF Loader" />
@@ -55,9 +55,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Smart Floating Assistant and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. No Python required. Privacy-first local AI platform for enterprise and personal use." />
+        content="GGUF Loader is a powerful local AI inference engine for running GGUF models offline. Features local AI agent with Floating Chat and Agentic Mode. Run Mistral, LLaMA, DeepSeek GGUF models on Windows, MacOS, Linux. No Python required. Privacy-first local AI platform for enterprise and personal use." />
     <meta name="keywords"
-        content="GGUF, GGUF Loader, GGUF models, local AI, local AI agent, inference engine, AI inference engine, local inference, offline AI, run GGUF models, GGUF format, llama.cpp, local AI platform, Mistral GGUF, LLaMA GGUF, DeepSeek GGUF, private AI, GDPR compliant AI, Smart Floating Assistant, agentic mode, autonomous AI agent, local language model, LLM inference, quantized models, CPU inference, Windows AI, Mac AI, Linux AI, air-gapped AI, on-premise AI, self-hosted AI, local LLM, GGUF inference, model inference, AI without cloud, no Python AI, drag and drop AI, GGUF runner, local model runner" />
+        content="GGUF, GGUF Loader, GGUF models, local AI, local AI agent, inference engine, AI inference engine, local inference, offline AI, run GGUF models, GGUF format, llama.cpp, local AI platform, Mistral GGUF, LLaMA GGUF, DeepSeek GGUF, private AI, GDPR compliant AI, Floating Chat, agentic mode, autonomous AI agent, local language model, LLM inference, quantized models, CPU inference, Windows AI, Mac AI, Linux AI, air-gapped AI, on-premise AI, self-hosted AI, local LLM, GGUF inference, model inference, AI without cloud, no Python AI, drag and drop AI, GGUF runner, local model runner" />
     <meta name="author" content="Hussain Nazary" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -782,8 +782,335 @@
             color: #2980b9;
         }
 
+        /* New release tool card (launch announcement) */
+        .recommend-card {
+            min-width: 320px;
+            max-width: 320px;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e6ef;
+            border-top: 4px solid #3498db;
+        }
+
+        .recommend-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .recommend-card-tag {
+            display: inline-block;
+            background: #eaf3fb;
+            color: #2471a3;
+            border: 1px solid #bcd9f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        .recommend-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .recommend-card h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .recommend-card h3 a:hover {
+            color: #3498db;
+        }
+
+        .recommend-card p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .recommend-card-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .recommend-card-link:hover {
+            color: #2471a3;
+        }
+
+        /* Lawyer Assistant launch announcement section */
+        .lawyer-recommend-section {
+            background: #ffffff;
+            border: 1px solid #e0e6ef;
+            border-left: 4px solid #3498db;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .lawyer-recommend-badge {
+            display: inline-block;
+            background: #eaf3fb;
+            color: #2471a3;
+            border: 1px solid #bcd9f0;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .lawyer-recommend-dateline {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .lawyer-recommend-section h2 {
+            color: #2c3e50;
+            font-size: 1.75rem;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .lawyer-recommend-section .lawyer-recommend-intro {
+            color: #495057;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            max-width: 820px;
+            margin-bottom: 1.75rem;
+        }
+
+        .lawyer-recommend-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lawyer-recommend-feature {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem 1.1rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .lawyer-recommend-feature:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .lawyer-recommend-feature h3 {
+            color: #2c3e50;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .lawyer-recommend-feature p {
+            color: #6c757d;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .lawyer-recommend-ui-label {
+            color: #6c757d;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .lawyer-recommend-ui {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            margin-bottom: 1.5rem;
+            background: #f8f9fa;
+        }
+
+        .lawyer-recommend-ui img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .lawyer-recommend-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lawyer-recommend-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.7rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .lawyer-recommend-btn-primary {
+            background: #3498db;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(52, 152, 219, 0.3);
+        }
+
+        .lawyer-recommend-btn-primary:hover {
+            transform: translateY(-2px);
+            background: #2980b9;
+            box-shadow: 0 8px 24px rgba(52, 152, 219, 0.4);
+        }
+
+        .lawyer-recommend-btn-secondary {
+            background: #ffffff;
+            color: #2c3e50;
+            border: 1px solid #ced4da;
+        }
+
+        .lawyer-recommend-btn-secondary:hover {
+            transform: translateY(-2px);
+            background: #f8f9fa;
+        }
+
         @media (max-width: 768px) {
-            .blog-card {
+            .lawyer-recommend-section {
+                padding: 1.75rem 1.25rem;
+                margin: 1.5rem 0;
+            }
+
+            .lawyer-recommend-section h2 {
+                font-size: 1.35rem;
+            }
+
+            .lawyer-recommend-intro {
+                font-size: 0.98rem;
+            }
+
+            .lawyer-recommend-cta {
+                flex-direction: column;
+            }
+
+            .lawyer-recommend-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .lawyer-recommend-section {
+                background: #1e1e1e;
+                border-color: #3a3a3a;
+                border-left-color: #3498db;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            }
+
+            .lawyer-recommend-section h2,
+            .lawyer-recommend-feature h3 {
+                color: #ffffff;
+            }
+
+            .lawyer-recommend-section .lawyer-recommend-intro {
+                color: #b0b0b0;
+            }
+
+            .lawyer-recommend-dateline,
+            .lawyer-recommend-ui-label {
+                color: #8a8a8a;
+            }
+
+            .lawyer-recommend-feature {
+                background: #2a2a2a;
+                border-color: #3a3a3a;
+            }
+
+            .lawyer-recommend-feature p {
+                color: #b0b0b0;
+            }
+
+            .lawyer-recommend-badge {
+                background: #2d4a5c;
+                color: #5dade2;
+                border-color: #2d4a5c;
+            }
+
+            .lawyer-recommend-ui {
+                background: #121212;
+                border-color: #3a3a3a;
+            }
+
+            .lawyer-recommend-btn-secondary {
+                background: #2a2a2a;
+                color: #ffffff;
+                border-color: #4a4a4a;
+            }
+
+            .recommend-card {
+                background: #1e1e1e;
+                border-color: #3a3a3a;
+                border-top-color: #3498db;
+            }
+
+            .recommend-card h3 {
+                color: #ffffff;
+            }
+
+            .recommend-card h3 a:hover {
+                color: #5dade2;
+            }
+
+            .recommend-card p {
+                color: #b0b0b0;
+            }
+
+            .recommend-card-tag {
+                background: #2d4a5c;
+                color: #5dade2;
+                border-color: #2d4a5c;
+            }
+
+            .recommend-card-link {
+                color: #5dade2;
+            }
+
+            .recommend-card-link:hover {
+                color: #7fb3e8;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .recommend-card {
                 min-width: 280px;
                 max-width: 280px;
             }
@@ -1116,11 +1443,11 @@
         "description": "Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": ["Windows", "macOS", "Linux"],
-        "softwareVersion": "2.1.1",
-        "releaseNotes": "Agentic Mode - Transform your local AI into an autonomous coding assistant",
-        "downloadUrl": "https://github.com/ggufloader/gguf-loader/releases",
-        "installUrl": "https://pypi.org/project/ggufloader/",
-        "softwareRequirements": "Python 3.8+, 4GB RAM minimum, 8GB RAM recommended",
+        "softwareVersion": "2.1.2",
+        "releaseNotes": "v2.1.2 - Cross-platform floating chat fixes, one-click Linux installer, and automated release builds",
+        "downloadUrl": "https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe",
+        "installUrl": "https://github.com/GGUFloader/gguf-loader/releases",
+        "softwareRequirements": "Windows 10/11, Linux (x86_64), or macOS; 4 GB RAM minimum, 8 GB recommended",
         "memoryRequirements": "4GB minimum, 8GB recommended",
         "storageRequirements": "2GB free space for models",
         "processorRequirements": "Modern x64 processor",
@@ -1155,7 +1482,7 @@
         },
         "featureList": [
             "Offline AI model execution",
-            "Smart Floating Assistant",
+            "Floating Chat",
             "Agentic Mode for autonomous coding",
             "Multi-model support (Mistral, LLaMA, DeepSeek)",
             "Cross-platform compatibility",
@@ -1175,7 +1502,7 @@
         "applicationSuite": "GGUF Loader Suite",
         "countriesSupported": ["US", "CA", "GB", "DE", "FR", "AU", "JP", "IN"],
         "datePublished": "2025-01-27",
-        "dateModified": "2025-01-27",
+        "dateModified": "2026-08-07",
         "mainEntityOfPage": "https://ggufloader.github.io",
         "image": "https://ggufloader.github.io/preview.png",
         "url": "https://ggufloader.github.io"
@@ -1192,7 +1519,7 @@
                 "name": "What is GGUF Loader?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "GGUF Loader is an enterprise-grade local AI deployment platform that runs Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, and Linux. It features a Smart Floating Assistant, Agentic Mode for autonomous coding, and requires no Python installation."
+                    "text": "GGUF Loader is an enterprise-grade local AI deployment platform that runs Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, and Linux. It features a Floating Chat, Agentic Mode for autonomous coding, and requires no Python installation."
                 }
             },
             {
@@ -1389,10 +1716,10 @@
             },
             {
                 "@type": "Question",
-                "name": "What is the Smart Floating Assistant feature?",
+                "name": "What is the Floating Chat?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The Smart Floating Assistant is an always-accessible AI helper that floats above your applications, providing instant access to document summarization, translation, text generation, and other AI capabilities without switching windows."
+                    "text": "The Floating Chat is a built-in addon that adds a Messenger-style button floating above your screen. Click it to open a chat window connected to your loaded GGUF model, so you can keep chatting with your local AI while working in any application."
                 }
             },
             {
@@ -1456,7 +1783,7 @@
                     "ratingValue": "5",
                     "bestRating": "5"
                 },
-                "reviewBody": "GGUF Loader transformed how we deploy AI in our enterprise environment. The offline capability and Smart Floating Assistant have revolutionized our workflow productivity.",
+                "reviewBody": "GGUF Loader transformed how we deploy AI in our enterprise environment. The offline capability and Floating Chat have revolutionized our workflow productivity.",
                 "itemReviewed": {
                     "@type": "SoftwareApplication",
                     "name": "GGUF Loader"
@@ -1528,7 +1855,7 @@
                     "ratingValue": "5",
                     "bestRating": "5"
                 },
-                "reviewBody": "GGUF Loader's Smart Floating Assistant has become essential to my daily workflow. The document summarization and translation features save hours every day.",
+                "reviewBody": "GGUF Loader's Floating Chat has become essential to my daily workflow. Chatting with my local model from a floating window saves me time every day.",
                 "itemReviewed": {
                     "@type": "SoftwareApplication",
                     "name": "GGUF Loader"
@@ -1598,9 +1925,9 @@
             {
                 "@type": "SoftwareApplication",
                 "position": 1,
-                "name": "Smart Floating Assistant",
-                "description": "Global text processing with AI-powered document summarization, translation, and smart automation",
-                "applicationCategory": "ProductivityApplication",
+                "name": "Floating Chat",
+                "description": "Always-on-top Messenger-style chat window connected to your locally loaded GGUF model",
+                "applicationCategory": "CommunicationApplication",
                 "author": {
                     "@type": "Organization",
                     "name": "GGUF Team"
@@ -1611,7 +1938,7 @@
                     "reviewCount": "2100",
                     "bestRating": "5"
                 },
-                "downloadUrl": "https://github.com/ggufloader/gguf-loader/tree/main/addons/smart-floater",
+                "downloadUrl": "https://github.com/GGUFloader/gguf-loader/tree/main/addons/floating_chat",
                 "operatingSystem": ["Windows", "macOS", "Linux"],
                 "softwareRequirements": "GGUF Loader 2.0+",
                 "isPartOf": {
@@ -1939,6 +2266,30 @@
             </div>
         </section>
 
+        <!-- What's New Section -->
+        <section id="whats-new" class="section" aria-labelledby="whats-new-heading">
+            <div class="container">
+                <h2 id="whats-new-heading">🎉 What's New in v2.1.2</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released August 7, 2026 · Cross-platform floating chat fixes and a brand-new one-click Linux installer.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🐧 One-Click Linux Installer</h3>
+                        <p style="color: #495057; line-height: 1.6;">A new <code>.tar.gz</code> package with an installer that adds a desktop menu entry — no admin rights, no dependencies, no Python.</p>
+                        <p style="margin-top: 1rem;"><a href="#download">⬇️ Get the Linux installer</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">💬 Floating Chat Fixes</h3>
+                        <p style="color: #495057; line-height: 1.6;">The floating chat button no longer disappears when switching apps on macOS, can't get stuck minimized, and stays clear of taskbars, docks, and menu bars on every OS.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚙️ Automated Release Builds</h3>
+                        <p style="color: #495057; line-height: 1.6;">Every release now automatically builds and attaches Windows and Linux installers via GitHub Actions — downloads are always up to date.</p>
+                        <p style="margin-top: 1rem;"><a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener noreferrer">View all releases →</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Screenshot Section -->
         <section id="screenshot" class="screenshot-section section" aria-labelledby="screenshot-heading">
             <div class="container">
@@ -1953,6 +2304,53 @@
             </div>
         </section>
 
+        <!-- Lawyer Assistant Launch Announcement Section -->
+        <section id="lawyer-assistant" class="section" aria-labelledby="lawyer-recommend-heading">
+            <div class="container">
+                <div class="lawyer-recommend-section">
+                    <span class="lawyer-recommend-badge">🚀 Now Available</span>
+                    <h2 id="lawyer-recommend-heading">Introducing Lawyer Assistant — Free, On-Device Legal AI</h2>
+                    <p class="lawyer-recommend-dateline">August 2026 · Free &amp; open source · Runs 100% offline</p>
+                    <p class="lawyer-recommend-intro">
+                        We're excited to announce the launch of
+                        <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener noreferrer" style="color: #3498db; font-weight: 700;">Lawyer Assistant</a>,
+                        a new addition to the local AI ecosystem. Ask questions about your contracts in plain English
+                        and get answers with exact page numbers cited from your own documents — nothing leaves your
+                        machine and it works fully offline, so it fits right alongside GGUF Loader's privacy-first approach.
+                    </p>
+                    <div class="lawyer-recommend-features">
+                        <div class="lawyer-recommend-feature">
+                            <h3>📄 Cited Answers</h3>
+                            <p>Ask in plain English and get answers with exact page numbers from your own contracts — no vague citations, no guessing.</p>
+                        </div>
+                        <div class="lawyer-recommend-feature">
+                            <h3>🔒 100% Private</h3>
+                            <p>Runs entirely on your machine. Contracts, briefs, and research never leave your PC — protecting attorney-client privilege.</p>
+                        </div>
+                        <div class="lawyer-recommend-feature">
+                            <h3>✈️ Works Offline</h3>
+                            <p>No internet required. Use it anywhere — in the office, in court, or on the road — with no subscription and no data limits.</p>
+                        </div>
+                        <div class="lawyer-recommend-feature">
+                            <h3>⚖️ Built for Legal Teams</h3>
+                            <p>Hybrid search with reranking, compliance playbook scanning, and verification built in — designed for lawyers, not general chatbots.</p>
+                        </div>
+                    </div>
+                    <p class="lawyer-recommend-ui-label">↓ The Interface in Action ↓</p>
+                    <div class="lawyer-recommend-ui">
+                        <img src="lawyer-assistant-screen.png"
+                             alt="Lawyer Assistant user interface showing a legal research question about a contract with a cited answer and page number"
+                             title="Lawyer Assistant — Private AI Legal Research UI"
+                             onerror="this.onerror=null; this.parentElement.innerHTML='<p style=&quot;color:#6c757d;padding:2rem;text-align:center;&quot;>Screenshot available at <a href=&quot;https://lawyers-assistant.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;color:#3498db;&quot;>lawyers-assistant.github.io</a></p>';">
+                    </div>
+                    <div class="lawyer-recommend-cta">
+                        <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener noreferrer" class="lawyer-recommend-btn lawyer-recommend-btn-primary">⚖️ Visit Lawyer Assistant</a>
+                        <a href="ask-your-contracts-anything-free-ai-legal-research.html" class="lawyer-recommend-btn lawyer-recommend-btn-secondary">📖 Read Our Full Review</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Download Section -->
         <section id="download" class="download-section section" aria-labelledby="download-heading">
             <div class="container">
@@ -1961,9 +2359,9 @@
                     <article class="download-option">
                         <h3><span aria-hidden="true">🪟</span> Windows</h3>
                         <p>Standalone executable with Agentic Mode. No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.1/GGUFLoader_v2.1.1.agentic_mode.exe"
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe"
                             class="download-button">
-                            Download v2.1.1 Agentic Mode
+                            Download GGUF Loader v2.1.2 for Windows
                         </a>
                     </article>
                     <article class="download-option">
@@ -1978,13 +2376,13 @@
                     </article>
                     <article class="download-option">
                         <h3><span aria-hidden="true">🐧</span> Linux</h3>
-                        <p>Download ZIP and run with launch.sh script. No installation needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/archive/refs/heads/main.zip"
+                        <p>Prebuilt .tar.gz with one-click installer that adds a desktop menu entry. No dependencies needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64.tar.gz"
                             class="download-button">
-                            Download ZIP for Linux
+                            Download GGUF Loader v2.1.2 for Linux
                         </a>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Or install via pip:</p>
-                        <div class="code-block"><code>pip install ggufloader</code></div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Extract and install with:</p>
+                        <div class="code-block"><code>tar -xzf GGUFLoader_v2.1.2_linux_x86_64.tar.gz &amp;&amp; cd GGUFLoader-v2.1.2-linux &amp;&amp; ./install.sh</code></div>
                     </article>
                 </div>
             </div>
@@ -2076,6 +2474,12 @@
                 <h2 id="blog-posts-heading">📚 Latest Blog Posts</h2>
                 <p style="text-align: center; margin-bottom: 2rem; color: #6c757d;">Explore our guides and use cases for local AI automation</p>
                 <div class="blog-scroll-container">
+                    <article class="recommend-card" aria-label="New release: Lawyer Assistant">
+                        <div class="recommend-card-tag">🚀 New</div>
+                        <h3><a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener">Lawyer Assistant — Free, On-Device Legal AI</a></h3>
+                        <p>Ask questions in plain English and get cited answers with exact page numbers from your own contracts — 100% private, works offline, and free. Built for lawyers and legal teams.</p>
+                        <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener" class="recommend-card-link">Learn More →</a>
+                    </article>
                     <article class="blog-card">
                         <div class="blog-card-tag">Customer Support</div>
                         <h3><a href="use-cases/how-local-ai-automates-customer-support.html">How Local AI Automates Customer Support</a></h3>
@@ -2139,13 +2543,13 @@
                     <article class="blog-card">
                         <div class="blog-card-tag">Procurement</div>
                         <h3><a href="use-cases/how-local-ai-automates-procurement.html">How Local AI Automates Procurement</a></h3>
-                        <p>Discover vendor analysis, purchase order processing, and spend optimization with local AI.</p>
+                        <p>Explore PO processing, invoice extraction, and supplier data entry automation with local AI.</p>
                         <a href="use-cases/how-local-ai-automates-procurement.html" class="blog-card-link">Read More →</a>
                     </article>
                     <article class="blog-card">
                         <div class="blog-card-tag">Tech & SaaS</div>
                         <h3><a href="use-cases/how-local-ai-automates-tech-and-saas-operations.html">How Local AI Automates Tech & SaaS Operations</a></h3>
-                        <p>Learn about incident management, code review, and customer onboarding automation with local AI.</p>
+                        <p>Learn about log parsing, ticket triage, and alert processing automation with local AI.</p>
                         <a href="use-cases/how-local-ai-automates-tech-and-saas-operations.html" class="blog-card-link">Read More →</a>
                     </article>
                     <article class="blog-card">
@@ -2181,7 +2585,7 @@
                     <article class="blog-card">
                         <div class="blog-card-tag">Event Management</div>
                         <h3><a href="use-cases/how-local-ai-automates-event-management-tasks.html">How Local AI Automates Event Management</a></h3>
-                        <p>Learn about attendee registration, scheduling, and post-event analysis with local AI.</p>
+                        <p>Registration processing, attendee classification, and schedule organization — with attendee data kept private on-device.</p>
                         <a href="use-cases/how-local-ai-automates-event-management-tasks.html" class="blog-card-link">Read More →</a>
                     </article>
                     <article class="blog-card">
@@ -2193,13 +2597,13 @@
                     <article class="blog-card">
                         <div class="blog-card-tag">Logistics & Supply Chain</div>
                         <h3><a href="use-cases/how-local-ai-automates-logistics-supply-chain-tasks.html">How Local AI Automates Logistics & Supply Chain</a></h3>
-                        <p>Discover route optimization, inventory forecasting, and shipment tracking with local AI.</p>
+                        <p>Shipment reconciliation, document processing, and freight data extraction — keeping proprietary logistics data private and secure.</p>
                         <a href="use-cases/how-local-ai-automates-logistics-supply-chain-tasks.html" class="blog-card-link">Read More →</a>
                     </article>
                     <article class="blog-card">
                         <div class="blog-card-tag">Logistics & Warehouse</div>
                         <h3><a href="use-cases/how-local-ai-automates-logistics-warehouse-tasks.html">How Local AI Automates Logistics & Warehouse</a></h3>
-                        <p>Learn about warehouse automation, picking optimization, and inventory management with local AI.</p>
+                        <p>Inventory tracking, order processing, and shipment classification — with operational data kept secure and private.</p>
                         <a href="use-cases/how-local-ai-automates-logistics-warehouse-tasks.html" class="blog-card-link">Read More →</a>
                     </article>
                     <article class="blog-card">
@@ -2544,7 +2948,7 @@
                         <div class="testimonials-grid">
                             <blockquote class="testimonial">
                                 <p>"GGUF Loader transformed how we deploy AI in our enterprise environment. The offline
-                                    capability and Smart Floating Assistant have revolutionized our workflow
+                                    capability and Floating Chat have revolutionized our workflow
                                     productivity."</p>
                                 <cite>- Sarah Chen, CTO, TechFlow Solutions</cite>
                             </blockquote>
@@ -2565,9 +2969,9 @@
                         <h3>Community Addons</h3>
                         <div class="addon-grid">
                             <article class="addon-card">
-                                <h4>Smart Floating Assistant</h4>
-                                <p>Global text processing with AI-powered document summarization, translation, and smart
-                                    automation. Works across all applications.</p>
+                                <h4>Floating Chat</h4>
+                                <p>Always-on-top Messenger-style chat window connected to your locally loaded GGUF
+                                    model. Drag the button anywhere and chat without switching apps.</p>
                                 <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (2.1k reviews)</p>
                             </article>
 

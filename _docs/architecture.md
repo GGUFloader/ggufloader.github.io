@@ -12,242 +12,93 @@ reading_time: "15 minutes"
 
 # Architecture Overview
 
-This document provides a technical overview of GGUF Loader's architecture and design decisions.
+GGUF Loader is a PySide6 desktop application with a strict layering rule: **pure logic in `core/`, threading bridges in `services/`, dumb widgets in `ui/`**. This keeps the hard parts unit-testable and the UI predictable.
 
-## 🏗️ High-Level Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    GGUF Loader Application                   │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │   UI Layer  │  │ Addon Layer │  │   Model Layer       │  │
-│  │  (PySide6)  │  │  (Plugins)  │  │  (llama-cpp-python) │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│                      Core Services                           │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐   │
-│  │  Config  │ │  Events  │ │  Logger  │ │ Addon Manager│   │
-│  └──────────┘ └──────────┘ └──────────┘ └──────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## 🧩 Component Overview
-
-### UI Layer (PySide6)
-
-The user interface is built with PySide6 (Qt for Python):
-
-- **Main Window**: Application shell and layout
-- **Chat Interface**: Message display and input
-- **Addon Sidebar**: Addon management panel
-- **Settings Dialog**: Configuration UI
-
-
-### Model Layer (llama-cpp-python)
-
-Handles GGUF model operations:
-
-- **Model Loader**: Load and initialize GGUF models
-- **Chat Generator**: Generate text responses
-- **Tokenizer**: Text tokenization and detokenization
-- **Context Manager**: Manage conversation context
-
-### Addon Layer
-
-Extensible plugin system:
-
-- **Addon Manager**: Discover, load, and manage addons
-- **Addon API**: Interface for addon development
-- **Event System**: Communication between addons and core
-
-### Core Services
-
-Shared functionality:
-
-- **Configuration**: Settings management
-- **Event Bus**: Application-wide events
-- **Logger**: Logging and debugging
-- **Utils**: Common utilities
-
-## 🔄 Data Flow
-
-### Chat Message Flow
+## 🏗️ Layer Diagram
 
 ```
-User Input → UI Layer → Chat Handler → Model Layer → Response
-     ↓                                                    ↓
-  Validation                                         Formatting
-     ↓                                                    ↓
-  Event Emit ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←← Display
+┌────────────────────────────────────────────────┐
+│  ui/ (MainWindow, ChatPanel, SidebarPanel)     │  presentation only;
+│  widgets/ (ChatBubble, FeedbackDialog)         │  emits signals, renders state
+└───────────────┬────────────────────────────────┘
+                │ Qt signals
+┌───────────────▼────────────────────────────────┐
+│  services/ (Model/Chat/Agent/Environment)      │  QObject bridges;
+│                                               │  own QThreads + workers
+└───────┬──────────────────────┬─────────────────┘
+        │                      │
+┌───────▼────────┐   ┌─────────▼───────────────┐
+│ core/llm       │   │ core/agent              │  pure Python;
+│ ModelBackend   │   │ AgentEngine, Tools      │  no Qt, no llama_cpp
+│ PromptBuilder  │   │ ToolRegistry            │
+└───────┬────────┘   └─────────────────────────┘
+        │
+┌───────▼────────┐
+│ llama-cpp-python│  the only dependency on the
+│ (Llama runtime) │  native GGUF inference lib
+└────────────────┘
 ```
 
-### Addon Integration Flow
+## ⚙️ ModelBackend (`core/llm/model_backend.py`)
 
-```
-Addon Discovery → Load __init__.py → Call register() → Return Widget
-       ↓                                                    ↓
-  Scan addons/                                        Add to Sidebar
-       ↓                                                    ↓
-  Validate Structure ←←←←←←←←←←←←←←←←←←←←←←←←←←←← Connect Signals
-```
+The **only** module that talks to `llama_cpp`. It wraps a loaded `Llama` object and serializes all access with a `threading.Lock`, so UI threads and addons can call it concurrently without crashing the runtime.
 
-## 🧱 Key Classes
+- `load()` / `unload()` manage the runtime lifecycle.
+- `__call__(prompt, stream=True, ...)` keeps the historical llama-cpp callable shape, so addons that called the raw object keep working.
+- `generate(prompt, **kwargs)` returns a complete string; `generate_stream(...)` yields tokens.
+- Qt-free by design — unit-testable and reusable from any thread.
 
-### GGUFLoaderApp
+## 🧵 ModelService (`services/model_service.py`)
 
-Main application class:
+Owns the current `ModelBackend`. Every load request creates a **fresh `QThread` + worker** (never subclassing `QThread`):
 
-```python
-class GGUFLoaderApp(QMainWindow):
-    # Signals
-    model_loaded = Signal(object)
-    model_unloaded = Signal()
-    
-    # Properties
-    model: Optional[Llama]
-    ai_chat: AIChat
-    addon_manager: AddonManager
-    
-    # Methods
-    def load_model(self, path: str) -> bool
-    def unload_model(self) -> None
-    def get_model_backend(self) -> Optional[Llama]
-```
+1. `load(path, use_gpu, n_ctx)` unloads any previous model and starts the thread.
+2. The worker constructs a `ModelBackend` and calls `load()`.
+3. `loaded` / `error` signals return to the UI thread; the thread is quit and garbage-collected.
 
-### AddonManager
+Exposes `backend` (the `ModelBackend`) and `model` (a callable-compatible view used by addons).
 
-Manages addon lifecycle:
+## 💬 ChatService (`services/chat_service.py`)
 
-```python
-class AddonManager:
-    def discover_addons(self) -> List[str]
-    def load_addon(self, name: str) -> Optional[QWidget]
-    def unload_addon(self, name: str) -> bool
-    def get_addon(self, name: str) -> Optional[object]
-```
+Streams generation off the UI thread. `ChatService.generate(backend, prompt, ...)` runs llama-cpp inference in a worker thread and emits `token_received` per token, `finished`, and `error` — so even a long 2048-token response never freezes the window.
 
-### ModelLoader
+## 🤖 AgentEngine (`core/agent/agent_engine.py`)
 
-Handles model operations:
+A pure, testable tool-use loop. It receives a plain callable `llm(prompt, max_tokens, temperature) -> str` (the UI wires it to `ModelBackend.__call__`) plus a workspace path, and runs per user message:
 
-```python
-class ModelLoader:
-    def load(self, path: str, **kwargs) -> Llama
-    def unload(self) -> None
-    def is_loaded(self) -> bool
-    def get_info(self) -> Dict[str, Any]
-```
+1. **Optional quick analysis** for complex requests.
+2. **Ask the model for a JSON tool-call plan** (`extract_json` handles fenced/bare/embedded JSON).
+3. **Execute each tool**, streaming `status` callbacks and `tool` events.
+4. **Ask for a natural-language final response**, with a graceful fallback summary if the model returns nothing useful.
 
-## 🔌 Extension Points
+### ToolRegistry (`core/agent/tool_registry.py`)
 
-### Addon Registration
+Sandboxed filesystem tools — `list_directory`, `read_file`, `write_file`, `edit_file`, `search_files`. Every tool resolves paths against a single workspace root and **rejects any path that escapes it** (`Path.resolve()` + containment check). Reading enforces a max size and BOM-aware encoding detection.
 
-```python
-def register(parent=None) -> Optional[QWidget]:
-    """
-    Entry point for addons.
-    
-    Args:
-        parent: Main application instance
-        
-    Returns:
-        Widget for sidebar, or None for background addons
-    """
-```
+## 🎛️ MainWindow (`ui/main_window.py`)
 
-### Event Hooks
+The composition root. It:
 
-Available events for addons:
+- Owns the four services (Model/Chat/Agent/Environment) and a `PromptBuilder`.
+- Builds the header (brand + status chip), sidebar, chat panel, and menu bar (File / View / Addons / Help).
+- **Exposes the addon-facing API** that historical `AIChat`/`GGUFLoaderApp` provided:
+  - `model` — callable `ModelBackend` or `None`
+  - `model_loaded` / `model_unloaded` / `generation_finished` / `generation_error` signals
+  - `chat_generator` — always `None` (addons fall back to calling `model`)
+  - `addon_manager`, `_floating_chat_addon`
 
-| Event | Description |
-|-------|-------------|
-| `model_loaded` | Model successfully loaded |
-| `model_unloaded` | Model unloaded |
-| `chat_message` | New chat message |
-| `addon_loaded` | Addon loaded |
-| `settings_changed` | Settings updated |
+## 🎨 Theming (`ui/theme.py`)
 
-## 🗃️ State Management
+A single `QSS_TEMPLATE` with `$token` placeholders is rendered twice — `DARK_TOKENS` ("Midnight & Amber": slate-charcoal surfaces + amber accent) and `LIGHT_TOKENS`. `ThemeMixin.apply_styles()` swaps palettes at runtime; widgets read `self.tokens` for stateful colors. Because one template drives both themes, they can never drift apart.
 
-### Application State
+## 🧩 Addons (`addon_manager.py` + `addons/`)
 
-```python
-class AppState:
-    model: Optional[Llama]
-    model_path: Optional[str]
-    chat_history: List[Message]
-    settings: Dict[str, Any]
-    loaded_addons: Dict[str, object]
-```
+`AddonManager` scans the `addons/` folder for packages with `__init__.py`, loads each module dynamically, and calls its `register()` function. A registered addon returns a widget (shown in the Addons menu) and/or runs in the background. See the [Addon Development Guide](/docs/addon-development/) and [Addon API Reference](/docs/addon-api/).
 
-### Persistence
+The built-in **floating_chat** addon is a good reference: it locates the main window via `QApplication.topLevelWidgets()`, subscribes to model signals, and manages its own always-on-top windows.
 
-- **Settings**: JSON file in config directory
-- **Chat History**: SQLite database (optional)
-- **Model Preferences**: Per-model JSON files
+## 📦 Deployment
 
-## 🔒 Security Architecture
-
-### Addon Sandboxing
-
-- Addons run in same process (trust model)
-- File system access limited to addon directory
-- Network access logged
-- Sensitive APIs require permission
-
-### Data Protection
-
-- No telemetry or data collection
-- All processing local
-- Clipboard access temporary and restored
-- Logs contain no sensitive data
-
-## 📊 Performance Considerations
-
-### Memory Management
-
-- Models loaded on-demand
-- Lazy UI component initialization
-- Proper cleanup on unload
-- Memory-mapped model files
-
-### Threading Model
-
-- UI runs on main thread
-- Model inference on worker thread
-- Addon timers on main thread
-- Background tasks use QThreadPool
-
-## 🧪 Testing Architecture
-
-### Test Structure
-
-```
-tests/
-├── unit/
-│   ├── test_model_loader.py
-│   ├── test_addon_manager.py
-│   └── test_config.py
-├── integration/
-│   ├── test_chat_flow.py
-│   └── test_addon_loading.py
-└── e2e/
-    └── test_full_workflow.py
-```
-
-### Mocking Strategy
-
-- Mock model for fast tests
-- Mock clipboard for addon tests
-- Mock file system for config tests
-
-## 📚 Related Documentation
-
-- [Package Structure](/docs/package-structure/ "File organization") - Detailed file layout
-- [Addon API](/docs/addon-api/ "API reference") - Complete API docs
-- [Contributing](/docs/contributing/ "Contribute") - Development workflow
-
----
-
-**Questions about the architecture?** Join our [community discussions](https://github.com/gguf-loader/gguf-loader/discussions) or contact support@ggufloader.com.
+- `resource_manager.py` detects dev / installed-package / PyInstaller (`sys.frozen`) and resolves paths accordingly — models, config, cache, logs, addons, and llama.cpp libs.
+- `main.py`'s `setup_library_path()` registers the bundled `llama_cpp/lib` so native DLLs are found in frozen builds.
+- `build_exe.spec` + hooks (`build_hooks/`) package everything; `scripts/package_linux.sh` wraps the Linux binary into an installable tarball.

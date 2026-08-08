@@ -11,6 +11,18 @@ These administrative bottlenecks are not just annoying—they divert critical re
 
 This guide explains how **local AI**—running privately on your own office computers or laptops—can automate these static, high-volume administrative tasks. We will explore how to reclaim hundreds of hours for your mission without compromising data privacy or breaking the budget.
 
+### Where AI Is Already Deployed in Non-Profits & NGOs
+
+Non-profits have quietly hit near-universal AI adoption. Benchmark research from Virtuous and Fundraising.AI finds that **92% of organizations now use AI in some capacity**—yet only 7% report transformative impact, and 76% still lack a formal AI governance policy. Where is that AI actually working?
+
+*   **Fundraising and donor data**: Predictive-giving tools surface lapsed-donor risks and high-value prospects (Virtuous Insights), though only about 13% of organizations actively use predictive software; 30% report AI measurably boosted fundraising revenue over 12 months.
+*   **Grant writing and reporting**: Roughly a quarter of non-profits use generative AI for grant applications (Grant Assistant, Grantable, Instrumentl), cutting proposal-drafting time 30-50%—even as Candid finds 23% of foundations won't accept AI-generated application content.
+*   **Marketing and donor communications**: 51% run AI chatbots for marketing and fundraising; ChatGPT (57%), Copilot (23%), and Gemini (14%) dominate for grammar checks, subject lines, and first drafts, with email teams seeing about a 13% lift in click-through rates.
+*   **Volunteer coordination**: Scheduling and shift-reminder automation is common (LiveImpact, Bloomerang), with skill-matching still largely experimental.
+*   **Constituent data at scale**: Major humanitarian NGOs manage tens of millions of records—UNHCR registers over 19 million people, and the World Food Programme holds data on 31 million across 59 countries.
+
+Yet the sector's adoption paradox is real: 60% of organizations lack the in-house expertise to evaluate AI tools, only 4% have dedicated AI training budgets, and the June 2026 cyberattack on the World Food Programme—exposing personal data of roughly 600,000 Gaza households—is a stark reminder of what happens when sensitive beneficiary data sits in connected systems. The administrative backlog that follows is exactly where local AI can step in.
+
 ### The Problem: Administration vs. Mission
 
 Non-profits often operate with lean teams handling enterprise-level data volumes.
@@ -31,13 +43,14 @@ Despite the human-centric nature of non-profit work, the backend data processing
 
 These tasks require speed, accuracy, and privacy—the exact strengths of local AI.
 
-### Why Local AI Is a Good Fit
+### Why Local AI Is a Good Fit for Non-Profits & NGOs
 
-Local AI refers to running open-source models (like Llama 3, Mistral, or Gemma) directly on your own hardware, offline or within your secure internal network. For NGOs, this model is ideal:
+Local AI refers to running open-source models (like Llama 3, Mistral, or Gemma) directly on your own hardware, offline or within your secure internal network. For NGOs, the case for local AI isn't about model quality—it's about what a mission-driven organization with a thin budget and vulnerable data can safely run:
 
-1.  **Data Privacy**: Sensitive donor lists, beneficiary identities, and medical records never leave your building. You are not training a tech giant’s model with your vulnerable data.
-2.  **Zero Ongoing Costs**: Once you have a capable laptop or server, there are no monthly subscription fees or per-token charges. You can process 100,000 records for free.
-3.  **Reliability**: Local AI works without an internet connection, which is crucial for field offices with unstable connectivity.
+*   **Donor PII and GDPR**: When staff paste unmasked donor histories or client case notes into consumer chatbots, that data lands in a third party's training pipeline—the "shadow AI" problem regulators and funders increasingly scrutinize. Local AI makes the leak impossible because the data never leaves your machines.
+*   **Vulnerable beneficiary data**: Refugees, displaced children, and crisis survivors cannot meaningfully consent to their data being processed by a foreign cloud provider. Local processing keeps that responsibility where the humanitarian mandate lives.
+*   **Budgets**: Most organizations can't afford enterprise-grade zero-retention agreements or per-seat AI tiers. Local AI runs on laptops they already own—no subscription, no per-record fee, no DPA negotiation.
+*   **Offline field operations**: Remote and conflict-zone offices face erratic power and connectivity. Local AI keeps working in a field office with no internet, syncing results when the network returns.
 
 ### What Local AI Actually Does
 
@@ -88,6 +101,7 @@ Local AI is a tool for efficiency, not relationships. **Do NOT use it for:**
 *   **Protect Privacy**: keep donor and beneficiary data secure by processing it locally, not in the cloud.
 *   **Focus on Mission**: Every hour saved on spreadsheets is an hour returned to program delivery and genuine relationship building.
 *   **Staff in Control**: AI is the assistant; your staff are the decision-makers.
+*   **The Mission Layer**: 92% of non-profits already use AI, but only 7% report transformative impact and 76% have no governance policy. Local AI is the option that needs no DPA, no data pipeline, and no connection—just the laptops you already own.
 
 ### Next Steps
 

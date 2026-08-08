@@ -9,22 +9,22 @@ tags: ["documentation", "getting-started", "overview"]
 
 # GGUF Loader Documentation
 
-Welcome to the GGUF Loader documentation! This guide will help you get started with GGUF Loader 2.0.0 and its powerful addon system.
+Welcome to the GGUF Loader documentation! This guide will help you get started with GGUF Loader 2.1.2 — a beginner-friendly, privacy-first desktop application for running large language models locally on Windows, Linux, and macOS.
 
 ## 📚 Documentation Index
 
 ### Getting Started
-- [Installation Guide](/docs/installation/) - How to install and set up GGUF Loader
+- [Installation Guide](/docs/installation/) - Download and install GGUF Loader
 - [Quick Start Guide](/docs/quick-start/) - Get up and running in minutes
 - [User Guide](/docs/user-guide/) - Complete user manual
 
 ### Addon Development
 - [Addon Development Guide](/docs/addon-development/) - Create your own addons
 - [Addon API Reference](/docs/addon-api/) - Complete API documentation
-- [Smart Floater Example](/docs/smart-floater-example/) - Learn from the built-in addon
+- [Floating Chat Example](/docs/floating-chat-example/) - Learn from the built-in addon
 
 ### Advanced Topics
-- [Package Structure](/docs/package-structure/) - Technical architecture details
+- [Package Structure](/docs/package-structure/) - How the codebase is organized
 - [Configuration](/docs/configuration/) - Customize GGUF Loader settings
 - [Troubleshooting](/docs/troubleshooting/) - Common issues and solutions
 
@@ -32,38 +32,16 @@ Welcome to the GGUF Loader documentation! This guide will help you get started w
 - [Contributing Guide](/docs/contributing/) - How to contribute to the project
 - [Architecture Overview](/docs/architecture/) - Technical architecture details
 
-## 🚀 What's New in Version 2.0.0
+## 🎉 What's New in Version 2.1.2
 
-### Smart Floating Assistant
-The flagship feature of version 2.0.0 is the **Smart Floating Assistant** addon:
+- **🐧 One-Click Linux Installer** — A `.tar.gz` package with an installer (`install.sh`) that adds a desktop menu entry and uninstall support.
+- **💬 Floating Chat Fixes** — The floating chat button no longer disappears on macOS, can't get stuck minimized, and stays clear of taskbars, docks, and menu bars.
+- **⚙️ Automated Release Builds** — GitHub Actions now attaches Windows and Linux installers to every release.
+- **🤖 Agent Mode** — Toggle tool-use chat where the AI can read, write, edit, and search files inside a workspace folder.
+- **🎨 Midnight & Amber Theme** — A polished dark/light theme system with ChatGPT-style chat bubbles.
 
-- **Global Text Selection**: Works across all applications
-- **AI-Powered Processing**: Summarize and comment on any text
-- **Floating UI**: Non-intrusive, always-accessible interface
-- **Privacy-First**: All processing happens locally
+## ❓ Need Help?
 
-### Addon System
-Version 2.0.0 introduces a powerful addon system:
-
-- **Extensible Architecture**: Easy to create and install addons
-- **Plugin API**: Rich API for addon development
-- **Hot Loading**: Load and unload addons without restarting
-- **Community Ecosystem**: Share addons with the community
-
-## 🛠️ Quick Links
-
-- **Installation**: `pip install ggufloader`
-- **Launch**: `ggufloader` (includes Smart Floating Assistant)
-- **GitHub**: [https://github.com/gguf-loader/gguf-loader](https://github.com/gguf-loader/gguf-loader)
-- **Issues**: [Report bugs and request features](https://github.com/gguf-loader/gguf-loader/issues)
-
-## 💡 Need Help?
-
-- 📖 Check the [User Guide](/docs/user-guide/) for detailed instructions
-- 🐛 Found a bug? [Report it here](https://github.com/gguf-loader/gguf-loader/issues)
-- 💬 Have questions? [Join our discussions](https://github.com/gguf-loader/gguf-loader/discussions)
-- 📧 Contact us: support@ggufloader.com
-
----
-
-**Happy coding with GGUF Loader! 🎉**
+- Browse the [FAQ](/) section on the homepage
+- Check the [Troubleshooting Guide](/docs/troubleshooting/)
+- Open an issue on [GitHub](https://github.com/GGUFloader/gguf-loader/issues)

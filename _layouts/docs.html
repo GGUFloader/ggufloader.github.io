@@ -65,7 +65,7 @@
               <li role="none" class="dropdown-divider"></li>
               <li role="none"><a href="/docs/addon-development/" role="menuitem" title="Create custom addons" {% if page.url == '/docs/addon-development/' %}class="current-page"{% endif %}>Addon Development</a></li>
               <li role="none"><a href="/docs/addon-api/" role="menuitem" title="API reference" {% if page.url == '/docs/addon-api/' %}class="current-page"{% endif %}>API Reference</a></li>
-              <li role="none"><a href="/docs/smart-floater-example/" role="menuitem" title="Smart Floater example" {% if page.url == '/docs/smart-floater-example/' %}class="current-page"{% endif %}>Smart Floater Example</a></li>
+              <li role="none"><a href="/docs/floating-chat-example/" role="menuitem" title="Floating Chat example" {% if page.url == '/docs/floating-chat-example/' %}class="current-page"{% endif %}>Floating Chat Example</a></li>
               <li role="none" class="dropdown-divider"></li>
               <li role="none"><a href="/docs/package-structure/" role="menuitem" title="Technical architecture" {% if page.url == '/docs/package-structure/' %}class="current-page"{% endif %}>Package Structure</a></li>
               <li role="none"><a href="/docs/configuration/" role="menuitem" title="Configuration options" {% if page.url == '/docs/configuration/' %}class="current-page"{% endif %}>Configuration</a></li>
@@ -137,7 +137,7 @@
         <ul>
           <li><a href="/docs/addon-development/" {% if page.url == '/docs/addon-development/' %}class="active"{% endif %} title="Create custom GGUF Loader addons">Addon Development</a></li>
           <li><a href="/docs/addon-api/" {% if page.url == '/docs/addon-api/' %}class="active"{% endif %} title="Complete API reference for addon developers">API Reference</a></li>
-          <li><a href="/docs/smart-floater-example/" {% if page.url == '/docs/smart-floater-example/' %}class="active"{% endif %} title="Learn from the built-in addon example">Smart Floater Example</a></li>
+          <li><a href="/docs/floating-chat-example/" {% if page.url == '/docs/floating-chat-example/' %}class="active"{% endif %} title="Learn from the built-in addon example">Floating Chat Example</a></li>
         </ul>
         
         <h3>Advanced</h3>
@@ -265,7 +265,7 @@
       </section>
       
       <!-- Previous/Next Navigation -->
-      {% assign docs_order = "installation,quick-start,addon-development,addon-api,smart-floater-example,package-structure" | split: "," %}
+      {% assign docs_order = "installation,quick-start,addon-development,addon-api,floating-chat-example,package-structure" | split: "," %}
       {% assign current_index = docs_order | index: page.slug %}
       {% if current_index %}
         <nav class="docs-navigation" aria-label="Page navigation">

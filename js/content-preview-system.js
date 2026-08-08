@@ -63,10 +63,10 @@ class ContentPreviewSystem {
                 description: 'Learn to create custom addons for GGUF Loader with examples and best practices'
             },
             {
-                id: 'smart-floater-example',
-                url: 'docs/smart-floater-example/',
-                title: 'Smart Floater Example',
-                description: 'Complete example of the Smart Floating Assistant addon'
+                id: 'floating-chat-example',
+                url: 'docs/floating-chat-example/',
+                title: 'Floating Chat Example',
+                description: 'Complete example of the Floating Chat addon'
             },
             {
                 id: 'package-structure',
@@ -135,27 +135,27 @@ class ContentPreviewSystem {
                 sections: [
                     {
                         title: 'Launch GGUF Loader',
-                        content: 'Start GGUF Loader with the command: ggufloader. This opens the application with the Smart Floating Assistant already loaded.'
+                        content: 'Launch GGUF Loader from your app menu (or run python main.py from source). The Floating Chat addon loads automatically with the app.'
                     },
                     {
                         title: 'Load Your First Model',
                         content: 'Download a GGUF model from Hugging Face, click "Select GGUF Model", choose your file, and wait for loading.'
                     },
                     {
-                        title: 'Smart Floating Assistant',
-                        content: 'Select text anywhere on your system and click the ✨ floating button to process it with AI instantly.'
+                        title: 'Floating Chat',
+                        content: 'Click the floating button to open a chat window connected to your loaded model. It stays on top of all windows, so you can chat from anywhere.'
                     }
                 ],
                 keyPoints: [
                     'Get running in under 5 minutes',
                     'No technical knowledge required',
-                    'Smart Floating Assistant works across all applications',
+                    'Floating Chat stays on top of all applications',
                     'Supports popular models like Mistral and LLaMA'
                 ],
                 codeExamples: [
                     {
                         language: 'bash',
-                        code: 'ggufloader'
+                        code: 'python main.py'
                     }
                 ]
             },
@@ -179,7 +179,7 @@ class ContentPreviewSystem {
                     'Extend GGUF Loader with custom functionality',
                     'Full access to AI models and UI components',
                     'Python-based development with Qt UI framework',
-                    'Examples include Smart Floating Assistant'
+                    'Examples include Floating Chat'
                 ],
                 codeExamples: [
                     {
@@ -217,32 +217,32 @@ class ContentPreviewSystem {
                     }
                 ]
             },
-            'smart-floater-example': {
+            'floating-chat-example': {
                 ...page,
                 sections: [
                     {
-                        title: 'Smart Floating Assistant',
-                        content: 'A revolutionary addon that provides AI assistance across all applications by detecting text selection and offering contextual processing.'
+                        title: 'Floating Chat',
+                        content: 'The built-in Floating Chat addon adds a Messenger-style button that stays on top of all windows. Click it to open a chat window connected to your loaded GGUF model.'
                     },
                     {
-                        title: 'Text Selection Detection',
-                        content: 'Monitors global text selection using system APIs and clipboard integration to provide seamless cross-application functionality.'
+                        title: 'Always-on-Top Button',
+                        content: 'The draggable button floats above every window and remembers its position between sessions. On macOS it stays visible even when the app loses focus.'
                     },
                     {
-                        title: 'Floating UI Components',
-                        content: 'Creates floating widgets that appear near selected text with options for summarization, commenting, and custom processing.'
+                        title: 'Chat Window',
+                        content: 'Click the button to open a chat window positioned next to it. Messages stream from your local model, with copy-all and clear controls built in.'
                     }
                 ],
                 keyPoints: [
-                    'Works across all applications and websites',
-                    'Instant AI processing of selected text',
-                    'Floating UI that appears on demand',
+                    'Stays on top of all windows (X11; limited on Wayland)',
+                    'Connects to the loaded GGUF model',
+                    'Remembers button position between sessions',
                     'Complete source code and implementation details'
                 ],
                 codeExamples: [
                     {
                         language: 'python',
-                        code: 'def on_text_selected(self, text):\n    self.show_floating_widget(text)'
+                        code: 'gguf_app.model_loaded.connect(self._on_model_loaded)'
                     }
                 ]
             },

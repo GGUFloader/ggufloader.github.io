@@ -8,7 +8,7 @@ module.exports = {
         'http://localhost:8080/docs/quick-start/',
         'http://localhost:8080/docs/addon-development/',
         'http://localhost:8080/docs/addon-api/',
-        'http://localhost:8080/docs/smart-floater-example/',
+        'http://localhost:8080/docs/floating-chat-example/',
         'http://localhost:8080/docs/package-structure/'
       ],
       startServerCommand: 'npm run serve',

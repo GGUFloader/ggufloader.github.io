@@ -322,7 +322,7 @@ class InternalLinkReporter {
             '/docs/quick-start/': 'Quick start tutorial',
             '/docs/addon-development/': 'Addon development guide',
             '/docs/addon-api/': 'API reference documentation',
-            '/docs/smart-floater-example/': 'Smart Floater example',
+            '/docs/floating-chat-example/': 'Floating Chat example',
             '/docs/package-structure/': 'Package structure documentation',
             '/docs/': 'Documentation hub',
             '/': 'GGUF Loader homepage',

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Create Addons for GGUF Loader - Complete Developer Guide (2025)</title>
-    <meta name="description" content="Learn how to create custom addons for GGUF Loader 2.0.0. Complete guide covering addon architecture, Python package structure, UI components, API hooks, best practices, and distribution on PyPI. Build extensions that add new features to your local AI setup.">
+    <meta name="description" content="Learn how to create custom addons for GGUF Loader 2.1.2. Complete guide covering addon architecture, Python package structure, UI components, API hooks, and best practices. Build extensions that add new features to your local AI setup.">
     <meta name="keywords" content="gguf loader addon, create gguf addon, gguf loader plugin, gguf loader extension, gguf loader api, gguf loader development, python addon tutorial, local ai customization, gguf loader 2.0, addon architecture, plugin development guide, gguf loader hooks, custom ui components, gguf loader pypi">
     <meta name="author" content="Hussain Nazary">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -43,7 +43,7 @@
         "@id": "https://ggufloader.github.io/addon-guide.html"
       },
       "headline": "How to Create Addons for GGUF Loader - Complete Developer Guide",
-      "description": "Comprehensive guide to creating custom addons for GGUF Loader 2.0.0. Covers addon architecture, Python package structure, UI components, API hooks, and distribution.",
+      "description": "Comprehensive guide to creating custom addons for GGUF Loader 2.1.2. Covers addon architecture, Python package structure, UI components, API hooks, and best practices.",
       "image": "https://ggufloader.github.io/preview.png",
       "datePublished": "2024-10-17T00:00:00+00:00",
       "dateModified": "2025-12-25T00:00:00+00:00",
@@ -75,7 +75,7 @@
       "totalTime": "PT30M",
       "tool": [
         {"@type": "HowToTool", "name": "Python 3.8+"},
-        {"@type": "HowToTool", "name": "GGUF Loader 2.0.0"},
+        {"@type": "HowToTool", "name": "GGUF Loader 2.1.2"},
         {"@type": "HowToTool", "name": "Text Editor or IDE"}
       ],
       "step": [
@@ -140,7 +140,7 @@
           "name": "How do I install a GGUF Loader addon?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Addons can be installed via pip (pip install addon-name), from the GGUF Loader addon manager UI, or by placing the addon folder in the addons directory."
+            "text": "Addons are installed by placing the addon folder in the addons directory; the Addon Manager (Addons menu) scans, loads, and opens them automatically."
           }
         }
       ]
@@ -247,7 +247,7 @@
 
         <div class="addon-guide-container">
             <section class="addon-guide-section">
-                <p>This guide will teach you how to create custom addons for GGUF Loader 2.0.0. Addons extend the functionality of GGUF Loader and can provide new features, UI components, and integrations.</p>
+                <p>This guide will teach you how to create custom addons for GGUF Loader 2.1.2. Addons extend the functionality of GGUF Loader and can provide new features, UI components, and integrations.</p>
 
                 <h2>Addon Architecture</h2>
                 <h3>What is an Addon?</h3>
@@ -261,14 +261,14 @@
                 </ul>
 
                 <h3>Addon Structure</h3>
-                <p>Every addon must follow this basic structure:</p>
+                <p>Every addon lives in its own folder inside <code>addons/</code> and must expose a <code>register()</code> function. Here is the basic structure (the built-in <code>floating_chat</code> addon follows it):</p>
                 <div class="addon-structure">
                     <pre><code>addons/
 └── your_addon_name/
-    ├── __init__.py          # Addon entry point
+    ├── __init__.py          # Addon entry point — must expose register()
     ├── main.py              # Main addon logic
-    ├── ui.py                # UI components (optional)
-    ├── config.py            # Configuration (optional)
+    ├── chat_window.py       # UI components (optional)
+    ├── status_widget.py     # Additional widgets (optional)
     └── README.md            # Addon documentation</code></pre>
                 </div>
 
@@ -487,10 +487,10 @@ def register(parent=None):
 
                 <h3>Step 4: Test Your Addon</h3>
                 <ol>
-                    <li><strong>Place your addon</strong> in the <code>addons/</code> directory</li>
-                    <li><strong>Launch GGUF Loader</strong>: <code>ggufloader</code></li>
-                    <li><strong>Load a GGUF model</strong> in the main application</li>
-                    <li><strong>Click your addon</strong> in the addon sidebar</li>
+                    <li><strong>Place your addon</strong> in the <code>addons/</code> directory (next to the built-in <code>floating_chat</code>)</li>
+                    <li><strong>Launch GGUF Loader</strong> — the packaged app, or from source via <code>launch.bat</code> (Windows) / <code>launch.sh</code> (Linux, macOS)</li>
+                    <li><strong>Open the Addons menu</strong> → your addon appears after the scan at startup</li>
+                    <li><strong>Click your addon</strong> to open its widget (or use <strong>Addons → Refresh Addons</strong> to pick up changes)</li>
                     <li><strong>Test the functionality</strong></li>
                 </ol>
 
@@ -670,9 +670,9 @@ A powerful addon for GGUF Loader that provides [functionality].
                 <h3>3. Share with Community</h3>
                 <ul>
                     <li>Create a GitHub repository</li>
-                    <li>Add installation instructions</li>
+                    <li>Add installation instructions (drop the folder into <code>addons/</code>)</li>
                     <li>Include screenshots and examples</li>
-                    <li>Submit to the community addon registry</li>
+                    <li>Link to your repo so others can clone it into their <code>addons/</code> folder</li>
                 </ul>
 
                 <h2>Additional Resources</h2>
@@ -688,7 +688,7 @@ A powerful addon for GGUF Loader that provides [functionality].
 
     <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="guides.html">Guides</a> | <a href="blog.html">Blog</a></p>
+            <p>&copy; 2026 GGUF Loader. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="guides.html">Guides</a> | <a href="blog.html">Blog</a></p>
         </div>
     </footer>
 

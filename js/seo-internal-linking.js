@@ -19,10 +19,10 @@ class SEOInternalLinking {
                     anchor: 'Learn how to create custom addons for GGUF Loader',
                     context: 'addon development guide'
                 },
-                'smart-floater': {
-                    url: '/docs/smart-floater-example/',
-                    anchor: 'Explore the Smart Floating Assistant implementation',
-                    context: 'Smart Floater example documentation'
+                'floating-chat-example': {
+                    url: '/docs/floating-chat-example/',
+                    anchor: 'Explore the Floating Chat implementation',
+                    context: 'Floating Chat example documentation'
                 },
                 'api-integration': {
                     url: '/docs/addon-api/',
@@ -131,7 +131,7 @@ class SEOInternalLinking {
                 relatedPages: [
                     '/',
                     '/docs/addon-api/',
-                    '/docs/smart-floater-example/'
+                    '/docs/floating-chat-example/'
                 ]
             },
             '/docs/addon-api/': {
@@ -141,11 +141,11 @@ class SEOInternalLinking {
                 relatedPages: [
                     '/',
                     '/docs/addon-development/',
-                    '/docs/smart-floater-example/'
+                    '/docs/floating-chat-example/'
                 ]
             },
-            '/docs/smart-floater-example/': {
-                title: 'Smart Floater Example',
+            '/docs/floating-chat-example/': {
+                title: 'Floating Chat Example',
                 type: 'documentation',
                 category: 'examples',
                 relatedPages: [
@@ -261,11 +261,11 @@ class SEOInternalLinking {
                 });
             }
             
-            if (titleText.includes('smart') || titleText.includes('floater') || titleText.includes('assistant')) {
+            if (titleText.includes('floating') || titleText.includes('chat example') || titleText.includes('assistant')) {
                 this.addContextualLink(item, {
-                    url: '/docs/smart-floater-example/',
-                    text: 'Explore Smart Floater implementation',
-                    context: 'Detailed Smart Floating Assistant example'
+                    url: '/docs/floating-chat-example/',
+                    text: 'Explore Floating Chat implementation',
+                    context: 'Detailed Floating Chat example'
                 });
             }
             
@@ -481,8 +481,8 @@ class SEOInternalLinking {
                     context: 'Extend GGUF Loader with your own addons'
                 },
                 {
-                    url: '/docs/smart-floater-example/',
-                    text: 'Study the Smart Floater example',
+                    url: '/docs/floating-chat-example/',
+                    text: 'Study the Floating Chat example',
                     context: 'Learn from a real addon implementation'
                 }
             ];
@@ -494,9 +494,9 @@ class SEOInternalLinking {
                     context: 'Detailed API documentation for advanced development'
                 },
                 {
-                    url: '/docs/smart-floater-example/',
+                    url: '/docs/floating-chat-example/',
                     text: 'See a complete addon example',
-                    context: 'Learn from the Smart Floating Assistant implementation'
+                    context: 'Learn from the Floating Chat implementation'
                 }
             ];
         }
@@ -601,10 +601,10 @@ class SEOInternalLinking {
                 context: 'Complete API documentation'
             },
             {
-                keywords: ['smart floater', 'floating assistant', 'smart assistant'],
-                url: '/docs/smart-floater-example/',
-                linkText: 'Smart Floater example',
-                context: 'Smart Floating Assistant implementation'
+                keywords: ['Floating Chat', 'floating button', 'smart assistant'],
+                url: '/docs/floating-chat-example/',
+                linkText: 'Floating Chat example',
+                context: 'Floating Chat implementation'
             }
         ];
         
@@ -795,8 +795,8 @@ class SEOInternalLinking {
             return 'Addon development guide';
         } else if (href.includes('addon-api')) {
             return 'API reference documentation';
-        } else if (href.includes('smart-floater')) {
-            return 'Smart Floater example';
+        } else if (href.includes('floating-chat-example')) {
+            return 'Floating Chat example';
         } else if (href.includes('package-structure')) {
             return 'Package structure documentation';
         } else if (href === '/docs/') {
@@ -819,7 +819,7 @@ class SEOInternalLinking {
             '/docs/quick-start/': 'Quick start guide to get up and running in minutes',
             '/docs/addon-development/': 'Comprehensive guide to creating custom addons',
             '/docs/addon-api/': 'Complete API reference for addon developers',
-            '/docs/smart-floater-example/': 'Detailed example of the Smart Floating Assistant addon',
+            '/docs/floating-chat-example/': 'Detailed example of the Floating Chat addon',
             '/docs/package-structure/': 'Technical documentation of GGUF Loader architecture'
         };
         

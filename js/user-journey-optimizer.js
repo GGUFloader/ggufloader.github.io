@@ -60,7 +60,7 @@ class UserJourneyOptimizer {
                     { path: '/docs/package-structure/', title: 'Architecture Overview', description: 'Learn the technical structure' },
                     { path: '/docs/addon-development/', title: 'Addon Development', description: 'Create custom extensions' },
                     { path: '/docs/addon-api/', title: 'API Reference', description: 'Detailed technical documentation' },
-                    { path: '/docs/smart-floater-example/', title: 'Study Examples', description: 'Learn from real implementations' }
+                    { path: '/docs/floating-chat-example/', title: 'Study Examples', description: 'Learn from real implementations' }
                 ],
                 estimatedTime: '45 minutes',
                 difficulty: 'Advanced'
@@ -74,7 +74,7 @@ class UserJourneyOptimizer {
                     { path: '/docs/installation/', title: 'Advanced Installation', description: 'GPU acceleration and optimization' },
                     { path: '/docs/quick-start/', title: 'Master the Basics', description: 'Essential workflows' },
                     { path: '/#models', section: 'models', title: 'Model Selection', description: 'Choose the right models' },
-                    { path: '/docs/smart-floater-example/', title: 'Advanced Usage', description: 'Maximize productivity' }
+                    { path: '/docs/floating-chat-example/', title: 'Advanced Usage', description: 'Maximize productivity' }
                 ],
                 estimatedTime: '30 minutes',
                 difficulty: 'Intermediate'
@@ -955,8 +955,8 @@ class UserJourneyOptimizer {
                 reason: 'Advanced technical details'
             },
             'tutorial': {
-                title: 'Smart Floater Example',
-                url: '/docs/smart-floater-example/',
+                title: 'Floating Chat Example',
+                url: '/docs/floating-chat-example/',
                 reason: 'Hands-on learning experience'
             }
         };

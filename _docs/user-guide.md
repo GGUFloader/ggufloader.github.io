@@ -12,309 +12,104 @@ reading_time: "15 minutes"
 
 # User Guide
 
-Welcome to the complete GGUF Loader user guide! This manual covers all features and capabilities of GGUF Loader 2.0.0.
+This is the complete manual for GGUF Loader 2.1.2. GGUF Loader is a privacy-first desktop app for running large language models locally from GGUF files, with zero data leaving your machine.
 
-## 🎯 Overview
+## 🪟 The Main Window
 
-GGUF Loader is a desktop application for running GGUF-based Large Language Models (LLMs) locally on your computer. It provides:
+The app is divided into three areas:
 
-- **Easy Model Loading**: Load any GGUF model with a single click
-- **Chat Interface**: Intuitive chat UI for interacting with AI models
-- **Smart Floating Assistant**: AI-powered text processing across all applications
-- **Addon System**: Extend functionality with custom addons
-- **Privacy-First**: All processing happens locally on your machine
+1. **Header bar** (top) — brand on the left, a live **model status chip** on the right.
+2. **Sidebar** (left) — Model Settings, Environment, and Launcher sections.
+3. **Chat area** (center) — the conversation, or a welcome screen when no model is loaded.
 
-## 🚀 Getting Started
+## ⚙️ Model Settings Sidebar
 
-### Launching GGUF Loader
+### Model
+- **Load GGUF Model** — opens a file dialog; pick any `.gguf` file.
+- **Model info** — shows the loaded file name (or an error).
 
-After [installation](/docs/installation/ "Complete installation guide"), launch GGUF Loader:
+### Processing
+- **CPU Only** — runs on any machine using llama.cpp's CPU backend.
+- **GPU Accelerated** — offloads layers to an NVIDIA GPU (Windows/Linux). Requires a working CUDA llama-cpp-python install.
 
-```bash
-ggufloader
+### Context Length
+The model's context window in tokens (512–32768). Larger contexts use more RAM. Change it before loading a model.
+
+## 📊 Environment Section
+
+GGUF Loader ships with a built-in dependency manager for source installs:
+
+- **Python · .venv status** — shows the interpreter and whether the app runs from a virtual environment.
+- **Install Missing Dependencies** — appears when packages are missing; runs `pip install -r requirements.txt`.
+- **Create .venv & Restart** — bootstraps a virtual environment and relaunches inside it.
+- **Check Again** — re-scans the environment.
+
+> The packaged installers (`.exe` / Linux tarball) bundle everything, so this section is mostly relevant when running from source.
+
+## 🚀 Launcher Section
+
+One-click buttons that open the project's `scripts/` utilities (e.g. GPU support verification, monitor) in separate windows, plus **Restart App**.
+
+## 💬 Chatting
+
+- Type in the input box; **Enter** sends, **Shift+Enter** inserts a newline.
+- **Send** is disabled until you type something, and is disabled entirely until a model is loaded.
+- Responses **stream** token-by-token into bubbles: your messages right (amber), AI left (charcoal).
+- **View → Text Size** (12–22) changes bubble font size live.
+- **File → Clear Chat** wipes the conversation (the model stays loaded).
+
+## 🤖 Agent Mode
+
+Agent Mode turns the chat into a tool-using assistant that works inside a **workspace folder**:
+
+1. Toggle **🤖 Agent Mode: OFF → ON**.
+2. Choose a workspace (combo box or 📁 browse button). Default: `./agent_workspace`.
+3. Ask for file operations — e.g. *"Create a markdown file listing today's tasks"*.
+
+The agent will:
+- Analyze complex requests,
+- Plan tool calls and stream status updates (🤔/💡/→/✓/✗),
+- Execute tools against the workspace — `list_directory`, `read_file`, `write_file`, `edit_file`, `search_files`,
+- Summarize results in natural language.
+
+**Safety**: all tools are sandboxed to the workspace; paths that escape it are rejected.
+
+## 🎨 Appearance
+
+- **View → Dark Mode** toggles the "Midnight & Amber" dark theme and a light theme.
+- **View → Text Size** adjusts chat bubble text.
+- The app remembers dark mode per session (dark is the default).
+
+## 🧩 Addons
+
+The **Addons** menu lists every loaded addon (e.g. **floating_chat**). Selecting one opens it in a floating dialog; **Refresh Addons** re-scans the `addons/` folder. See the [Addon Development Guide](/docs/addon-development/).
+
+### 💬 Floating Chat
+
+The built-in addon adds a Messenger-style floating button (always on top, draggable) that opens a chat window connected to the loaded model. It:
+
+- Stays on top of all windows (see platform notes below)
+- Remembers its position between sessions
+- Shows model status (🟢 Ready / 🔴 offline) and streams responses
+- Has Copy All / Clear controls
+
+**Platform notes**: fully floating on Windows and Linux/X11. On Linux **Wayland**, compositors confine it to the app window — run under X11 (`QT_QPA_PLATFORM=xcb`) for the full effect. On macOS the button stays visible when the app loses focus but also appears in Mission Control.
+
+## 📁 Where Files Live
+
+- **Config**: `%APPDATA%\GGUFLoader` (Windows) / `~/.ggufloader` (Linux/macOS)
+- **Cache**: `%LOCALAPPDATA%\GGUFLoader\cache` (Windows) / `~/.cache/ggufloader` (Linux)
+- **Logs**: `%LOCALAPPDATA%\GGUFLoader\logs` (Windows) / `~/.ggufloader/logs` (Linux)
+- **Addons**: the `addons/` folder next to the app
+
+## ❤️ Feedback
+
+**Help → Send Feedback** opens the feedback dialog. Point it at your own Formspree endpoint via `feedback_config.json`:
+
+```json
+{ "endpoint_url": "https://formspree.io/f/YOUR_FORM_ID" }
 ```
 
-The main window will open with:
-- Model selection area
-- Chat interface
-- Addon sidebar
-- Settings menu
+## 🆘 Still Stuck?
 
-### Loading Your First Model
-
-1. **Click "Select GGUF Model"** in the main window
-2. **Navigate** to your GGUF model file
-3. **Select** the model and click "Open"
-4. **Wait** for the model to load (progress shown in status bar)
-5. **Start chatting** once the model is ready
-
-💡 **Tip**: Start with smaller models (4GB or less) for faster loading and better performance on systems with limited RAM.
-
-## 💬 Chat Interface
-
-### Basic Chat
-
-The chat interface allows you to have conversations with your loaded AI model:
-
-1. **Type your message** in the input field at the bottom
-2. **Press Enter** or click "Send" to submit
-3. **View the response** in the chat area
-4. **Continue the conversation** as needed
-
-### Chat Features
-
-- **Message History**: Scroll up to view previous messages
-- **Copy Responses**: Click to copy AI responses to clipboard
-- **Clear Chat**: Reset the conversation history
-- **Export Chat**: Save conversations for later reference
-
-### Conversation Tips
-
-- **Be Specific**: Clear, detailed prompts get better responses
-- **Provide Context**: Give background information when needed
-- **Use Examples**: Show the AI what format you want
-- **Iterate**: Refine your prompts based on responses
-
-## ✨ Smart Floating Assistant
-
-The Smart Floating Assistant is GGUF Loader's flagship feature, providing AI-powered text processing across all applications.
-
-### How It Works
-
-1. **Select text** in any application (browser, editor, etc.)
-2. **A floating button (✨)** appears near your selection
-3. **Click the button** to open the processing menu
-4. **Choose an action**: Summarize or Comment
-5. **View and copy** the AI-generated result
-
-### Available Actions
-
-#### Summarize
-Creates a concise summary of the selected text:
-- Extracts key points
-- Reduces lengthy content
-- Maintains essential meaning
-
-#### Comment
-Generates thoughtful commentary on the selected text:
-- Provides analysis and insights
-- Offers different perspectives
-- Adds context and explanation
-
-### Smart Floater Settings
-
-Access settings through the addon panel:
-- **Enable/Disable**: Turn the floating assistant on or off
-- **Button Timeout**: How long the button stays visible
-- **Processing Options**: Customize AI parameters
-
-## 🔧 Model Management
-
-### Supported Models
-
-GGUF Loader supports all GGUF format models, including:
-- **LLaMA** and LLaMA 2 models
-- **Mistral** and Mixtral models
-- **DeepSeek** models
-- **Phi** models
-- **Qwen** models
-- Any other GGUF-compatible model
-
-### Model Selection Tips
-
-| RAM Available | Recommended Model Size |
-|---------------|----------------------|
-| 4GB | Up to 3B parameters (Q4) |
-| 8GB | Up to 7B parameters (Q4) |
-| 16GB | Up to 13B parameters (Q4) |
-| 32GB+ | Up to 70B parameters (Q4) |
-
-### Quantization Levels
-
-- **Q2_K**: Smallest, fastest, lowest quality
-- **Q4_K_M**: Good balance of size and quality (recommended)
-- **Q5_K_M**: Better quality, larger size
-- **Q8_0**: Highest quality, largest size
-
-### Loading Options
-
-When loading a model, you can configure:
-- **Context Length**: Maximum conversation length
-- **GPU Layers**: Number of layers to offload to GPU
-- **Threads**: CPU threads for processing
-
-## 🧩 Addon System
-
-### Understanding Addons
-
-Addons extend GGUF Loader's functionality:
-- **Pre-installed**: Smart Floating Assistant comes built-in
-- **Custom Addons**: Create your own or install community addons
-- **Sidebar Access**: All addons accessible from the sidebar
-
-### Managing Addons
-
-#### Viewing Installed Addons
-1. Look at the **addon sidebar** on the right
-2. Each addon shows as a **clickable button**
-3. Click to **open the addon panel**
-
-#### Addon Controls
-- **Start/Stop**: Control addon execution
-- **Settings**: Configure addon behavior
-- **Status**: View addon status and logs
-
-### Creating Custom Addons
-
-Want to create your own addons? See:
-- [Addon Development Guide](/docs/addon-development/ "Step-by-step addon creation")
-- [Addon API Reference](/docs/addon-api/ "Complete API documentation")
-- [Smart Floater Example](/docs/smart-floater-example/ "Learn from the built-in addon")
-
-## ⚙️ Settings and Configuration
-
-### Application Settings
-
-Access settings through the menu:
-- **Theme**: Light or dark mode
-- **Font Size**: Adjust text size
-- **Language**: Interface language
-- **Startup**: Auto-load last model
-
-### Model Settings
-
-Configure model behavior:
-- **Temperature**: Controls randomness (0.0-2.0)
-- **Top P**: Nucleus sampling parameter
-- **Top K**: Limits token selection
-- **Repeat Penalty**: Reduces repetition
-- **Max Tokens**: Maximum response length
-
-### Performance Settings
-
-Optimize for your system:
-- **GPU Acceleration**: Enable CUDA or Metal
-- **Thread Count**: CPU threads to use
-- **Batch Size**: Processing batch size
-- **Context Size**: Maximum context length
-
-## 🖥️ Interface Overview
-
-### Main Window Components
-
-```
-┌─────────────────────────────────────────────────────┐
-│  Menu Bar                                           │
-├─────────────────────────────────────────────────────┤
-│                                          │ Addons   │
-│  Chat Area                               │ Sidebar  │
-│  - Messages displayed here               │          │
-│  - Scroll for history                    │ [Smart]  │
-│                                          │ [Floater]│
-│                                          │          │
-├─────────────────────────────────────────────────────┤
-│  Input Field                    [Send]   │          │
-├─────────────────────────────────────────────────────┤
-│  Status Bar: Model info, processing status          │
-└─────────────────────────────────────────────────────┘
-```
-
-### Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| Enter | Send message |
-| Ctrl+N | New chat |
-| Ctrl+O | Open model |
-| Ctrl+S | Save chat |
-| Ctrl+, | Settings |
-| Esc | Cancel/Close |
-
-## 📊 Performance Tips
-
-### Optimizing Speed
-
-1. **Use GPU acceleration** if available
-2. **Choose appropriate model size** for your RAM
-3. **Close unnecessary applications** to free memory
-4. **Use Q4 quantization** for best speed/quality balance
-
-### Reducing Memory Usage
-
-1. **Use smaller models** (7B or less)
-2. **Lower context length** if not needed
-3. **Use higher quantization** (Q2, Q3)
-4. **Close other memory-intensive apps**
-
-### Improving Quality
-
-1. **Use larger models** if RAM allows
-2. **Use lower quantization** (Q5, Q8)
-3. **Increase context length** for longer conversations
-4. **Fine-tune temperature** for your use case
-
-## 🔒 Privacy and Security
-
-### Local Processing
-
-GGUF Loader processes everything locally:
-- **No internet required** after installation
-- **No data sent** to external servers
-- **Complete privacy** for sensitive content
-- **Offline capable** once models are downloaded
-
-### Data Storage
-
-- **Chat history**: Stored locally (optional)
-- **Settings**: Saved in user config directory
-- **Models**: Stored where you choose
-- **Logs**: Local log files only
-
-## 🐛 Common Issues
-
-### Model Won't Load
-- Check file format (must be `.gguf`)
-- Verify sufficient RAM
-- Try a smaller model
-- Check file isn't corrupted
-
-### Slow Performance
-- Use GPU acceleration
-- Try smaller model
-- Reduce context length
-- Close other applications
-
-### Smart Floater Not Working
-- Ensure model is loaded first
-- Check addon is enabled
-- Try selecting more text (5+ characters)
-- Restart the application
-
-For more help, see the [Troubleshooting Guide](/docs/troubleshooting/ "Common issues and solutions").
-
-## 📚 Next Steps
-
-- **[Quick Start Guide](/docs/quick-start/ "Get started in minutes")** - Fast setup walkthrough
-- **[Addon Development](/docs/addon-development/ "Create custom addons")** - Build your own addons
-- **[Configuration Guide](/docs/configuration/ "Customize settings")** - Advanced configuration
-- **[Troubleshooting](/docs/troubleshooting/ "Fix common issues")** - Solve problems
-
-## 💡 Tips and Tricks
-
-### Power User Tips
-
-1. **Batch Processing**: Use Smart Floater for quick text processing
-2. **Custom Prompts**: Create templates for common tasks
-3. **Model Switching**: Keep multiple models for different tasks
-4. **Keyboard Navigation**: Learn shortcuts for faster workflow
-
-### Best Practices
-
-1. **Regular Updates**: Keep GGUF Loader updated
-2. **Model Organization**: Organize models in dedicated folders
-3. **Backup Settings**: Export your configuration
-4. **Community Engagement**: Share tips and get help
-
----
-
-**Need more help?** Check our [FAQ](/#faq "Frequently asked questions"), join [community discussions](https://github.com/gguf-loader/gguf-loader/discussions), or contact support@ggufloader.com.
+See the [Troubleshooting Guide](/docs/troubleshooting/).

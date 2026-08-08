@@ -46,7 +46,7 @@
         "name": "Hussain Nazary"
       },
       "datePublished": "2026-02-08T00:00:00Z",
-      "dateModified": "2026-02-08T00:00:00Z",
+      "dateModified": "2026-08-08T00:00:00Z",
       "publisher": {
         "@type": "Organization",
         "name": "GGUF Loader",
@@ -275,6 +275,21 @@
             </section>
 
             <section>
+        <h2>Where AI Is Already Deployed in Banking & Credit</h2>
+        
+        <p>Credit is where banking's AI has gone deepest. McKinsey and IACPM find <strong>52% of banks actively using or piloting AI in credit risk</strong>, and over 85% of Tier-1 North American banks run machine learning for risk and credit scoring. Where is it working?</p>
+        
+        <ul>
+            <li><strong>Corporate credit risk and underwriting:</strong> Moody's integrates AI agents across its credit analysis pipeline, S&P Global deploys CreditCompanion on RatingsDirect, and FICO remains the enterprise decisioning incumbent (a 2026 Gartner Leader for Decision Intelligence); Scienaptic and Zest AI serve mid-tier and community lenders.</li>
+            <li><strong>Trade finance and document processing:</strong> AI extraction platforms parse bills of lading, invoices, and purchase orders with up to 99% straight-through accuracy, collapsing multi-day processing bottlenecks at banks like BNY Mellon.</li>
+            <li><strong>Treasury and cash management:</strong> J.P. Morgan and Kyriba have moved to agentic AI for liquidity forecasting, with forecasts that 33% of enterprise finance applications will embed agentic AI by 2028.</li>
+            <li><strong>Stress testing and regulatory reporting:</strong> CCAR and CECL models increasingly use ML pipelines to simulate macroeconomic shocks—though black-box outputs face growing examiner resistance.</li>
+        </ul>
+        
+        <p>But the pilot-to-production gap persists: McKinsey notes most traditional banks are still working toward scaled cost reductions, and each platform above is built for a world where client data crosses into a vendor's environment—a world that GLBA, SR 11-7, and cross-border rules keep shrinking.</p>
+            </section>
+
+            <section>
         <h2>Why These Tasks Are Static</h2>
         
         <p>Most high-volume banking and credit operations follow predictable, rule-based patterns:</p>
@@ -293,17 +308,15 @@
             <section>
         <h2>Why Local AI Is a Good Fit</h2>
         
-        <p>Local AI models (GGUF-style, on-device) are designed for exactly this scenario:</p>
+        <p>Banking and credit live and die by two things: client confidentiality and regulatory approval, and an examiner can audit only what the bank can explain. Local AI models (GGUF-style, on-device) are designed for exactly this scenario:</p>
         
-        <p><strong>High-volume processing:</strong> Local AI can process thousands of transactions, applications, or account records in batch without per-transaction cloud costs. A 7B parameter model can extract fields from 10,000 loan applications overnight on standard banking hardware.</p>
-        
-        <p><strong>Deterministic outputs:</strong> When properly prompted, local AI produces consistent field extraction, classification, and formatting across identical document types. The same transaction format gets processed the same way every time.</p>
-        
-        <p><strong>Data privacy:</strong> Sensitive customer information, account numbers, transaction details, and loan applications never leave your infrastructure. This addresses regulatory concerns and reduces compliance overhead.</p>
-        
-        <p><strong>Offline operation:</strong> Local AI runs without internet connectivity, making it suitable for secure banking environments with restricted network access.</p>
-        
-        <p><strong>Cost predictability:</strong> No per-transaction API fees. Hardware costs are fixed and amortized across millions of operations.</p>
+        <ul>
+            <li><strong>Corporate financial data confidentiality:</strong> Balance sheets, cash-flow data, and non-public borrower metrics sent to a public cloud LLM risk violating GLBA provisions and corporate NDAs. On-device processing keeps them inside the bank.</li>
+            <li><strong>SR 11-7 model risk management:</strong> Federal Reserve and OCC examiners require every credit decision to be explainable, auditable, and independently validated. A black-box cloud model often fails conceptual-soundness review because its decision path can't be reconstructed—a local pipeline with logged rules and adverse-action reason codes can.</li>
+            <li><strong>Cross-border data restrictions:</strong> GDPR in Europe and localized banking mandates in APAC prevent centralizing client datasets in a global cloud architecture; local processing keeps each region's data where its law requires.</li>
+            <li><strong>Offline branches and failover:</strong> Corporate banking desks in low-connectivity zones and mission-critical failover systems can't depend on cloud-tethered latency for real-time authorization.</li>
+            <li><strong>Cost per application at scale:</strong> Running foundation-model inference across millions of micro-transactions and credit applications is unsustainable; smaller domain-specific local models keep unit economics viable.</li>
+        </ul>
             </section>
 
             <section>
@@ -400,6 +413,7 @@
             <li>Reduces manual data entry time and formatting errors in repetitive operations</li>
             <li>Local AI assists the process but does not replace professional judgment in credit decisions, fraud detection, or risk assessment</li>
             <li>Best suited for deterministic tasks where consistency and volume matter more than reasoning or interpretation</li>
+            <li><strong>The Explainable Credit File:</strong> Cloud AI can price risk at scale, but SR 11-7 demands every credit decision be explainable and independently validated—a local pipeline generates the adverse-action reason codes and audit trail that model validation actually accepts.</li>
         </ul>
             </section>
 

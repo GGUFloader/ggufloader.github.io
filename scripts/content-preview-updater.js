@@ -41,7 +41,7 @@ class ContentPreviewUpdater {
                     maxLength: 200,
                     linkText: 'Learn Addon Development'
                 },
-                'smart-floater-example.md': {
+                'floating-chat-example.md': {
                     homepageSection: 'features-section',
                     previewId: 'example-preview',
                     maxLength: 150,

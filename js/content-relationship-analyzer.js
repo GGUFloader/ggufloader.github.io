@@ -74,7 +74,7 @@ class ContentRelationshipAnalyzer {
             { path: '/docs/quick-start/', file: '_docs/quick-start.md' },
             { path: '/docs/addon-development/', file: '_docs/addon-development.md' },
             { path: '/docs/addon-api/', file: '_docs/addon-api.md' },
-            { path: '/docs/smart-floater-example/', file: '_docs/smart-floater-example.md' },
+            { path: '/docs/floating-chat-example/', file: '_docs/floating-chat-example.md' },
             { path: '/docs/package-structure/', file: '_docs/package-structure.md' }
         ];
 
@@ -241,11 +241,11 @@ class ContentRelationshipAnalyzer {
                 content: 'api reference documentation methods classes functions development',
                 tags: ['api', 'reference', 'development', 'documentation']
             },
-            '_docs/smart-floater-example.md': {
-                title: 'Smart Floater Example',
+            '_docs/floating-chat-example.md': {
+                title: 'Floating Chat Example',
                 description: 'Learn from the built-in addon example',
-                content: 'smart floater addon example implementation tutorial code',
-                tags: ['example', 'smart-floater', 'addon', 'tutorial']
+                content: 'Floating Chat addon example implementation tutorial code',
+                tags: ['example', 'floating-chat-example', 'addon', 'tutorial']
             },
             '_docs/package-structure.md': {
                 title: 'Package Structure',

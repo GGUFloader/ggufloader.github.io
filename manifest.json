@@ -1,7 +1,7 @@
 {
     "name": "GGUF Loader - Enterprise-Grade Local AI Platform",
     "short_name": "GGUF Loader",
-    "description": "Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Smart Floating Assistant.",
+    "description": "Run Mistral, LLaMA, and DeepSeek models offline on Windows, MacOS, Linux. No Python required. Privacy-first AI with Floating Chat.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",

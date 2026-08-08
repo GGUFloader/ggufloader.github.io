@@ -12,254 +12,48 @@ reading_time: "5 minutes"
 
 # Quick Start Guide
 
-Get up and running with GGUF Loader 2.0.0 in just a few minutes! New to GGUF Loader? [Check out the homepage](/ "Discover GGUF Loader's features and capabilities") to see what makes it special.
+Get up and running with GGUF Loader 2.1.2 in just a few minutes! New to GGUF Loader? [Check out the homepage](/) to see what makes it special.
 
-## 🚀 Installation
+## 🚀 Step 1: Install GGUF Loader
 
-```bash
-pip install ggufloader
-```
+Follow the [Installation Guide](/docs/installation/) for your platform, or download directly:
 
-Need detailed installation instructions? Check out our [Installation Guide](/docs/installation/ "Complete installation guide for all platforms") for platform-specific instructions and troubleshooting.
+- **Windows**: [GGUFLoader_v2.1.2.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe)
+- **Linux**: [GGUFLoader_v2.1.2_linux_x86_64.tar.gz](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64.tar.gz)
 
-## 🎯 Launch GGUF Loader
+## 📥 Step 2: Get a GGUF Model
 
-```bash
-ggufloader
-```
+GGUF Loader runs any GGUF-format model. Good starter models on Hugging Face:
 
-This opens GGUF Loader with the Smart Floating Assistant addon already loaded.
+- **Small (fast)**: [Llama-3-8B-Instruct GGUF (Q4_0)](https://huggingface.co/TheBloke/Llama-3-8B-Instruct-GGUF) — ~4.7 GB, runs great on CPU
+- **Medium**: [Mistral-7B-Instruct GGUF (Q4_K_M)](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF) — ~4.1 GB
+- **Larger**: [Phi-3.5-mini-instruct GGUF](https://huggingface.co/microsoft/Phi-3.5-mini-instruct-gguf) or any Qwen/Llama GGUF you like
 
-## 📥 Load Your First Model
+Download the `.gguf` file and remember where you saved it.
 
-### Step 1: Get a GGUF Model
+## 🖥️ Step 3: Load the Model
 
-Download a GGUF model from one of these sources:
+1. Launch GGUF Loader.
+2. In the **Model Settings** sidebar, choose **Processing** mode — `CPU Only` (default, works everywhere) or `GPU Accelerated` (NVIDIA CUDA).
+3. Set a **Context Length** (8192 is a safe default for most models; 32768 uses more RAM).
+4. Click **Load GGUF Model** and select your `.gguf` file.
+5. Wait for the status to show **"Model ready!"** — the header chip turns green with the model name.
 
-#### Popular Model Sources:
-- **Hugging Face**: [https://huggingface.co/models?library=gguf](https://huggingface.co/models?library=gguf)
-- **TheBloke's Models**: Search for "TheBloke" on Hugging Face
-- **Local Models**: Convert your own models to GGUF format
+## 💬 Step 4: Chat
 
-#### Recommended Starter Models:
-- **Small (2-4GB)**: `llama-2-7b-chat.Q4_K_M.gguf`
-- **Medium (4-8GB)**: `mistral-7b-instruct-v0.1.Q5_K_M.gguf`
-- **Large (8GB+)**: `llama-2-13b-chat.Q4_K_M.gguf`
+Type a message in the input box at the bottom and press **Enter** (Shift+Enter inserts a newline). Responses stream in as ChatGPT-style bubbles — your messages on the right (amber), the AI's on the left.
 
-💡 **See Model Comparisons**: Visit our [homepage model section](/#models "Compare models and see performance benchmarks") to see detailed comparisons and performance benchmarks for different models.
+Use the **View → Text Size** menu to adjust bubble font size.
 
-### Step 2: Load the Model
+## 🤖 Step 5 (Optional): Try Agent Mode
 
-1. **Click "Select GGUF Model"** in the main window
-2. **Browse and select** your downloaded `.gguf` file
-3. **Wait for loading** (this may take 1-5 minutes depending on model size)
-4. **Look for "Model ready!"** message
+Click **🤖 Agent Mode: OFF** in the input area to toggle it on:
 
-## 💬 Test Basic Chat
+1. Pick a **workspace folder** (defaults to `./agent_workspace`).
+2. Ask the agent to do file work — e.g. *"Create a file called hello.py that prints 'hi'"*.
+3. The agent plans tool calls, executes them (read/write/edit/search files inside the workspace only), and reports back with live status updates.
 
-### Try Your First Chat
+## ✅ Next Steps
 
-1. **Type a message** in the chat input box
-2. **Press Enter** or click "Send"
-3. **Watch the AI respond** in real-time
-4. **Continue the conversation!**
-
-#### Example Conversations:
-```
-You: Hello! How are you today?
-AI: Hello! I'm doing well, thank you for asking. I'm here and ready to help you with any questions or tasks you might have. How can I assist you today?
-
-You: Can you explain what GGUF models are?
-AI: GGUF (GPT-Generated Unified Format) is a file format designed for storing large language models...
-```
-
-## ✨ Use the Smart Floating Assistant
-
-The Smart Floating Assistant is GGUF Loader's killer feature - it works across ALL applications! [See it in action on our homepage](/#features "Watch the Smart Floating Assistant demo") to understand its full potential.
-
-### Step 1: Select Text Anywhere
-
-1. **Open any application** (browser, Word, Notepad, etc.)
-2. **Select some text** by highlighting it with your mouse
-3. **Look for the ✨ floating button** that appears near your cursor
-
-### Step 2: Process the Text
-
-1. **Click the ✨ button**
-2. **Choose an action**:
-   - **Summarize**: Get a concise summary
-   - **Comment**: Generate an insightful comment
-3. **Wait for AI processing**
-4. **Copy the result** and use it anywhere!
-
-#### Example Workflow:
-```
-1. Reading a long article in your browser
-2. Select a complex paragraph
-3. Click ✨ → "Summarize"
-4. Get: "This paragraph explains that..."
-5. Copy and paste the summary into your notes
-```
-
-## 🎛️ Basic Settings
-
-### Model Settings
-
-- **Temperature**: Controls creativity (0.1 = focused, 1.0 = creative)
-- **Max Tokens**: Maximum response length
-- **Context Size**: How much conversation history to remember
-
-### Smart Assistant Settings
-
-- **Enable/Disable**: Toggle the floating assistant
-- **Response Speed**: Adjust processing speed vs quality
-- **Auto-copy**: Automatically copy results to clipboard
-
-## 🔧 Common Tasks
-
-### Task 1: Summarize Articles
-
-1. **Open an article** in your browser
-2. **Select the main content**
-3. **Click ✨ → "Summarize"**
-4. **Get a concise summary**
-
-### Task 2: Generate Comments
-
-1. **Select a social media post** or forum discussion
-2. **Click ✨ → "Comment"**
-3. **Get a thoughtful response**
-4. **Edit and post** your AI-assisted comment
-
-### Task 3: Process Code
-
-1. **Select code** in your IDE or GitHub
-2. **Click ✨ → "Comment"**
-3. **Get code explanation** or suggestions
-
-### Task 4: Email Assistance
-
-1. **Select email content**
-2. **Click ✨ → "Summarize"** for long emails
-3. **Click ✨ → "Comment"** to draft responses
-
-## 🎨 Customization
-
-### Addon Management
-
-1. **Click the addon sidebar** (left panel)
-2. **View loaded addons**
-3. **Click addon names** to open their interfaces
-4. **Manage addon settings**
-
-### Themes and UI
-
-- **Dark/Light Mode**: Available in settings
-- **Font Size**: Adjustable for better readability
-- **Window Layout**: Resizable panels
-
-## 🐛 Quick Troubleshooting
-
-### Model Won't Load
-- **Check file format**: Must be `.gguf`
-- **Check file size**: Ensure enough RAM
-- **Try smaller model**: Start with 4GB or less
-
-### Floating Assistant Not Working
-- **Check model**: Must have a model loaded first
-- **Try different text**: Select at least 5+ characters
-- **Restart application**: Sometimes helps with initialization
-
-### Performance Issues
-- **Close other apps**: Free up RAM
-- **Use smaller model**: Try Q4 quantization
-- **Enable GPU**: If you have compatible hardware
-
-## 📚 Next Steps
-
-### Learn More
-- **[Addon Development](/docs/addon-development/ "Create custom GGUF Loader addons")**: Create custom addons
-- **[API Reference](/docs/addon-api/ "Complete API documentation")**: Technical documentation
-- **[Package Structure](/docs/package-structure/ "Understanding GGUF Loader's architecture")**: Technical architecture
-
-### Get Involved
-- **[GitHub](https://github.com/gguf-loader/gguf-loader "Source code and issue tracker")**: Source code and issues
-- **[Discussions](https://github.com/gguf-loader/gguf-loader/discussions "Community support forum")**: Community support
-- **[Smart Floater Example](/docs/smart-floater-example/ "Learn from the built-in addon")**: Study the built-in addon
-
-### 🏠 Explore Homepage Features
-- **[Interactive Demos](/#features "Try GGUF Loader features live")** - Experience features before diving deeper
-- **[Community Showcase](/#community "See what others are building")** - Get inspired by community projects
-- **[Download Options](/#download "Get GGUF Loader for your platform")** - Find the right version for your system
-
-## 💡 Pro Tips
-
-### Efficiency Tips
-1. **Use keyboard shortcuts**: Learn the hotkeys for faster workflow
-2. **Bookmark good models**: Keep a list of your favorite GGUF models
-3. **Organize your workflow**: Use the floating assistant for specific tasks
-4. **Experiment with prompts**: Different phrasings get different results
-
-### Model Selection Tips
-1. **Start small**: Begin with 7B parameter models
-2. **Match your hardware**: Don't exceed your RAM capacity (see [Installation Guide](/docs/installation/#system-requirements "System requirements and hardware recommendations"))
-3. **Try different quantizations**: Q4_K_M is a good balance
-4. **Read model cards**: Check Hugging Face for model details
-
-For more technical details about how models are loaded and managed, see the [Package Structure documentation](/docs/package-structure/ "Technical architecture and model loading details").
-
-### Smart Assistant Tips
-1. **Select quality text**: Better input = better output
-2. **Use specific actions**: "Summarize" vs "Comment" give different results
-3. **Edit the results**: AI output is a starting point, not final copy
-4. **Practice regularly**: The more you use it, the more useful it becomes
-
-## 🎉 You're Ready!
-
-Congratulations! You now know the basics of GGUF Loader 2.0.0. The Smart Floating Assistant will transform how you work with text across all your applications.
-
-### What You've Learned:
-- ✅ How to install and launch GGUF Loader
-- ✅ How to load and use GGUF models
-- ✅ How to use the Smart Floating Assistant
-- ✅ Basic troubleshooting and customization
-
-### Ready for More?
-- 🛠️ Create addons with the [Development Guide](/docs/addon-development/ "Complete addon development tutorial")
-- 📚 Study the [Smart Floater Example](/docs/smart-floater-example/ "Real-world addon example with full source code")
-- 🔧 Explore the [API Reference](/docs/addon-api/ "Detailed API documentation for developers")
-- 🤝 Join our [community discussions](https://github.com/gguf-loader/gguf-loader/discussions "Community support and addon sharing")
-
----
-
-## 🎊 You're Now a GGUF Loader User!
-
-Congratulations on completing the Quick Start guide! You now have the foundation to use GGUF Loader effectively.
-
-### What You've Accomplished
-- ✅ Installed and launched GGUF Loader
-- ✅ Loaded your first GGUF model
-- ✅ Used the Smart Floating Assistant
-- ✅ Learned basic troubleshooting
-
-### Ready for the Next Level?
-Now that you're comfortable with the basics, here are some exciting paths to explore:
-
-#### 🛠️ **Become a Power User**
-- **[Create Custom Addons](/docs/addon-development/ "Build your own extensions")** - Extend GGUF Loader with your own features
-- **[Study the Smart Floater Code](/docs/smart-floater-example/ "Learn from real examples")** - Understand how the built-in addon works
-- **[Explore the API](/docs/addon-api/ "Technical documentation")** - Dive into the technical details
-
-#### 🌟 **Join the Community**
-- **[Share Your Experience](/#community "Community showcase")** - Tell others about your GGUF Loader journey
-- **[Browse Community Projects](/#community "See what others built")** - Get inspired by what others have created
-- **[Contribute Ideas](/#faq "Feedback and suggestions")** - Help shape the future of GGUF Loader
-
-#### 🚀 **Explore Advanced Features**
-- **[Try Different Models](/#models "Model comparison")** - Experiment with various models for different tasks
-- **[Watch Feature Demos](/#features "Interactive demonstrations")** - See advanced features in action
-- **[Read Advanced Tutorials](/#how-to "Step-by-step guides")** - Master complex workflows
-
-**Happy AI-powered text processing! 🚀**
-
-Need help? Contact us at support@ggufloader.com or visit our [support page](/docs/troubleshooting/).
+- [User Guide](/docs/user-guide/) — everything the app can do
+- [Addon Development](/docs/addon-development/) — extend GGUF Loader with addons

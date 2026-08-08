@@ -27,7 +27,7 @@ const DYNAMIC_ASSETS = [
     '/docs/quick-start/',
     '/docs/addon-development/',
     '/docs/addon-api/',
-    '/docs/smart-floater-example/',
+    '/docs/floating-chat-example/',
     '/docs/package-structure/'
 ];
 

@@ -347,17 +347,17 @@ class StructuredDataEnhancement {
                 title: 'Addon Development Guide',
                 description: 'Learn to create custom addons for GGUF Loader with examples and best practices.',
                 category: 'Development',
-                relatedPages: ['/', '/docs/addon-api/', '/docs/smart-floater-example/']
+                relatedPages: ['/', '/docs/addon-api/', '/docs/floating-chat-example/']
             },
             '/docs/addon-api/': {
                 title: 'API Reference',
                 description: 'Complete API reference documentation for GGUF Loader addon developers.',
                 category: 'Development',
-                relatedPages: ['/', '/docs/addon-development/', '/docs/smart-floater-example/']
+                relatedPages: ['/', '/docs/addon-development/', '/docs/floating-chat-example/']
             },
-            '/docs/smart-floater-example/': {
-                title: 'Smart Floater Example',
-                description: 'Detailed example of the Smart Floating Assistant addon implementation.',
+            '/docs/floating-chat-example/': {
+                title: 'Floating Chat Example',
+                description: 'Detailed example of the Floating Chat addon implementation.',
                 category: 'Examples',
                 relatedPages: ['/', '/docs/addon-development/', '/docs/addon-api/']
             },

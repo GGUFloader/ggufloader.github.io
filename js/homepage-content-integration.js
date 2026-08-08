@@ -119,8 +119,8 @@ class HomepageContentIntegration {
             },
             
             // Advanced Features Section
-            'smart-floating-assistant-preview': {
-                docId: 'smart-floater-example',
+            'floating-chat-preview': {
+                docId: 'floating-chat-example',
                 options: {
                     showCodeExample: true,
                     showKeyPoints: true,

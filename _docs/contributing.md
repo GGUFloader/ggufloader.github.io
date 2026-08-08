@@ -12,278 +12,72 @@ reading_time: "10 minutes"
 
 # Contributing Guide
 
-Thank you for your interest in contributing to GGUF Loader! This guide will help you get started.
+Thank you for contributing to GGUF Loader! This guide covers how to set up a development environment, make changes, and get them merged. See the project's [`CONTRIBUTING.md`](https://github.com/GGUFloader/gguf-loader/blob/main/CONTRIBUTING.md) and [`CODE_OF_CONDUCT.md`](https://github.com/GGUFloader/gguf-loader/blob/main/CODE_OF_CONDUCT.MD) for the canonical rules.
 
-## 🎯 Ways to Contribute
-
-### Code Contributions
-- Bug fixes
-- New features
-- Performance improvements
-- Addon development
-
-### Non-Code Contributions
-- Documentation improvements
-- Bug reports
-- Feature suggestions
-- Community support
-- Translations
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Python 3.8 or higher
-- Git
-- GitHub account
-- Basic understanding of Qt/PySide6 (for UI work)
-
-### Development Setup
-
-1. **Fork the repository**
-   ```bash
-   # Visit https://github.com/gguf-loader/gguf-loader
-   # Click "Fork" button
-   ```
-
-2. **Clone your fork**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/gguf-loader.git
-   cd gguf-loader
-   ```
-
-3. **Create virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/macOS
-   venv\Scripts\activate     # Windows
-   ```
-
-
-4. **Install dependencies**
-   ```bash
-   pip install -e .[dev]
-   ```
-
-5. **Run tests**
-   ```bash
-   pytest
-   ```
-
-## 📝 Making Changes
-
-### Branch Naming
-
-Use descriptive branch names:
-- `feature/add-new-addon` - New features
-- `fix/model-loading-error` - Bug fixes
-- `docs/update-readme` - Documentation
-- `refactor/cleanup-ui` - Code refactoring
-
-### Commit Messages
-
-Follow conventional commits:
-```
-type(scope): description
-
-[optional body]
-
-[optional footer]
-```
-
-Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-
-Examples:
-```
-feat(addon): add text translation addon
-fix(model): resolve memory leak on model unload
-docs(readme): update installation instructions
-```
-
-### Code Style
-
-- Follow PEP 8 for Python code
-- Use type hints where possible
-- Write docstrings for public functions
-- Keep functions focused and small
-
-## 🔍 Pull Request Process
-
-1. **Create feature branch**
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-
-2. **Make changes and commit**
-   ```bash
-   git add .
-   git commit -m "feat: add your feature"
-   ```
-
-3. **Push to your fork**
-   ```bash
-   git push origin feature/your-feature
-   ```
-
-4. **Open Pull Request**
-   - Go to GitHub
-   - Click "New Pull Request"
-   - Fill in the template
-   - Request review
-
-### PR Requirements
-
-- [ ] Tests pass
-- [ ] Code follows style guide
-- [ ] Documentation updated
-- [ ] Changelog updated (if applicable)
-- [ ] No merge conflicts
-
-## 🧪 Testing
-
-### Running Tests
+## 🛠️ Setting Up Development
 
 ```bash
-# Run all tests
-pytest
+git clone https://github.com/GGUFloader/gguf-loader.git
+cd gguf-loader
+python -m venv .venv
 
-# Run specific test file
-pytest tests/test_model_loader.py
+# Windows
+.venv\Scripts\activate
+# Linux/macOS
+source .venv/bin/activate
 
-# Run with coverage
-pytest --cov=gguf_loader
+pip install -r requirements.txt
+python main.py
 ```
 
-### Writing Tests
+The sidebar's **Create .venv & Restart** button does this for you if you prefer not to use the terminal.
 
-```python
-import pytest
-from gguf_loader.model_loader import ModelLoader
+## 🧭 Codebase Orientation
 
-class TestModelLoader:
-    def test_load_valid_model(self):
-        loader = ModelLoader()
-        # Test implementation
-        
-    def test_load_invalid_model(self):
-        loader = ModelLoader()
-        with pytest.raises(ValueError):
-            loader.load("invalid.txt")
-```
+- `core/` — pure logic (no Qt): model backend, prompt builder, agent engine, tools
+- `services/` — Qt threading bridges (model, chat, agent, environment)
+- `ui/` + `widgets/` — presentation: main window, panels, bubbles
+- `addons/` — addon packages (see the [Addon Development Guide](/docs/addon-development/))
+- `scripts/` — utility and release scripts
+- `resource_manager.py` — path resolution across dev/package/frozen deployments
 
-## 📚 Documentation
+## ✅ Before You Submit
 
-### Updating Docs
+### Style
+- Follow the existing conventions (4-space indent, docstrings on modules/classes, type hints where helpful).
+- Keep the layering rule: **no Qt in `core/`**, **no threads outside `services/`**, **dumb widgets**.
 
-Documentation lives in `_docs/`:
-- Use Markdown format
-- Include front matter
-- Add to navigation if new page
-- Test locally with Jekyll
+### Check
+- Run the app from source and verify your change (`python main.py`).
+- The app is Qt-based — there is no automated test suite yet, so manual verification plus clear console logging matters.
+- If you changed UI, re-run `scripts/capture_screenshots.py` and commit the refreshed `screen.png` so the README/site stay current.
 
-### Doc Style Guide
+### Commit
+- Write a clear, concise commit message describing *why* (e.g. "Prevent floating button from staying minimized after Win+D").
 
-- Use clear, concise language
-- Include code examples
-- Add screenshots for UI features
-- Link to related documentation
+## 🐛 Reporting Issues
 
-## 🐛 Bug Reports
+Open an issue at [github.com/GGUFloader/gguf-loader/issues](https://github.com/GGUFloader/gguf-loader/issues) with:
 
-### Before Reporting
+- App version (Help → About, or `main.py --version`)
+- OS and whether you're on CPU or GPU
+- The model file you were using
+- Relevant log lines (see [Troubleshooting](/docs/troubleshooting/#where-to-find-logs))
+- Steps to reproduce
 
-1. Check existing issues
-2. Try latest version
-3. Reproduce the bug
-4. Gather system info
+## 🧩 Contributing Addons
 
-### Bug Report Template
+Addons don't need to touch the core app at all. Publish your addon as a folder matching the [addon contract](/docs/addon-api/#addon-contract), and share it in an issue or discussion so it can be listed in the community.
 
-```markdown
-**Description**
-Clear description of the bug
+## 🚀 Releasing (maintainers)
 
-**Steps to Reproduce**
-1. Step one
-2. Step two
-3. ...
+Releases are built automatically by GitHub Actions when a `v*` tag is pushed:
 
-**Expected Behavior**
-What should happen
+1. Bump the version in `__init__.py` and `build_exe.spec`.
+2. Update `CHANGELOG.md`.
+3. Tag and push: `git tag v2.1.3 && git push origin v2.1.3`.
+4. The workflow attaches the Windows `.exe` and Linux binary to the release; optionally add the `.tar.gz` (built via `scripts/package_linux.sh`) and a `screen.png`.
 
-**Actual Behavior**
-What actually happens
+## 💬 Questions?
 
-**System Info**
-- OS: 
-- Python version:
-- GGUF Loader version:
-- Model used:
-
-**Screenshots/Logs**
-If applicable
-```
-
-## 💡 Feature Requests
-
-### Before Requesting
-
-1. Check existing requests
-2. Consider if it fits the project
-3. Think about implementation
-
-### Feature Request Template
-
-```markdown
-**Problem**
-What problem does this solve?
-
-**Proposed Solution**
-How should it work?
-
-**Alternatives Considered**
-Other approaches you've thought of
-
-**Additional Context**
-Any other information
-```
-
-## 🏆 Recognition
-
-Contributors are recognized in:
-- README.md contributors section
-- Release notes
-- GitHub contributors page
-
-## 📜 Code of Conduct
-
-### Our Standards
-
-- Be respectful and inclusive
-- Accept constructive criticism
-- Focus on what's best for the community
-- Show empathy towards others
-
-### Unacceptable Behavior
-
-- Harassment or discrimination
-- Trolling or insulting comments
-- Personal or political attacks
-- Publishing others' private information
-
-## 📞 Getting Help
-
-- **Questions**: Use GitHub Discussions
-- **Bugs**: Open GitHub Issue
-- **Security**: Email security@ggufloader.com
-- **General**: support@ggufloader.com
-
-## 📚 Related Documentation
-
-- [Addon Development](/docs/addon-development/ "Create addons") - Build addons
-- [Package Structure](/docs/package-structure/ "Code organization") - Understand codebase
-- [API Reference](/docs/addon-api/ "API docs") - Technical reference
-
----
-
-**Thank you for contributing to GGUF Loader! Your help makes this project better for everyone. 🙏**
+Start a [GitHub Discussion](https://github.com/GGUFloader/gguf-loader/discussions) — the community and maintainers are happy to help.

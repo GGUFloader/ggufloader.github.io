@@ -270,7 +270,7 @@ class CrossPageMaintenance {
             'quick-start.md': 'how-to-section',
             'addon-api.md': 'features-section',
             'addon-development.md': 'features-section',
-            'smart-floater-example.md': 'features-section',
+            'floating-chat-example.md': 'features-section',
             'package-structure.md': 'download-section'
         };
     }
