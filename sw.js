@@ -3,10 +3,10 @@
  * Provides caching, offline functionality, and performance optimization
  */
 
-const CACHE_NAME = 'gguf-loader-v1.1.0';
-const STATIC_CACHE_NAME = 'gguf-loader-static-v1.1.0';
-const DYNAMIC_CACHE_NAME = 'gguf-loader-dynamic-v1.1.0';
-const FONT_CACHE_NAME = 'gguf-loader-fonts-v1.1.0';
+const CACHE_NAME = 'gguf-loader-v1.2.0';
+const STATIC_CACHE_NAME = 'gguf-loader-static-v1.2.0';
+const DYNAMIC_CACHE_NAME = 'gguf-loader-dynamic-v1.2.0';
+const FONT_CACHE_NAME = 'gguf-loader-fonts-v1.2.0';
 
 // Files to cache immediately (critical resources)
 const STATIC_ASSETS = [

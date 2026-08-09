@@ -3053,6 +3053,25 @@
                 </details>
             </div>
         </section>
+
+        <!-- Star Gate Modal: ask users to star the GitHub repo before downloading -->
+        <div id="star-gate-modal" class="star-gate-modal" role="dialog" aria-modal="true" aria-labelledby="star-gate-title" aria-hidden="true">
+            <div class="star-gate-overlay" data-star-gate-close></div>
+            <div class="star-gate-content">
+                <button type="button" class="star-gate-close" data-star-gate-close aria-label="Close dialog">✕</button>
+                <div class="star-gate-icon" aria-hidden="true">⭐</div>
+                <h2 id="star-gate-title">Support GGUF Loader</h2>
+                <p>GGUF Loader is <strong>free and open source</strong>. Before downloading, please give us a star on GitHub — it takes 2 seconds and helps others discover the project.</p>
+                <div class="star-gate-actions">
+                    <a href="https://github.com/GGUFloader/gguf-loader" target="_blank" rel="noopener noreferrer" class="star-gate-btn star-gate-star-btn">
+                        ⭐ Star on GitHub
+                    </a>
+                    <button type="button" class="star-gate-btn star-gate-continue-btn" data-star-gate-continue>
+                        Continue to Download
+                    </button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer role="contentinfo">
@@ -3064,6 +3083,9 @@
 
     <!-- Mobile Menu Script -->
     <script src="mobile-menu.js" defer></script>
+
+    <!-- Star Gate Script -->
+    <script src="star-gate.js" defer></script>
 
 </body>
 

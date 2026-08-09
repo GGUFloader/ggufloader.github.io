@@ -4827,3 +4827,138 @@ ional styles moved from inline styles in index.html */
         transform: none;
     }
 }
+
+/* Star Gate Modal — ask users to star the GitHub repo before downloading */
+.star-gate-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: none;
+}
+
+.star-gate-modal.active {
+    display: block;
+}
+
+.star-gate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.star-gate-content {
+    position: relative;
+    max-width: 480px;
+    margin: 12vh auto 0;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+}
+
+.star-gate-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.star-gate-close:hover {
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+.star-gate-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.star-gate-content h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.star-gate-content p {
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.star-gate-content strong {
+    color: #2c3e50;
+}
+
+.star-gate-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.star-gate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    min-height: 44px;
+    min-width: 44px;
+    transition: all 0.3s ease;
+}
+
+.star-gate-star-btn {
+    background: #ffb800;
+    color: #2c3e50;
+}
+
+.star-gate-star-btn:hover {
+    background: #f0a800;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 184, 0, 0.35);
+}
+
+.star-gate-continue-btn {
+    background: #3498db;
+    color: #ffffff;
+}
+
+.star-gate-continue-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.35);
+}
+
+.star-gate-open {
+    overflow: hidden;
+}
+
+@media (max-width: 576px) {
+    .star-gate-content {
+        margin: 8vh 1rem 0;
+        padding: 2rem 1.25rem 1.5rem;
+    }
+}
