@@ -2284,8 +2284,17 @@
         <section id="whats-new" class="section" aria-labelledby="whats-new-heading">
             <div class="container">
                 <h2 id="whats-new-heading">🎉 What's New in v2.2.0</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released August 11, 2026 · Separate GPU and CPU builds for Windows, much faster folder search, and hardened launchers.</p>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released August 11, 2026 · LangGraph-powered Agent Mode, one-click GPU install, separate GPU/CPU builds, and much faster folder search.</p>
                 <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🤖 LangGraph Agent Mode</h3>
+                        <p style="color: #495057; line-height: 1.6;">Agent Mode now runs on <strong>LangGraph</strong>: a proper state machine with SQLite checkpointing, so each workspace's conversation <strong>survives app restarts</strong> and resumes right where you left off.</p>
+                        <p style="margin-top: 1rem;"><a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener noreferrer">View all releases →</a></p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖱️ One-Click GPU Install</h3>
+                        <p style="color: #495057; line-height: 1.6;">The sidebar now has an <strong>⬇ Install GPU Support</strong> button — it downloads and installs the CUDA-enabled llama.cpp build right from the app, with live status. No more manual scripts.</p>
+                    </div>
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ GPU &amp; CPU Builds</h3>
                         <p style="color: #495057; line-height: 1.6;">Windows now ships two standalone builds: a CUDA-accelerated <strong>GPU</strong> build for NVIDIA cards and a lightweight <strong>CPU-only</strong> build (~69 MB) for anything else.</p>
@@ -2298,7 +2307,6 @@
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🚀 Hardened Launchers</h3>
                         <p style="color: #495057; line-height: 1.6;"><code>launch.sh</code> and <code>launch.bat</code> now detect missing Python venv, missing compilers, and network problems with clear, actionable messages — and install the prebuilt CPU wheel automatically.</p>
-                        <p style="margin-top: 1rem;"><a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener noreferrer">View all releases →</a></p>
                     </div>
                 </div>
             </div>

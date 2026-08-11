@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GGUF Loader v2.2.0 Release Notes - GPU & CPU Builds, Faster Search</title>
-    <meta name="description" content="GGUF Loader v2.2.0 is here! Separate GPU and CPU builds for Windows, a much faster Find Paragraph folder search, and hardened launchers for macOS and Linux.">
+    <meta name="description" content="GGUF Loader v2.2.0 is here! LangGraph-powered Agent Mode with resumable sessions, one-click GPU install in the app, separate GPU/CPU builds for Windows, and faster folder search.">
     <meta name="keywords" content="GGUF Loader, v2.2.0, release notes, GPU build, CPU build, CUDA, faster search, launcher, local AI, GGUF update">
     <meta name="author" content="Hussain Nazary">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -39,7 +39,7 @@
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "GGUF Loader v2.2.0 Release Notes - GPU & CPU Builds, Faster Search",
-      "description": "GGUF Loader v2.2.0 brings separate GPU and CPU builds for Windows, a much faster Find Paragraph folder search, and hardened launchers for Linux and macOS.",
+      "description": "GGUF Loader v2.2.0 brings a LangGraph-powered Agent Mode with resumable sessions, one-click GPU install from the UI, separate GPU and CPU builds for Windows, and a much faster Find Paragraph folder search.",
       "image": "https://ggufloader.github.io/preview.png",
       "author": {
         "@type": "Person",
@@ -115,7 +115,7 @@
         <article>
             <section class="content-section">
                 <h2>What's New in v2.2.0</h2>
-                <p>GGUF Loader v2.2.0 (August 11, 2026) is all about choice and speed: Windows users can now pick a dedicated <strong>GPU</strong> or <strong>CPU</strong> build, Find Paragraph is dramatically faster on big folders, and the <code>launch.sh</code> / <code>launch.bat</code> launchers now guide you through setup instead of failing cryptically.</p>
+                <p>GGUF Loader v2.2.0 (August 11, 2026) upgrades <strong>Agent Mode</strong> to a proper LangGraph state machine with resumable sessions, adds a <strong>one-click GPU installer</strong> right in the app, ships separate <strong>GPU</strong> and <strong>CPU</strong> builds for Windows, and makes Find Paragraph dramatically faster on big folders.</p>
 
                 <h3>🖥️ GPU &amp; CPU Builds for Windows</h3>
                 <p>Windows now ships <strong>two</strong> standalone executables, so you only download what your machine needs:</p>
@@ -141,6 +141,24 @@
                     <li><strong>No compiler needed</strong> — Linux installs automatically pull the prebuilt CPU wheel from the llama.cpp project's index, so you no longer need gcc/cmake to run from source</li>
                     <li><strong>Network preflight</strong> — checks PyPI is reachable before installing, and saves a full log to <code>/tmp/gguf_pip_install.log</code> if something goes wrong</li>
                 </ul>
+
+                <h3>🤖 LangGraph-Powered Agent Mode</h3>
+                <p>Agent Mode is now built on <strong>LangGraph</strong> — a proper state machine (<code>START → agent → tools → agent → END</code>) instead of an ad-hoc loop. That brings real engineering benefits:</p>
+                <ul>
+                    <li><strong>Resumable conversations:</strong> every workspace's thread is checkpointed to <strong>SQLite</strong>, so closing the app and reopening it resumes the exact same conversation — even across restarts</li>
+                    <li><strong>Approval before sensitive actions:</strong> shell commands and git writes suspend the graph and ask you to approve before anything executes</li>
+                    <li><strong>Cleaner runs:</strong> step budgets, malformed-JSON repair, corrective retries on failed tool calls, and cooperative cancel — stop a run at any time and it stops cleanly</li>
+                    <li><strong>Streaming answers:</strong> the final summary streams token-by-token into the chat</li>
+                </ul>
+
+                <h3>🖱️ One-Click GPU Install</h3>
+                <p>No more downloading wheels or running batch scripts by hand. The sidebar now has an <strong>⬇ Install GPU Support</strong> button that:</p>
+                <ul>
+                    <li>detects whether CUDA support is already installed</li>
+                    <li>downloads and installs the CUDA-enabled llama.cpp build in the background with a live status line</li>
+                    <li>shows <strong>✅ GPU Support Installed</strong> when done — just restart the app and pick GPU mode</li>
+                </ul>
+                <p>If you try to load a model with GPU acceleration before installing, the app tells you exactly where to click.</p>
 
                 <h3>📚 Documentation</h3>
                 <ul>
