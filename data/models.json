@@ -1,0 +1,337 @@
+{
+  "models": [
+    {
+      "id": "mistral-7b-instruct",
+      "name": "Mistral 7B Instruct",
+      "size": "4.1GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 8,
+      "recommendedRAM": 16,
+      "minVRAM": 0,
+      "recommendedVRAM": 4,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Fast",
+        "quality": "High",
+        "tokensPerSecond": "25-40",
+        "contextLength": 8192
+      },
+      "useCase": ["General purpose", "Coding assistance", "Text generation"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF",
+      "description": "Excellent general-purpose model with strong instruction following capabilities",
+      "difficulty": "Beginner",
+      "tags": ["instruct", "general", "coding", "beginner-friendly"]
+    },
+    {
+      "id": "llama2-7b-chat",
+      "name": "Llama 2 7B Chat",
+      "size": "3.8GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 8,
+      "recommendedRAM": 16,
+      "minVRAM": 0,
+      "recommendedVRAM": 4,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Fast",
+        "quality": "High",
+        "tokensPerSecond": "20-35",
+        "contextLength": 4096
+      },
+      "useCase": ["Conversational AI", "Customer support", "Educational"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF",
+      "description": "Meta's conversational AI model optimized for chat applications",
+      "difficulty": "Beginner",
+      "tags": ["chat", "conversational", "meta", "beginner-friendly"]
+    },
+    {
+      "id": "codellama-7b-instruct",
+      "name": "Code Llama 7B Instruct",
+      "size": "3.8GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 8,
+      "recommendedRAM": 16,
+      "minVRAM": 0,
+      "recommendedVRAM": 4,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Fast",
+        "quality": "Very High",
+        "tokensPerSecond": "20-35",
+        "contextLength": 16384
+      },
+      "useCase": ["Code generation", "Code completion", "Programming assistance"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF",
+      "description": "Specialized coding model with excellent programming capabilities",
+      "difficulty": "Beginner",
+      "tags": ["coding", "programming", "development", "instruct"]
+    },
+    {
+      "id": "mistral-7b-openorca",
+      "name": "Mistral 7B OpenOrca",
+      "size": "4.1GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 8,
+      "recommendedRAM": 16,
+      "minVRAM": 0,
+      "recommendedVRAM": 4,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Fast",
+        "quality": "Very High",
+        "tokensPerSecond": "25-40",
+        "contextLength": 8192
+      },
+      "useCase": ["Research", "Analysis", "Complex reasoning"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF",
+      "description": "Enhanced Mistral model with improved reasoning and analytical capabilities",
+      "difficulty": "Intermediate",
+      "tags": ["reasoning", "analysis", "research", "enhanced"]
+    },
+    {
+      "id": "llama2-13b-chat",
+      "name": "Llama 2 13B Chat",
+      "size": "7.3GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 16,
+      "recommendedRAM": 32,
+      "minVRAM": 0,
+      "recommendedVRAM": 8,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Medium",
+        "quality": "Very High",
+        "tokensPerSecond": "15-25",
+        "contextLength": 4096
+      },
+      "useCase": ["Advanced conversations", "Content creation", "Professional writing"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Recommended"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/Llama-2-13B-Chat-GGUF",
+      "description": "Larger Llama 2 model with enhanced capabilities and better reasoning",
+      "difficulty": "Intermediate",
+      "tags": ["chat", "large", "advanced", "content-creation"]
+    },
+    {
+      "id": "codellama-13b-instruct",
+      "name": "Code Llama 13B Instruct",
+      "size": "7.3GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 16,
+      "recommendedRAM": 32,
+      "minVRAM": 0,
+      "recommendedVRAM": 8,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Medium",
+        "quality": "Excellent",
+        "tokensPerSecond": "15-25",
+        "contextLength": 16384
+      },
+      "useCase": ["Complex coding", "Software architecture", "Code review"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Recommended"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF",
+      "description": "Advanced coding model for complex programming tasks and architecture",
+      "difficulty": "Intermediate",
+      "tags": ["coding", "advanced", "architecture", "large"]
+    },
+    {
+      "id": "mixtral-8x7b-instruct",
+      "name": "Mixtral 8x7B Instruct",
+      "size": "26.4GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 32,
+      "recommendedRAM": 64,
+      "minVRAM": 8,
+      "recommendedVRAM": 16,
+      "cpuRequirement": "High-end x64 (AVX2 support)",
+      "performance": {
+        "speed": "Medium-Slow",
+        "quality": "Excellent",
+        "tokensPerSecond": "8-15",
+        "contextLength": 32768
+      },
+      "useCase": ["Enterprise applications", "Research", "Complex analysis"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": false,
+        "gpu": "Required"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF",
+      "description": "High-performance mixture of experts model for demanding applications",
+      "difficulty": "Advanced",
+      "tags": ["enterprise", "large", "mixture-of-experts", "research"]
+    },
+    {
+      "id": "phi-2",
+      "name": "Phi-2",
+      "size": "1.6GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 4,
+      "recommendedRAM": 8,
+      "minVRAM": 0,
+      "recommendedVRAM": 2,
+      "cpuRequirement": "Modern x64",
+      "performance": {
+        "speed": "Very Fast",
+        "quality": "Good",
+        "tokensPerSecond": "40-60",
+        "contextLength": 2048
+      },
+      "useCase": ["Quick tasks", "Mobile deployment", "Edge computing"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/phi-2-GGUF",
+      "description": "Compact and efficient model perfect for resource-constrained environments",
+      "difficulty": "Beginner",
+      "tags": ["compact", "fast", "mobile", "edge", "efficient"]
+    },
+    {
+      "id": "neural-chat-7b",
+      "name": "Neural Chat 7B",
+      "size": "4.1GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 8,
+      "recommendedRAM": 16,
+      "minVRAM": 0,
+      "recommendedVRAM": 4,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Fast",
+        "quality": "High",
+        "tokensPerSecond": "25-40",
+        "contextLength": 8192
+      },
+      "useCase": ["Customer service", "Virtual assistants", "Interactive chat"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/neural-chat-7B-v3-1-GGUF",
+      "description": "Optimized for natural conversations and customer interaction scenarios",
+      "difficulty": "Beginner",
+      "tags": ["chat", "customer-service", "assistant", "conversational"]
+    },
+    {
+      "id": "deepseek-coder-6.7b",
+      "name": "DeepSeek Coder 6.7B",
+      "size": "3.7GB",
+      "quantization": "Q4_K_M",
+      "minRAM": 8,
+      "recommendedRAM": 16,
+      "minVRAM": 0,
+      "recommendedVRAM": 4,
+      "cpuRequirement": "Modern x64 (AVX2 support)",
+      "performance": {
+        "speed": "Fast",
+        "quality": "Very High",
+        "tokensPerSecond": "25-40",
+        "contextLength": 16384
+      },
+      "useCase": ["Code generation", "Bug fixing", "Code explanation"],
+      "compatibility": {
+        "windows": true,
+        "macos": true,
+        "linux": true,
+        "arm": true,
+        "gpu": "Optional"
+      },
+      "downloadUrl": "https://huggingface.co/TheBloke/deepseek-coder-6.7B-instruct-GGUF",
+      "description": "Specialized coding model with excellent programming language support",
+      "difficulty": "Beginner",
+      "tags": ["coding", "programming", "debugging", "specialized"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "general",
+      "name": "General Purpose",
+      "description": "Versatile models suitable for various tasks"
+    },
+    {
+      "id": "coding",
+      "name": "Code Generation",
+      "description": "Specialized models for programming and development"
+    },
+    {
+      "id": "chat",
+      "name": "Conversational",
+      "description": "Models optimized for natural conversations"
+    },
+    {
+      "id": "research",
+      "name": "Research & Analysis",
+      "description": "Models for complex reasoning and analysis"
+    },
+    {
+      "id": "compact",
+      "name": "Compact & Fast",
+      "description": "Lightweight models for resource-constrained environments"
+    }
+  ],
+  "systemRequirements": {
+    "ram": [4, 8, 16, 32, 64],
+    "vram": [0, 2, 4, 8, 16, 24],
+    "cpu": [
+      "Basic x64",
+      "Modern x64 (AVX2 support)",
+      "High-end x64 (AVX2 support)"
+    ],
+    "os": ["Windows", "macOS", "Linux"],
+    "gpu": ["None", "Optional", "Recommended", "Required"]
+  },
+  "metadata": {
+    "lastUpdated": "2025-01-27",
+    "version": "1.0",
+    "totalModels": 10
+  }
+}

@@ -1,0 +1,536 @@
+/**
+ * Content Preview System Styles
+ * Styles for documentation content previews and teasers
+ */
+
+/* Base Content Preview Styles */
+.content-preview {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-preview:hover,
+.content-preview.preview-hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-color: #0078d4;
+    transform: translateY(-2px);
+}
+
+/* Preview Header */
+.preview-header {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f8f9fa;
+    padding-bottom: 1rem;
+}
+
+.preview-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+}
+
+.preview-description {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Key Points Section */
+.preview-key-points {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #0078d4;
+}
+
+.preview-key-points h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-key-points ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    list-style-type: none;
+}
+
+.preview-key-points li {
+    position: relative;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.4;
+}
+
+.preview-key-points li::before {
+    content: '✓';
+    position: absolute;
+    left: -1.2rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Preview Sections */
+.preview-sections {
+    margin: 1rem 0;
+}
+
+.preview-section {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.preview-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.preview-section h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+}
+
+.preview-section p {
+    font-size: 0.9rem;
+    color: #495057;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Code Example Section */
+.preview-code-example {
+    margin: 1rem 0;
+    background: #f8f9fa;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.preview-code-example h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0.75rem 1rem 0.5rem;
+    background: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.preview-code-example pre {
+    margin: 0;
+    padding: 1rem;
+    background: #2d3748;
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    overflow-x: auto;
+    border-radius: 0;
+}
+
+.preview-code-example code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+}
+
+/* Preview Actions */
+.preview-actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f3f4;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0078d4;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    min-height: 36px;
+}
+
+.read-more-btn:hover,
+.read-more-btn:focus {
+    background: #106ebe;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 120, 212, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.expand-preview-btn {
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 36px;
+}
+
+.expand-preview-btn:hover,
+.expand-preview-btn:focus {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+    color: #495057;
+}
+
+.expand-preview-btn.expanded {
+    background: #e3f2fd;
+    border-color: #0078d4;
+    color: #0078d4;
+}
+
+/* Feature Preview Integration */
+.feature-preview {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #17a2b8;
+}
+
+.feature-preview p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #495057;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Guide Preview Integration */
+.guide-preview {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff3cd;
+    border-radius: 6px;
+    border-left: 3px solid #ffc107;
+}
+
+.guide-preview p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #856404;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Preview Cards for Homepage Integration */
+.preview-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.preview-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-color: #0078d4;
+    transform: translateY(-2px);
+}
+
+.preview-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.preview-card-icon {
+    font-size: 2rem;
+    color: #0078d4;
+}
+
+.preview-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.preview-card-content {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.preview-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.preview-card-btn {
+    background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.preview-card-btn:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    color: #495057;
+    text-decoration: none;
+}
+
+.preview-card-btn.primary {
+    background: #0078d4;
+    color: white;
+    border-color: #0078d4;
+}
+
+.preview-card-btn.primary:hover {
+    background: #106ebe;
+    border-color: #106ebe;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-preview {
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+    
+    .preview-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .read-more-btn,
+    .expand-preview-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .preview-key-points,
+    .preview-code-example {
+        margin: 0.75rem 0;
+        padding: 0.75rem;
+    }
+    
+    .preview-code-example pre {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .preview-card {
+        padding: 1rem;
+    }
+    
+    .preview-card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .preview-card-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-preview {
+        padding: 0.75rem;
+        border-radius: 6px;
+    }
+    
+    .preview-title {
+        font-size: 1.1rem;
+    }
+    
+    .preview-description {
+        font-size: 0.9rem;
+    }
+    
+    .preview-key-points ul {
+        padding-left: 1rem;
+    }
+    
+    .preview-key-points li {
+        font-size: 0.85rem;
+    }
+    
+    .preview-section h6 {
+        font-size: 0.95rem;
+    }
+    
+    .preview-section p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Animation Classes */
+.preview-fade-in {
+    animation: previewFadeIn 0.3s ease-out;
+}
+
+@keyframes previewFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.preview-expand {
+    animation: previewExpand 0.3s ease-out;
+}
+
+@keyframes previewExpand {
+    from {
+        max-height: 200px;
+        opacity: 0.7;
+    }
+    to {
+        max-height: 1000px;
+        opacity: 1;
+    }
+}
+
+/* Loading States */
+.content-preview.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.content-preview.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0078d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error States */
+.content-preview.error {
+    border-color: #dc3545;
+    background: #f8d7da;
+}
+
+.content-preview.error .preview-title {
+    color: #721c24;
+}
+
+.content-preview.error .preview-description {
+    color: #721c24;
+}
+
+/* Accessibility Improvements */
+.content-preview:focus-within {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+}
+
+.read-more-btn:focus,
+.expand-preview-btn:focus {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .content-preview {
+        border-width: 2px;
+    }
+    
+    .preview-key-points {
+        border-left-width: 4px;
+    }
+    
+    .read-more-btn {
+        border: 2px solid transparent;
+    }
+    
+    .read-more-btn:focus {
+        border-color: currentColor;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .content-preview,
+    .read-more-btn,
+    .expand-preview-btn,
+    .preview-card {
+        transition: none;
+    }
+    
+    .content-preview:hover {
+        transform: none;
+    }
+    
+    .preview-card:hover {
+        transform: none;
+    }
+    
+    .preview-fade-in,
+    .preview-expand {
+        animation: none;
+    }
+}
