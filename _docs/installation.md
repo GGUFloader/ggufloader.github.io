@@ -12,7 +12,7 @@ reading_time: "5 minutes"
 
 # Installation Guide
 
-This guide will help you install GGUF Loader 2.1.2 on your system. Want to see what GGUF Loader can do first? [Explore the features on our homepage](/#features "See GGUF Loader's powerful features in action").
+This guide will help you install GGUF Loader 2.2.0 on your system. Want to see what GGUF Loader can do first? [Explore the features on our homepage](/#features "See GGUF Loader's powerful features in action").
 
 ## 📋 System Requirements
 
@@ -28,28 +28,21 @@ The prebuilt installers bundle Python, PySide6, and llama.cpp — you do **not**
 
 ### Windows
 
-1. Download **[GGUFLoader_v2.1.2.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe)** (~61 MB) from the [releases page](https://github.com/GGUFloader/gguf-loader/releases).
-2. Double-click the downloaded file and run it. No installation wizard — the app starts immediately.
+1. Download **[GGUFLoader_v2.2.0_CPU.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe)** (~69 MB) from the [releases page](https://github.com/GGUFloader/gguf-loader/releases). This is the CPU-only build that works on any PC.
+2. Have an NVIDIA GPU with CUDA? Grab **[GGUFLoader_v2.2.0_GPU.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe)** (~854 MB) instead for GPU acceleration.
+3. Double-click the downloaded file and run it. No installation wizard — the app starts immediately.
 
 > ⚠️ **Windows SmartScreen**: The first launch may show "Windows protected your PC". Click **More info** → **Run anyway**. This is normal for unsigned open-source binaries.
 
 ### Linux (x86_64)
 
-1. Download **[GGUFLoader_v2.1.2_linux_x86_64.tar.gz](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64.tar.gz)** (~90 MB).
-2. Extract and install:
+1. Download **[GGUFLoader_v2.2.0_linux_x86_64_CPU](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU)** (~121 MB) from the [releases page](https://github.com/GGUFloader/gguf-loader/releases).
+2. Make it executable and run:
    ```bash
-   tar -xzf GGUFLoader_v2.1.2_linux_x86_64.tar.gz
-   cd GGUFLoader-v2.1.2-linux
-   ./install.sh              # per-user install, no root needed
+   chmod +x GGUFLoader_v2.2.0_linux_x86_64_CPU
+   ./GGUFLoader_v2.2.0_linux_x86_64_CPU
    ```
-3. Launch from your app menu, or run `gguf-loader` in a terminal.
-
-The installer also supports:
-- `./install.sh --system` — system-wide install to `/opt` (prompts via sudo)
-- `./install.sh --uninstall` — remove the per-user install cleanly
-- `./install.sh --help` — show usage
-
-A raw binary ([GGUFLoader_v2.1.2_linux_x86_64](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64)) is also available if you prefer to run it directly.
+No installation needed — the app starts directly. Everything (Python, PySide6, llama.cpp) is bundled.
 
 ### macOS
 
@@ -68,7 +61,7 @@ python main.py
 
 ## ✅ Verify Your Installation
 
-Run `GGUFLoader_v2.1.2.exe --version` (Windows) or `./GGUFLoader_v2.1.2_linux_x86_64 --version` (Linux) — it prints `GGUF Loader version 2.1.2` and exits.
+Run `GGUFLoader_v2.2.0_CPU.exe --version` (Windows) or `./GGUFLoader_v2.2.0_linux_x86_64_CPU --version` (Linux) — it prints `GGUF Loader version 2.2.0` and exits.
 
 ## 🔧 Next Steps
 

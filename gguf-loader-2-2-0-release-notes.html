@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGUF Loader v2.2.0 Release Notes - GPU & CPU Builds, Faster Search</title>
+    <meta name="description" content="GGUF Loader v2.2.0 is here! Separate GPU and CPU builds for Windows, a much faster Find Paragraph folder search, and hardened launchers for macOS and Linux.">
+    <meta name="keywords" content="GGUF Loader, v2.2.0, release notes, GPU build, CPU build, CUDA, faster search, launcher, local AI, GGUF update">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://ggufloader.github.io/gguf-loader-2-2-0-release-notes.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="GGUF Loader v2.2.0 Release Notes - GPU & CPU Builds, Faster Search">
+    <meta property="og:description" content="Separate GPU and CPU builds for Windows, up to 40x faster Find Paragraph folder search, and hardened launchers that just work on Linux and macOS.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ggufloader.github.io/gguf-loader-2-2-0-release-notes.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2026-08-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-08-11T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Release Notes">
+    <meta property="article:tag" content="Release">
+    <meta property="article:tag" content="GPU">
+    <meta property="article:tag" content="Performance">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GGUF Loader v2.2.0 Release Notes">
+    <meta name="twitter:description" content="Separate GPU and CPU builds for Windows, up to 40x faster folder search, and hardened launchers.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "GGUF Loader v2.2.0 Release Notes - GPU & CPU Builds, Faster Search",
+      "description": "GGUF Loader v2.2.0 brings separate GPU and CPU builds for Windows, a much faster Find Paragraph folder search, and hardened launchers for Linux and macOS.",
+      "image": "https://ggufloader.github.io/preview.png",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "datePublished": "2026-08-11T00:00:00+00:00",
+      "dateModified": "2026-08-11T00:00:00+00:00",
+      "mainEntityOfPage": "https://ggufloader.github.io/gguf-loader-2-2-0-release-notes.html"
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+<style>
+        .article-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #0078d4 0%, #3498db 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,120,212,0.15); }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .article-header p { font-size: 1.05rem; opacity: 0.95; margin: 0; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #0078d4; padding-bottom: 10px; margin-bottom: 20px; }
+        .content-section h3 { color: #0078d4; margin: 20px 0 10px; }
+        .content-section ul, .content-section ol { padding-left: 1.5rem; margin: 10px 0; }
+        .content-section li { margin-bottom: 8px; }
+        .content-section a { color: #0078d4; }
+        .content-section a:hover { text-decoration: underline; }
+        blockquote { background: #f0f7fd; border-left: 4px solid #0078d4; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.6rem; }
+            .content-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" class="active">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <div class="article-header">
+            <h1>🎉 GGUF Loader v2.2.0 Release Notes</h1>
+            <p>Separate GPU and CPU builds for Windows, a much faster folder search, and launchers that just work</p>
+        </div>
+
+        <article>
+            <section class="content-section">
+                <h2>What's New in v2.2.0</h2>
+                <p>GGUF Loader v2.2.0 (August 11, 2026) is all about choice and speed: Windows users can now pick a dedicated <strong>GPU</strong> or <strong>CPU</strong> build, Find Paragraph is dramatically faster on big folders, and the <code>launch.sh</code> / <code>launch.bat</code> launchers now guide you through setup instead of failing cryptically.</p>
+
+                <h3>🖥️ GPU &amp; CPU Builds for Windows</h3>
+                <p>Windows now ships <strong>two</strong> standalone executables, so you only download what your machine needs:</p>
+                <ul>
+                    <li><strong><code>GGUFLoader_v2.2.0_CPU.exe</code></strong> (~69 MB) — runs on any PC, no GPU required. Great for laptops and office machines.</li>
+                    <li><strong><code>GGUFLoader_v2.2.0_GPU.exe</code></strong> (~854 MB) — bundles the NVIDIA CUDA runtime for GPU-accelerated inference. Pick this if you have a CUDA-capable NVIDIA card.</li>
+                </ul>
+                <p>The GPU build was previously the only option — the CPU-only build is <strong>12× smaller</strong> and installs in seconds.</p>
+
+                <h3>⚡ Much Faster Find Paragraph Search</h3>
+                <p>Searching a folder with Find Paragraph is now up to <strong>~40× faster</strong> on large trees. The search walk now:</p>
+                <ul>
+                    <li>skips dependency and build directories (<code>.venv</code>, <code>node_modules</code>, <code>.git</code>, …) <em>during</em> the walk instead of scanning every file, and</li>
+                    <li>avoids repeated regex work when normalizing paragraph text for deduplication.</li>
+                </ul>
+                <p>On a typical project folder the search went from ~0.8&nbsp;s to ~0.02&nbsp;s with identical results.</p>
+
+                <h3>🚀 Hardened Launchers for Linux &amp; macOS</h3>
+                <p><code>launch.sh</code> (and <code>launch.bat</code> on Windows) now check everything up front and tell you exactly what to do:</p>
+                <ul>
+                    <li><strong>Python 3.10+</strong> — clear error if missing or too old</li>
+                    <li><strong>Broken venv detection</strong> — catches the Ubuntu/Debian <code>python3-venv</code> stub and falls back to <code>virtualenv</code></li>
+                    <li><strong>No compiler needed</strong> — Linux installs automatically pull the prebuilt CPU wheel from the llama.cpp project's index, so you no longer need gcc/cmake to run from source</li>
+                    <li><strong>Network preflight</strong> — checks PyPI is reachable before installing, and saves a full log to <code>/tmp/gguf_pip_install.log</code> if something goes wrong</li>
+                </ul>
+
+                <h3>📚 Documentation</h3>
+                <ul>
+                    <li>New <strong>AGENTS.md</strong> — how AI agents should work on this codebase (build, test, addons, release)</li>
+                    <li>Rewritten <strong>QUICK_REFERENCE.md</strong> and a new <strong>addon development guide</strong> (<code>ggufloader/addons/README.md</code>) with a working example</li>
+                    <li>The full <code>docs/</code> archive (user guide, FAQ, addon API, build instructions) was restored from git history and linked from the README</li>
+                    <li>Build scripts now auto-name artifacts <code>GGUFLoader_v&lt;version&gt;_&lt;GPU|CPU&gt;.exe</code> and <code>GGUFLoader_v&lt;version&gt;_linux_x86_64_CPU</code> from the single version source of truth</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Download v2.2.0</h2>
+                <ul>
+                    <li><a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener">Windows — GGUFLoader_v2.2.0_CPU.exe</a> (~69 MB, works everywhere)</li>
+                    <li><a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener">Windows — GGUFLoader_v2.2.0_GPU.exe</a> (~854 MB, NVIDIA CUDA)</li>
+                    <li><a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener">Linux — GGUFLoader_v2.2.0_linux_x86_64_CPU</a> (standalone binary, chmod +x and run)</li>
+                    <li><a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener">All releases on GitHub</a></li>
+                </ul>
+                <blockquote>💡 <strong>Which Windows build?</strong> Not sure if you have CUDA? Use the CPU build — it runs on any machine. Choose the GPU build only if you have an NVIDIA graphics card and want maximum speed.</blockquote>
+            </section>
+
+            <section class="content-section">
+                <h2>Next Steps</h2>
+                <ul>
+                    <li><a href="how-to-run-gguf-models.html">Learn how to run GGUF models locally</a></li>
+                    <li><a href="addon-guide.html">Build your own addons, like the floating chat</a></li>
+                    <li><a href="blog.html">More news and guides</a></li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 GGUF Loader. All rights reserved.</p>
+    </footer>
+
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>

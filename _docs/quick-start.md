@@ -12,14 +12,14 @@ reading_time: "5 minutes"
 
 # Quick Start Guide
 
-Get up and running with GGUF Loader 2.1.2 in just a few minutes! New to GGUF Loader? [Check out the homepage](/) to see what makes it special.
+Get up and running with GGUF Loader 2.2.0 in just a few minutes! New to GGUF Loader? [Check out the homepage](/) to see what makes it special.
 
 ## 🚀 Step 1: Install GGUF Loader
 
 Follow the [Installation Guide](/docs/installation/) for your platform, or download directly:
 
-- **Windows**: [GGUFLoader_v2.1.2.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe)
-- **Linux**: [GGUFLoader_v2.1.2_linux_x86_64.tar.gz](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64.tar.gz)
+- **Windows**: [GGUFLoader_v2.2.0_CPU.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe) (CPU-only) · [GGUFLoader_v2.2.0_GPU.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe) (NVIDIA CUDA)
+- **Linux**: [GGUFLoader_v2.2.0_linux_x86_64_CPU](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU)
 
 ## 📥 Step 2: Get a GGUF Model
 

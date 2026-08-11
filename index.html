@@ -1445,9 +1445,9 @@
         "description": "Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": ["Windows", "macOS", "Linux"],
-        "softwareVersion": "2.1.2",
-        "releaseNotes": "v2.1.2 - Cross-platform floating chat fixes, one-click Linux installer, and automated release builds",
-        "downloadUrl": "https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe",
+        "softwareVersion": "2.2.0",
+        "releaseNotes": "v2.2.0 - Separate GPU and CPU builds for Windows, ~40x faster folder search, and hardened cross-platform launchers",
+        "downloadUrl": "https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe",
         "installUrl": "https://github.com/GGUFloader/gguf-loader/releases",
         "softwareRequirements": "Windows 10/11, Linux (x86_64), or macOS; 4 GB RAM minimum, 8 GB recommended",
         "memoryRequirements": "4GB minimum, 8GB recommended",
@@ -1504,7 +1504,7 @@
         "applicationSuite": "GGUF Loader Suite",
         "countriesSupported": ["US", "CA", "GB", "DE", "FR", "AU", "JP", "IN"],
         "datePublished": "2025-01-27",
-        "dateModified": "2026-08-07",
+        "dateModified": "2026-08-11",
         "mainEntityOfPage": "https://ggufloader.github.io",
         "image": "https://ggufloader.github.io/preview.png",
         "url": "https://ggufloader.github.io"
@@ -2283,21 +2283,21 @@
         <!-- What's New Section -->
         <section id="whats-new" class="section" aria-labelledby="whats-new-heading">
             <div class="container">
-                <h2 id="whats-new-heading">🎉 What's New in v2.1.2</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released August 7, 2026 · Cross-platform floating chat fixes and a brand-new one-click Linux installer.</p>
+                <h2 id="whats-new-heading">🎉 What's New in v2.2.0</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released August 11, 2026 · Separate GPU and CPU builds for Windows, much faster folder search, and hardened launchers.</p>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🐧 One-Click Linux Installer</h3>
-                        <p style="color: #495057; line-height: 1.6;">A new <code>.tar.gz</code> package with an installer that adds a desktop menu entry — no admin rights, no dependencies, no Python.</p>
-                        <p style="margin-top: 1rem;"><a href="#download">⬇️ Get the Linux installer</a></p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ GPU &amp; CPU Builds</h3>
+                        <p style="color: #495057; line-height: 1.6;">Windows now ships two standalone builds: a CUDA-accelerated <strong>GPU</strong> build for NVIDIA cards and a lightweight <strong>CPU-only</strong> build (~69 MB) for anything else.</p>
+                        <p style="margin-top: 1rem;"><a href="#download">⬇️ Pick your build</a></p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">💬 Floating Chat Fixes</h3>
-                        <p style="color: #495057; line-height: 1.6;">The floating chat button no longer disappears when switching apps on macOS, can't get stuck minimized, and stays clear of taskbars, docks, and menu bars on every OS.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚡ Faster Folder Search</h3>
+                        <p style="color: #495057; line-height: 1.6;">Find Paragraph searches are up to <strong>~40× faster</strong> on large folders — the walk now skips dependency and build directories instead of scanning every file.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚙️ Automated Release Builds</h3>
-                        <p style="color: #495057; line-height: 1.6;">Every release now automatically builds and attaches Windows and Linux installers via GitHub Actions — downloads are always up to date.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🚀 Hardened Launchers</h3>
+                        <p style="color: #495057; line-height: 1.6;"><code>launch.sh</code> and <code>launch.bat</code> now detect missing Python venv, missing compilers, and network problems with clear, actionable messages — and install the prebuilt CPU wheel automatically.</p>
                         <p style="margin-top: 1rem;"><a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener noreferrer">View all releases →</a></p>
                     </div>
                 </div>
@@ -2372,10 +2372,14 @@
                 <div class="download-content">
                     <article class="download-option">
                         <h3><span aria-hidden="true">🪟</span> Windows</h3>
-                        <p>Standalone executable with Agentic Mode. No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe"
+                        <p>Standalone executable with Agentic Mode. No dependencies needed. Choose the CPU-only build (~69 MB) or the CUDA-accelerated GPU build (~854 MB) for NVIDIA cards.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe"
                             class="download-button">
-                            Download GGUF Loader v2.1.2 for Windows
+                            Download GGUF Loader v2.2.0 for Windows (CPU)
+                        </a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe"
+                            class="download-button" style="margin-top: 0.75rem;">
+                            Download GGUF Loader v2.2.0 for Windows (GPU)
                         </a>
                     </article>
                     <article class="download-option">
@@ -2390,13 +2394,13 @@
                     </article>
                     <article class="download-option">
                         <h3><span aria-hidden="true">🐧</span> Linux</h3>
-                        <p>Prebuilt .tar.gz with one-click installer that adds a desktop menu entry. No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64.tar.gz"
+                        <p>Prebuilt standalone binary for x86_64 (CPU). No dependencies needed.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU"
                             class="download-button">
-                            Download GGUF Loader v2.1.2 for Linux
+                            Download GGUF Loader v2.2.0 for Linux
                         </a>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Extract and install with:</p>
-                        <div class="code-block"><code>tar -xzf GGUFLoader_v2.1.2_linux_x86_64.tar.gz &amp;&amp; cd GGUFLoader-v2.1.2-linux &amp;&amp; ./install.sh</code></div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Make it executable and run:</p>
+                        <div class="code-block"><code>chmod +x GGUFLoader_v2.2.0_linux_x86_64_CPU &amp;&amp; ./GGUFLoader_v2.2.0_linux_x86_64_CPU</code></div>
                     </article>
                     <article class="download-option">
                         <h3><span aria-hidden="true">🐍</span> Python (all platforms)</h3>

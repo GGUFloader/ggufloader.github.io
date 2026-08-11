@@ -13,12 +13,12 @@ A beginner-friendly, privacy-first desktop application for running large languag
 ### Option 1: Windows Executable (Easiest - Recommended)
 
 **Step 1: Download the App**
-[![Download GGUF Loader v2.1.2](https://img.shields.io/badge/Download%20GGUF%20Loader-v2.1.2-blue?style=for-the-badge&logo=github)](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe)
+[![Download GGUF Loader v2.2.0](https://img.shields.io/badge/Download%20GGUF%20Loader-v2.2.0-blue?style=for-the-badge&logo=github)](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe)
 
-**Direct Download:** [GGUFLoader_v2.1.2.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2.exe) (~61 MB)  ·  [Linux (.tar.gz installer)](https://github.com/GGUFloader/gguf-loader/releases/download/v2.1.2/GGUFLoader_v2.1.2_linux_x86_64.tar.gz)
+**Direct Download:** [GGUFLoader_v2.2.0_CPU.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe) (~69 MB, CPU)  ·  [GGUFLoader_v2.2.0_GPU.exe](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe) (~854 MB, NVIDIA CUDA)  ·  [Linux (x86_64 CPU)](https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU)
 
 **Step 2: Run the App**
-1. Click the downloaded `GGUFLoader_v2.1.2.exe` file
+1. Click the downloaded `GGUFLoader_v2.2.0_CPU.exe` file (or the `_GPU` build if you have an NVIDIA card)
 2. Windows may show a security warning - click "More info" then "Run anyway" (this is normal for new apps)
 3. The app will start automatically - no installation needed!
 
