@@ -3220,6 +3220,30 @@
     <!-- Star Gate Script -->
     <script src="star-gate.js" defer></script>
 
+    <script>
+        // Reveal lazy-loaded images: styles.css hides img[loading="lazy"]
+        // with opacity:0 until a .loaded class is added. No other script on
+        // the site ever added it, so lazy images stayed invisible forever.
+        (function () {
+            function reveal(img) {
+                if (img.complete && img.naturalWidth > 0) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function () { img.classList.add('loaded'); }, { once: true });
+                    img.addEventListener('error', function () { img.classList.add('loaded'); img.style.minHeight = '0'; }, { once: true });
+                }
+            }
+            function revealAll() {
+                document.querySelectorAll('img[loading="lazy"]').forEach(reveal);
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', revealAll);
+            } else {
+                revealAll();
+            }
+        })();
+    </script>
+
 </body>
 
 </html>
