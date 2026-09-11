@@ -1585,9 +1585,9 @@
         }
     </style>
 
-    <!-- Cache control meta tags -->
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
-    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+    <!-- Cache control meta tags - HTML must revalidate so content updates are picked up -->
+    <meta http-equiv="Cache-Control" content="public, max-age=0, must-revalidate">
+    <meta http-equiv="Expires" content="0">
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -2451,15 +2451,15 @@
                 <!-- v2.3.0 Screenshots -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 2rem 0;">
                     <div class="screenshot-item" style="text-align: center;">
-                        <img src="screenshots/screen1.png" alt="GGUF Loader v2.3.0 - Chat Interface" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
+                        <img src="screenshots/screen1.png?v=2" alt="GGUF Loader v2.3.0 - Chat Interface" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
                         <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">Chat Interface</p>
                     </div>
                     <div class="screenshot-item" style="text-align: center;">
-                        <img src="screenshots/screen2.png" alt="GGUF Loader v2.3.0 - Agent Mode" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
+                        <img src="screenshots/screen2.png?v=2" alt="GGUF Loader v2.3.0 - Agent Mode" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
                         <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">Agent Mode</p>
                     </div>
                     <div class="screenshot-item" style="text-align: center;">
-                        <img src="screenshots/screen3.png" alt="GGUF Loader v2.3.0 - Settings" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
+                        <img src="screenshots/screen3.png?v=2" alt="GGUF Loader v2.3.0 - Settings" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
                         <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">Settings</p>
                     </div>
                 </div>
