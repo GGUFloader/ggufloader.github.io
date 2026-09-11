@@ -2281,12 +2281,13 @@
         </section>
 
         <!-- v2.3.0 Section (Top) -->
-        <section id="whats-new" class="section" aria-labelledby="whats-new-heading">
+        <section id="v2-3-0" class="section" style="background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%); padding: 4rem 0;">
             <div class="container">
-                <h2 id="whats-new-heading">🧪 GGUF Loader v2.3.0 — Testing Release</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released September 11, 2026 · Plan-driven agent, developer-style process UI, auto-load at startup, and 10 focused workspace tools.</p>
-                <blockquote style="text-align: center; background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">⚠️ <strong>Testing Release:</strong> This version is temporarily optimized for one model (Gemma 4 12B Instruct Q4_K_M) while we validate the new agent architecture. Universal model support returns next release.</blockquote>
+                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 1rem;">🧪 GGUF Loader v2.3.0 — Testing Release</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 1rem auto;">Released September 11, 2026 · Plan-driven agent, developer-style process UI, auto-load at startup.</p>
+                <blockquote style="text-align: center; background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">⚠️ <strong>Testing Release:</strong> Temporarily optimized for Gemma 4 12B Instruct Q4_K_M. Universal model support returns next release.</blockquote>
 
+                <!-- v2.3.0 Screenshots -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 2rem 0;">
                     <div style="text-align: center;">
                         <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen1.png" alt="GGUF Loader v2.3.0 - Chat Interface" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
@@ -2302,92 +2303,36 @@
                     </div>
                 </div>
 
-                <div class="features-grid">
+                <!-- v2.3.0 Features -->
+                <div class="features-grid" style="margin-top: 3rem;">
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📋 Plan-Driven Agent</h3>
-                        <p style="color: #495057; line-height: 1.6;">Every agent turn goes through a <strong>planner node</strong>: tool-free questions answered directly; tasks get a step-by-step plan executed with sandboxed tools. The reactive ReAct fallback was removed.</p>
-                        <p style="margin-top: 1rem;"><a href="gguf-loader-2-3-0-release-notes.html">Read full release notes →</a></p>
+                        <p style="color: #495057; line-height: 1.6;">Every agent turn goes through a <strong>planner node</strong>: tool-free questions answered directly; tasks get a step-by-step plan executed with sandboxed tools.</p>
                     </div>
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ Developer-Style Process UI</h3>
-                        <p style="color: #495057; line-height: 1.6;">Plan steps, tool calls, and results render <strong>inline in the chat</strong> above each answer. You can follow the entire agent process as it happens.</p>
+                        <p style="color: #495057; line-height: 1.6;">Plan steps, tool calls, and results render <strong>inline in the chat</strong> above each answer.</p>
                     </div>
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📥 Auto-Load at Startup</h3>
-                        <p style="color: #495057; line-height: 1.6;">The app scans its <code>models/</code> folder and loads the pinned GGUF automatically. If missing, the <strong>model chip</strong> downloads it with live progress.</p>
-                        <p style="margin-top: 1rem;"><a href="#download">⬇️ Download v2.3.0</a></p>
+                        <p style="color: #495057; line-height: 1.6;">Scans <code>models/</code> folder and loads the pinned GGUF automatically. Missing model downloads with live progress.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🧹 Reliable Final Answers</h3>
-                        <p style="color: #495057; line-height: 1.6;">Stray tool-call JSON and stale status text (like "Planning...") are scrubbed from the live stream and final replies.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🔧 10 Focused Workspace Tools</h3>
-                        <p style="color: #495057; line-height: 1.6;">Memory and meta tools removed. The agent uses 10 focused tools: list, read, write, edit, move, search, run_command, run_python, git, and glob.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🔧 10 Focused Tools</h3>
+                        <p style="color: #495057; line-height: 1.6;">list, read, write, edit, move, search, run_command, run_python, git, glob.</p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Screenshot Section -->
-        <section id="screenshot" class="screenshot-section section" aria-labelledby="screenshot-heading">
-            <div class="container">
-                <h2 id="screenshot-heading">GGUF Loader Interface</h2>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <img src="ggufloader_screen.png" 
-                         alt="GGUF Loader application interface showing the main window with model loading and chat features" 
-                         class="loaded"
-                         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); opacity: 1 !important; display: block !important; margin: 0 auto;"
-                         onerror="this.style.border='2px solid red'; this.alt='Image failed to load: ggufloader_screen.png';">
+                <!-- v2.3.0 Download Buttons -->
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">📥 Download v2.3.0</h3>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #e67e22; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows CPU (~145 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_GPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #e67e22; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows GPU (~930 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_linux_x86_64_CPU" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #27ae60; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🐧 Linux (~50 MB)</a>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: #6c757d;"><a href="gguf-loader-2-3-0-release-notes.html" style="color: #e67e22; font-weight: 600;">Read full release notes →</a></p>
                 </div>
-            </div>
-        </section>
-
-        <!-- v2.3.0 Download Section -->
-        <section id="download" class="download-section section" aria-labelledby="download-heading">
-            <div class="container">
-                <h2 id="download-heading">📥 Download GGUF Loader v2.3.0</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Testing release with plan-driven agent. Choose the build for your platform.</p>
-                <div class="download-content">
-                    <article class="download-option">
-                        <h3><span aria-hidden="true">🪟</span> Windows</h3>
-                        <p>Standalone executable with plan-driven agent. No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe"
-                            class="download-button">
-                            Download v2.3.0 for Windows — CPU (~145 MB)
-                        </a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_GPU.exe"
-                            class="download-button" style="margin-top: 0.75rem;">
-                            Download v2.3.0 for Windows — GPU (~930 MB)
-                        </a>
-                    </article>
-                    <article class="download-option">
-                        <h3><span aria-hidden="true">🍎</span> macOS</h3>
-                        <p>Download source and run with launch.sh script. No installation needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/archive/refs/heads/main.zip"
-                            class="download-button">
-                            Download Source ZIP for macOS
-                        </a>
-                    </article>
-                    <article class="download-option">
-                        <h3><span aria-hidden="true">🐧</span> Linux</h3>
-                        <p>Prebuilt standalone binary for x86_64 (CPU). No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_linux_x86_64_CPU"
-                            class="download-button">
-                            Download v2.3.0 for Linux (~50 MB)
-                        </a>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Make it executable and run:</p>
-                        <div class="code-block"><code>chmod +x GGUFLoader_v2.3.0_linux_x86_64_CPU &amp;&amp; ./GGUFLoader_v2.3.0_linux_x86_64_CPU</code></div>
-                    </article>
-                    <article class="download-option">
-                        <h3><span aria-hidden="true">🔗</span> All Versions</h3>
-                        <p>Looking for a different version? View all releases on GitHub.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases"
-                            class="download-button" style="background: #6c757d;">
-                            View All Releases on GitHub
-                        </a>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">v2.2.0 (stable) and v2.3.0 (testing) available.</p>
-                    </article>
             </div>
         </section>
 
@@ -3038,10 +2983,17 @@
         <section id="v2-2-0" class="section" style="background: #f8f9fa; padding: 4rem 0;">
             <div class="container">
                 <h2 style="text-align: center; color: #2c3e50; margin-bottom: 1rem;">📦 GGUF Loader v2.2.0 — Stable Release</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">The universal model loader with PyPI package support. Load any GGUF model that fits your PC's resources.</p>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 1rem auto;">The universal model loader with PyPI package support. Load any GGUF model that fits your PC's resources.</p>
                 <blockquote style="text-align: center; background: #d4edda; border-left: 4px solid #28a745; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">✅ <strong>Stable Release:</strong> Universal model loader with PyPI package, basic agentic mode, and full GGUF model support.</blockquote>
 
-                <div class="features-grid">
+                <!-- v2.2.0 Screenshot -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="ggufloader_screen.png" alt="GGUF Loader v2.2.0 - Universal Model Loader Interface" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" loading="lazy">
+                    <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">v2.2.0 — Universal Model Loader Interface</p>
+                </div>
+
+                <!-- v2.2.0 Features -->
+                <div class="features-grid" style="margin-top: 3rem;">
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🌐 Universal Model Loader</h3>
                         <p style="color: #495057; line-height: 1.6;">Load <strong>any GGUF model</strong> that fits your PC's resources — from small 3B models to large 70B+ models. No restrictions.</p>
@@ -3060,15 +3012,16 @@
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 2rem;">
-                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">Download v2.2.0</h3>
+                <!-- v2.2.0 Download Buttons -->
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">📥 Download v2.2.0</h3>
                     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Windows CPU (~70 MB)</a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Windows GPU (~850 MB)</a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 24px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Linux CPU (~105 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows CPU (~70 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows GPU (~850 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🐧 Linux (~105 MB)</a>
                     </div>
-                    <p style="margin-top: 1rem; color: #6c757d;">Or install via pip: <code>pip install ggufloader</code></p>
-                    <p style="margin-top: 1rem;"><a href="gguf-loader-2-2-0-release-notes.html" style="color: #0078d4;">Read v2.2.0 release notes →</a></p>
+                    <p style="margin-top: 1.5rem; color: #6c757d;">Or install via pip: <code>pip install ggufloader</code></p>
+                    <p style="margin-top: 1rem;"><a href="gguf-loader-2-2-0-release-notes.html" style="color: #0078d4; font-weight: 600;">Read v2.2.0 release notes →</a></p>
                 </div>
             </div>
         </section>
