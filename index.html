@@ -2280,12 +2280,28 @@
             </div>
         </section>
 
-        <!-- What's New Section -->
+        <!-- v2.3.0 Section (Top) -->
         <section id="whats-new" class="section" aria-labelledby="whats-new-heading">
             <div class="container">
-                <h2 id="whats-new-heading">🧪 What's New in v2.3.0</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released September 11, 2026 · Testing release with plan-driven agent, developer-style process UI, auto-load at startup, and 10 focused workspace tools.</p>
+                <h2 id="whats-new-heading">🧪 GGUF Loader v2.3.0 — Testing Release</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released September 11, 2026 · Plan-driven agent, developer-style process UI, auto-load at startup, and 10 focused workspace tools.</p>
                 <blockquote style="text-align: center; background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">⚠️ <strong>Testing Release:</strong> This version is temporarily optimized for one model (Gemma 4 12B Instruct Q4_K_M) while we validate the new agent architecture. Universal model support returns next release.</blockquote>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 2rem 0;">
+                    <div style="text-align: center;">
+                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen1.png" alt="GGUF Loader v2.3.0 - Chat Interface" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
+                        <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">Chat Interface</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen2.png" alt="GGUF Loader v2.3.0 - Agent Mode" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
+                        <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">Agent Mode</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen3.png" alt="GGUF Loader v2.3.0 - Settings" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
+                        <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">Settings</p>
+                    </div>
+                </div>
+
                 <div class="features-grid">
                     <div class="feature-card">
                         <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📋 Plan-Driven Agent</h3>
@@ -2323,53 +2339,6 @@
                          class="loaded"
                          style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); opacity: 1 !important; display: block !important; margin: 0 auto;"
                          onerror="this.style.border='2px solid red'; this.alt='Image failed to load: ggufloader_screen.png';">
-                </div>
-            </div>
-        </section>
-
-        <!-- Lawyer Assistant Launch Announcement Section -->
-        <section id="lawyer-assistant" class="section" aria-labelledby="lawyer-recommend-heading">
-            <div class="container">
-                <div class="lawyer-recommend-section">
-                    <span class="lawyer-recommend-badge">🚀 Now Available</span>
-                    <h2 id="lawyer-recommend-heading">Introducing Lawyer Assistant — Free, On-Device Legal AI</h2>
-                    <p class="lawyer-recommend-dateline">August 2026 · Free &amp; open source · Runs 100% offline</p>
-                    <p class="lawyer-recommend-intro">
-                        We're excited to announce the launch of
-                        <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener noreferrer" style="color: #3498db; font-weight: 700;">Lawyer Assistant</a>,
-                        a new addition to the local AI ecosystem. Ask questions about your contracts in plain English
-                        and get answers with exact page numbers cited from your own documents — nothing leaves your
-                        machine and it works fully offline, so it fits right alongside GGUF Loader's privacy-first approach.
-                    </p>
-                    <div class="lawyer-recommend-features">
-                        <div class="lawyer-recommend-feature">
-                            <h3>📄 Cited Answers</h3>
-                            <p>Ask in plain English and get answers with exact page numbers from your own contracts — no vague citations, no guessing.</p>
-                        </div>
-                        <div class="lawyer-recommend-feature">
-                            <h3>🔒 100% Private</h3>
-                            <p>Runs entirely on your machine. Contracts, briefs, and research never leave your PC — protecting attorney-client privilege.</p>
-                        </div>
-                        <div class="lawyer-recommend-feature">
-                            <h3>✈️ Works Offline</h3>
-                            <p>No internet required. Use it anywhere — in the office, in court, or on the road — with no subscription and no data limits.</p>
-                        </div>
-                        <div class="lawyer-recommend-feature">
-                            <h3>⚖️ Built for Legal Teams</h3>
-                            <p>Hybrid search with reranking, compliance playbook scanning, and verification built in — designed for lawyers, not general chatbots.</p>
-                        </div>
-                    </div>
-                    <p class="lawyer-recommend-ui-label">↓ The Interface in Action ↓</p>
-                    <div class="lawyer-recommend-ui">
-                        <img src="lawyer-assistant-screen.png"
-                             alt="Lawyer Assistant user interface showing a legal research question about a contract with a cited answer and page number"
-                             title="Lawyer Assistant — Private AI Legal Research UI"
-                             onerror="this.onerror=null; this.parentElement.innerHTML='<p style=&quot;color:#6c757d;padding:2rem;text-align:center;&quot;>Screenshot available at <a href=&quot;https://lawyers-assistant.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;color:#3498db;&quot;>lawyers-assistant.github.io</a></p>';">
-                    </div>
-                    <div class="lawyer-recommend-cta">
-                        <a href="https://lawyers-assistant.github.io/" target="_blank" rel="noopener noreferrer" class="lawyer-recommend-btn lawyer-recommend-btn-primary">⚖️ Visit Lawyer Assistant</a>
-                        <a href="ask-your-contracts-anything-free-ai-legal-research.html" class="lawyer-recommend-btn lawyer-recommend-btn-secondary">📖 Read Our Full Review</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -3062,6 +3031,45 @@
                         </ul>
                     </div>
                 </details>
+            </div>
+        </section>
+
+        <!-- v2.2.0 Section (Stable Universal Model Loader) -->
+        <section id="v2-2-0" class="section" style="background: #f8f9fa; padding: 4rem 0;">
+            <div class="container">
+                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 1rem;">📦 GGUF Loader v2.2.0 — Stable Release</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">The universal model loader with PyPI package support. Load any GGUF model that fits your PC's resources.</p>
+                <blockquote style="text-align: center; background: #d4edda; border-left: 4px solid #28a745; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">✅ <strong>Stable Release:</strong> Universal model loader with PyPI package, basic agentic mode, and full GGUF model support.</blockquote>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🌐 Universal Model Loader</h3>
+                        <p style="color: #495057; line-height: 1.6;">Load <strong>any GGUF model</strong> that fits your PC's resources — from small 3B models to large 70B+ models. No restrictions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📦 PyPI Package</h3>
+                        <p style="color: #495057; line-height: 1.6;">Install with <code>pip install ggufloader</code> — works in any Python environment on Windows, macOS, or Linux.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🤖 Basic Agentic Mode</h3>
+                        <p style="color: #495057; line-height: 1.6;">LangGraph-driven agent with <strong>7 sandboxed tools</strong>, Allow/Deny approval cards, and SQLite checkpointing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚡ One-Click GPU</h3>
+                        <p style="color: #495057; line-height: 1.6;">Install CUDA/Metal support from the Settings UI with live progress and status.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">Download v2.2.0</h3>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Windows CPU (~70 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 24px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Windows GPU (~850 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener" style="display: inline-block; padding: 12px 24px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Linux CPU (~105 MB)</a>
+                    </div>
+                    <p style="margin-top: 1rem; color: #6c757d;">Or install via pip: <code>pip install ggufloader</code></p>
+                    <p style="margin-top: 1rem;"><a href="gguf-loader-2-2-0-release-notes.html" style="color: #0078d4;">Read v2.2.0 release notes →</a></p>
+                </div>
             </div>
         </section>
 
