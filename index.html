@@ -1445,13 +1445,13 @@
         "description": "Enterprise-grade local AI deployment platform for Windows, MacOS, Linux. Run Mistral, LLaMA, and DeepSeek models offline without Python.",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": ["Windows", "macOS", "Linux"],
-        "softwareVersion": "2.2.0",
-        "releaseNotes": "v2.2.0 - Separate GPU and CPU builds for Windows, ~40x faster folder search, and hardened cross-platform launchers",
-        "downloadUrl": "https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe",
+        "softwareVersion": "2.3.0",
+        "releaseNotes": "v2.3.0 - Testing release with plan-driven agent, developer-style process UI, auto-load at startup",
+        "downloadUrl": "https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe",
         "installUrl": "https://github.com/GGUFloader/gguf-loader/releases",
-        "softwareRequirements": "Windows 10/11, Linux (x86_64), or macOS; 4 GB RAM minimum, 8 GB recommended",
-        "memoryRequirements": "4GB minimum, 8GB recommended",
-        "storageRequirements": "2GB free space for models",
+        "softwareRequirements": "Windows 10/11, Linux (x86_64), or macOS; 32 GB RAM minimum recommended",
+        "memoryRequirements": "32GB minimum recommended",
+        "storageRequirements": "8GB free space for models",
         "processorRequirements": "Modern x64 processor",
         "programmingLanguage": "Python",
         "runtimePlatform": "Python 3.8+",
@@ -2283,30 +2283,31 @@
         <!-- What's New Section -->
         <section id="whats-new" class="section" aria-labelledby="whats-new-heading">
             <div class="container">
-                <h2 id="whats-new-heading">🎉 What's New in v2.2.0</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released August 11, 2026 · LangGraph-powered Agent Mode, one-click GPU install, separate GPU/CPU builds, and much faster folder search.</p>
+                <h2 id="whats-new-heading">🧪 What's New in v2.3.0</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Released September 11, 2026 · Testing release with plan-driven agent, developer-style process UI, auto-load at startup, and 10 focused workspace tools.</p>
+                <blockquote style="text-align: center; background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">⚠️ <strong>Testing Release:</strong> This version is temporarily optimized for one model (Gemma 4 12B Instruct Q4_K_M) while we validate the new agent architecture. Universal model support returns next release.</blockquote>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🤖 LangGraph Agent Mode</h3>
-                        <p style="color: #495057; line-height: 1.6;">Agent Mode now runs on <strong>LangGraph</strong>: a proper state machine with SQLite checkpointing, so each workspace's conversation <strong>survives app restarts</strong> and resumes right where you left off.</p>
-                        <p style="margin-top: 1rem;"><a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener noreferrer">View all releases →</a></p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📋 Plan-Driven Agent</h3>
+                        <p style="color: #495057; line-height: 1.6;">Every agent turn goes through a <strong>planner node</strong>: tool-free questions answered directly; tasks get a step-by-step plan executed with sandboxed tools. The reactive ReAct fallback was removed.</p>
+                        <p style="margin-top: 1rem;"><a href="gguf-loader-2-3-0-release-notes.html">Read full release notes →</a></p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖱️ One-Click GPU Install</h3>
-                        <p style="color: #495057; line-height: 1.6;">The sidebar now has an <strong>⬇ Install GPU Support</strong> button — it downloads and installs the CUDA-enabled llama.cpp build right from the app, with live status. No more manual scripts.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ Developer-Style Process UI</h3>
+                        <p style="color: #495057; line-height: 1.6;">Plan steps, tool calls, and results render <strong>inline in the chat</strong> above each answer. You can follow the entire agent process as it happens.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ GPU &amp; CPU Builds</h3>
-                        <p style="color: #495057; line-height: 1.6;">Windows now ships two standalone builds: a CUDA-accelerated <strong>GPU</strong> build for NVIDIA cards and a lightweight <strong>CPU-only</strong> build (~69 MB) for anything else.</p>
-                        <p style="margin-top: 1rem;"><a href="#download">⬇️ Pick your build</a></p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📥 Auto-Load at Startup</h3>
+                        <p style="color: #495057; line-height: 1.6;">The app scans its <code>models/</code> folder and loads the pinned GGUF automatically. If missing, the <strong>model chip</strong> downloads it with live progress.</p>
+                        <p style="margin-top: 1rem;"><a href="#download">⬇️ Download v2.3.0</a></p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚡ Faster Folder Search</h3>
-                        <p style="color: #495057; line-height: 1.6;">Find Paragraph searches are up to <strong>~40× faster</strong> on large folders — the walk now skips dependency and build directories instead of scanning every file.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🧹 Reliable Final Answers</h3>
+                        <p style="color: #495057; line-height: 1.6;">Stray tool-call JSON and stale status text (like "Planning...") are scrubbed from the live stream and final replies.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🚀 Hardened Launchers</h3>
-                        <p style="color: #495057; line-height: 1.6;"><code>launch.sh</code> and <code>launch.bat</code> now detect missing Python venv, missing compilers, and network problems with clear, actionable messages — and install the prebuilt CPU wheel automatically.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🔧 10 Focused Workspace Tools</h3>
+                        <p style="color: #495057; line-height: 1.6;">Memory and meta tools removed. The agent uses 10 focused tools: list, read, write, edit, move, search, run_command, run_python, git, and glob.</p>
                     </div>
                 </div>
             </div>
@@ -2376,18 +2377,19 @@
         <!-- Download Section -->
         <section id="download" class="download-section section" aria-labelledby="download-heading">
             <div class="container">
-                <h2 id="download-heading">Download GGUF Loader</h2>
+                <h2 id="download-heading">Download GGUF Loader v2.3.0</h2>
+                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 2rem auto;">Testing release with plan-driven agent. Choose the build for your platform.</p>
                 <div class="download-content">
                     <article class="download-option">
                         <h3><span aria-hidden="true">🪟</span> Windows</h3>
-                        <p>Standalone executable with Agentic Mode. No dependencies needed. Choose the CPU-only build (~69 MB) or the CUDA-accelerated GPU build (~854 MB) for NVIDIA cards.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe"
+                        <p>Standalone executable with plan-driven agent. No dependencies needed. Choose the CPU-only build (~145 MB) or the CUDA-accelerated GPU build (~930 MB) for NVIDIA cards.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe"
                             class="download-button">
-                            Download GGUF Loader v2.2.0 for Windows (CPU)
+                            Download GGUF Loader v2.3.0 for Windows (CPU)
                         </a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe"
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_GPU.exe"
                             class="download-button" style="margin-top: 0.75rem;">
-                            Download GGUF Loader v2.2.0 for Windows (GPU)
+                            Download GGUF Loader v2.3.0 for Windows (GPU)
                         </a>
                     </article>
                     <article class="download-option">
@@ -2397,28 +2399,25 @@
                             class="download-button">
                             Download ZIP for macOS
                         </a>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Or install via pip:</p>
-                        <div class="code-block"><code>pip install ggufloader</code></div>
                     </article>
                     <article class="download-option">
                         <h3><span aria-hidden="true">🐧</span> Linux</h3>
                         <p>Prebuilt standalone binary for x86_64 (CPU). No dependencies needed.</p>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU"
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_linux_x86_64_CPU"
                             class="download-button">
-                            Download GGUF Loader v2.2.0 for Linux
+                            Download GGUF Loader v2.3.0 for Linux
                         </a>
                         <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Make it executable and run:</p>
-                        <div class="code-block"><code>chmod +x GGUFLoader_v2.2.0_linux_x86_64_CPU &amp;&amp; ./GGUFLoader_v2.2.0_linux_x86_64_CPU</code></div>
+                        <div class="code-block"><code>chmod +x GGUFLoader_v2.3.0_linux_x86_64_CPU &amp;&amp; ./GGUFLoader_v2.3.0_linux_x86_64_CPU</code></div>
                     </article>
                     <article class="download-option">
-                        <h3><span aria-hidden="true">🐍</span> Python (all platforms)</h3>
-                        <p>Prefer the pip package? If you have Python 3.10+ installed, install GGUF Loader on Windows, macOS, or Linux in one command.</p>
-                        <div class="code-block"><code>pip install ggufloader</code></div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">Then launch the app with:</p>
-                        <div class="code-block"><code>ggufloader</code></div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">
-                            <a href="https://pypi.org/project/ggufloader/" target="_blank" rel="noopener noreferrer">View on PyPI →</a>
-                        </p>
+                        <h3><span aria-hidden="true">🔗</span> All Versions</h3>
+                        <p>Looking for a different version? View all releases on GitHub.</p>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases"
+                            class="download-button" style="background: #6c757d;">
+                            View All Releases on GitHub
+                        </a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #6c757d;">v2.2.0 (stable) and v2.3.0 (testing) available.</p>
                     </article>
             </div>
         </section>
