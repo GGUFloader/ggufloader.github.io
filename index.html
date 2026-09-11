@@ -1223,10 +1223,60 @@
 
     <!-- Dark mode support for all devices -->
     <style>
+        /* Version section shared styles (light mode defaults) */
+        .version-note {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .version-note--testing {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #6b4d00;
+        }
+
+        .version-note--testing strong {
+            color: #b8860b;
+        }
+
+        .version-note--stable {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #1d4d2a;
+        }
+
+        .version-note--stable strong {
+            color: #1e7e34;
+        }
+
+        .version-heading {
+            color: #2c3e50;
+        }
+
+        .version-subtitle {
+            color: #495057;
+        }
+
+        .screenshot-caption {
+            color: #6c757d;
+        }
+
+        .version-download-card {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .version-download-card h3 {
+            color: #2c3e50;
+        }
+
+        .dl-btn {
+            color: white;
+        }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background: #121212;
-                color: #e0e0e0;
+                color: #e8e8e8;
             }
             
             .container {
@@ -1257,11 +1307,11 @@
             }
             
             .hero-subtitle {
-                color: #b0b0b0;
+                color: #cfcfcf;
             }
             
             .hero-description {
-                color: #d0d0d0;
+                color: #e0e0e0;
             }
             
             .philosophy-title {
@@ -1307,7 +1357,7 @@
             .use-case,
             .guide {
                 background: #1e1e1e;
-                color: #e0e0e0;
+                color: #e8e8e8;
                 border: 1px solid #333;
             }
             
@@ -1382,7 +1432,7 @@
             blockquote {
                 background: #1e1e1e;
                 border-left: 4px solid #3498db;
-                color: #d0d0d0;
+                color: #e0e0e0;
             }
             
             blockquote footer,
@@ -1397,7 +1447,7 @@
             
             /* List items */
             li {
-                color: #d0d0d0;
+                color: #e0e0e0;
             }
             
             /* Form elements if any */
@@ -1417,87 +1467,83 @@
                 background: #3a3a3a;
             }
 
-            /* v2.3.0 and v2.2.0 version sections */
-            #v2-3-0 {
-                background: linear-gradient(180deg, #121212 0%, #1e1e1e 100%) !important;
+            /* v2.3.0 and v2.2.0 version sections — consistent dark palette */
+            #v2-3-0.version-section--testing {
+                background: #121212 !important;
+                border-top: 1px solid #2a2a2a;
+                border-bottom: 1px solid #2a2a2a;
             }
 
-            #v2-3-0 h2,
-            #v2-3-0 h3 {
-                color: #ffffff;
+            #v2-2-0.version-section--stable {
+                background: #161616 !important;
+                border-bottom: 1px solid #2a2a2a;
             }
 
-            #v2-3-0 p {
-                color: #b0b0b0;
+            .version-heading {
+                color: #ffffff !important;
             }
 
-            #v2-3-0 blockquote {
-                background: #2d2d1e;
-                border-left-color: #f39c12;
-                color: #d4c89a;
+            .version-subtitle {
+                color: #cfcfcf !important;
             }
 
-            #v2-3-0 blockquote strong {
-                color: #f39c12;
+            .version-note {
+                border-radius: 0 10px 10px 0;
             }
 
-            #v2-3-0 .feature-card {
-                background: #1e1e1e;
+            .version-note--testing {
+                background: #2b2210 !important;
+                border-left: 4px solid #f0a500 !important;
+                color: #ffd98a !important;
+            }
+
+            .version-note--testing strong {
+                color: #ffb84d !important;
+            }
+
+            .version-note--stable {
+                background: #14291c !important;
+                border-left: 4px solid #2ecc71 !important;
+                color: #b8e6c4 !important;
+            }
+
+            .version-note--stable strong {
+                color: #2ecc71 !important;
+            }
+
+            .screenshot-item img {
                 border: 1px solid #333;
             }
 
-            #v2-3-0 .feature-card h3 {
-                color: #ffffff;
+            .screenshot-caption {
+                color: #b8b8b8 !important;
             }
 
-            #v2-3-0 .feature-card p {
-                color: #b0b0b0;
-            }
-
-            #v2-3-0 > .container > div:last-child {
-                background: #1e1e1e;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            }
-
-            #v2-2-0 {
-                background: #1a1a1a !important;
-            }
-
-            #v2-2-0 h2,
-            #v2-2-0 h3 {
-                color: #ffffff;
-            }
-
-            #v2-2-0 p {
-                color: #b0b0b0;
-            }
-
-            #v2-2-0 blockquote {
-                background: #1e2e1e;
-                border-left-color: #28a745;
-                color: #9acd9a;
-            }
-
-            #v2-2-0 blockquote strong {
-                color: #28a745;
-            }
-
-            #v2-2-0 .feature-card {
-                background: #1e1e1e;
+            .version-download-card {
+                background: #1e1e1e !important;
                 border: 1px solid #333;
+                box-shadow: none !important;
             }
 
-            #v2-2-0 .feature-card h3 {
-                color: #ffffff;
+            .version-download-card h3 {
+                color: #ffffff !important;
             }
 
-            #v2-2-0 .feature-card p {
-                color: #b0b0b0;
+            .dl-btn {
+                color: #ffffff !important;
             }
 
-            #v2-2-0 > .container > div:last-child {
-                background: #1e1e1e;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            .version-notes-link a {
+                color: #5dade2 !important;
+            }
+
+            /* Boost contrast for inline-styled muted text elsewhere */
+            p[style*="#6c757d"], span[style*="#6c757d"] {
+                color: #cfcfcf !important;
+            }
+
+            p[style*="#495057"] {
+                color: #d6d6d6 !important;
             }
 
             /* Download section */
@@ -1511,7 +1557,7 @@
             }
 
             .download-section p {
-                color: #b0b0b0;
+                color: #cfcfcf;
             }
 
             .download-option {
@@ -2396,104 +2442,104 @@
         </section>
 
         <!-- v2.3.0 Section (Top) -->
-        <section id="v2-3-0" class="section" style="background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%); padding: 4rem 0;">
+        <section id="v2-3-0" class="section version-section--testing" style="padding: 4rem 0;">
             <div class="container">
-                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 1rem;">🧪 GGUF Loader v2.3.0 — Testing Release</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 1rem auto;">Released September 11, 2026 · Plan-driven agent, developer-style process UI, auto-load at startup.</p>
-                <blockquote style="text-align: center; background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">⚠️ <strong>Testing Release:</strong> Temporarily optimized for Gemma 4 12B Instruct Q4_K_M. Universal model support returns next release.</blockquote>
+                <h2 class="version-heading" style="text-align: center; margin-bottom: 1rem;">🧪 GGUF Loader v2.3.0 — Testing Release</h2>
+                <p class="version-subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto;">Released September 11, 2026 · Plan-driven agent, developer-style process UI, auto-load at startup.</p>
+                <blockquote class="version-note version-note--testing" style="text-align: center; padding: 15px 20px; margin: 0 auto 2rem auto; max-width: 800px;">⚠️ <strong>Testing Release:</strong> Temporarily optimized for Gemma 4 12B Instruct Q4_K_M. Universal model support returns next release.</blockquote>
 
                 <!-- v2.3.0 Screenshots -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 2rem 0;">
-                    <div style="text-align: center;">
-                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen1.png" alt="GGUF Loader v2.3.0 - Chat Interface" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
-                        <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">Chat Interface</p>
+                    <div class="screenshot-item" style="text-align: center;">
+                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen1.png" alt="GGUF Loader v2.3.0 - Chat Interface" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
+                        <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">Chat Interface</p>
                     </div>
-                    <div style="text-align: center;">
-                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen2.png" alt="GGUF Loader v2.3.0 - Agent Mode" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
-                        <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">Agent Mode</p>
+                    <div class="screenshot-item" style="text-align: center;">
+                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen2.png" alt="GGUF Loader v2.3.0 - Agent Mode" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
+                        <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">Agent Mode</p>
                     </div>
-                    <div style="text-align: center;">
-                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen3.png" alt="GGUF Loader v2.3.0 - Settings" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
-                        <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">Settings</p>
+                    <div class="screenshot-item" style="text-align: center;">
+                        <img src="https://raw.githubusercontent.com/GGUFloader/gguf-loader/main/screenshots/screen3.png" alt="GGUF Loader v2.3.0 - Settings" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" loading="lazy">
+                        <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">Settings</p>
                     </div>
                 </div>
 
                 <!-- v2.3.0 Features -->
                 <div class="features-grid" style="margin-top: 3rem;">
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📋 Plan-Driven Agent</h3>
-                        <p style="color: #495057; line-height: 1.6;">Every agent turn goes through a <strong>planner node</strong>: tool-free questions answered directly; tasks get a step-by-step plan executed with sandboxed tools.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">📋 Plan-Driven Agent</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">Every agent turn goes through a <strong>planner node</strong>: tool-free questions answered directly; tasks get a step-by-step plan executed with sandboxed tools.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ Developer-Style Process UI</h3>
-                        <p style="color: #495057; line-height: 1.6;">Plan steps, tool calls, and results render <strong>inline in the chat</strong> above each answer.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">🖥️ Developer-Style Process UI</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">Plan steps, tool calls, and results render <strong>inline in the chat</strong> above each answer.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📥 Auto-Load at Startup</h3>
-                        <p style="color: #495057; line-height: 1.6;">Scans <code>models/</code> folder and loads the pinned GGUF automatically. Missing model downloads with live progress.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">📥 Auto-Load at Startup</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">Scans <code>models/</code> folder and loads the pinned GGUF automatically. Missing model downloads with live progress.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🔧 10 Focused Tools</h3>
-                        <p style="color: #495057; line-height: 1.6;">list, read, write, edit, move, search, run_command, run_python, git, glob.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">🔧 10 Focused Tools</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">list, read, write, edit, move, search, run_command, run_python, git, glob.</p>
                     </div>
                 </div>
 
                 <!-- v2.3.0 Download Buttons -->
-                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-                    <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">📥 Download v2.3.0</h3>
+                <div class="version-download-card" style="text-align: center; margin-top: 3rem; padding: 2rem; border-radius: 15px;">
+                    <h3 style="margin-bottom: 1.5rem;">📥 Download v2.3.0</h3>
                     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #e67e22; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows CPU (~145 MB)</a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_GPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #e67e22; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows GPU (~930 MB)</a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_linux_x86_64_CPU" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #27ae60; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🐧 Linux (~50 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe" target="_blank" rel="noopener" class="dl-btn" style="display: inline-block; padding: 15px 30px; background: #e67e22; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows CPU (~145 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_GPU.exe" target="_blank" rel="noopener" class="dl-btn" style="display: inline-block; padding: 15px 30px; background: #e67e22; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows GPU (~930 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_linux_x86_64_CPU" target="_blank" rel="noopener" class="dl-btn" style="display: inline-block; padding: 15px 30px; background: #27ae60; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🐧 Linux (~50 MB)</a>
                     </div>
-                    <p style="margin-top: 1.5rem; color: #6c757d;"><a href="gguf-loader-2-3-0-release-notes.html" style="color: #e67e22; font-weight: 600;">Read full release notes →</a></p>
+                    <p class="version-notes-link" style="margin-top: 1.5rem;"><a href="gguf-loader-2-3-0-release-notes.html" style="font-weight: 600;">Read full release notes →</a></p>
                 </div>
             </div>
         </section>
 
         <!-- v2.2.0 Section (Stable Universal Model Loader) -->
-        <section id="v2-2-0" class="section" style="background: #f8f9fa; padding: 4rem 0;">
+        <section id="v2-2-0" class="section version-section--stable" style="padding: 4rem 0;">
             <div class="container">
-                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 1rem;">📦 GGUF Loader v2.2.0 — Stable Release</h2>
-                <p style="text-align: center; color: #6c757d; max-width: 800px; margin: 0 auto 1rem auto;">The universal model loader with PyPI package support. Load any GGUF model that fits your PC's resources.</p>
-                <blockquote style="text-align: center; background: #d4edda; border-left: 4px solid #28a745; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 0 auto 2rem auto; max-width: 800px;">✅ <strong>Stable Release:</strong> Universal model loader with PyPI package, basic agentic mode, and full GGUF model support.</blockquote>
+                <h2 class="version-heading" style="text-align: center; margin-bottom: 1rem;">📦 GGUF Loader v2.2.0 — Stable Release</h2>
+                <p class="version-subtitle" style="text-align: center; max-width: 800px; margin: 0 auto 1rem auto;">The universal model loader with PyPI package support. Load any GGUF model that fits your PC's resources.</p>
+                <blockquote class="version-note version-note--stable" style="text-align: center; padding: 15px 20px; margin: 0 auto 2rem auto; max-width: 800px;">✅ <strong>Stable Release:</strong> Universal model loader with PyPI package, basic agentic mode, and full GGUF model support.</blockquote>
 
                 <!-- v2.2.0 Screenshot -->
-                <div style="text-align: center; margin: 2rem 0;">
-                    <img src="ggufloader_screen.png" alt="GGUF Loader v2.2.0 - Universal Model Loader Interface" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" loading="lazy">
-                    <p style="margin-top: 10px; color: #6c757d; font-size: 0.9rem;">v2.2.0 — Universal Model Loader Interface</p>
+                <div class="screenshot-item" style="text-align: center; margin: 2rem 0;">
+                    <img src="ggufloader_screen.png" alt="GGUF Loader v2.2.0 - Universal Model Loader Interface" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" loading="lazy">
+                    <p class="screenshot-caption" style="margin-top: 10px; font-size: 0.9rem;">v2.2.0 — Universal Model Loader Interface</p>
                 </div>
 
                 <!-- v2.2.0 Features -->
                 <div class="features-grid" style="margin-top: 3rem;">
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🌐 Universal Model Loader</h3>
-                        <p style="color: #495057; line-height: 1.6;">Load <strong>any GGUF model</strong> that fits your PC's resources — from small 3B models to large 70B+ models. No restrictions.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">🌐 Universal Model Loader</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">Load <strong>any GGUF model</strong> that fits your PC's resources — from small 3B models to large 70B+ models. No restrictions.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📦 PyPI Package</h3>
-                        <p style="color: #495057; line-height: 1.6;">Install with <code>pip install ggufloader</code> — works in any Python environment on Windows, macOS, or Linux.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">📦 PyPI Package</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">Install with <code>pip install ggufloader</code> — works in any Python environment on Windows, macOS, or Linux.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🤖 Basic Agentic Mode</h3>
-                        <p style="color: #495057; line-height: 1.6;">LangGraph-driven agent with <strong>7 sandboxed tools</strong>, Allow/Deny approval cards, and SQLite checkpointing.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">🤖 Basic Agentic Mode</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">LangGraph-driven agent with <strong>7 sandboxed tools</strong>, Allow/Deny approval cards, and SQLite checkpointing.</p>
                     </div>
                     <div class="feature-card">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚡ One-Click GPU</h3>
-                        <p style="color: #495057; line-height: 1.6;">Install CUDA/Metal support from the Settings UI with live progress and status.</p>
+                        <h3 class="version-heading" style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚡ One-Click GPU</h3>
+                        <p class="version-subtitle" style="line-height: 1.6;">Install CUDA/Metal support from the Settings UI with live progress and status.</p>
                     </div>
                 </div>
 
                 <!-- v2.2.0 Download Buttons -->
-                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-                    <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">📥 Download v2.2.0</h3>
+                <div class="version-download-card" style="text-align: center; margin-top: 3rem; padding: 2rem; border-radius: 15px;">
+                    <h3 style="margin-bottom: 1.5rem;">📥 Download v2.2.0</h3>
                     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows CPU (~70 MB)</a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #0078d4; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows GPU (~850 MB)</a>
-                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener" style="display: inline-block; padding: 15px 30px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🐧 Linux (~105 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener" class="dl-btn" style="display: inline-block; padding: 15px 30px; background: #0078d4; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows CPU (~70 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener" class="dl-btn" style="display: inline-block; padding: 15px 30px; background: #0078d4; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🪟 Windows GPU (~850 MB)</a>
+                        <a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener" class="dl-btn" style="display: inline-block; padding: 15px 30px; background: #27ae60; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem;">🐧 Linux (~105 MB)</a>
                     </div>
-                    <p style="margin-top: 1.5rem; color: #6c757d;">Or install via pip: <code>pip install ggufloader</code></p>
-                    <p style="margin-top: 1rem;"><a href="gguf-loader-2-2-0-release-notes.html" style="color: #0078d4; font-weight: 600;">Read v2.2.0 release notes →</a></p>
+                    <p class="version-subtitle" style="margin-top: 1.5rem;">Or install via pip: <code>pip install ggufloader</code></p>
+                    <p class="version-notes-link" style="margin-top: 1rem;"><a href="gguf-loader-2-2-0-release-notes.html" style="font-weight: 600;">Read v2.2.0 release notes →</a></p>
                 </div>
             </div>
         </section>
