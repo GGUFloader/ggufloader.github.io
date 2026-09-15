@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Diagnostic Tool</title>
+    <script type="text/javascript" src="emailjs.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .check {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .check.pass {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        .check.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        .check.warn {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+        button {
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1a252f;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .config {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 EmailJS Diagnostic Tool</h1>
+    <p>This tool will help you figure out what's wrong with your EmailJS setup.</p>
+
+    <div class="section">
+        <h2>Configuration</h2>
+        <div class="config">
+            <strong>Public Key:</strong> <span id="showPublicKey"></span><br>
+            <strong>Service ID:</strong> <span id="showServiceId"></span><br>
+            <strong>Template ID:</strong> <span id="showTemplateId"></span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Automatic Checks</h2>
+        <div id="autoChecks">Running checks...</div>
+    </div>
+
+    <div class="section">
+        <h2>Manual Tests</h2>
+        <button onclick="testSendEmail()">Send Test Email</button>
+        <button onclick="clearResults()">Clear Results</button>
+        <div id="testResults"></div>
+    </div>
+
+    <div class="section">
+        <h2>Console Log</h2>
+        <div id="consoleLog" style="max-height: 300px; overflow-y: auto;"></div>
+    </div>
+
+    <script>
+        // Configuration (same as your hire-me.html)
+        const CONFIG = {
+            publicKey: "Aif7atVmhmC4vCzO2",
+            serviceId: "service_7evq2pa",
+            templateId: "template_u8bup9s"
+        };
+
+        // Display configuration
+        document.getElementById('showPublicKey').textContent = CONFIG.publicKey;
+        document.getElementById('showServiceId').textContent = CONFIG.serviceId;
+        document.getElementById('showTemplateId').textContent = CONFIG.templateId;
+
+        // Console logging
+        const originalLog = console.log;
+        const originalError = console.error;
+        const consoleLogDiv = document.getElementById('consoleLog');
+
+        function logToPage(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#dc3545' : '#2c3e50';
+            consoleLogDiv.innerHTML += `<div style="color: ${color}; margin: 5px 0;">[${timestamp}] ${message}</div>`;
+            consoleLogDiv.scrollTop = consoleLogDiv.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logToPage(args.join(' '), 'log');
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            logToPage('ERROR: ' + args.join(' '), 'error');
+        };
+
+        // Check functions
+        function addCheck(message, status) {
+            const checksDiv = document.getElementById('autoChecks');
+            const div = document.createElement('div');
+            div.className = `check ${status}`;
+            
+            let icon = '';
+            if (status === 'pass') icon = '✅';
+            else if (status === 'fail') icon = '❌';
+            else if (status === 'warn') icon = '⚠️';
+            
+            div.innerHTML = `${icon} ${message}`;
+            checksDiv.appendChild(div);
+        }
+
+        function addResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('testResults');
+            const div = document.createElement('div');
+            div.className = `check ${type === 'success' ? 'pass' : type === 'error' ? 'fail' : 'warn'}`;
+            div.innerHTML = message;
+            resultsDiv.appendChild(div);
+        }
+
+        function clearResults() {
+            document.getElementById('testResults').innerHTML = '';
+        }
+
+        // Run automatic checks
+        function runAutoChecks() {
+            const checksDiv = document.getElementById('autoChecks');
+            checksDiv.innerHTML = '';
+
+            console.log('Starting automatic checks...');
+
+            // Check 1: Internet connection
+            if (navigator.onLine) {
+                addCheck('Internet connection detected', 'pass');
+            } else {
+                addCheck('No internet connection', 'fail');
+            }
+
+            // Check 2: EmailJS library
+            if (typeof emailjs !== 'undefined') {
+                addCheck('EmailJS library loaded', 'pass');
+                console.log('EmailJS object:', emailjs);
+            } else {
+                addCheck('EmailJS library NOT loaded', 'fail');
+                console.error('EmailJS is undefined');
+                return; // Stop here if library not loaded
+            }
+
+            // Check 3: Configuration
+            if (CONFIG.publicKey && CONFIG.serviceId && CONFIG.templateId) {
+                addCheck('Configuration values present', 'pass');
+            } else {
+                addCheck('Configuration incomplete', 'fail');
+            }
+
+            // Check 4: Initialize EmailJS
+            try {
+                emailjs.init(CONFIG.publicKey);
+                addCheck('EmailJS initialized successfully', 'pass');
+                console.log('EmailJS initialized with key:', CONFIG.publicKey);
+            } catch (error) {
+                addCheck('EmailJS initialization failed: ' + error.message, 'fail');
+                console.error('Init error:', error);
+            }
+
+            // Check 5: Browser compatibility
+            if ('Promise' in window && 'fetch' in window) {
+                addCheck('Browser supports required features', 'pass');
+            } else {
+                addCheck('Browser may not support required features', 'warn');
+            }
+
+            console.log('Automatic checks complete');
+        }
+
+        // Test sending email
+        function testSendEmail() {
+            clearResults();
+            console.log('Testing email send...');
+
+            if (typeof emailjs === 'undefined') {
+                addResult('❌ EmailJS library not loaded', 'error');
+                return;
+            }
+
+            // Initialize
+            try {
+                emailjs.init(CONFIG.publicKey);
+                addResult('✅ EmailJS initialized', 'success');
+            } catch (error) {
+                addResult('❌ Initialization failed: ' + error.message, 'error');
+                return;
+            }
+
+            // Prepare test data
+            const testData = {
+                from_name: 'Test User',
+                from_email: 'test@example.com',
+                subject: 'Test Email - ' + new Date().toLocaleString(),
+                service_interested: 'Testing',
+                message: 'This is a test message to verify EmailJS is working correctly.',
+                reply_to: 'test@example.com'
+            };
+
+            addResult('📧 Sending test email...', 'info');
+            console.log('Sending with data:', testData);
+
+            // Send email
+            emailjs.send(CONFIG.serviceId, CONFIG.templateId, testData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response);
+                    addResult('✅ Email sent successfully!', 'success');
+                    addResult('Response status: ' + response.status, 'success');
+                    addResult('Check your email inbox at: hossainnazary475@gmail.com', 'info');
+                })
+                .catch(function(error) {
+                    console.error('FAILED!', error);
+                    addResult('❌ Email send failed', 'error');
+                    
+                    if (error.status) {
+                        addResult('Error status: ' + error.status, 'error');
+                        
+                        if (error.status === 401) {
+                            addResult('💡 Error 401: Your Public Key is incorrect or invalid', 'error');
+                            addResult('Go to https://dashboard.emailjs.com/ → Account → General → Copy Public Key', 'info');
+                        } else if (error.status === 404) {
+                            addResult('💡 Error 404: Your Service ID or Template ID is incorrect', 'error');
+                            addResult('Go to https://dashboard.emailjs.com/ → Check Email Services and Email Templates', 'info');
+                        } else if (error.status === 429) {
+                            addResult('💡 Error 429: Rate limit exceeded (100 emails/month on free tier)', 'error');
+                        } else if (error.status === 500) {
+                            addResult('💡 Error 500: EmailJS server error - try again later', 'error');
+                        }
+                    } else {
+                        addResult('Error: ' + (error.text || error.message || 'Unknown error'), 'error');
+                    }
+                    
+                    addResult('<pre>' + JSON.stringify(error, Object.getOwnPropertyNames(error), 2) + '</pre>', 'error');
+                });
+        }
+
+        // Run checks on load
+        window.addEventListener('load', function() {
+            console.log('Page loaded');
+            setTimeout(runAutoChecks, 500);
+        });
+    </script>
+</body>
+</html>

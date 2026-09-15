@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /_*
+Disallow: /.*
+Disallow: /*.md$
+
+# Crawl delay for better server performance
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://ggufloader.github.io/sitemap.xml
+
+# Cache directives for robots.txt
+# Cache-Control: public, max-age=86400

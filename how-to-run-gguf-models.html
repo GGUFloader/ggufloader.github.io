@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Run GGUF Models Locally - GGUF Loader, Ollama, LM Studio &amp; llama.cpp Guide (2026)</title>
+    <meta name="description" content="Complete step-by-step guides to run GGUF models locally with GGUF Loader, Ollama, LM Studio, and llama.cpp on Windows, Mac, and Linux. No Python or command line needed for the GUI tools. Download, load, and chat with local AI models — free, private, offline.">
+    <meta name="keywords" content="how to run gguf model, run gguf locally, load gguf model, how to open gguf file, gguf tutorial, gguf loader tutorial, ollama tutorial, lm studio tutorial, ollama gguf, lm studio gguf, llama.cpp tutorial, llama-cli, llama-server, run gguf llama.cpp, ggml, import gguf ollama, modelfile gguf, ollama custom model, lm studio local server, local ai setup, run ai offline, run llama locally, run mistral locally, local chatgpt, offline ai assistant, gguf windows, gguf mac, gguf linux">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://ggufloader.github.io/how-to-run-gguf-models.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Run GGUF Models Locally - GGUF Loader, Ollama, LM Studio &amp; llama.cpp Guide (2026)">
+    <meta property="og:description" content="Run AI models locally with GGUF Loader, Ollama, LM Studio, or llama.cpp. Step-by-step tutorials for every tool. Works on Windows, Mac, Linux. Free and private.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ggufloader.github.io/how-to-run-gguf-models.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2025-12-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-09-12T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Tutorials">
+    <meta property="article:tag" content="GGUF">
+    <meta property="article:tag" content="Local AI">
+    <meta property="article:tag" content="Ollama">
+    <meta property="article:tag" content="LM Studio">
+    <meta property="article:tag" content="llama.cpp">
+    <meta property="article:tag" content="Tutorial">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Run GGUF Models Locally - Complete Guide">
+    <meta name="twitter:description" content="Run AI models locally with GGUF Loader, Ollama, LM Studio, or llama.cpp. Free, private, offline. Works on Windows, Mac, Linux.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ggufloader.github.io/how-to-run-gguf-models.html"
+      },
+      "headline": "How to Run GGUF Models Locally - Complete Guide for GGUF Loader, Ollama, LM Studio and llama.cpp",
+      "description": "Step-by-step tutorials for running GGUF AI models locally with GGUF Loader, Ollama, LM Studio, and llama.cpp on Windows, macOS, and Linux.",
+      "image": "https://ggufloader.github.io/preview.png",
+      "datePublished": "2025-12-01T00:00:00+00:00",
+      "dateModified": "2026-09-12T00:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "keywords": ["GGUF", "local AI", "run AI locally", "GGUF tutorial", "Ollama", "LM Studio", "llama.cpp", "offline AI", "Llama", "Mistral", "Qwen"],
+      "articleSection": "Tutorials"
+    }
+    </script>
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ggufloader.github.io"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ggufloader.github.io/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "How to Run GGUF Models", "item": "https://ggufloader.github.io/how-to-run-gguf-models.html"}
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD HowTo Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Run GGUF Models Locally with GGUF Loader, Ollama, LM Studio, or llama.cpp",
+      "description": "Complete guide to running GGUF AI models on your local computer without internet or cloud services, using GGUF Loader, Ollama, LM Studio, or llama.cpp",
+      "totalTime": "PT10M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "supply": [
+        {"@type": "HowToSupply", "name": "Computer with 8GB+ RAM"},
+        {"@type": "HowToSupply", "name": "10GB free storage"}
+      ],
+      "tool": [
+        {"@type": "HowToTool", "name": "GGUF Loader"},
+        {"@type": "HowToTool", "name": "Ollama"},
+        {"@type": "HowToTool", "name": "LM Studio"},
+        {"@type": "HowToTool", "name": "llama.cpp"},
+        {"@type": "HowToTool", "name": "GGUF model file"}
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Pick your tool",
+          "text": "Choose GGUF Loader for the simplest point-and-click experience, Ollama for command-line power and a local API, LM Studio for a polished GUI with a built-in model catalog, or llama.cpp for maximum control.",
+          "url": "https://ggufloader.github.io/how-to-run-gguf-models.html"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Get a GGUF model",
+          "text": "Download a GGUF model from HuggingFace, pull one directly in Ollama or LM Studio, or load any local .gguf file. For beginners, try Llama 3.2 1B or Qwen 2.5 1.5B with Q4_K_M quantization."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Load and run",
+          "text": "Load the model in your chosen tool and start chatting. Everything runs completely offline on your own computer."
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I run a GGUF model locally?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick a tool and follow three steps: 1) Install GGUF Loader, Ollama, LM Studio, or llama.cpp, 2) Get a GGUF model from HuggingFace or download one inside the tool, 3) Load the model and start chatting. GGUF Loader and LM Studio need no command line at all."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I open a GGUF file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF files can be opened with tools like GGUF Loader, LM Studio, Ollama, or llama.cpp. GGUF Loader and LM Studio let you drag and drop the file; Ollama imports it with a short Modelfile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the same GGUF file in GGUF Loader, Ollama, LM Studio, and llama.cpp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. GGUF is a standard model format. GGUF Loader loads the file directly, LM Studio imports it by drag and drop, Ollama wraps it in a one-line Modelfile with 'ollama create', and llama.cpp takes the file path directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I run GGUF models without Python?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! GGUF Loader and LM Studio provide graphical interfaces that don't require Python or any programming knowledge. Ollama uses simple copy-paste terminal commands instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a GPU to run GGUF models?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, GGUF models are optimized for CPU inference. While a GPU speeds things up, models under 7B parameters run smoothly on most modern CPUs with 16GB RAM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between GGUF Loader, Ollama, LM Studio, and llama.cpp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GGUF Loader is the simplest drag-and-drop GUI. Ollama is a command-line tool with model management and a local REST API, ideal for developers. LM Studio is a full desktop app with a built-in model catalog, chat interface, and an OpenAI-compatible server. llama.cpp is the raw underlying engine — maximum control, no model manager, and the first to support new features."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Ollama load a GGUF file from HuggingFace directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Run 'ollama pull hf.co/username/repo:QUANT' for any HuggingFace repository containing GGUF files, for example 'ollama pull hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF:Q4_K_M'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I run a GGUF file with llama.cpp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Install llama.cpp from its GitHub releases (prebuilt binaries), Homebrew, or build from source, then run 'llama-cli -m your-model.gguf' to chat in the terminal, or 'llama-server -m your-model.gguf' and open http://localhost:8080 for a browser chat UI with an OpenAI-compatible API."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is running local AI models really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. GGUF Loader and Ollama are free and open source. LM Studio is free to use. The models themselves are open weights you download once, and inference runs on your own hardware with zero API costs."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <style>
+        html { scroll-behavior: smooth; }
+
+        /* ===== Base article styles (kept from original page) ===== */
+        .article-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #27ae60; padding-bottom: 10px; margin-bottom: 20px; }
+        .step-card { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 25px; margin: 20px 0; border-left: 5px solid #27ae60; }
+        .step-card h3 { color: #27ae60; margin-bottom: 15px; }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; background: #27ae60; color: white; width: 35px; height: 35px; border-radius: 50%; text-align: center; font-weight: bold; margin-right: 10px; flex-shrink: 0; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #27ae60; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .info-box.tip { border-left-color: #3498db; background: #f0f8ff; }
+        .info-box.warn { border-left-color: #e67e22; background: #fdf6ec; }
+        .download-btn { display: inline-block; background: #27ae60; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 10px 5px; }
+        .download-btn:hover { background: #219a52; }
+        .model-list { list-style: none; padding: 0; }
+        .model-list li { padding: 15px; background: #f8f9fa; margin: 10px 0; border-radius: 8px; border-left: 4px solid #3498db; }
+        .model-list a { color: #27ae60; font-weight: 600; }
+        code { background: #f1f3f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #27ae60; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+
+        /* ===== Tool jump bar (3 buttons) — hides on scroll down, shows on scroll up) ===== */
+        .tool-jump {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1100;
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            width: min(500px, calc(100% - 30px));
+            justify-content: center;
+            background: rgba(255,255,255,0.97);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .tool-jump.hide-bar {
+            transform: translateX(-50%) translateY(-110%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .tool-jump-btn {
+            --btn: #27ae60;
+            display: flex;
+            align-items: center;
+            padding: 6px 14px;
+            background: #fff;
+            border: 1.5px solid var(--btn);
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--btn);
+            font-weight: 600;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tool-jump-btn:hover { background: var(--btn); color: #fff; }
+        .tool-jump-btn:focus-visible { outline: 2px solid var(--btn); outline-offset: 2px; }
+        .tool-jump-btn.active { background: var(--btn); color: #fff; }
+        .tj-icon, .tj-tag { display: none; }
+
+        /* ===== Tool sections ===== */
+        .tool-section { --tool: #27ae60; --tool-dark: #219a52; }
+        .tool-ggufloader { --tool: #27ae60; --tool-dark: #219a52; }
+        .tool-ollama { --tool: #2c3e50; --tool-dark: #1a252f; }
+        .tool-lmstudio { --tool: #6c5ce7; --tool-dark: #5a4bd1; }
+        .tool-llamacpp { --tool: #e67e22; --tool-dark: #d35400; }
+
+        .tool-band {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 18px;
+            background: linear-gradient(135deg, var(--tool) 0%, var(--tool-dark) 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px 26px;
+            margin: -30px -30px 26px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .tool-band .tool-logo {
+            width: 62px; height: 62px; flex-shrink: 0;
+            background: rgba(255,255,255,0.16);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .tool-band .tool-logo svg { width: 34px; height: 34px; }
+        .tool-band .tool-title { flex: 1; min-width: 240px; }
+        .tool-band .tool-method {
+            display: inline-block;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.35);
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+        .tool-band h2 {
+            color: #fff !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 0 4px !important;
+            text-align: left !important;
+            font-size: 1.75rem !important;
+        }
+        .tool-band .tool-tagline { margin: 0; color: rgba(255,255,255,0.92); font-size: 0.98rem; }
+        .tool-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+        .tool-badges span {
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--tool);
+            background: #f4f6f7;
+            border: 1px solid #e3e8ea;
+            padding: 4px 11px;
+            border-radius: 999px;
+        }
+        .tool-section .step-card { border-left-color: var(--tool); background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); }
+        .tool-section .step-card h3 { color: var(--tool); }
+        .tool-section .step-number { background: var(--tool); }
+        .tool-section .content-links a, .tool-section p a, .tool-section li a { color: var(--tool-dark); font-weight: 600; }
+        .tool-section .download-btn { background: var(--tool); }
+        .tool-section .download-btn:hover { background: var(--tool-dark); }
+        .tool-section .content-section h2 { border-bottom-color: var(--tool); }
+
+        /* ===== Download option cards ===== */
+        .dl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 18px 0; }
+        .dl-card {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .dl-card:hover { border-color: var(--tool, #27ae60); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+        .dl-card .dl-os { font-weight: 700; color: #2c3e50; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+        .dl-card .dl-meta { font-size: 0.8rem; color: #7f8c8d; }
+        .dl-card .dl-actions { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .btn {
+            display: inline-block;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .btn-primary { background: var(--tool, #27ae60); color: #fff !important; }
+        .btn-primary:hover { background: var(--tool-dark, #219a52); transform: translateY(-1px); }
+        .btn-outline { border-color: var(--tool, #27ae60); color: var(--tool-dark, #219a52) !important; }
+        .btn-outline:hover { background: #f4faf6; }
+
+        /* ===== Terminal-style code blocks ===== */
+        .code-block {
+            background: #1e2a35;
+            border-radius: 10px;
+            margin: 18px 0;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            border: 1px solid #2b3b48;
+        }
+        .code-block .cb-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.09);
+            color: #93a7b7;
+            font-size: 0.76rem;
+            font-family: Consolas, 'Courier New', monospace;
+            letter-spacing: 0.03em;
+        }
+        .code-block pre {
+            margin: 0;
+            padding: 16px 18px;
+            overflow-x: auto;
+            color: #e6edf3;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.87rem;
+            line-height: 1.65;
+        }
+        .code-block .prompt { color: #56c271; font-weight: 700; }
+        .code-block .out { color: #8fa3b3; }
+        .code-block .cmt { color: #5f7484; }
+        .copy-btn {
+            background: rgba(255,255,255,0.09);
+            color: #dce6ee;
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 4px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-weight: 600;
+            font-family: inherit;
+            transition: background 0.2s ease;
+        }
+        .copy-btn:hover { background: var(--tool, #27ae60); border-color: var(--tool, #27ae60); }
+        .copy-btn.copied { background: #27ae60; border-color: #27ae60; }
+
+        /* ===== Pros / cons ===== */
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0 6px; }
+        .pc-card { border-radius: 12px; padding: 20px; border: 1px solid; }
+        .pc-card.pros { background: #f2faf5; border-color: #cdecd7; }
+        .pc-card.cons { background: #fdf4f2; border-color: #f5d9d3; }
+        .pc-card h4 { margin: 0 0 10px; font-size: 1rem; }
+        .pc-card.pros h4 { color: #27ae60; }
+        .pc-card.cons h4 { color: #e74c3c; }
+        .pc-card ul { margin: 0; padding-left: 20px; }
+        .pc-card li { margin: 6px 0; font-size: 0.93rem; }
+
+        /* ===== Command cheat sheet ===== */
+        .cmd-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.92rem; }
+        .cmd-table th { background: #2c3e50; color: #fff; padding: 11px 14px; text-align: left; font-weight: 600; }
+        .cmd-table th:first-child { border-radius: 8px 0 0 0; }
+        .cmd-table th:last-child { border-radius: 0 8px 0 0; }
+        .cmd-table td { padding: 11px 14px; border-bottom: 1px solid #e9ecef; vertical-align: top; }
+        .cmd-table tr:nth-child(even) td { background: #fafbfc; }
+        .cmd-table code { background: #eef1f3; white-space: nowrap; }
+
+        /* ===== Comparison table ===== */
+        .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+        .compare-table th { background: #2c3e50; color: white; padding: 12px 14px; text-align: left; }
+        .compare-table th:first-child { border-radius: 8px 0 0 0; }
+        .compare-table th:last-child { border-radius: 0 8px 0 0; }
+        .compare-table td { padding: 12px 14px; border-bottom: 1px solid #e9ecef; vertical-align: top; }
+        .compare-table tr:nth-child(even) td { background: #fafbfc; }
+        .compare-table a { color: #27ae60; font-weight: 700; text-decoration: none; }
+        .compare-table a:hover { text-decoration: underline; }
+
+        /* ===== Model cards ===== */
+        .model-card { background: #f8f9fa; border-radius: 12px; padding: 18px 20px; margin: 14px 0; border-left: 4px solid #3498db; }
+        .model-card h3 { margin: 0 0 6px; color: #2c3e50; font-size: 1.08rem; }
+        .model-card .mc-meta { font-size: 0.84rem; color: #7f8c8d; margin-bottom: 8px; }
+        .model-tools { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+        .mt-chip { font-size: 0.8rem; padding: 7px 12px; border-radius: 8px; background: #fff; border: 1px solid #dfe4e8; line-height: 1.45; }
+        .mt-chip b { font-weight: 700; }
+        .mt-chip.c-gl b { color: #27ae60; }
+        .mt-chip.c-ol b { color: #2c3e50; }
+        .mt-chip.c-lm b { color: #6c5ce7; }
+        .mt-chip.c-lc b { color: #e67e22; }
+        .mt-chip code { background: #f1f3f4; font-size: 0.78rem; }
+
+        /* ===== FAQ ===== */
+        .faq-item { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; margin: 12px 0; overflow: hidden; }
+        .faq-item summary {
+            padding: 16px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #2c3e50;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 400; color: #27ae60; flex-shrink: 0; }
+        .faq-item[open] summary::after { content: '−'; }
+        .faq-item[open] summary { border-bottom: 1px solid #e9ecef; }
+        .faq-item .faq-body { padding: 16px 20px 18px; }
+        .faq-item .faq-body p { margin: 0 0 10px; }
+        .faq-item .faq-body p:last-child { margin-bottom: 0; }
+
+        /* ===== Back to top ===== */
+        .back-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #2c3e50;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.25);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1050;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.28);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .back-top:hover { background: #27ae60; transform: translateY(-3px); }
+        .back-top svg { width: 20px; height: 20px; }
+        .back-top.visible { display: flex; }
+
+        /* ===== Smooth-scroll offset targets ===== */
+        #gguf-loader, #ollama, #lm-studio, #llama-cpp, #recommended-models, #troubleshooting, #faq-section {
+            scroll-margin-top: calc(var(--jump-h, 100px) + 16px);
+        }
+
+        .section-nav { margin: 24px 0 0; }
+        .section-nav a { color: #27ae60; font-weight: 600; text-decoration: none; }
+        .section-nav a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.6rem; }
+            .content-section { padding: 20px; }
+            .tool-jump { gap: 5px; padding: 6px 8px; }
+            .tool-jump-btn { padding: 5px 10px; font-size: 0.75rem; }
+            .pros-cons { grid-template-columns: 1fr; }
+            .tool-band { padding: 18px 20px; margin: -20px -20px 20px; }
+            .tool-band h2 { font-size: 1.35rem !important; }
+            .tool-band .tool-logo { width: 50px; height: 50px; }
+            .tool-band .tool-logo svg { width: 27px; height: 27px; }
+            .cmd-table, .compare-table { font-size: 0.84rem; display: block; overflow-x: auto; }
+        }
+        @media (max-width: 420px) {
+            .tool-jump-btn { padding: 4px 8px; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">GGUF Loader</a>
+            <ul>
+                <li><a href="index.html#features-philosophy">Features</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <a href="guides.html" class="back-link">← Back to Guides</a>
+
+        <div class="article-header">
+            <h1>How to Run GGUF Models Locally</h1>
+            <p>The complete 2026 guide — load any GGUF model with <strong>GGUF Loader</strong>, <strong>Ollama</strong>, <strong>LM Studio</strong>, or <strong>llama.cpp</strong>. Pick your tool below and jump straight to its step-by-step tutorial.</p>
+        </div>
+
+        <!-- ===== Sticky tool jump buttons ===== -->
+        <div class="tool-jump" id="tool-jump" role="navigation" aria-label="Jump to a tool guide">
+            <a class="tool-jump-btn" href="#gguf-loader" data-scroll="gguf-loader" style="--btn:#27ae60">GGUF Loader</a>
+            <a class="tool-jump-btn" href="#ollama" data-scroll="ollama" style="--btn:#2c3e50">Ollama</a>
+            <a class="tool-jump-btn" href="#lm-studio" data-scroll="lm-studio" style="--btn:#6c5ce7">LM Studio</a>
+            <a class="tool-jump-btn" href="#llama-cpp" data-scroll="llama-cpp" style="--btn:#e67e22">llama.cpp</a>
+        </div>
+
+        <article>
+            <section class="content-section">
+                <h2>Quick Overview</h2>
+                <p>GGUF is the file format behind most open-weight AI models — Llama, Mistral, Qwen, DeepSeek, and thousands more. Running these models locally gives you <strong>complete privacy</strong> (nothing leaves your computer), <strong>works without internet</strong>, and <strong>zero API costs</strong>, forever. With one of the four free tools below, you can go from zero to chatting with your own local AI in under 10 minutes.</p>
+                <p>All four run the same inference engine under the hood, so <strong>the same <code>.gguf</code> file works in every one of them</strong> — pick whichever matches your comfort level. Never touched a terminal? Use <a href="#gguf-loader" data-scroll="gguf-loader">GGUF Loader</a> or <a href="#lm-studio" data-scroll="lm-studio">LM Studio</a>. Building an app or automating workflows? <a href="#ollama" data-scroll="ollama">Ollama</a> gives you a local OpenAI-style API. Want zero abstraction and day-one features? Go straight to <a href="#llama-cpp" data-scroll="llama-cpp">llama.cpp</a>, the engine everything else is built on.</p>
+
+                <div class="info-box">
+                    <strong>What You'll Need:</strong>
+                    <ul>
+                        <li>Computer with 8GB+ RAM (16GB recommended)</li>
+                        <li>10GB free storage space</li>
+                        <li>Windows, Mac, or Linux</li>
+                        <li>No GPU required (but helps if you have one)</li>
+                        <li>No Python, no programming knowledge for the GUI tools</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Choose Your Tool</h2>
+                <p>All four tools are free and run GGUF models on your own hardware. The difference is the interface and the extras around it:</p>
+
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Interface</th>
+                            <th>Best For</th>
+                            <th>Difficulty</th>
+                            <th>Price</th>
+                            <th>Local API</th>
+                            <th>Platforms</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#gguf-loader" data-scroll="gguf-loader">GGUF Loader</a></td>
+                            <td>Desktop GUI</td>
+                            <td>Beginners &amp; everyday chat</td>
+                            <td>⭐ Easy</td>
+                            <td>Free &amp; open source</td>
+                            <td>—</td>
+                            <td>Windows, macOS, Linux</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#ollama" data-scroll="ollama">Ollama</a></td>
+                            <td>Command line + background server</td>
+                            <td>Developers, automation, servers</td>
+                            <td>⭐⭐ Medium</td>
+                            <td>Free &amp; open source</td>
+                            <td>REST + OpenAI-compatible <code>:11434</code></td>
+                            <td>Windows, macOS, Linux, Docker</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#lm-studio" data-scroll="lm-studio">LM Studio</a></td>
+                            <td>Desktop GUI</td>
+                            <td>Power users, model tinkering, RAG</td>
+                            <td>⭐ Easy</td>
+                            <td>Free</td>
+                            <td>OpenAI-compatible <code>:1234</code></td>
+                            <td>Windows, macOS, Linux</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#llama-cpp" data-scroll="llama-cpp">llama.cpp</a></td>
+                            <td>Command line</td>
+                            <td>Advanced users, custom builds, edge devices</td>
+                            <td>⭐⭐⭐ Advanced</td>
+                            <td>Free &amp; open source</td>
+                            <td>OpenAI-compatible via <code>llama-server</code></td>
+                            <td>Windows, macOS, Linux, and more</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box tip">
+                    <strong>💡 Still unsure?</strong> Start with <a href="#gguf-loader" data-scroll="gguf-loader">GGUF Loader</a> — it's the fastest path from download to chatting. You can install the others later; your downloaded GGUF files work everywhere, so nothing is wasted.
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- METHOD 1: GGUF LOADER                                        -->
+            <!-- ============================================================ -->
+            <section class="content-section tool-section tool-ggufloader" id="gguf-loader">
+                <div class="tool-band">
+                    <div class="tool-logo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <div class="tool-title">
+                        <span class="tool-method">Method 1 · Easiest</span>
+                        <h2>GGUF Loader</h2>
+                        <p class="tool-tagline">Point, drag, chat — no terminal, no Python, no setup wizards.</p>
+                    </div>
+                </div>
+
+                <div class="tool-badges">
+                    <span>✓ Free &amp; open source</span>
+                    <span>✓ No command line</span>
+                    <span>✓ Works offline</span>
+                    <span>✓ Runs on 8GB RAM laptops</span>
+                </div>
+
+                <p>GGUF Loader is a free, open-source desktop app that puts a simple point-and-click interface around local GGUF models. You install a small executable, drag in a <code>.gguf</code> file, and chat — there is no Python to install, no environment to configure, and no account to create. It supports <strong>any GGUF model</strong> that fits your PC's resources, from small 3B models to large 70B+ models.</p>
+                <p>This is the tool we recommend for anyone who has never run a local model before, or who just wants a private offline chat assistant without any friction.</p>
+
+                <div class="step-card">
+                    <h3><span class="step-number">1</span> Download &amp; Install GGUF Loader</h3>
+                    <p>Pick the build that matches your system. The installer is a single file — run it and you're done. No dependencies, no extra runtime.</p>
+
+                    <div class="dl-grid">
+                        <div class="dl-card">
+                            <span class="dl-os">🪟 Windows — CPU</span>
+                            <span class="dl-meta">~70 MB · works on any PC, no GPU needed</span>
+                            <div class="dl-actions">
+                                <a class="btn btn-primary" href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_CPU.exe" target="_blank" rel="noopener">Download v2.2.0 CPU</a>
+                            </div>
+                        </div>
+                        <div class="dl-card">
+                            <span class="dl-os">🪟 Windows — GPU</span>
+                            <span class="dl-meta">~850 MB · faster if you have an NVIDIA GPU</span>
+                            <div class="dl-actions">
+                                <a class="btn btn-primary" href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_GPU.exe" target="_blank" rel="noopener">Download v2.2.0 GPU</a>
+                            </div>
+                        </div>
+                        <div class="dl-card">
+                            <span class="dl-os">🐧 Linux — x86_64 CPU</span>
+                            <span class="dl-meta">~105 MB · single portable binary</span>
+                            <div class="dl-actions">
+                                <a class="btn btn-primary" href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.2.0/GGUFLoader_v2.2.0_linux_x86_64_CPU" target="_blank" rel="noopener">Download v2.2.0 Linux</a>
+                                <a class="btn btn-outline" href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener">All releases</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box tip">
+                        <strong>💡 CPU or GPU build?</strong> Choose the <strong>CPU build</strong> unless your computer has an NVIDIA GPU with at least 6GB of VRAM — the GPU build offloads model layers to the graphics card for much faster generation. When in doubt, start with CPU: it runs on anything and switching later takes two minutes.
+                    </div>
+
+                    <p style="margin-top:15px;">Looking for an older version or a build not listed here? Browse <a href="https://github.com/GGUFloader/gguf-loader/releases" target="_blank" rel="noopener">all releases on GitHub</a>. And on Windows, if SmartScreen warns you about an unrecognized app (normal for new open-source releases), click <strong>More info → Run anyway</strong>.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">2</span> Download a GGUF Model</h3>
+                    <p>GGUF Loader loads any standard <code>.gguf</code> file, so you can grab any of the thousands of models on HuggingFace. For your first model, keep it small:</p>
+                    <ul class="model-list">
+                        <li>
+                            <strong>Llama 3.2 1B</strong> — best first model (~1.5GB RAM)<br>
+                            <a href="https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF" target="_blank" rel="noopener">📥 Download from HuggingFace</a>
+                        </li>
+                        <li>
+                            <strong>Qwen 2.5 1.5B</strong> — great all-rounder (~2GB RAM)<br>
+                            <a href="https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF" target="_blank" rel="noopener">📥 Download from HuggingFace</a>
+                        </li>
+                        <li>
+                            <strong>Mistral 7B</strong> — stronger, needs 8GB+ RAM<br>
+                            <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF" target="_blank" rel="noopener">📥 Download from HuggingFace</a>
+                        </li>
+                    </ul>
+                    <div class="info-box tip">
+                        <strong>💡 Tip:</strong> On the model page, download the file ending in <code>Q4_K_M.gguf</code> — this quantization offers the best balance of quality and speed on typical hardware. See <a href="#recommended-models" data-scroll="recommended-models">recommended models</a> below for more options.
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">3</span> Load the Model &amp; Start Chatting</h3>
+                    <ol>
+                        <li>Open GGUF Loader</li>
+                        <li>Click <strong>"Load Model"</strong> and browse to your downloaded <code>.gguf</code> file — or simply <strong>drag the file onto the app window</strong></li>
+                        <li>Wait for the first load (usually 10–30 seconds — the model is being copied from disk into RAM; later loads are faster)</li>
+                        <li>Type your first message and press Enter — your AI now runs 100% offline on your own computer</li>
+                    </ol>
+                    <p style="margin-top: 15px;">That's the entire setup. No servers, no accounts, no API keys — the model runs entirely on your hardware.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">4</span> Tune Settings &amp; Try Agentic Mode (Optional)</h3>
+                    <p>Once a model is loaded, a settings panel lets you shape how it behaves:</p>
+                    <ul>
+                        <li><strong>Context size</strong> — how much of the conversation the model remembers. Bigger = smarter long chats, but uses more RAM. 4K–8K is a good default.</li>
+                        <li><strong>Generation settings</strong> — creativity vs. predictability of responses.</li>
+                        <li><strong>GPU offload</strong> (GPU build only) — how many model layers run on your graphics card.</li>
+                    </ul>
+                    <p>For coding or multi-step tasks, switch on <strong>Agentic Mode</strong>: the model plans a step-by-step approach and executes it with sandboxed tools — reading, editing, and searching files, and running commands — turning your local model into an autonomous assistant.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <div class="pc-card pros">
+                        <h4>✓ What we like</h4>
+                        <ul>
+                            <li>Zero learning curve — install, drag, chat</li>
+                            <li>Tiny download (CPU build is ~145 MB)</li>
+                            <li>Drag &amp; drop any GGUF file, no conversion</li>
+                            <li>Agentic Mode for autonomous coding tasks</li>
+                            <li>Open source and completely free</li>
+                        </ul>
+                    </div>
+                    <div class="pc-card cons">
+                        <h4>✗ Keep in mind</h4>
+                        <ul>
+                            <li>No built-in model catalog — you download models from HuggingFace yourself</li>
+                            <li>Fewer power-user knobs than LM Studio</li>
+                            <li>GPU build is a larger download (~930 MB)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="section-nav">Having trouble? Jump to <a href="#troubleshooting" data-scroll="troubleshooting">Troubleshooting → GGUF Loader</a>.</p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- METHOD 2: OLLAMA                                             -->
+            <!-- ============================================================ -->
+            <section class="content-section tool-section tool-ollama" id="ollama">
+                <div class="tool-band">
+                    <div class="tool-logo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    </div>
+                    <div class="tool-title">
+                        <span class="tool-method">Method 2 · Best for developers</span>
+                        <h2>Ollama</h2>
+                        <p class="tool-tagline">One command to download, run, and serve models — with a local API included.</p>
+                    </div>
+                </div>
+
+                <div class="tool-badges">
+                    <span>✓ Free &amp; open source</span>
+                    <span>✓ Huge model library</span>
+                    <span>✓ REST + OpenAI-compatible API</span>
+                    <span>✓ Docker support</span>
+                </div>
+
+                <p>Ollama is an open-source model manager that has become the standard way to run LLMs locally in professional setups. It downloads and stores GGUF-backed models for you, lets you chat with them in the terminal, and quietly runs a local API server on <code>localhost:11434</code> so your own apps, scripts, and editors can talk to the model. If you're building anything that uses an AI model — a chatbot, a document summarizer, a coding helper — Ollama is the tool for you.</p>
+                <p>It uses simple one-line commands. You'll need a terminal: <strong>Windows</strong> (PowerShell or CMD), <strong>macOS</strong> (Terminal), or <strong>Linux</strong> (any shell). Every command below is copy-paste ready.</p>
+
+                <div class="step-card">
+                    <h3><span class="step-number">1</span> Install Ollama</h3>
+                    <p>Download the installer for your system from <a href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a>, or use the one-liner on Linux:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — Linux install</span><button class="copy-btn" type="button" data-copy-target="ol-install">Copy</button></div>
+                        <pre><code id="ol-install"><span class="prompt">$</span> curl -fsSL https://ollama.com/install.sh | sh</code></pre>
+                    </div>
+
+                    <ul>
+                        <li><strong>Windows:</strong> run <code>OllamaSetup.exe</code> — installs in ~1 minute and starts the background server automatically</li>
+                        <li><strong>macOS:</strong> open the <code>.dmg</code> and drag Ollama into Applications (works on both Apple Silicon and Intel)</li>
+                        <li><strong>Linux:</strong> run the command above, which installs the <code>ollama</code> CLI and registers it as a service</li>
+                        <li><strong>Docker (any OS):</strong> <code>docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama</code></li>
+                    </ul>
+
+                    <p>Verify the installation:</p>
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal</span><button class="copy-btn" type="button" data-copy-target="ol-version">Copy</button></div>
+                        <pre><code id="ol-version"><span class="prompt">$</span> ollama --version<span class="out">
+ollama is running</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">2</span> Run Your First Model</h3>
+                    <p>One command downloads the model and drops you into a chat — Llama 3.2 1B is about 1.3GB and loads instantly on most machines:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal</span><button class="copy-btn" type="button" data-copy-target="ol-run">Copy</button></div>
+                        <pre><code id="ol-run"><span class="prompt">$</span> ollama run llama3.2:1b<span class="out">
+pulling manifest... downloading... 100%
+>>> Ask me anything — I'm running on your computer now!
+</span><span class="prompt">&gt;&gt;&gt;</span> Explain quantization in one sentence
+<span class="out">
+Quantization shrinks a model's numbers to fewer bits so it uses less
+memory and runs faster, at a small cost in accuracy.
+</span><span class="prompt">&gt;&gt;&gt;</span> /bye</code></pre>
+                    </div>
+
+                    <p>Inside the chat, useful commands are <code>/bye</code> (exit), <code>/clear</code> (reset the conversation), <code>/show info</code> (model details), and <code>/set parameter temperature 0.3</code> (tune generation). Browse thousands of ready-to-run models at <a href="https://ollama.com/library" target="_blank" rel="noopener">ollama.com/library</a> — Mistral, Qwen, DeepSeek, Phi, Gemma, and more.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">3</span> Pull GGUF Models Straight from HuggingFace</h3>
+                    <p>Ollama can download GGUF models directly from any HuggingFace repository — no Modelfile needed. Point it at a repo and pick the quantization tag:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal</span><button class="copy-btn" type="button" data-copy-target="ol-hf">Copy</button></div>
+                        <pre><code id="ol-hf"><span class="prompt">$</span> ollama pull hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF:Q4_K_M<span class="out">
+success</span>
+<span class="prompt">$</span> ollama run hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF:Q4_K_M</code></pre>
+                    </div>
+
+                    <p>The pattern is <code>hf.co/&lt;user&gt;/&lt;repo&gt;:&lt;quantization&gt;</code> — the same repos you'd browse manually on HuggingFace, served straight into your local model library. This works with virtually every popular GGUF upload.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">4</span> Load Any Local .gguf File (Modelfile)</h3>
+                    <p>Have a GGUF file that isn't on a server — one you downloaded manually, quantized yourself, or received from someone? Import it with a tiny <code>Modelfile</code>. Create a folder, put your <code>.gguf</code> inside it, and create a plain-text file named <code>Modelfile</code> (no extension) with this content:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Modelfile</span><button class="copy-btn" type="button" data-copy-target="ol-modelfile">Copy</button></div>
+                        <pre><code id="ol-modelfile">FROM ./qwen2.5-1.5b-instruct-q4_k_m.gguf
+
+<span class="cmt"># optional settings</span>
+PARAMETER temperature 0.7
+PARAMETER num_ctx 4096</code></pre>
+                    </div>
+
+                    <p>Then register it with Ollama and run it by name:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal</span><button class="copy-btn" type="button" data-copy-target="ol-create">Copy</button></div>
+                        <pre><code id="ol-create"><span class="prompt">$</span> ollama create my-qwen -f Modelfile<span class="out">
+transferring model data... success</span>
+<span class="prompt">$</span> ollama run my-qwen</code></pre>
+                    </div>
+
+                    <div class="info-box tip">
+                        <strong>💡 Good to know:</strong> Ollama automatically reads the chat template embedded in the GGUF file's metadata, so most instruct models chat correctly with just the <code>FROM</code> line. If replies look oddly raw or unformatted, the template is missing — add a <code>TEMPLATE</code> block copied from the model's HuggingFace page. Run <code>ollama show my-qwen</code> to see exactly what Ollama detected.
+                    </div>
+
+                    <p><strong>Where Ollama stores models:</strong> <code>~/.ollama/models</code> on macOS and Linux, <code>C:\Users\&lt;you&gt;\.ollama\models</code> on Windows. You can move this folder anywhere by setting the <code>OLLAMA_MODELS</code> environment variable — handy for keeping big models on an external SSD.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">5</span> Use the Local API (The Best Part)</h3>
+                    <p>While Ollama is running, it serves a REST API on <code>http://localhost:11434</code> — your apps can talk to your models with plain HTTP. On Windows and macOS the server starts automatically with the app; on Linux run <code>ollama serve</code> in a separate terminal. Loaded models unload themselves after ~5 minutes of inactivity.</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — chat via REST API</span><button class="copy-btn" type="button" data-copy-target="ol-api">Copy</button></div>
+                        <pre><code id="ol-api"><span class="prompt">$</span> curl http://localhost:11434/api/chat -d '{
+  "model": "llama3.2:1b",
+  "messages": [{"role": "user", "content": "Why is local AI private by design?"}]
+}'</code></pre>
+                    </div>
+
+                    <p>Ollama also speaks the <strong>OpenAI API format</strong> at <code>http://localhost:11434/v1</code> — so most OpenAI-based apps, SDKs, and tools work by changing a single URL. For example, in Python:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Python — OpenAI SDK pointed at Ollama</span><button class="copy-btn" type="button" data-copy-target="ol-openai">Copy</button></div>
+                        <pre><code id="ol-openai">from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+
+response = client.chat.completions.create(
+    model="llama3.2:1b",
+    messages=[{"role": "user", "content": "Hello, local world!"}]
+)
+print(response.choices[0].message.content)</code></pre>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 28px;">Command Cheat Sheet</h3>
+                <table class="cmd-table">
+                    <thead>
+                        <tr><th>Command</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>ollama run llama3.2:1b</code></td><td>Download (if needed) and start chatting</td></tr>
+                        <tr><td><code>ollama pull &lt;model&gt;</code></td><td>Download a model without running it</td></tr>
+                        <tr><td><code>ollama list</code></td><td>Show all downloaded models and sizes</td></tr>
+                        <tr><td><code>ollama ps</code></td><td>Show models currently loaded in memory</td></tr>
+                        <tr><td><code>ollama rm &lt;model&gt;</code></td><td>Delete a model and free disk space</td></tr>
+                        <tr><td><code>ollama show &lt;model&gt;</code></td><td>Inspect a model's template and parameters</td></tr>
+                        <tr><td><code>ollama create &lt;name&gt; -f Modelfile</code></td><td>Import a custom .gguf file</td></tr>
+                        <tr><td><code>ollama serve</code></td><td>Start the API server (Linux / headless)</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="pros-cons">
+                    <div class="pc-card pros">
+                        <h4>✓ What we like</h4>
+                        <ul>
+                            <li>One command manages download, run, update, and delete</li>
+                            <li>Local REST + OpenAI-compatible API out of the box</li>
+                            <li>Huge curated library, direct HuggingFace pulls</li>
+                            <li>Tiny footprint, runs great on servers and Docker</li>
+                            <li>Works with popular desktop GUIs built on top of it</li>
+                        </ul>
+                    </div>
+                    <div class="pc-card cons">
+                        <h4>✗ Keep in mind</h4>
+                        <ul>
+                            <li>Terminal-first — no official graphical interface</li>
+                            <li>Loading a raw .gguf requires writing a small Modelfile</li>
+                            <li>Server settings (host, port) are configured via environment variables</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="section-nav">Server won't start? Jump to <a href="#troubleshooting" data-scroll="troubleshooting">Troubleshooting → Ollama</a>.</p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- METHOD 3: LM STUDIO                                          -->
+            <!-- ============================================================ -->
+            <section class="content-section tool-section tool-lmstudio" id="lm-studio">
+                <div class="tool-band">
+                    <div class="tool-logo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <div class="tool-title">
+                        <span class="tool-method">Method 3 · Most polished GUI</span>
+                        <h2>LM Studio</h2>
+                        <p class="tool-tagline">A full desktop app: search, download, chat, and serve models — all with mouse clicks.</p>
+                    </div>
+                </div>
+
+                <div class="tool-badges">
+                    <span>✓ Free to use</span>
+                    <span>✓ Built-in model catalog</span>
+                    <span>✓ Chat + local API server</span>
+                    <span>✓ Windows, macOS &amp; Linux</span>
+                </div>
+
+                <p>LM Studio is a polished desktop application that turns the whole local-AI workflow into a GUI experience: you search HuggingFace from inside the app, download quantized models with a glance at how well they'll fit your RAM, chat with a clean ChatGPT-style interface, and — when you need it — flip on a local OpenAI-compatible server with one toggle. It's the middle ground between GGUF Loader's simplicity and Ollama's power.</p>
+                <p>It's especially loved by tinkerers: runtime settings like GPU offload, context length, and system prompts are all adjustable per conversation, and it keeps your chat history organized.</p>
+
+                <div class="step-card">
+                    <h3><span class="step-number">1</span> Download &amp; Install LM Studio</h3>
+                    <p>Head to <a href="https://lmstudio.ai" target="_blank" rel="noopener">lmstudio.ai</a> and grab the installer for your platform — Windows, macOS (Apple Silicon or Intel), or Linux. Install it like any desktop app and launch it; the first start takes a moment while it sets up its inference engine.</p>
+                    <div class="dl-grid">
+                        <div class="dl-card">
+                            <span class="dl-os">💻 All platforms</span>
+                            <span class="dl-meta">Free to use · ~1 GB with bundled runtimes</span>
+                            <div class="dl-actions">
+                                <a class="btn btn-primary" href="https://lmstudio.ai" target="_blank" rel="noopener">Download from lmstudio.ai</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">2</span> Find &amp; Download a Model (No Browser Needed)</h3>
+                    <p>LM Studio has HuggingFace built in. Click the <strong>search icon</strong> (magnifying glass) in the left sidebar, then type a model name:</p>
+                    <ol>
+                        <li>Search for <code>Llama 3.2 1B</code> or <code>Qwen 2.5 1.5B</code></li>
+                        <li>Pick a well-maintained GGUF upload (uploaders like <strong>bartowski</strong> and <strong>lmstudio-community</strong> are reliable choices)</li>
+                        <li>Choose a quantization — LM Studio shows the file size for each and highlights which ones fit your RAM. <code>Q4_K_M</code> is the usual sweet spot</li>
+                        <li>Click <strong>Download</strong> and watch the progress bar — models land in your local library automatically</li>
+                    </ol>
+                    <div class="info-box tip">
+                        <strong>💡 Tip:</strong> the size indicator turns red when a quantization is too big for your machine — stick to green/yellow options if you're just starting out.
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">3</span> Load the Model &amp; Chat</h3>
+                    <ol>
+                        <li>Click the <strong>chat icon</strong> in the left sidebar</li>
+                        <li>Select your freshly downloaded model from the dropdown at the top — this opens the <strong>model load settings</strong></li>
+                        <li>Review the settings (you can just accept the defaults for your first chat):
+                            <ul>
+                                <li><strong>GPU offload</strong> — how many model layers run on your graphics card (Apple Silicon uses Metal automatically; NVIDIA uses CUDA)</li>
+                                <li><strong>Context length</strong> — how much conversation memory the model keeps</li>
+                            </ul>
+                        </li>
+                        <li>Click <strong>Load Model</strong>, wait for the progress bar, and start chatting</li>
+                    </ol>
+                    <p>Chat history is saved automatically, and you can run several models side by side to compare their answers.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">4</span> Load Your Own .gguf File</h3>
+                    <p>Already have GGUF files (for example, ones you downloaded for GGUF Loader)? Don't re-download — import them:</p>
+                    <ul>
+                        <li><strong>Easiest:</strong> drag the <code>.gguf</code> file from your file manager straight into the LM Studio window — it gets imported into your model library and appears under <strong>My Models</strong></li>
+                        <li><strong>Manual:</strong> place files in LM Studio's models folder, organized as <code>&lt;publisher&gt;/&lt;model-name&gt;/&lt;file&gt;.gguf</code>:
+                            <ul>
+                                <li>macOS / Linux: <code>~/.lmstudio/models/…</code></li>
+                                <li>Windows: <code>C:\Users\&lt;you&gt;\.lmstudio\models\…</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Once imported, the model loads exactly like one downloaded in-app — same chat interface, same settings.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">5</span> Run a Local API Server (Optional)</h3>
+                    <p>LM Studio includes an <strong>OpenAI-compatible server</strong> — perfect when an app expects an OpenAI API key but you want to run everything locally:</p>
+                    <ol>
+                        <li>Open the <strong>Developer tab</strong> (terminal icon) in the left sidebar</li>
+                        <li>Load a model, then toggle <strong>Status: Running</strong> — the server starts on <code>http://localhost:1234</code></li>
+                        <li>Point any OpenAI SDK or app at it</li>
+                    </ol>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — test the LM Studio server</span><button class="copy-btn" type="button" data-copy-target="lm-api">Copy</button></div>
+                        <pre><code id="lm-api"><span class="prompt">$</span> curl http://localhost:1234/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama-3.2-1b-instruct",
+    "messages": [{"role": "user", "content": "Hello from my own server!"}]
+  }'</code></pre>
+                    </div>
+
+                    <div class="info-box tip">
+                        <strong>💡 Works with the OpenAI SDKs:</strong> set <code>base_url</code> to <code>http://localhost:1234/v1</code> and any non-empty API key. Ports and model names are listed in the Developer tab, and you can require an access key for a bit of local security.
+                    </div>
+                </div>
+
+                <div class="pros-cons">
+                    <div class="pc-card pros">
+                        <h4>✓ What we like</h4>
+                        <ul>
+                            <li>Beautiful, genuinely beginner-friendly interface</li>
+                            <li>Model search + RAM-fit guidance inside the app</li>
+                            <li>Fine-grained runtime settings per chat</li>
+                            <li>One-toggle OpenAI-compatible local server</li>
+                            <li>Imports existing GGUF files via drag &amp; drop</li>
+                        </ul>
+                    </div>
+                    <div class="pc-card cons">
+                        <h4>✗ Keep in mind</h4>
+                        <ul>
+                            <li>Heavier install (~1 GB with runtimes) than GGUF Loader</li>
+                            <li>Not open source (free, but closed)</li>
+                            <li>Loads models per-chat — a bit more clicking for quick one-off questions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="section-nav">Model not appearing? Jump to <a href="#troubleshooting" data-scroll="troubleshooting">Troubleshooting → LM Studio</a>.</p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- METHOD 4: LLAMA.CPP                                          -->
+            <!-- ============================================================ -->
+            <section class="content-section tool-section tool-llamacpp" id="llama-cpp">
+                <div class="tool-band">
+                    <div class="tool-logo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                    </div>
+                    <div class="tool-title">
+                        <span class="tool-method">Method 4 · Maximum control</span>
+                        <h2>llama.cpp</h2>
+                        <p class="tool-tagline">The engine everything else is built on — run GGUF straight from the source.</p>
+                    </div>
+                </div>
+
+                <div class="tool-badges">
+                    <span>✓ Free &amp; open source (MIT)</span>
+                    <span>✓ Invented the GGUF format</span>
+                    <span>✓ CPU · CUDA · Metal · Vulkan</span>
+                    <span>✓ Browser chat UI included</span>
+                </div>
+
+                <p>llama.cpp is the original open-source project that created the GGUF format — and the inference engine that GGUF Loader, Ollama, and LM Studio all run under the hood. Going straight to llama.cpp means zero abstraction: new models and features land here first, it runs on almost anything (from a Raspberry Pi to multi-GPU servers), and it ships with a surprisingly capable built-in web UI and API server. The trade-off: everything happens in the terminal, and model files are yours to manage.</p>
+                <p>You don't need to compile anything to get started — prebuilt binaries are attached to every GitHub release. Pick the route that matches your system below.</p>
+
+                <div class="step-card">
+                    <h3><span class="step-number">1</span> Get llama.cpp</h3>
+
+                    <p><strong>Windows — prebuilt binaries (no compiling):</strong> open the <a href="https://github.com/ggml-org/llama.cpp/releases" target="_blank" rel="noopener">GitHub releases page</a> and download the latest bundle for your hardware:</p>
+                    <ul>
+                        <li><code>…bin-win-cpu-x64.zip</code> — runs on any modern PC</li>
+                        <li><code>…bin-win-cuda-…-x64.zip</code> — for NVIDIA GPUs</li>
+                        <li><code>…bin-win-vulkan-x64.zip</code> — for AMD/Intel GPUs</li>
+                    </ul>
+                    <p>Extract the zip anywhere (a folder like <code>C:\llama</code>), then open a terminal in that folder — on Windows 11, right-click the folder and choose <strong>Open in Terminal</strong>.</p>
+
+                    <p><strong>macOS — Homebrew (one command):</strong></p>
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — macOS</span><button class="copy-btn" type="button" data-copy-target="lc-brew">Copy</button></div>
+                        <pre><code id="lc-brew"><span class="prompt">$</span> brew install llama.cpp</code></pre>
+                    </div>
+
+                    <p><strong>Linux / macOS — build from source (~2 minutes):</strong></p>
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — Linux / macOS</span><button class="copy-btn" type="button" data-copy-target="lc-build">Copy</button></div>
+                        <pre><code id="lc-build"><span class="prompt">$</span> git clone https://github.com/ggml-org/llama.cpp
+<span class="prompt">$</span> cd llama.cpp
+<span class="prompt">$</span> cmake -B build
+<span class="prompt">$</span> cmake --build build --config Release</code></pre>
+                    </div>
+                    <p>The binaries land in the <code>build/bin</code> folder (inside <code>build/bin/Release</code> for Xcode or Visual Studio builds). On Apple Silicon, GPU acceleration via Metal is enabled automatically.</p>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">2</span> Chat With a Model (llama-cli)</h3>
+                    <p>Point <code>llama-cli</code> at any <code>.gguf</code> file and it drops you into an interactive chat. llama.cpp reads the chat template embedded in the GGUF file automatically, so instruct models work out of the box:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal</span><button class="copy-btn" type="button" data-copy-target="lc-cli">Copy</button></div>
+                        <pre><code id="lc-cli"><span class="prompt">$</span> ./llama-cli -m ~/Downloads/Llama-3.2-1B-Instruct-Q4_K_M.gguf</code></pre>
+                    </div>
+
+                    <p>On Windows the same call is <code>.\llama-cli.exe -m C:\Users\you\Downloads\model.gguf</code> — identical flags, identical behavior.</p>
+
+                    <p>Flags worth knowing from day one:</p>
+                    <ul>
+                        <li><code>-ngl 99</code> — offload all model layers to your GPU (the single biggest speed boost)</li>
+                        <li><code>-c 8192</code> — set the context window size (the default is small to save RAM)</li>
+                        <li><code>--temp 0.7</code> — creativity of the responses</li>
+                        <li><code>-p "your prompt"</code> — get a single completion instead of a conversation</li>
+                    </ul>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">3</span> Browser Chat + API (llama-server)</h3>
+                    <p>The best-kept secret of llama.cpp: <code>llama-server</code> spins up a built-in web chat interface <em>and</em> an OpenAI-compatible API with one command:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal</span><button class="copy-btn" type="button" data-copy-target="lc-server">Copy</button></div>
+                        <pre><code id="lc-server"><span class="prompt">$</span> ./llama-server -m ~/Downloads/Llama-3.2-1B-Instruct-Q4_K_M.gguf --port 8080<span class="out">
+server listening on http://127.0.0.1:8080 — web UI + OpenAI-compatible /v1 API</span></code></pre>
+                    </div>
+
+                    <ol>
+                        <li>Open <code>http://localhost:8080</code> in any browser — a full chat interface, ready to use</li>
+                        <li>The same address serves OpenAI-compatible endpoints: <code>/v1/chat/completions</code>, <code>/v1/completions</code>, and <code>/v1/embeddings</code></li>
+                    </ol>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — test the API</span><button class="copy-btn" type="button" data-copy-target="lc-api">Copy</button></div>
+                        <pre><code id="lc-api"><span class="prompt">$</span> curl http://localhost:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "default",
+    "messages": [{"role": "user", "content": "Hello from llama.cpp!"}]
+  }'</code></pre>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">4</span> Bonus: Quantize Your Own GGUF Models</h3>
+                    <p>Here's the superpower no GUI tool offers: llama.cpp can convert any HuggingFace model into GGUF and shrink it to any quantization level, so you can build exactly the size/quality trade-off you want:</p>
+
+                    <div class="code-block">
+                        <div class="cb-head"><span>Terminal — make a Q4_K_M GGUF from any HuggingFace model</span><button class="copy-btn" type="button" data-copy-target="lc-quant">Copy</button></div>
+                        <pre><code id="lc-quant"><span class="prompt">$</span> python3 convert_hf_to_gguf.py /path/to/hf-model --outfile model-f16.gguf
+<span class="prompt">$</span> ./llama-quantize model-f16.gguf model-q4_k_m.gguf Q4_K_M</code></pre>
+                    </div>
+
+                    <p>The conversion script needs Python 3 with the project's requirements installed (<code>pip install -r requirements.txt</code> from the llama.cpp folder). Your fresh <code>.gguf</code> then loads in any tool — including GGUF Loader, Ollama, and LM Studio.</p>
+                </div>
+
+                <div class="pros-cons">
+                    <div class="pc-card pros">
+                        <h4>✓ What we like</h4>
+                        <ul>
+                            <li>New models and features land here first</li>
+                            <li>Runs on almost anything — CPU, CUDA, Metal, Vulkan, even a Raspberry Pi</li>
+                            <li>Built-in web UI + OpenAI-compatible server</li>
+                            <li>Quantize your own custom GGUF files</li>
+                            <li>MIT licensed, tiny footprint, no dependencies</li>
+                        </ul>
+                    </div>
+                    <div class="pc-card cons">
+                        <h4>✗ Keep in mind</h4>
+                        <ul>
+                            <li>Command line only — no graphical interface</li>
+                            <li>No model manager: you pass file paths yourself</li>
+                            <li>Fast-moving project — commands and builds change often</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="section-nav">Binary not found or garbled output? Jump to <a href="#troubleshooting" data-scroll="troubleshooting">Troubleshooting → llama.cpp</a>.</p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- RECOMMENDED MODELS                                           -->
+            <!-- ============================================================ -->
+            <section class="content-section" id="recommended-models">
+                <h2>Recommended Starter Models</h2>
+                <p>These four models cover the whole range from "runs on anything" to "genuinely smart." All links go to trusted HuggingFace GGUF repositories, and every model works in all four tools. Grab the <code>Q4_K_M</code> file unless you know why you need another quantization.</p>
+
+                <div class="model-card">
+                    <h3>Llama 3.2 1B — the starter</h3>
+                    <p class="mc-meta">~0.8 GB download · ~1.5 GB RAM · fits 8GB machines with room to spare</p>
+                    <p>Meta's tiniest instruct model. Surprisingly coherent for its size, great for learning the ropes, drafting, and quick Q&amp;A.</p>
+                    <div class="model-tools">
+                        <div class="mt-chip c-gl"><b>GGUF Loader:</b> <a href="https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF" target="_blank" rel="noopener">download Q4_K_M</a> → drag into the app</div>
+                        <div class="mt-chip c-ol"><b>Ollama:</b> <code>ollama run llama3.2:1b</code></div>
+                        <div class="mt-chip c-lm"><b>LM Studio:</b> search "Llama 3.2 1B" → pick a Q4_K_M upload</div>
+                        <div class="mt-chip c-lc"><b>llama.cpp:</b> <code>llama-cli -m Llama-3.2-1B-Instruct-Q4_K_M.gguf</code></div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <h3>Qwen 2.5 1.5B — the all-rounder</h3>
+                    <p class="mc-meta">~1 GB download · ~2 GB RAM · excellent quality-per-gigabyte</p>
+                    <p>Alibaba's compact workhorse: strong reasoning and multilingual skills for its size, and noticeably sharper than most 1–2B models.</p>
+                    <div class="model-tools">
+                        <div class="mt-chip c-gl"><b>GGUF Loader:</b> <a href="https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF" target="_blank" rel="noopener">download Q4_K_M</a> → drag into the app</div>
+                        <div class="mt-chip c-ol"><b>Ollama:</b> <code>ollama run qwen2.5:1.5b</code></div>
+                        <div class="mt-chip c-lm"><b>LM Studio:</b> search "Qwen 2.5 1.5B" → pick a Q4_K_M upload</div>
+                        <div class="mt-chip c-lc"><b>llama.cpp:</b> <code>llama-cli -m Qwen2.5-1.5B-Instruct-Q4_K_M.gguf</code></div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <h3>Mistral 7B — the classic</h3>
+                    <p class="mc-meta">~4.4 GB download · 8 GB+ RAM · the model that started the local-AI boom</p>
+                    <p>A fast, dependable generalist that still beats most newer small models on plain usefulness. The sweet spot if you have 16GB RAM.</p>
+                    <div class="model-tools">
+                        <div class="mt-chip c-gl"><b>GGUF Loader:</b> <a href="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF" target="_blank" rel="noopener">download Q4_K_M</a> → drag into the app</div>
+                        <div class="mt-chip c-ol"><b>Ollama:</b> <code>ollama run mistral:7b</code></div>
+                        <div class="mt-chip c-lm"><b>LM Studio:</b> search "Mistral 7B Instruct" → pick a Q4_K_M upload</div>
+                        <div class="mt-chip c-lc"><b>llama.cpp:</b> <code>llama-cli -m mistral-7b-instruct-v0.2.Q4_K_M.gguf</code></div>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <h3>Llama 3.1 8B — the brainy one</h3>
+                    <p class="mc-meta">~4.9 GB download · 8–16 GB RAM · near-GPT-3.5 quality, fully local</p>
+                    <p>Where local models start feeling "real": strong reasoning, coding, and instruction-following. Needs 16GB RAM to breathe (or a GPU).</p>
+                    <div class="model-tools">
+                        <div class="mt-chip c-gl"><b>GGUF Loader:</b> <a href="https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF" target="_blank" rel="noopener">download Q4_K_M</a> → drag into the app</div>
+                        <div class="mt-chip c-ol"><b>Ollama:</b> <code>ollama run llama3.1:8b</code></div>
+                        <div class="mt-chip c-lm"><b>LM Studio:</b> search "Llama 3.1 8B" → pick a Q4_K_M upload</div>
+                        <div class="mt-chip c-lc"><b>llama.cpp:</b> <code>llama-cli -m Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf</code></div>
+                    </div>
+                </div>
+
+                <div class="info-box tip">
+                    <strong>💡 Reading quantization names:</strong> the suffix tells you how much precision was kept. <code>Q2/Q3</code> = smallest files, noticeably degraded quality. <code>Q4_K_M</code> = the popular sweet spot. <code>Q6/Q8</code> = near-original quality, double the size. Rule of thumb: your RAM should be roughly <strong>file size × 1.3</strong> plus ~1.5GB for the OS and tooling.
+                </div>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- TROUBLESHOOTING                                               -->
+            <!-- ============================================================ -->
+            <section class="content-section" id="troubleshooting">
+                <h2>Troubleshooting Common Issues</h2>
+
+                <h3>Every tool</h3>
+                <p><strong>Model loads slowly.</strong> First load takes longer as the model is copied from disk into RAM; later loads are faster. Keeping models on an SSD instead of a hard drive is the single biggest speed-up.</p>
+                <p><strong>Out of memory errors.</strong> Try a smaller model or a lower quantization (Q4_K_M → Q3_K_M). For 8GB RAM, stay under 3B parameters; with 16GB, 7–8B models work well. Close browser tabs — they are usually the top RAM thief.</p>
+                <p><strong>Slow response generation.</strong> Normal for CPU inference. Smaller models (1–3B) generate noticeably faster, and GPU offload helps if available.</p>
+                <p><strong>Model won't load at all.</strong> Verify the download completed — the file size on your disk should match what HuggingFace lists. Partial downloads (often <code>.gguf.part</code> or an unusually small file) happen on flaky connections; just re-download.</p>
+
+                <h3>GGUF Loader</h3>
+                <p><strong>Windows blocked the installer.</strong> SmartScreen often flags new open-source apps. Click "More info" → "Run anyway." The binaries are published on the official GitHub releases page.</p>
+                <p><strong>GPU build runs slower than expected.</strong> Make sure your NVIDIA drivers are current, and that you actually downloaded the GPU build — the CPU build ignores your graphics card entirely.</p>
+
+                <h3>Ollama</h3>
+                <p><strong>"connection refused" when calling the API.</strong> The background server isn't running. On Windows/macOS, start the Ollama app once; on Linux, run <code>ollama serve</code>. Check it's listening: <code>curl http://localhost:11434</code> should reply "Ollama is running."</p>
+                <p><strong>"model not found" (404).</strong> Download it first with <code>ollama pull</code>, and check the exact name with <code>ollama list</code> — the API is picky about tags.</p>
+                <p><strong>Running out of disk.</strong> Ollama keeps every pulled model in <code>~/.ollama/models</code>. Prune old ones with <code>ollama rm &lt;model&gt;</code> or move the folder via the <code>OLLAMA_MODELS</code> environment variable.</p>
+
+                <h3>LM Studio</h3>
+                <p><strong>An imported .gguf doesn't show in My Models.</strong> The folder structure must be <code>&lt;publisher&gt;/&lt;model-name&gt;/&lt;file&gt;.gguf</code> inside <code>~/.lmstudio/models</code> — a file dumped directly into the models folder is ignored. Drag &amp; drop into the app avoids the problem entirely.</p>
+                <p><strong>The server says no models are available.</strong> The server only serves models that are loaded. Load your model in the Developer tab first, then hit the endpoint again.</p>
+                <p><strong>Crashes or freezes when loading big models.</strong> Lower the GPU offload value or context length in the load settings — both directly change how much memory the model claims.</p>
+
+                <h3>llama.cpp</h3>
+                <p><strong>"command not found" when running llama-cli.</strong> The binary lives in the folder you extracted (or built). Run it with the <code>./</code> prefix from that folder — <code>./llama-cli</code> — or add the folder to your PATH; Homebrew installs are on your PATH automatically.</p>
+                <p><strong>Garbled or repetitive output.</strong> Make sure you're running an <em>instruct</em> model (the name contains "Instruct") and let llama.cpp use the chat template embedded in the file — conversational mode handles this by default. Also verify the download completed fully.</p>
+                <p><strong>GPU isn't being used.</strong> GPU offload must be requested with the <code>-ngl</code> flag (e.g. <code>-ngl 99</code> for all layers), and you need a matching build: CUDA for NVIDIA, Vulkan for AMD/Intel — while Apple Silicon gets Metal automatically.</p>
+            </section>
+
+            <!-- ============================================================ -->
+            <!-- FAQ                                                           -->
+            <!-- ============================================================ -->
+            <section class="content-section" id="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <details class="faq-item">
+                    <summary>Which tool should I start with?</summary>
+                    <div class="faq-body">
+                        <p>If you've never used a terminal: <strong>GGUF Loader</strong> (fastest setup) or <strong>LM Studio</strong> (nicest interface). If you're a developer or want to plug local models into your own apps: <strong>Ollama</strong>, because of its built-in API. If you want raw control, exotic hardware, or day-one model support: <strong>llama.cpp</strong>. All four are free — try two and keep the one that feels right.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I use the same .gguf file in all four tools?</summary>
+                    <div class="faq-body">
+                        <p>Yes — GGUF is a standard format and all four tools run the same files. GGUF Loader opens the file directly, LM Studio imports it with drag &amp; drop, Ollama wraps it in a one-line Modelfile, and llama.cpp takes the file path directly. One download, four tools.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I run a GGUF file with llama.cpp?</summary>
+                    <div class="faq-body">
+                        <p>Install llama.cpp (prebuilt binaries from GitHub releases, Homebrew on macOS, or build from source), then run <code>llama-cli -m your-model.gguf</code> to chat in the terminal. For a browser chat UI and an OpenAI-compatible API, run <code>llama-server -m your-model.gguf</code> and open <code>http://localhost:8080</code>.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I need a GPU?</summary>
+                    <div class="faq-body">
+                        <p>No. GGUF models are optimized for CPU inference, and models under 7B parameters run smoothly on most modern CPUs with 16GB RAM. A GPU (or Apple Silicon) makes bigger models much faster, but it's optional.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is all this really free? What's the catch?</summary>
+                    <div class="faq-body">
+                        <p>GGUF Loader and Ollama are free and open source. LM Studio is free (closed source). The models are open weights downloaded once from HuggingFace. Inference happens on your hardware, so there are no subscriptions, tokens, or API bills — the only cost is electricity.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I use these tools completely offline?</summary>
+                    <div class="faq-body">
+                        <p>Yes, after the one-time downloads of the app and your models. Chatting, generation, and the local API servers all work with your internet disconnected.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Where is each tool storing my models?</summary>
+                    <div class="faq-body">
+                        <p>GGUF Loader loads files from wherever you saved them. Ollama: <code>~/.ollama/models</code> (Windows: <code>C:\Users\&lt;you&gt;\.ollama\models</code>). LM Studio: <code>~/.lmstudio/models</code> (Windows: <code>C:\Users\&lt;you&gt;\.lmstudio\models</code>).</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How much RAM do I actually need?</summary>
+                    <div class="faq-body">
+                        <p>Rule of thumb: RAM ≈ model file size × 1.3, plus ~1.5GB for the system. A 0.8GB 1B model is comfortable on 4–8GB; a 4.9GB 8B model wants 16GB. When in doubt, choose the smaller quantization.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I get an OpenAI-style API locally?</summary>
+                    <div class="faq-body">
+                        <p>Yes. Ollama serves OpenAI-compatible endpoints at <code>http://localhost:11434/v1</code>, LM Studio's built-in server at <code>http://localhost:1234/v1</code>, and llama.cpp's <code>llama-server</code> at <code>http://localhost:8080/v1</code>. Point any OpenAI SDK at one of those URLs and everything runs on your machine.</p>
+                    </div>
+                </details>
+            </section>
+
+            <section class="content-section">
+                <h2>Next Steps</h2>
+                <ul>
+                    <li><a href="what-is-gguf.html">Learn more about the GGUF format</a></li>
+                    <li><a href="2025-07-07-top-10-gguf-models-i5-16gb.html">Best GGUF models for your system</a></li>
+                    <li><a href="guides.html">More guides and tutorials</a></li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GGUF Loader. All rights reserved.</p>
+    </footer>
+
+    <button class="back-top" id="back-top" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="mobile-menu.js" defer></script>
+    <script>
+    (function () {
+        'use strict';
+
+        var nav = document.querySelector('nav');
+        var jump = document.getElementById('tool-jump');
+        var root = document.documentElement;
+
+        /* ---------- Keep CSS variables in sync with real element sizes ---------- */
+        function measure() {
+            var jumpH = jump ? jump.offsetHeight : 100;
+            root.style.setProperty('--jump-h', jumpH + 'px');
+        }
+        measure();
+        window.addEventListener('load', function () { measure(); setTimeout(measure, 300); });
+        window.addEventListener('resize', function () {
+            clearTimeout(measure._t);
+            measure._t = setTimeout(measure, 150);
+        });
+
+        /* ---------- Smooth scrolling with sticky-bar offset ---------- */
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function scrollToSection(id) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            var jumpH = jump ? jump.offsetHeight : 100;
+            var y = el.getBoundingClientRect().top + window.pageYOffset - jumpH - 16;
+            window.scrollTo({ top: Math.max(0, y), behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+
+        document.querySelectorAll('[data-scroll]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                var id = link.getAttribute('data-scroll');
+                if (document.getElementById(id)) {
+                    e.preventDefault();
+                    scrollToSection(id);
+                    if (history.replaceState) history.replaceState(null, '', '#' + id);
+                }
+            });
+        });
+
+        /* ---------- Scroll spy: highlight the active tool button ---------- */
+        var buttons = {};
+        document.querySelectorAll('.tool-jump-btn').forEach(function (b) {
+            buttons[b.getAttribute('data-scroll')] = b;
+        });
+
+        if ('IntersectionObserver' in window) {
+            var sections = ['gguf-loader', 'ollama', 'lm-studio', 'llama-cpp']
+                .map(function (id) { return document.getElementById(id); })
+                .filter(Boolean);
+
+            var spy = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        Object.keys(buttons).forEach(function (k) {
+                            buttons[k].classList.remove('active');
+                        });
+                        var btn = buttons[entry.target.id];
+                        if (btn) btn.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+
+            sections.forEach(function (s) { spy.observe(s); });
+        }
+
+        /* ---------- Copy buttons on code blocks ---------- */
+        function extractCopyText(pre) {
+            var clone = pre.cloneNode(true);
+            var outs = clone.querySelectorAll('.out');
+            for (var i = 0; i < outs.length; i++) outs[i].remove();
+            var cmts = clone.querySelectorAll('.cmt');
+            for (var j = 0; j < cmts.length; j++) cmts[j].remove();
+            return clone.textContent.replace(/^\$ /gm, '').replace(/^\s*\n/, '').replace(/\s+$/, '');
+        }
+
+        document.querySelectorAll('.copy-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var pre = document.getElementById(btn.getAttribute('data-copy-target'));
+                if (!pre) return;
+                var text = extractCopyText(pre);
+                function done() {
+                    btn.textContent = 'Copied ✓';
+                    btn.classList.add('copied');
+                    setTimeout(function () {
+                        btn.textContent = 'Copy';
+                        btn.classList.remove('copied');
+                    }, 1600);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(done).catch(function () {
+                        fallbackCopy(text); done();
+                    });
+                } else {
+                    fallbackCopy(text); done();
+                }
+            });
+        });
+
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch (err) { /* noop */ }
+            document.body.removeChild(ta);
+        }
+
+        /* ---------- Back-to-top button ---------- */
+        var backTop = document.getElementById('back-top');
+        if (backTop) {
+            var onScroll = function () {
+                backTop.classList.toggle('visible', window.pageYOffset > 600);
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+            backTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

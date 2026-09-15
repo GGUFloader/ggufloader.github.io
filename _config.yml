@@ -1,0 +1,3 @@
+# GitHub Pages deployment config
+baseurl: ""
+url: "https://ggufloader.github.io"
