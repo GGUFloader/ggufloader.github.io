@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGUF Loader v2.3.0 Release Notes - Plan-Driven Agent, Single-Model Testing</title>
+    <meta name="description" content="GGUF Loader v2.3.0 is a testing release with a strictly plan-driven agent, developer-style process UI, and auto-load at startup. Optimized for Gemma 4 12B Instruct Q4_K_M.">
+    <meta name="keywords" content="GGUF Loader, v2.3.0, release notes, plan-driven agent, single-model, Gemma 4, local AI, GGUF update, testing release">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://ggufloader.github.io/gguf-loader-2-3-0-release-notes.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="GGUF Loader v2.3.0 Release Notes - Plan-Driven Agent, Single-Model Testing">
+    <meta property="og:description" content="Testing release with a strictly plan-driven agent, developer-style process UI, auto-load at startup, and 10 focused workspace tools.">
+    <meta property="og:image" content="https://ggufloader.github.io/screenshots/screen1.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ggufloader.github.io/gguf-loader-2-3-0-release-notes.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="article:published_time" content="2026-09-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-09-11T00:00:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Release Notes">
+    <meta property="article:tag" content="Release">
+    <meta property="article:tag" content="Agent">
+    <meta property="article:tag" content="Testing">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GGUF Loader v2.3.0 Release Notes">
+    <meta name="twitter:description" content="Testing release with plan-driven agent, developer-style process UI, and auto-load at startup.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/screenshots/screen1.png">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "GGUF Loader v2.3.0 Release Notes - Plan-Driven Agent, Single-Model Testing",
+      "description": "GGUF Loader v2.3.0 is a testing release with a strictly plan-driven agent, developer-style process UI, and auto-load at startup.",
+      "image": "https://ggufloader.github.io/screenshots/screen1.png",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "datePublished": "2026-09-11T00:00:00+00:00",
+      "dateModified": "2026-09-11T00:00:00+00:00",
+      "mainEntityOfPage": "https://ggufloader.github.io/gguf-loader-2-3-0-release-notes.html"
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+    <style>
+        .article-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .article-header { background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(230,126,34,0.15); }
+        .article-header h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .article-header p { font-size: 1.05rem; opacity: 0.95; margin: 0; }
+        .content-section { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .content-section h2 { color: #2c3e50; border-bottom: 3px solid #e67e22; padding-bottom: 10px; margin-bottom: 20px; }
+        .content-section h3 { color: #e67e22; margin: 20px 0 10px; }
+        .content-section ul, .content-section ol { padding-left: 1.5rem; margin: 10px 0; }
+        .content-section li { margin-bottom: 8px; }
+        .content-section a { color: #e67e22; }
+        .content-section a:hover { text-decoration: underline; }
+        blockquote { background: #fef5e7; border-left: 4px solid #e67e22; padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 15px 0; }
+        .screenshot-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 20px 0; }
+        .screenshot-grid img { width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .download-card { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white; padding: 25px; border-radius: 12px; margin: 15px 0; }
+        .download-card h3 { color: #f39c12; margin-top: 0; }
+        .download-card a { color: #3498db; }
+        .download-card a:hover { color: #2980b9; }
+        .tools-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .tools-table th { background: #e67e22; color: white; padding: 12px; text-align: left; }
+        .tools-table td { padding: 12px; border-bottom: 1px solid #eee; }
+        .tools-table tr:hover { background: #fef5e7; }
+        @media (max-width: 768px) {
+            .article-header { padding: 25px; }
+            .article-header h1 { font-size: 1.6rem; }
+            .content-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="index.html" class="logo" role="img" aria-label="GGUF Loader">GGUF Loader</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#features-philosophy" role="menuitem">Features</a></li>
+                    <li role="none"><a href="index.html#guide" role="menuitem">How-To</a></li>
+                    <li role="none"><a href="index.html#faq-section" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="index.html#model-downloads-info" role="menuitem">Model Downloads</a></li>
+                    <li role="none"><a href="index.html#roadmap" role="menuitem">Roadmap</a></li>
+                    <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="blog.html" role="menuitem" class="active">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="article-container">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <div class="article-header">
+            <h1>🧪 GGUF Loader v2.3.0 Release Notes</h1>
+            <p>Plan-driven agent, developer-style process UI, and auto-load at startup — testing release optimized for Gemma 4 12B Instruct</p>
+        </div>
+
+        <article>
+            <section class="content-section">
+                <h2>What's New in v2.3.0</h2>
+                <p>GGUF Loader v2.3.0 (September 11, 2026) is a <strong>testing release</strong> that takes the agentic experience further with a strictly plan-driven agent and a developer-style inline process UI. It is temporarily pinned to a single model (Gemma 4 12B Instruct Q4_K_M) to tune the agent's performance before expanding model support.</p>
+
+                <blockquote>⚠️ <strong>Testing Release:</strong> This version is locked to one model while we validate the new plan-driven agent architecture. Universal model support returns in the next release.</blockquote>
+
+                <div class="screenshot-grid">
+                    <img src="https://ggufloader.github.io/screenshots/screen1.png" alt="GGUF Loader v2.3.0 - Chat Interface" loading="lazy">
+                    <img src="https://ggufloader.github.io/screenshots/screen2.png" alt="GGUF Loader v2.3.0 - Agent Mode" loading="lazy">
+                    <img src="https://ggufloader.github.io/screenshots/screen3.png" alt="GGUF Loader v2.3.0 - Settings" loading="lazy">
+                </div>
+
+                <h3>🎯 Single-Model Focus (Temporary)</h3>
+                <p>This testing release is optimized for <strong>Gemma 4 12B Instruct Q4_K_M</strong>. Multi-model detection was temporarily removed so this one model just works. Universal loading returns in the next release.</p>
+
+                <h3>📋 Strictly Plan-Driven Agent</h3>
+                <p>Every agent turn now goes through a <strong>planner node</strong>:</p>
+                <ul>
+                    <li><strong>Tool-free questions</strong> — answered directly without planning</li>
+                    <li><strong>Tasks</strong> — get a step-by-step plan executed with sandboxed tools</li>
+                    <li>The reactive ReAct fallback was removed for more predictable behavior</li>
+                </ul>
+
+                <h3>🖥️ Developer-Style Process UI</h3>
+                <p>Plan steps, tool calls, and results render <strong>inline in the chat</strong> above each answer. You can follow the entire agent process as it happens.</p>
+
+                <h3>🧹 Reliable Final Answers</h3>
+                <p>Stray tool-call JSON envelopes and stale status text (like "Planning...") are scrubbed from the live stream and final replies.</p>
+
+                <h3>📥 Auto-Load at Startup</h3>
+                <p>The app scans its <code>models/</code> folder (plus the last-used model folder) and loads the pinned GGUF automatically. If the model is missing, the <strong>model chip in the header</strong> offers a Download action with live progress.</p>
+
+                <h3>🔧 Pruned Tools</h3>
+                <p>The default registry is the <strong>10 workspace tools</strong> the agent actually uses — memory and meta tools were removed, and searches are hardened against huge generated folders.</p>
+
+                <h3>🚀 Self-Setup Launchers</h3>
+                <p><code>launch.bat</code> and <code>launch.sh</code> now handle all dependency installation and offer browser, Electron, and production modes.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Full Capabilities</h2>
+
+                <h3>Agent Tools</h3>
+                <table class="tools-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>What it does</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>list_directory</code> / <code>glob</code></td>
+                            <td>Explore folders and match file paths in the workspace</td>
+                        </tr>
+                        <tr>
+                            <td><code>read_file</code></td>
+                            <td>Read any file (MD/PDF/DOCX/TXT/code — text extracted automatically)</td>
+                        </tr>
+                        <tr>
+                            <td><code>search_files</code></td>
+                            <td>Find files and grep for content</td>
+                        </tr>
+                        <tr>
+                            <td><code>write_file</code> / <code>edit_file</code> / <code>move_file</code></td>
+                            <td>Create, edit, and move files</td>
+                        </tr>
+                        <tr>
+                            <td><code>run_command</code></td>
+                            <td>Run a shell command inside the workspace (approval-gated)</td>
+                        </tr>
+                        <tr>
+                            <td><code>run_python</code></td>
+                            <td>Execute Python source inside the workspace (approval-gated)</td>
+                        </tr>
+                        <tr>
+                            <td><code>git</code></td>
+                            <td>Git operations — read-only runs freely, writes require approval</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Advanced Search (Find Paragraph, no RAG)</h3>
+                <ul>
+                    <li><strong>Single file</strong> — type a question and the model finds and ranks matching paragraphs</li>
+                    <li><strong>Folder search</strong> — a planner decides which files to read, with live per-file progress</li>
+                    <li><strong>Smart defaults</strong> — your last query, source, and settings are remembered between sessions</li>
+                </ul>
+
+                <h3>Interface Features</h3>
+                <ul>
+                    <li>Sessions left, chat center, tools right layout</li>
+                    <li>Streaming chat via WebSocket</li>
+                    <li>Model chip in header with live download progress</li>
+                    <li>Settings dialog (Model, Providers, Agent, Hardware, Appearance, Keyboard, Plugins)</li>
+                    <li>Dark/light theme with accent colors</li>
+                    <li>Command palette (Ctrl/Cmd+K)</li>
+                    <li>Electron standalone desktop app</li>
+                </ul>
+
+                <h3>Core Features</h3>
+                <ul>
+                    <li>Plan-driven agent (LangGraph) with Allow/Deny approval cards</li>
+                    <li>SQLite checkpointing — conversations survive restarts</li>
+                    <li>Real file reading (MD/PDF/DOCX/TXT/code)</li>
+                    <li>GPU acceleration via Settings → Hardware</li>
+                    <li>100% local inference — no data leaves your machine</li>
+                    <li>Cross-platform (Windows 10/11, Linux, macOS)</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Download v2.3.0</h2>
+
+                <div class="download-card">
+                    <h3>🪟 Windows Downloads</h3>
+                    <ul>
+                        <li><a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_CPU.exe" target="_blank" rel="noopener">GGUFLoader_v2.3.0_CPU.exe</a> (~145 MB) — Works on any PC, no GPU required</li>
+                        <li><a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_GPU.exe" target="_blank" rel="noopener">GGUFLoader_v2.3.0_GPU.exe</a> (~930 MB) — NVIDIA CUDA for faster inference</li>
+                    </ul>
+                </div>
+
+                <div class="download-card">
+                    <h3>🐧 Linux Download</h3>
+                    <ul>
+                        <li><a href="https://github.com/GGUFloader/gguf-loader/releases/download/v2.3.0/GGUFLoader_v2.3.0_linux_x86_64_CPU" target="_blank" rel="noopener">GGUFLoader_v2.3.0_linux_x86_64_CPU</a> (~50 MB) — CPU-only, chmod +x and run</li>
+                    </ul>
+                </div>
+
+                <blockquote>💡 <strong>Which Windows build?</strong> Use the <strong>CPU build</strong> if you're not sure — it runs on any machine and is 6× smaller. Choose the <strong>GPU build</strong> only if you have an NVIDIA graphics card for maximum speed.</blockquote>
+
+                <p><a href="https://github.com/GGUFloader/gguf-loader/releases/tag/v2.3.0" target="_blank" rel="noopener">View all release assets on GitHub →</a></p>
+            </section>
+
+            <section class="content-section">
+                <h2>First Launch</h2>
+                <ol>
+                    <li>Start the app — it <strong>auto-loads</strong> the pinned Gemma 4 12B Q4_K_M from the <code>models/</code> folder in the background</li>
+                    <li>No model on disk? The <strong>model chip in the header</strong> downloads it with live progress and loads it when finished</li>
+                    <li>Chat in the main window, or press <strong>Ctrl/Cmd + Shift + A</strong> for Agent Mode and choose a workspace folder</li>
+                </ol>
+            </section>
+
+            <section class="content-section">
+                <h2>System Requirements</h2>
+                <ul>
+                    <li><strong>OS:</strong> Windows 10/11, Linux, macOS (Intel & Apple Silicon)</li>
+                    <li><strong>RAM:</strong> 32 GB minimum recommended</li>
+                    <li><strong>Storage:</strong> ~8 GB free for the model file</li>
+                    <li><strong>GPU:</strong> Optional — NVIDIA CUDA on Windows/Linux, Metal on macOS</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>What's Coming Next</h2>
+                <blockquote>🔮 <strong>Universal Model Loader returns</strong> — the next release removes the single-model restriction. You'll be able to run <strong>any GGUF model</strong> with the agent, with hardware-aware recommendations so you can pick a model that fits your PC's RAM/VRAM.</blockquote>
+            </section>
+
+            <section class="content-section">
+                <h2>Next Steps</h2>
+                <ul>
+                    <li><a href="https://github.com/GGUFloader/gguf-loader/blob/main/README.md" target="_blank" rel="noopener">Read the full README</a></li>
+                    <li><a href="how-to-run-gguf-models.html">Learn how to run GGUF models locally</a></li>
+                    <li><a href="addon-guide.html">Build your own addons</a></li>
+                    <li><a href="https://github.com/GGUFloader/gguf-loader/issues" target="_blank" rel="noopener">Report issues on GitHub</a></li>
+                    <li><a href="blog.html">More news and guides</a></li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 GGUF Loader. All rights reserved.</p>
+    </footer>
+
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>
