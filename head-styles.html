@@ -1,0 +1,533 @@
+    <!-- Critical CSS inlined for performance -->
+    <style>
+        /* Critical Above-the-Fold CSS - Inlined for Performance */
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Skip Links for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Container - Mobile-First */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        /* Navigation - Critical Styles */
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: #2c3e50;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation menu - initially hidden on mobile */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        /* Desktop navigation */
+        @media (min-width: 768px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                gap: 2rem;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+            }
+            
+            .nav-menu a {
+                padding: 0.5rem 0;
+                background: none !important;
+                border-bottom: none;
+            }
+        }
+
+        /* Hero Section - Critical Above-the-Fold */
+        .hero {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: #495057;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Philosophy Section - Critical Styles */
+        .hero-philosophy {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .philosophy-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            font-size: 1rem;
+            color: #495057;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .philosophy-attribution {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .philosophy-attribution cite {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .cta-section {
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Progressive enhancement for larger screens */
+        @media (min-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+                min-height: 65vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .cta-button {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+                min-height: 70vh;
+            }
+            
+            .hero-content {
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.7;
+            }
+            
+            .hero-philosophy {
+                margin: 2.5rem auto;
+                padding: 2rem;
+                max-width: 900px;
+            }
+            
+            .philosophy-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .philosophy-text {
+                font-size: 1.15rem;
+                line-height: 1.8;
+            }
+            
+            .cta-section {
+                margin-top: 2rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Image Optimization and Lazy Loading Styles */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Lazy loading states */
+        img.loading {
+            opacity: 0;
+            background: #f8f9fa;
+            min-height: 200px;
+            transition: opacity 0.3s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        /* Image error state */
+        img.image-error {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            min-height: 200px;
+        }
+
+        img.image-error::before {
+            content: '⚠️ Image failed to load';
+        }
+
+        /* Responsive images */
+        .responsive-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .responsive-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Image placeholder while loading */
+        .image-placeholder {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        /* Modern picture element support */
+        picture {
+            display: block;
+            width: 100%;
+        }
+
+        picture img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Documentation Preview Containers */
+        .documentation-preview-container {
+            margin: 1rem 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .documentation-preview-container.loaded {
+            opacity: 1;
+        }
+
+        .documentation-preview-container.updating {
+            opacity: 0.7;
+        }
+
+        .documentation-preview-container.updating::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #0078d4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    
+    <!-- Model Comparison Tool CSS -->
+    <link rel="preload" href="model-comparison.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="model-comparison.css"></noscript>
+    
+    <!-- Content Preview System CSS -->
+    <link rel="preload" href="css/content-preview.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/content-preview.css"></noscript>
+    
+    <!-- Preload JavaScript for faster loading -->
+    <link rel="preload" href="performance-monitor.js" as="script">
+    <link rel="preload" href="model-comparison.js" as="script">
+    
+    <!-- Font optimization with preconnect and font-display: swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Preload critical system fonts -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Font loading optimization -->
+    <style>
+        /* Critical font loading with font-display: swap */
+        @font-face {
+            font-family: 'System UI';
+            font-display: swap;
+            src: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        /* Fallback font stack with font-display: swap */
+        body {
+            font-family: 'System UI', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-display: swap;
+        }
+    </style>
+    
+    <!-- Cache control meta tags -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- PWA meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="GGUF Loader">
+    <meta name="msapplication-TileColor" content="#2c3e50">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <link rel="canonical" href="https://ggufloader.github.io">

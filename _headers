@@ -1,0 +1,97 @@
+# GGUF Loader Website - Netlify Headers Configuration
+# Headers for optimal caching and performance on Netlify
+
+# Global headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src https://www.youtube.com;
+
+# HTML files - 1 hour cache
+/*.html
+  Cache-Control: public, max-age=3600
+  Vary: Accept-Encoding
+
+# CSS and JavaScript - 1 year cache (immutable)
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# Images - 1 week cache
+/*.jpg
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.jpeg
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.png
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.gif
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.webp
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.avif
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.svg
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+/*.ico
+  Cache-Control: public, max-age=604800
+  Vary: Accept-Encoding
+
+# Fonts - 1 year cache (immutable)
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/*.otf
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/*.eot
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+# Manifest and service worker
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+# API endpoints (if any)
+/api/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Documentation pages - shorter cache
+/docs/*
+  Cache-Control: public, max-age=3600
+  Vary: Accept-Encoding
