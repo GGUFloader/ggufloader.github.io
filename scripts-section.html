@@ -1,0 +1,80 @@
+    <!-- Performance Monitor Script -->
+    <script src="performance-monitor.js" defer></script>
+    
+    <!-- Model Comparison Tool Script -->
+    <script src="model-comparison.js" defer></script>
+    
+    <!-- Site Search Script -->
+    <script src="site-search.js" defer></script>
+    
+    <!-- Content Preview System Scripts -->
+    <script src="js/content-preview-system.js" defer></script>
+    <script src="js/homepage-content-integration.js" defer></script>
+    <script src="js/content-synchronization.js" defer></script>
+    
+    <!-- Mobile Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.style.display = isExpanded ? 'none' : 'block';
+                });
+            }
+            
+            // Image lazy loading and optimization
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        loadImage(img);
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(img => {
+                img.classList.add('loading');
+                imageObserver.observe(img);
+            });
+            
+            function loadImage(img) {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                if (img.dataset.srcset) {
+                    img.srcset = img.dataset.srcset;
+                    img.removeAttribute('data-srcset');
+                }
+                img.classList.add('loaded');
+                img.classList.remove('loading');
+            }
+        });
+    </script>
+
+    <!-- Analytics Configuration -->
+    <script src="analytics-config.js"></script>
+    
+    <!-- Analytics and Monitoring Scripts -->
+    <script src="analytics.js" defer></script>
+    <script src="core-web-vitals-monitor.js" defer></script>
+    <script src="user-behavior-tracker.js" defer></script>
+    
+    <!-- Cross-page Integration Analytics -->
+    <script src="js/cross-page-analytics.js" defer></script>
+    <script src="js/cross-page-integration-dashboard.js" defer></script>
+    <script src="js/content-suggestion-monitor.js" defer></script>
+    <script src="js/analytics-reporting-system.js" defer></script>
+    
+    <!-- Initialize analytics after all scripts are loaded -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Analytics and monitoring systems initialized');
+        });
+    </script>

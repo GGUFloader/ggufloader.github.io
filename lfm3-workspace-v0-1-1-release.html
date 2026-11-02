@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFM3 Workspace v0.1.1 Released: Fully Local AI Harness Adds Native Linux Desktop</title>
+    <meta name="description" content="LFM3 Workspace v0.1.1 is out — a fully local, chat-first AI harness for Liquid AI's LFM3 models now ships a native Linux desktop build (.deb & AppImage) alongside Windows. Downloads, install guide, and what changed.">
+    <meta name="keywords" content="LFM3 Workspace, LFM3-Harness, Liquid AI, LFM3-1.7B, LFM3-VL-2B, LFM3-Audio-2B, d1 routing, local AI harness, offline AI assistant, linux ai desktop app, appimage ai, deb package ai, llama.cpp, tauri app, gguf models, no cloud ai, private ai, cpu inference, local voice ai, exact diff approval, ai agent local files, run ai locally, no telemetry">
+    <meta name="author" content="Hussain Nazary">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://ggufloader.github.io/lfm3-workspace-v0-1-1-release.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LFM3 Workspace v0.1.1 Released: Fully Local AI Harness Adds Native Linux Desktop">
+    <meta property="og:description" content="The fully local, chat-first AI harness for Liquid AI's LFM3 family now runs as a native Linux desktop app (.deb & AppImage) alongside Windows. Downloads, install steps, and what changed in v0.1.1.">
+    <meta property="og:image" content="https://ggufloader.github.io/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LFM3 Workspace v0.1.1 release — fully local AI harness for Linux and Windows">
+    <meta property="og:url" content="https://ggufloader.github.io/lfm3-workspace-v0-1-1-release.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GGUF Loader">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-11-01T18:16:00+00:00">
+    <meta property="article:modified_time" content="2026-11-01T18:16:00+00:00">
+    <meta property="article:author" content="Hussain Nazary">
+    <meta property="article:section" content="Release Notes">
+    <meta property="article:tag" content="LFM3">
+    <meta property="article:tag" content="Liquid AI">
+    <meta property="article:tag" content="Local AI">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="llama.cpp">
+    <meta property="article:tag" content="Offline AI">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LFM3 Workspace v0.1.1 Released: Fully Local AI Harness Adds Native Linux Desktop">
+    <meta name="twitter:description" content="A fully local, chat-first AI harness for Liquid AI's LFM3 family — now with a native Linux desktop build (.deb & AppImage). Downloads and install guide inside.">
+    <meta name="twitter:image" content="https://ggufloader.github.io/preview.png">
+    <meta name="twitter:image:alt" content="LFM3 Workspace v0.1.1 release — fully local AI harness for Linux and Windows">
+    <meta name="twitter:site" content="@ggufloader">
+    <meta name="twitter:creator" content="@hussainnazary">
+
+    <!-- Additional SEO Meta -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- JSON-LD: Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ggufloader.github.io/lfm3-workspace-v0-1-1-release.html"
+      },
+      "headline": "LFM3 Workspace v0.1.1 Released: Fully Local AI Harness Adds Native Linux Desktop",
+      "description": "LFM3 Workspace v0.1.1 ships a native Linux desktop build (.deb and AppImage) alongside the Windows installer, adds Linux process containment and a proper XDG data directory, and keeps everything fully local. Downloads, install guide, and release details.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://ggufloader.github.io/preview.png",
+        "width": 1200,
+        "height": 630
+      },
+      "datePublished": "2026-11-01T18:16:00+00:00",
+      "dateModified": "2026-11-01T18:16:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Hussain Nazary",
+        "url": "https://ggufloader.github.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GGUF Loader",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ggufloader.github.io/preview.png"
+        }
+      },
+      "keywords": ["LFM3 Workspace", "LFM3-Harness", "Liquid AI", "local AI", "offline AI", "Linux", "llama.cpp", "Tauri", "GGUF", "CPU inference"],
+      "articleSection": "Release Notes",
+      "wordCount": 1500,
+      "inLanguage": "en-US"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is LFM3 Workspace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LFM3 Workspace is a fully local, chat-first AI harness built by the open-source LFM3-Harness project around Liquid AI's LFM3 model family. It runs on Rust, React, Tauri 2, and a pinned llama.cpp runtime. Everything executes on your own machine: no account, no cloud calls, no telemetry. It combines a chat surface with workspace-confined file tools, image understanding, offline voice, and a separate Verified tasks mode for machine-certified work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is new in LFM3 Workspace v0.1.1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Version 0.1.1 adds a native Linux desktop build shipped as a .deb package and an AppImage, Linux process containment so owned model servers shut down cleanly, bundled shared libraries that resolve before system copies, an XDG-compliant Linux data directory, and a single release workflow that builds all assets from one tag with a generated SHA-256 checksum table. Nothing from v0.1.0 was removed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a GPU to run LFM3 Workspace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. LFM3 Workspace uses CPU-only inference through its pinned llama.cpp runtime (-ngl 0). You need 8 GB of RAM for chat with the text model, and more if you run vision, voice, and routing alongside it. All four model roles take about 4.9 GB of disk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How big is the download?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The installers are small because no GGUF weights are bundled: the Windows installer is about 15 MB, the Linux .deb 37 MB, the AppImage 100 MB, and the Linux CLI archive 22 MB. The four model roles are downloaded in-app and pinned: LFM3-1.7B text (1.10 GB), LFM3-VL-2B vision (1.25 GB), LFM3-Audio-2B voice (1.40 GB), and d1-2B decision (1.10 GB) — about 4.9 GB total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does LFM3 Workspace work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After setup the app makes no network calls at runtime. The only network activity is the model download you explicitly click in the Models menu. Voice input and speech output are also local: LFM3-Audio-2B transcribes your recordings and the bundled llama-tts reads answers aloud, entirely offline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Windows warn me about the installer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The v0.1.1 packages are unsigned, so SmartScreen may ask for confirmation on first run. Choose More info, then Run anyway. You can verify the SHA-256 checksum of every asset against the table generated in the release page. Inside the app, every file write or edit stays behind an exact-diff approval you must accept, and tools are confined to the workspace folder you pick."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use my own GGUF files with LFM3 Workspace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Copy GGUF files into the models folder shown at the top of the Models menu and they are detected on the next launch, or immediately via the Reload installed models action. On Windows the default models folder is %LOCALAPPDATA%\\LFM3Harness\\models; on Linux it is $XDG_DATA_HOME/LFM3Harness or ~/.local/share/LFM3Harness. You can also point LFM3_MODELS_DIR at an existing weights folder."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .subtitle { font-size: 1.2rem; color: #7f8c8d; margin-bottom: 15px; }
+        .header .updated { font-size: 0.9rem; color: #27ae60; font-weight: 600; margin-bottom: 20px; }
+        .intro { font-size: 1.1rem; color: #34495e; max-width: 800px; margin: 0 auto; }
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .content-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .content-section h3 { color: #2c3e50; font-size: 1.25rem; margin: 25px 0 12px; }
+        .content-section p { color: #555; margin-bottom: 15px; }
+        .content-section ul, .content-section ol { margin: 0 0 15px 25px; color: #555; }
+        .content-section li { margin-bottom: 8px; }
+        .model-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        .model-card.top-pick { border-left-color: #f39c12; background: linear-gradient(135deg, #fffbf0 0%, #fff8e7 100%); }
+        .model-card.new { border-left-color: #27ae60; }
+        .model-card h4 { color: #2c3e50; font-size: 1.3rem; margin-bottom: 5px; }
+        .model-card .model-subtitle { color: #667eea; font-style: italic; margin-bottom: 10px; font-size: 1rem; }
+        .model-card .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 10px;
+        }
+        .badge-new { background: #d4edda; color: #155724; }
+        .badge-top { background: #fff3cd; color: #856404; }
+        .badge-fast { background: #cce5ff; color: #004085; }
+        .badge-coding { background: #e2d5f1; color: #6f42c1; }
+        .badge-tiny { background: #f8d7da; color: #721c24; }
+        .model-card p { margin-bottom: 15px; color: #555; }
+        .model-specs {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .model-specs strong { color: #2c3e50; }
+        .model-specs a { color: #667eea; font-weight: 600; text-decoration: none; }
+        .model-specs a:hover { text-decoration: underline; }
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .specs-table th, .specs-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .specs-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+        }
+        .specs-table tr:hover { background-color: #f8f9fa; }
+        .hardware-specs {
+            background: linear-gradient(135deg, #17a2b8, #138496);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .hardware-specs h3 { margin-bottom: 15px; color: white; margin-top: 0; }
+        .hardware-specs ul { list-style: none; padding-left: 0; margin: 0; }
+        .hardware-specs li { padding: 5px 0; padding-left: 25px; position: relative; color: white; }
+        .hardware-specs li::before { content: "✓"; position: absolute; left: 0; color: #d4f5c3; font-weight: bold; }
+        .highlight {
+            background: linear-gradient(135deg, #ffc107, #ff8c00);
+            color: #2c3e50;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .conclusion {
+            background: linear-gradient(135deg, #6f42c1, #e83e8c);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .conclusion h2 { color: white; border-bottom: 3px solid rgba(255,255,255,0.3); margin-bottom: 20px; }
+        .conclusion p { color: rgba(255,255,255,0.95); }
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning-box h4 { color: #856404; margin-bottom: 10px; }
+        .warning-box p { color: #856404; margin: 0; }
+        pre {
+            background: #2b2d42;
+            color: #f8f8f2;
+            border-radius: 8px;
+            padding: 16px 18px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            line-height: 1.55;
+        }
+        pre code { background: transparent; color: inherit; padding: 0; font-size: inherit; }
+        code {
+            background: rgba(102, 126, 234, 0.12);
+            color: #5b4bc4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+        .faq-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 12px 0;
+            border-left: 4px solid #667eea;
+        }
+        .faq-item h4 { color: #2c3e50; margin-bottom: 8px; font-size: 1.05rem; }
+        .faq-item p { color: #555; margin: 0; }
+        .link-row { margin-top: 18px; }
+        .link-row a {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            margin: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .link-row a:hover { background: rgba(255,255,255,0.25); }
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .header { padding: 25px 20px; }
+            .header h1 { font-size: 1.8rem; }
+            .content-section { padding: 20px 15px; }
+            .model-card { padding: 20px 15px; }
+            .specs-table { font-size: 0.8rem; display: block; overflow-x: auto; }
+            .specs-table th, .specs-table td { padding: 8px 6px; min-width: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-link">← Back to Blog</a>
+
+        <div class="header">
+            <h1>LFM3 Workspace v0.1.1 Released</h1>
+            <div class="subtitle">The fully local, chat-first AI harness now ships a native Linux desktop build — alongside Windows</div>
+            <div class="updated">📅 Released: November 1, 2026 · v0.1.1 · LFM3-Harness project</div>
+            <div class="intro">
+                LFM3 Workspace is a chat-first AI workspace that runs entirely on your own machine, built around Liquid AI's LFM3 model family. No account, no cloud calls, no telemetry. Version 0.1.1, published on November 1, 2026, adds the piece many users have been waiting for: a native Linux desktop build, shipping as a <strong>.deb package</strong> and an <strong>AppImage</strong> alongside the existing Windows installer.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🤔 What Is LFM3 Workspace?</h2>
+            <p>LFM3 Workspace sits between a chat app and a file-working assistant. You get two surfaces backed by one engine: <strong>Chat</strong> for open-ended work, and <strong>Verified tasks</strong> for anything that must be machine-certified before it counts as done. A chat message can never satisfy a verified check — the two are deliberately kept apart.</p>
+            <p>Instead of one giant model, it runs <strong>four small local models</strong>, each with a single job: one writes and acts, one looks at images, one hears and speaks, and one routes each turn and checks evidence. All four run on a pinned <code>llama.cpp</code> CPU runtime that ships with the app, so there is nothing to configure and no GPU to buy. The sidebar always shows each role's state — Loaded, Installed, or Missing.</p>
+            <p>Under the hood it is <strong>Rust, React, and Tauri 2</strong>. The harness shows you every tool call it makes, keeps every file change behind an approval you must accept, and never reports unverified work as finished. After setup, the only network activity is the model download you explicitly choose — chat, tools, and voice all stay offline.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>🆕 What's New in v0.1.1</h2>
+            <p>This is a packaging-and-platform release: the app's behavior is unchanged, but it now reaches one more desktop platform and cleans up how it manages processes on Unix.</p>
+
+            <div class="model-card top-pick">
+                <span class="badge badge-top">⭐ Headline Feature</span>
+                <h4>1. Native Linux desktop</h4>
+                <p>The same Tauri interface now builds and runs on Linux x86_64 — as a <code>.deb</code> package for Debian/Ubuntu and as a portable <strong>AppImage</strong> — alongside the Windows NSIS installer. All three are produced from the same release tag by one workflow, so Linux users no longer have to fall back to the headless CLI archive.</p>
+            </div>
+
+            <div class="model-card new">
+                <span class="badge badge-new">Linux</span>
+                <h4>2. Clean process containment</h4>
+                <p>Owned model servers, command tools, and lifecycle probes now spawn into their own process group on Unix and terminate together when the app exits. Unsupported platforms refuse to start children at all rather than leak them. In plain terms: closing the app leaves no orphaned background processes behind.</p>
+            </div>
+
+            <div class="model-card">
+                <span class="badge badge-fast">Reliability</span>
+                <h4>3. Bundled libraries resolve first</h4>
+                <p>Every llama.cpp process the harness starts gets its own directory at the front of <code>LD_LIBRARY_PATH</code>, so the packaged <code>libggml*</code>, <code>libllama*</code>, and <code>libmtmd*</code> libraries are used even when a system copy exists. Windows behavior is unchanged, and a normal exit on either OS now deterministically reaps model servers.</p>
+            </div>
+
+            <div class="model-card">
+                <span class="badge badge-fast">Linux</span>
+                <h4>4. A proper Linux data directory</h4>
+                <p>State, SQLite journals, chat transcripts, attachments, and downloaded weights now live under <code>$XDG_DATA_HOME/LFM3Harness</code> (or <code>~/.local/share/LFM3Harness</code> when unset). Windows keeps <code>%LOCALAPPDATA%\LFM3Harness</code>, with a safer fallback when that variable is missing.</p>
+            </div>
+
+            <div class="model-card">
+                <span class="badge badge-coding">Trust</span>
+                <h4>5. One release workflow, one checksum table</h4>
+                <p>A single GitHub Actions workflow builds the Windows installer, the Linux <code>.deb</code>/<code>.AppImage</code>, and the Linux CLI archive from the same tag, publishes them together, and generates a SHA-256 table from the uploaded files — so the checksums on the release page always match the assets.</p>
+            </div>
+
+            <div class="model-card new">
+                <span class="badge badge-new">Compatibility</span>
+                <h4>6. Nothing was removed</h4>
+                <p>The 32,000-token context, the model downloader, routing, the evidence gate, and verified tasks all behave exactly as in v0.1.0. Upgrading is an install-over: models, conversations, and settings stay where they are — no migrations, no model re-downloads.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🧠 Four Small Models, Four Roles</h2>
+            <p>All four roles are downloaded from inside the app's <strong>Models</strong> menu, which lists exact sizes and SHA-256 digests for every file. A download starts only when you click it, streams to a <code>.part</code> file with visible progress, verifies the digest, and only then moves into the models folder. Nothing is fetched in the background — and GGUF files you copy in yourself are detected automatically.</p>
+            <table class="specs-table">
+                <tr>
+                    <th>Role</th>
+                    <th>Files (pinned)</th>
+                    <th>Size</th>
+                    <th>What it does</th>
+                </tr>
+                <tr>
+                    <td><strong>Text &amp; agent</strong></td>
+                    <td><code>LFM3-1.7B-Q4_K_M.gguf</code></td>
+                    <td>1.10 GB</td>
+                    <td>Acts and writes — chat, drafting, and file tools</td>
+                </tr>
+                <tr>
+                    <td><strong>Vision</strong></td>
+                    <td><code>LFM3-VL-2B-QAD-Q4_0.gguf</code> + <code>mmproj</code></td>
+                    <td>1.25 GB</td>
+                    <td>Reads attached images (PNG, JPEG, WebP, GIF up to 20 MB)</td>
+                </tr>
+                <tr>
+                    <td><strong>Voice</strong></td>
+                    <td><code>LFM3-Audio-2B-Q4_K_M.gguf</code> + <code>mmproj</code></td>
+                    <td>1.40 GB</td>
+                    <td>Transcribes voice notes and speaks answers aloud, offline</td>
+                </tr>
+                <tr>
+                    <td><strong>Decision</strong></td>
+                    <td><code>d1-2B-Q4_K_M.gguf</code></td>
+                    <td>1.10 GB</td>
+                    <td>Routes each turn, runs the write and evidence gates</td>
+                </tr>
+            </table>
+            <p>All four together take about <strong>4.9 GB</strong> of disk — and you only need the roles you actually want. Text-only chat works with the 1.10 GB text model alone.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>🔒 Built to Ask Before It Writes</h2>
+            <p>The part we appreciate most: LFM3 Workspace treats file changes as something you must approve, not something that happens to you. <strong>Every write or edit appears inline with its path and full content or diff</strong> — you press <em>Allow once</em> to execute it or <em>Deny</em> to leave the file untouched. Pending approvals expire after ten minutes but survive a restart, so nothing executes while you are away without an explicit yes from you.</p>
+            <p>Two smaller models act as <strong>decision gates</strong> rather than executors. The <code>d1</code> router classifies each message into a task shape before the acting model runs; a <em>write gate</em> can withhold a change that contradicts your last request, and an <em>evidence gate</em> can tell the model to state what evidence is missing. Neither gate can approve, deny, or execute anything — the final decision on every write is always yours.</p>
+            <p>The toolset is confined to the single workspace folder you pick with the folder chip: <code>list_files</code>, <code>read_file</code>, <code>search_files</code>, <code>related_files</code>, <code>write_file</code>, and <code>edit_file</code>. Paths outside the workspace are rejected. <code>look</code> only appears once the vision model is installed, and <code>transcribe</code> only with the audio model. A turn is capped at twelve tool rounds, Stop cancels the stream and any pending approval immediately, and every tool call is shown in the transcript as it happens.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>📥 Downloads</h2>
+            <p>All assets are attached to the <a href="https://github.com/LFM3-Harness/LFM3-Harness/releases/tag/v0.1.1" target="_blank" rel="noopener">v0.1.1 release page</a> and built from the same tag. None of them include GGUF weights — which is exactly why the Windows installer stays near 15 MB. Models are downloaded inside the app.</p>
+            <table class="specs-table">
+                <tr>
+                    <th>Platform</th>
+                    <th>Asset</th>
+                    <th>Size</th>
+                    <th>What it contains</th>
+                </tr>
+                <tr>
+                    <td>Windows x64 · Desktop</td>
+                    <td><a href="https://github.com/LFM3-Harness/LFM3-Harness/releases/download/v0.1.1/LFM3.Workspace_0.1.1_x64-setup.exe" target="_blank" rel="noopener"><code>LFM3.Workspace_0.1.1_x64-setup.exe</code></a></td>
+                    <td>15.2 MB</td>
+                    <td>Desktop app, React UI, missions, pinned CPU llama.cpp runtime</td>
+                </tr>
+                <tr>
+                    <td>Linux x64 · Desktop</td>
+                    <td><a href="https://github.com/LFM3-Harness/LFM3-Harness/releases/download/v0.1.1/LFM3.Workspace_0.1.1_amd64.deb" target="_blank" rel="noopener"><code>LFM3.Workspace_0.1.1_amd64.deb</code></a></td>
+                    <td>37.1 MB</td>
+                    <td>Debian/Ubuntu package with declared WebKitGTK and GTK dependencies</td>
+                </tr>
+                <tr>
+                    <td>Linux x64 · Desktop</td>
+                    <td><a href="https://github.com/LFM3-Harness/LFM3-Harness/releases/download/v0.1.1/LFM3.Workspace_0.1.1_amd64.AppImage" target="_blank" rel="noopener"><code>LFM3.Workspace_0.1.1_amd64.AppImage</code></a></td>
+                    <td>99.6 MB</td>
+                    <td>Portable executable — same app, no install step</td>
+                </tr>
+                <tr>
+                    <td>Linux x64 · CLI</td>
+                    <td><a href="https://github.com/LFM3-Harness/LFM3-Harness/releases/download/v0.1.1/LFM3-Workspace_0.1.1_linux-x64_cli.tar.gz" target="_blank" rel="noopener"><code>LFM3-Workspace_0.1.1_linux-x64_cli.tar.gz</code></a></td>
+                    <td>22.2 MB</td>
+                    <td>Headless <code>lfm3</code> CLI, missions, <code>run.sh</code>, Linux llama.cpp runtime</td>
+                </tr>
+            </table>
+            <p>A <code>SHA256SUMS.txt</code> file and a checksum table are generated from the uploaded assets on the release page, so you can verify every download before running it.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>🚀 How to Install</h2>
+
+            <h3>Windows (10/11, x64)</h3>
+            <ol>
+                <li>Download <code>LFM3.Workspace_0.1.1_x64-setup.exe</code> and run it.</li>
+                <li>Launch <strong>LFM3 Workspace</strong> — it opens on chat and looks for the bundled runtime and any installed weights.</li>
+                <li>Open the <strong>Models</strong> menu in the chat header and click <strong>Download</strong> for the roles you want (text 1.10 GB, vision 1.25 GB, voice 1.40 GB, decision 1.10 GB).</li>
+                <li>Choose a folder with the folder chip, then ask a question, attach an image, or record a voice message.</li>
+            </ol>
+            <div class="warning-box">
+                <h4>⚠️ Heads-up on SmartScreen</h4>
+                <p>The installer is unsigned, so Windows may show a SmartScreen prompt. Choose <strong>More info → Run anyway</strong>. Prefer verifying first? Compare the file's SHA-256 with the checksum table on the release page.</p>
+            </div>
+
+            <h3>Linux desktop</h3>
+            <p>Debian or Ubuntu — the package declares its WebKitGTK 4.1 and GTK 3 dependencies and installs a desktop entry:</p>
+            <pre><code>sudo apt install ./LFM3.Workspace_0.1.1_amd64.deb
+lfm3-desktop</code></pre>
+            <p>Or run the portable AppImage — the host needs <code>libwebkit2gtk-4.1-0</code> and <code>libgtk-3-0</code>:</p>
+            <pre><code>chmod +x LFM3.Workspace_0.1.1_amd64.AppImage
+./LFM3.Workspace_0.1.1_amd64.AppImage</code></pre>
+            <p>Both carry the same in-app <strong>Models</strong> downloader as Windows, and state lives under <code>$XDG_DATA_HOME/LFM3Harness</code> or <code>~/.local/share/LFM3Harness</code>. Prefer building from source?</p>
+            <pre><code>./run.sh deps      # Rust, Node.js, UI modules, WebKit check
+./run.sh desktop   # development mode
+./run.sh bundle    # .deb and .AppImage in target/release/bundle/</code></pre>
+
+            <h3>Linux CLI (headless)</h3>
+            <p>The CLI archive has no downloader, so supply the same pinned GGUF files yourself:</p>
+            <pre><code>tar -xzf LFM3-Workspace_0.1.1_linux-x64_cli.tar.gz
+cd LFM3-Workspace-linux-x64
+mkdir -p models &amp;&amp; cp /path/to/*.gguf models/
+./run.sh doctor
+./run.sh models --probe
+./run.sh run --mission desk_task \
+  --input ../tests/fixtures/desk_task/basic.json \
+  --workspace ./workspace</code></pre>
+            <p><code>run.sh</code> points <code>LFM3_LLAMA_SERVER</code> at the bundled <code>llama-server</code> and <code>LFM3_MODELS_DIR</code> at <code>models/</code> when they exist. The CLI was built on Ubuntu 22.04 x64.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>⚙️ Requirements &amp; Honest Limitations</h2>
+            <div class="hardware-specs">
+                <h3>System Requirements</h3>
+                <ul>
+                    <li><strong>OS:</strong> Windows 10/11 x64, or Linux x86_64 with a recent glibc (desktop needs WebKitGTK 4.1 + GTK 3)</li>
+                    <li><strong>RAM:</strong> 8 GB for chat with the text role; more when vision, voice, and routing run alongside</li>
+                    <li><strong>Storage:</strong> ~4.9 GB for all four model roles, plus your workspace</li>
+                    <li><strong>GPU:</strong> Not required — CPU-only inference (<code>-ngl 0</code>)</li>
+                </ul>
+            </div>
+            <p>The release notes are refreshingly candid about what v0.1.1 is not. All packages are unsigned, so expect the SmartScreen warning on Windows. The runtime is CPU-only, so turns are slower than a GPU build would be. Three of the semantic missions remain <code>human_review_only</code> — only <code>desk_task</code> has an end-to-end real-model acceptance. Linux has no system-voice fallback: without the audio model pair, speech output reports the local voice as unavailable rather than borrowing a system voice. And the Linux desktop packages were built and attached by the release workflow but were not interactively launched on a Linux host in that release session.</p>
+            <p>Upgrading from v0.1.0? Just install over the previous build — models, conversations, and settings stay put, with no migrations and no model re-downloads.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>What is LFM3 Workspace?</h4>
+                <p>A fully local, chat-first AI harness built by the open-source LFM3-Harness project around Liquid AI's LFM3 model family. It runs on Rust, React, Tauri 2, and a pinned llama.cpp runtime — no account, no cloud calls, no telemetry. It combines chat with workspace-confined file tools, image understanding, offline voice, and a separate Verified tasks mode.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is new in v0.1.1?</h4>
+                <p>A native Linux desktop build (.deb and AppImage), Linux process containment so model servers shut down cleanly, bundled shared libraries that resolve before system copies, an XDG-compliant Linux data directory, and a single release workflow that builds all assets from one tag with a generated SHA-256 checksum table. Nothing from v0.1.0 was removed.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Do I need a GPU or a powerful PC?</h4>
+                <p>No. Inference is CPU-only through the pinned llama.cpp runtime. 8 GB of RAM covers chat with the text role; add headroom if you also run vision, voice, and routing. All four model roles fit in about 4.9 GB of disk.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Does it really work offline?</h4>
+                <p>Yes. After setup the app makes no network calls at runtime — the only network activity is a model download you explicitly click. Voice input and speech output are local too: LFM3-Audio-2B transcribes your recordings and the bundled llama-tts speaks answers, entirely offline.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Why does Windows warn me about the installer?</h4>
+                <p>The packages are unsigned, so SmartScreen asks for confirmation on first run — choose <strong>More info → Run anyway</strong>. You can verify each asset's SHA-256 against the release page's checksum table. Inside the app, every file change stays behind an exact-diff approval, and tools are confined to the workspace folder you pick.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I use my own GGUF files?</h4>
+                <p>Yes. Copy GGUF files into the models folder shown at the top of the Models menu and they are detected on the next launch, or immediately via <em>Reload installed models</em>. You can also set <code>LFM3_MODELS_DIR</code> to point at an existing weights folder.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🔗 Related Posts</h2>
+            <div class="faq-item">
+                <h4><a href="how-to-run-gguf-models.html" style="color: #667eea; text-decoration: none;">How to Run GGUF Models Locally — Step by Step →</a></h4>
+                <p>Ollama, LM Studio, llama.cpp, and GGUF Loader compared — the exact runtime landscape LFM3 Workspace is part of.</p>
+            </div>
+            <div class="faq-item">
+                <h4><a href="download-gguf-models.html" style="color: #667eea; text-decoration: none;">Where to Download GGUF Models — Best Sources →</a></h4>
+                <p>LFM3 Workspace verifies SHA-256 digests for you; here is where the wider world of GGUF weights lives.</p>
+            </div>
+            <div class="faq-item">
+                <h4><a href="2025-07-07-top-10-gguf-models-i5-16gb.html" style="color: #667eea; text-decoration: none;">Top 10 GGUF Models for i5 + 16GB RAM Systems →</a></h4>
+                <p>Picking models by hardware — the same thinking behind LFM3 Workspace's four 1–2B roles.</p>
+            </div>
+            <div class="faq-item">
+                <h4><a href="gguf-loader-2-3-0-release-notes.html" style="color: #667eea; text-decoration: none;">GGUF Loader 2.3.0 Release Notes →</a></h4>
+                <p>What shipped recently on our side of the local-AI fence.</p>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>🎯 The Takeaway</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                LFM3 Workspace v0.1.1 makes fully local, agent-style AI a realistic daily driver on both major desktop platforms:<br>
+                <strong>Linux users</strong> finally get a first-class desktop build (.deb &amp; AppImage)<br>
+                <strong>Everyone</strong> gets clean process shutdowns and verifiable, checksummed downloads<br>
+                <strong>Your files</strong> stay behind an approval gate you control — and nothing ever phones home
+            </p>
+            <p>Grab it from the <a href="https://github.com/LFM3-Harness/LFM3-Harness/releases/tag/v0.1.1" style="color: #ffc107; font-weight: 600;">v0.1.1 release page</a> or browse the <a href="https://github.com/LFM3-Harness/LFM3-Harness" style="color: #ffc107; font-weight: 600;">LFM3-Harness repository</a> to see how it is built.</p>
+            <p style="margin-top: 20px;">And if you want the same fully-offline privacy with any other GGUF model — Llama, Mistral, DeepSeek, Qwen — through a simple drag-and-drop GUI, that is exactly what <a href="index.html" style="color: #ffc107; font-weight: 600;">GGUF Loader</a> does. Two tools, one rule: your data never leaves your device.</p>
+            <p style="margin-top: 20px;"><a href="blog.html" style="color: #ffc107; text-decoration: none; font-weight: 600;">← Back to Blog</a></p>
+        </div>
+    </div>
+</body>
+</html>

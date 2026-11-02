@@ -1,0 +1,133 @@
+/* Hero Section - Mobile-First */
+.hero {
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.hero-description {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cta-section {
+    margin-top: 1.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.cta-button:hover {
+    background: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+}
+
+/* Progressive enhancement for larger screens */
+@media (min-width: 576px) {
+    .hero {
+        padding: 3rem 0;
+        min-height: 65vh;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 4rem 0;
+        min-height: 70vh;
+    }
+    
+    .hero-content {
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+    
+    .cta-section {
+        margin-top: 2rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}

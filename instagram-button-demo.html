@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Floating Button Demo</title>
+    <link rel="stylesheet" href="css/instagram-float-button.css">
+    <script src="js/instagram-float-button.js" defer></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .demo-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .demo-section h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .button-preview {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        .spacer {
+            height: 800px;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Instagram Floating Button Demo</h1>
+    
+    <div class="demo-section">
+        <h2>👀 Look at the bottom-right corner!</h2>
+        <p>You should see a beautiful Instagram button floating in the bottom-right corner of this page. This button will appear on all blog posts.</p>
+    </div>
+
+    <div class="button-preview">
+        <h2>✨ Features</h2>
+        <ul class="feature-list">
+            <li>Links to <strong>@nazary.ai</strong> on Instagram</li>
+            <li>Gradient colors matching Instagram branding</li>
+            <li>Responsive: shows icon + text on desktop, icon only on mobile</li>
+            <li>Smooth animations: slide-in effect and subtle pulse</li>
+            <li>Fully accessible: keyboard navigation, ARIA labels, focus states</li>
+            <li>Analytics tracking ready (Google Analytics & Plausible)</li>
+        </ul>
+    </div>
+
+    <div class="demo-section">
+        <h2>📱 Responsive Behavior</h2>
+        <p><strong>Desktop:</strong> Shows full button with icon and text</p>
+        <p><strong>Tablet:</strong> Slightly smaller but still shows text</p>
+        <p><strong>Mobile (&lt; 480px):</strong> Circular button with icon only</p>
+        <p><em>Try resizing your browser window to see the responsive behavior!</em></p>
+    </div>
+
+    <div class="demo-section">
+        <h2>🔧 Implementation</h2>
+        <p>Only two lines needed in the <code>&lt;head&gt;</code> section:</p>
+        <div class="code-block">
+&lt;link rel="stylesheet" href="css/instagram-float-button.css"&gt;
+&lt;script src="js/instagram-float-button.js" defer&gt;&lt;/script&gt;
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>⚙️ How It Works</h2>
+        <ol>
+            <li>The JavaScript file automatically initializes when the page loads</li>
+            <li>It creates the button element and appends it to the body</li>
+            <li>The button includes an Instagram icon (SVG) and text</li>
+            <li>CSS handles all styling, animations, and responsive behavior</li>
+            <li>No manual HTML needed - it's completely automatic!</li>
+        </ol>
+    </div>
+
+    <div class="spacer">
+        ⬇️ Scroll down to see the button stay fixed in position ⬇️
+    </div>
+
+    <div class="demo-section">
+        <h2>✅ Testing Checklist</h2>
+        <ul class="feature-list">
+            <li>Button is visible in bottom-right corner</li>
+            <li>Hover effect works (button lifts up)</li>
+            <li>Click opens Instagram in new tab</li>
+            <li>Button stays fixed while scrolling</li>
+            <li>Responsive design works at different screen sizes</li>
+            <li>Keyboard accessible (Tab to focus, Enter to activate)</li>
+        </ul>
+    </div>
+
+    <div class="button-preview">
+        <h2>📊 Analytics</h2>
+        <p>The button automatically tracks clicks if you have:</p>
+        <ul>
+            <li><strong>Google Analytics:</strong> Event: "Social" / "Instagram Float Button"</li>
+            <li><strong>Plausible:</strong> Event: "Instagram Click" with location prop</li>
+        </ul>
+        <p><em>Check your browser console after clicking to see tracking events (if analytics installed).</em></p>
+    </div>
+
+    <div class="demo-section">
+        <h2>🎯 What's Next?</h2>
+        <p>A workflow is automatically adding this button to all blog posts on your site:</p>
+        <ul>
+            <li>✅ Root directory blog posts (e.g., what-is-gguf.html)</li>
+            <li>✅ Use-cases subdirectory posts</li>
+            <li>✅ Release notes and guides</li>
+        </ul>
+        <p>The button will appear on every blog post automatically!</p>
+    </div>
+
+    <div style="height: 500px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; font-size: 24px; text-align: center; padding: 20px;">
+        <div>
+            <p>🎉 That's it!</p>
+            <p style="font-size: 16px;">The Instagram button is now live on all your blog posts.</p>
+        </div>
+    </div>
+
+</body>
+</html>

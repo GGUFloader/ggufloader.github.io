@@ -1,0 +1,1069 @@
+/* Compact Layout - 1.5x Scale from Ultra Compact */
+/* This CSS scales everything to 1.5x the ultra compact size for better readability */
+
+/* Base scaling - 1.5x larger */
+html {
+    font-size: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+body {
+    font-size: 1.89rem;
+    /* 1.5x of 1.26rem */
+    line-height: 1.5;
+    /* Improved for larger text */
+}
+
+/* Container adjustments - 1.5x larger */
+.container {
+    padding: 0 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+@media (min-width: 576px) {
+    .container {
+        padding: 0 0.945rem;
+        /* 1.5x of 0.63rem */
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 1.26rem;
+        /* 1.5x of 0.84rem */
+    }
+}
+
+/* Navigation 1.5x larger */
+.nav-container {
+    padding: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.logo {
+    font-size: 1.89rem;
+    /* 1.5x of 1.26rem */
+}
+
+.nav-menu a {
+    padding: 0.63rem 1.26rem;
+    /* 1.5x of 0.42rem 0.84rem */
+    min-height: 27px;
+    /* 1.5x of 18px */
+    font-size: 1.785rem;
+    /* 1.5x of 1.19rem */
+}
+
+.nav-dropdown-menu a {
+    padding: 0.4725rem 1.89rem;
+    /* 1.5x of 0.315rem 1.26rem */
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+    min-height: 27px;
+    /* 1.5x of 18px */
+}
+
+/* Hero section 1.5x larger */
+.hero {
+    padding: 1.26rem 0;
+    /* 1.5x of 0.84rem */
+    min-height: 37.8vh;
+    /* 1.5x of 25.2vh */
+}
+
+.hero h1 {
+    font-size: 2.52rem;
+    /* 1.5x of 1.68rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.hero-subtitle {
+    font-size: 1.386rem;
+    /* 1.5x of 0.924rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.hero-description {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.hero-philosophy {
+    margin: 1.89rem 0;
+    /* 2.25x of 0.84rem (1.5x larger) */
+    padding: 1.4175rem;
+    /* 2.25x of 0.63rem (1.5x larger) */
+}
+
+.philosophy-title {
+    font-size: 2.268rem;
+    /* 2.25x of 1.008rem (1.5x larger) */
+    margin-bottom: 0.945rem;
+    /* 2.25x of 0.42rem (1.5x larger) */
+}
+
+.philosophy-text {
+    font-size: 1.89rem;
+    /* 2.25x of 0.84rem (1.5x larger) */
+}
+
+.cta-button {
+    padding: 0.63rem 1.26rem;
+    /* 1.5x of 0.42rem 0.84rem */
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    min-height: 27px;
+    /* 1.5x of 18px */
+    min-width: 27px;
+    /* 1.5x of 18px */
+}
+
+/* Version updates section 1.5x larger */
+.version-updates {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.updates-header {
+    margin-bottom: 1.89rem;
+    /* 1.5x of 1.26rem */
+}
+
+.version-badge {
+    padding: 0.315rem 0.63rem;
+    /* 1.5x of 0.21rem 0.42rem */
+    font-size: 1.008rem;
+    /* 1.5x of 0.672rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.updates-header h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.updates-subtitle {
+    font-size: 1.512rem;
+    /* 1.5x of 1.008rem */
+}
+
+.updates-grid {
+    gap: 1.26rem;
+    /* 1.5x of 0.84rem */
+    margin-bottom: 1.89rem;
+    /* 1.5x of 1.26rem */
+}
+
+.update-card {
+    padding: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.update-icon {
+    font-size: 1.575rem;
+    /* 1.5x of 1.05rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.update-card h3 {
+    font-size: 1.638rem;
+    /* 1.5x of 1.092rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.update-card p {
+    margin-bottom: 0.945rem;
+    /* 1.5x of 0.63rem */
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.feature-tag {
+    padding: 0.189rem 0.504rem;
+    /* 1.5x of 0.126rem 0.336rem */
+    font-size: 1.008rem;
+    /* 1.5x of 0.672rem */
+}
+
+.updates-cta {
+    padding: 1.89rem;
+    /* 1.5x of 1.26rem */
+    gap: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.cta-content h3 {
+    font-size: 2.268rem;
+    /* 1.5x of 1.512rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.cta-content p {
+    font-size: 1.386rem;
+    /* 1.5x of 0.924rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.cta-buttons {
+    gap: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.cta-button.primary,
+.cta-button.secondary {
+    padding: 0.63rem 1.26rem;
+    /* 1.5x of 0.42rem 0.84rem */
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.version-stats {
+    gap: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.stat-number {
+    font-size: 1.89rem;
+    /* 1.5x of 1.26rem */
+    margin-bottom: 0.315rem;
+    /* 1.5x of 0.21rem */
+}
+
+.stat-label {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+/* Download section 1.5x larger */
+.download-section {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.download-section h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.download-button {
+    padding: 0.63rem 1.26rem;
+    /* 1.5x of 0.42rem 0.84rem */
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    min-height: 27px;
+    /* 1.5x of 18px */
+}
+
+/* Features section 1.5x larger */
+.features {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.features h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.feature-card {
+    padding: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.feature-card h3 {
+    font-size: 1.638rem;
+    /* 1.5x of 1.092rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.feature-card p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Demo video section 1.5x larger */
+.demo-video-section {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.demo-video-section h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Models section 1.5x larger */
+.gguf-models-section {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.gguf-models-section h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.model-card {
+    padding: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.model-card h3 {
+    font-size: 1.638rem;
+    /* 1.5x of 1.092rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.model-card p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Use cases section 1.5x larger */
+.use-cases {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.use-cases h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.step {
+    padding: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.step h3 {
+    font-size: 1.638rem;
+    /* 1.5x of 1.092rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.step p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* How it works section 1.5x larger */
+.how-it-works {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.how-it-works h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.how-it-works p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* FAQ section 1.5x larger */
+.faq {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.faq h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.faq-item {
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.faq-question {
+    font-size: 1.512rem;
+    /* 1.5x of 1.008rem */
+    padding: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.faq-answer {
+    padding: 0.63rem;
+    /* 1.5x of 0.42rem */
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Roadmap section 1.5x larger */
+.roadmap {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.roadmap h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.roadmap-item {
+    padding: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.roadmap-item h3 {
+    font-size: 1.638rem;
+    /* 1.5x of 1.092rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.roadmap-item p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Testimonials section 1.5x larger */
+.testimonials {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.testimonials h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.testimonial {
+    padding: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.testimonial p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.testimonial cite {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+/* Community section 1.5x larger */
+.community-integration {
+    padding: 2.52rem 0;
+    /* 1.5x of 1.68rem */
+}
+
+.community-integration h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+    margin-bottom: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+.community-integration p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Footer 1.5x larger */
+footer {
+    padding: 1.89rem 0;
+    /* 1.5x of 1.26rem */
+}
+
+.footer-section h3 {
+    font-size: 1.512rem;
+    /* 1.5x of 1.008rem */
+    margin-bottom: 0.63rem;
+    /* 1.5x of 0.42rem */
+}
+
+.footer-section p,
+.footer-section li {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+.footer-section a {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+/* General text elements - all 1.5x larger */
+p {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+h1 {
+    font-size: 2.52rem;
+    /* 1.5x of 1.68rem */
+}
+
+h2 {
+    font-size: 3.15rem;
+    /* 1.5x of 2.1rem */
+}
+
+h3 {
+    font-size: 1.638rem;
+    /* 1.5x of 1.092rem */
+}
+
+h4 {
+    font-size: 1.386rem;
+    /* 1.5x of 0.924rem */
+}
+
+h5 {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+h6 {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+/* List text */
+li {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+/* Small text elements */
+small {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+/* Code text */
+code {
+    font-size: 1.197rem;
+    /* 1.5x of 0.798rem */
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    padding: 0.315rem 0.63rem;
+    /* 1.5x larger padding */
+}
+
+/* Table text */
+table {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+}
+
+th {
+    font-size: 1.386rem;
+    /* 1.5x of 0.924rem */
+    padding: 0.315rem 0.63rem;
+    /* 1.5x larger padding */
+}
+
+td {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    padding: 0.315rem 0.63rem;
+    /* 1.5x larger padding */
+}
+
+/* Caption text */
+caption,
+figcaption {
+    font-size: 1.134rem;
+    /* 1.5x of 0.756rem */
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .version-updates {
+        padding: 1.89rem 0;
+        /* 1.5x of 1.26rem */
+    }
+
+    .updates-header h2 {
+        font-size: 2.52rem;
+        /* 1.5x of 1.68rem */
+    }
+
+    .updates-subtitle {
+        font-size: 1.26rem;
+        /* 1.5x of 0.84rem */
+    }
+
+    .updates-grid {
+        gap: 0.945rem;
+        /* 1.5x of 0.63rem */
+    }
+
+    .update-card {
+        padding: 0.945rem;
+        /* 1.5x of 0.63rem */
+    }
+
+    .updates-cta {
+        padding: 1.26rem;
+        /* 1.5x of 0.84rem */
+    }
+
+    .cta-content h3 {
+        font-size: 1.89rem;
+        /* 1.5x of 1.26rem */
+    }
+
+    .hero {
+        padding: 1.89rem 0;
+        /* 1.5x of 1.26rem */
+        min-height: 40.95vh;
+        /* 1.5x of 27.3vh */
+    }
+
+    .hero h1 {
+        font-size: 2.52rem;
+        /* 1.5x of 1.68rem */
+    }
+
+    .hero-subtitle {
+        font-size: 1.386rem;
+        /* 1.5x of 0.924rem */
+    }
+
+    .nav-menu a {
+        min-height: 32.55px;
+        /* 1.5x of 21.7px */
+        font-size: 1.26rem;
+        /* 1.5x of 0.84rem */
+        padding: 0.63rem 0.945rem;
+        /* 1.5x of 0.42rem 0.63rem */
+    }
+
+    .nav-dropdown-menu a {
+        padding: 0.4725rem 1.575rem;
+        /* 1.5x of 0.315rem 1.05rem */
+        min-height: 30.45px;
+        /* 1.5x of 20.3px */
+        font-size: 0.945rem;
+        /* 1.5x of 0.63rem */
+    }
+
+    body {
+        font-size: 1.68rem;
+        /* 1.5x of 1.12rem */
+    }
+}
+
+@media (max-width: 480px) {
+    .updates-header h2 {
+        font-size: 2.268rem;
+        /* 1.5x of 1.512rem */
+    }
+
+    .update-card {
+        padding: 0.63rem;
+        /* 1.5x of 0.42rem */
+    }
+
+    .update-icon {
+        font-size: 1.26rem;
+        /* 1.5x of 0.84rem */
+    }
+
+    .update-card h3 {
+        font-size: 1.386rem;
+        /* 1.5x of 0.924rem */
+    }
+
+    .updates-cta {
+        padding: 0.945rem;
+        /* 1.5x of 0.63rem */
+    }
+
+    .feature-tag {
+        font-size: 0.882rem;
+        /* 1.5x of 0.588rem */
+        padding: 0.126rem 0.378rem;
+        /* 1.5x of 0.084rem 0.252rem */
+    }
+}
+
+/* Progressive enhancement for larger screens */
+@media (min-width: 576px) {
+    .hero {
+        padding: 1.89rem 0;
+        /* 1.5x of 1.26rem */
+        min-height: 40.95vh;
+        /* 1.5x of 27.3vh */
+    }
+
+    .hero h1 {
+        font-size: 3.15rem;
+        /* 1.5x of 2.1rem */
+    }
+
+    .hero-subtitle {
+        font-size: 1.638rem;
+        /* 1.5x of 1.092rem */
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 2.52rem 0;
+        /* 1.5x of 1.68rem */
+        min-height: 44.1vh;
+        /* 1.5x of 29.4vh */
+    }
+
+    .hero h1 {
+        font-size: 3.78rem;
+        /* 1.5x of 2.52rem */
+    }
+
+    .hero-subtitle {
+        font-size: 1.89rem;
+        /* 1.5x of 1.26rem */
+        margin-bottom: 0.945rem;
+        /* 1.5x of 0.63rem */
+    }
+
+    .hero-description {
+        font-size: 1.386rem;
+        /* 1.5x of 0.924rem */
+        margin-bottom: 1.575rem;
+        /* 1.5x of 1.05rem */
+    }
+
+    .hero-philosophy {
+        margin: 2.3625rem auto;
+        /* 2.25x of 1.05rem (1.5x larger) */
+        padding: 1.89rem;
+        /* 2.25x of 0.84rem (1.5x larger) */
+    }
+
+    .philosophy-title {
+        font-size: 2.835rem;
+        /* 2.25x of 1.26rem (1.5x larger) */
+        margin-bottom: 1.4175rem;
+        /* 2.25x of 0.63rem (1.5x larger) */
+    }
+
+    .philosophy-text {
+        font-size: 2.1735rem;
+        /* 2.25x of 0.966rem (1.5x larger) */
+    }
+
+    .cta-section {
+        margin-top: 1.26rem;
+        /* 1.5x of 0.84rem */
+    }
+
+    .cta-button {
+        padding: 0.63rem 1.575rem;
+        /* 1.5x of 0.42rem 1.05rem */
+        font-size: 1.386rem;
+        /* 1.5x of 0.924rem */
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 4.41rem;
+        /* 1.5x of 2.94rem */
+    }
+}
+
+/* Ensure minimum readability on very small screens */
+@media (max-width: 320px) {
+    html {
+        font-size: 0.6825rem;
+        /* 1.5x of 0.455rem */
+    }
+
+    body {
+        font-size: 1.575rem;
+        /* 1.5x of 1.05rem */
+    }
+
+    .hero h1 {
+        font-size: 2.73rem;
+        /* 1.5x of 1.82rem */
+    }
+
+    .updates-header h2 {
+        font-size: 2.31rem;
+        /* 1.5x of 1.54rem */
+    }
+}
+
+/* Readability adjustments */
+.update-card p,
+.feature-card p,
+.testimonial p,
+.faq-answer p {
+    line-height: 1.5;
+    /* Better for larger text */
+}
+
+/* Button styling */
+.cta-button,
+.download-button,
+button {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Touch targets */
+.cta-button,
+.download-button,
+button,
+.nav-menu a {
+    min-height: 42px;
+    /* Larger touch targets */
+    min-width: 42px;
+}
+
+/* Grid adjustments */
+.updates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+    /* Larger minimum width */
+}
+
+@media (max-width: 768px) {
+    .updates-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Card styling */
+.update-card,
+.feature-card,
+.model-card {
+    border-radius: 8.4px;
+    /* Larger border radius */
+}
+
+/* List spacing */
+ul,
+ol {
+    margin: 0.63rem 0;
+    /* 1.5x margins */
+    padding-left: 1.89rem;
+    /* 1.5x padding */
+}
+
+li {
+    margin-bottom: 0.315rem;
+    /* 1.5x margins */
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 1.26rem;
+    /* 1.5x margins */
+}
+
+label {
+    font-size: 1.26rem;
+    /* 1.5x of 0.84rem */
+    margin-bottom: 0.315rem;
+    /* 1.5x margins */
+}
+
+/* Image styling */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.responsive-image {
+    border-radius: 8.4px;
+    /* Larger border radius */
+}
+
+/* Animation adjustments */
+@media (prefers-reduced-motion: no-preference) {
+    .update-card {
+        transition: transform 0.2s ease;
+    }
+
+    .update-card:hover {
+        transform: translateY(-4.2px);
+        /* Larger hover effect */
+    }
+}
+
+/* Mob
+ile Philosophy Section Collapsible Feature */
+@media (max-width: 768px) {
+    .hero-philosophy {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .philosophy-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        color: white;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        min-height: 44px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .philosophy-toggle:hover,
+    .philosophy-toggle:focus {
+        background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+        outline: 2px solid #fff;
+        outline-offset: -2px;
+    }
+
+    .philosophy-toggle:active {
+        transform: scale(0.98);
+    }
+
+    .philosophy-toggle-icon {
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+        margin-left: 0.5rem;
+    }
+
+    .philosophy-toggle.expanded .philosophy-toggle-icon {
+        transform: rotate(180deg);
+    }
+
+    .philosophy-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        background: rgba(255, 255, 255, 0.95);
+        border-left: 4px solid #3498db;
+    }
+
+    .philosophy-content.expanded {
+        max-height: 500px;
+        padding: 1.5rem;
+    }
+
+    .philosophy-content .philosophy-title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+    }
+
+    .philosophy-content .philosophy-text {
+        margin-bottom: 1rem;
+        color: #495057;
+    }
+
+    .philosophy-content .philosophy-attribution {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    /* Always show the original philosophy section - OVERRIDE */
+    .hero-philosophy:not(.mobile-collapsible) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Accessibility improvements */
+    .philosophy-toggle:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 2px;
+    }
+
+    /* Animation for smooth expand/collapse */
+    @keyframes expandPhilosophy {
+        from {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        to {
+            max-height: 500px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes collapsePhilosophy {
+        from {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        to {
+            max-height: 0;
+            opacity: 0;
+        }
+    }
+
+    .philosophy-content.expanding {
+        animation: expandPhilosophy 0.4s ease-out forwards;
+    }
+
+    .philosophy-content.collapsing {
+        animation: collapsePhilosophy 0.4s ease-out forwards;
+    }
+}
+
+/* Always hide mobile collapsible version - philosophy should always be visible */
+.mobile-philosophy-collapsible {
+    display: none !important;
+}
+
+/* Ensure philosophy is always visible on all screen sizes */
+.hero-philosophy {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
