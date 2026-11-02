@@ -1,0 +1,118 @@
+/* Floating Instagram Button Styles */
+.instagram-float-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.instagram-float-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 30px rgba(188, 24, 136, 0.6);
+    text-decoration: none;
+    color: white;
+}
+
+.instagram-float-button:active {
+    transform: translateY(-1px);
+}
+
+.instagram-float-button svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.instagram-float-button .button-text {
+    white-space: nowrap;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .instagram-float-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .instagram-float-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Extra small screens - show icon only */
+@media (max-width: 480px) {
+    .instagram-float-button {
+        padding: 15px;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        justify-content: center;
+    }
+
+    .instagram-float-button .button-text {
+        display: none;
+    }
+
+    .instagram-float-button svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Accessibility improvements */
+.instagram-float-button:focus {
+    outline: 3px solid #bc1888;
+    outline-offset: 3px;
+}
+
+.instagram-float-button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Animation on page load */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.instagram-float-button.animated {
+    animation: slideInUp 0.5s ease-out 0.5s both;
+}
+
+/* Pulse animation for attention */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(188, 24, 136, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(188, 24, 136, 0.7);
+    }
+}
+
+.instagram-float-button.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}

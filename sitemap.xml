@@ -163,6 +163,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ggufloader.github.io/lfm3-workspace-v0-1-1-release.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ggufloader.github.io/need-help.html</loc>
     <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
